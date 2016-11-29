@@ -4,7 +4,7 @@
      * Fecha de creación:28/11/2016
      * Creado por: Yamileth Campos
 -->
-<!--@extends('plantillas.plantilla_inicio')-->
+@extends('plantillas.plantilla_inicio')
 @section('fecha_sistema')
 <p align=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop  
