@@ -41,7 +41,7 @@ Route::get('/prueba',function(){
 //a un usuario
 });
 //*Ruta para solicitud de credenciales
-Route::get('administracion/solicitar_credenciales', function () {
+Route::get('usuario_app/solicitar_credenciales', function () {
     return view('usuario_app/solicitar_credenciales');
     //return view('test.index');
 });
