@@ -4,7 +4,7 @@
      * Fecha de creación:28/11/2016
      * Creado por: Yamileth Campos
 -->
-@extends('plantillas.plantilla_inicio')
+<!--@extends('plantillas.plantilla_inicio')-->
 @section('fecha_sistema')
 <p align=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop  
@@ -37,17 +37,52 @@
                       <td align="right">
                           <button type="submit" class="btn btn-primary">Enviar</button>  
                       </td>
-                      <td align="left">
+                      <td align="center">
                           <a href="/principal" class="btn btn-primary">Regresar</a>
+                      </td>
+                      <td align="left">
+                        <a href="#ventana1" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
+                        <div class="modal fade" id="ventana1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                             <div class="modal-dialog">
+                                 <div class="modal-content"> 
+                                     <!--header de la ventana-->
+                                     <div class="modal-header">                    
+                                         <p class="modal-title"> Ayuda para ingresar al sistema</p>
+                                     </div>
+                                     <!-- Contenido de la ventana -->
+                                     <div class="modal-body">
+                                          <table> 
+                                             <tr>
+                                                 <td>
+                                                     <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
+                                                 </td>
+                                                 <td>
+                                                      <p ><font color="white">...</font></p>
+                                                 </td>
+                                                 <td>
+                                                      <p>contenido de la ventana</p>
+                                                 </td>
+                                             </tr>
+
+                                         </table>  
+
+                                     </div>
+                                     <!--footer de la ventana-->
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                     </div>
+                                 </div>
+
+                             </div>
+                         </div>
                       </td>
                     </tr>
                 </table>
                 <p>*Campo requerido</p>
                 <br>
-                <p>Se le enviar&aacute; un mensaje con su usuario y contrase&ntilde;a al correo ingresado</p>
             </form>
         </div>
-    </div>
+    </div><br><br>
     <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, Universidad de El Salvador</h5></div>
 </div>
 @stop
