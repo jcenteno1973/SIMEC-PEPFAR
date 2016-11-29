@@ -40,3 +40,8 @@ Route::get('/prueba',function(){
 //el resultado de esa consulta devolverá todos los roles en un array y luego los asignamos
 //a un usuario
 });
+//*Ruta para solicitud de credenciales
+Route::get('administracion/solicitar_credenciales', function () {
+    return view('usuario_app/solicitar_credenciales');
+    //return view('test.index');
+});
