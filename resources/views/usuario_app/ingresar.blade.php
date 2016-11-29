@@ -3,7 +3,12 @@
      * Descripción:
      * Fecha de creación:06/11/2016
      * Creado por: Juan Carlos Centeno Borja
--->@extends('plantillas.plantilla_inicio')
+     * 
+     * Fecha de modificación: 28/11/2016
+     * Modificado por: Yamileth Campos
+     * Descripción: se agrega funcionalidad en boton de ayuda y boton de solicitud de contraseña  
+-->
+@extends('plantillas.plantilla_inicio')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop  
@@ -42,14 +47,50 @@
           <td>
               <button type="submit" class="btn btn-primary">Ingresar</button>  
           </td>
-          <td>
+          <td>              
               <button type="reset" class="btn btn-primary">Cancelar</button> 
           </td>
           <td>
-              <button type="button" class="btn btn-primary">Solicitar contraseña</button> 
+              <!-- <button type="button" class="btn btn-primary">Solicitar contraseña</button> -->
+              <a href="administracion/solicitar_credenciales" class="btn btn-primary">Solicitar credenciales</a>
+              
           </td>
           <td>
-              <button type="button" class="btn btn-primary">Ayuda</button>
+              <!-- <button type="button" class="btn btn-primary">Ayuda</button> -->
+             <a href="#ingreso" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
+               <div class="modal fade" id="ingreso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content"> 
+                            <!--header de la ventana-->
+                            <div class="modal-header">                    
+                                <p class="modal-title"> Ayuda para ingresar al sistema</p>
+                            </div>
+                            <!-- Contenido de la ventana -->
+                            <div class="modal-body">
+                                 <table> 
+                                    <tr>
+                                        <td>
+                                            <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
+                                        </td>
+                                        <td>
+                                             <p ><font color="white">...</font></p>
+                                        </td>
+                                        <td>
+                                             <p>contenido de la ventana</p>
+                                        </td>
+                                    </tr>
+
+                                </table>  
+
+                            </div>
+                            <!--footer de la ventana-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
           </td>
         </tr>
         </table>
@@ -57,6 +98,6 @@
         </form>
         </div>
     </div>
-    <div class="panel-footer"><h5 class="text-center">Derechos reservados</h5></div>
+    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, Universidad de El Salvador</h5></div>
 </div>
 @stop
