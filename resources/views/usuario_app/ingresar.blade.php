@@ -8,7 +8,7 @@
      * Modificado por: Yamileth Campos
      * Descripción: se agrega funcionalidad en boton de ayuda y boton de solicitud de contraseña  
 -->
-@extends('plantillas.plantilla_inicio')
+<!--@extends('plantillas.plantilla_inicio')-->
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop  
@@ -52,11 +52,13 @@
           </td>
           <td>
               <!-- <button type="button" class="btn btn-primary">Solicitar contraseña</button> -->
-              <a href="administracion/solicitar_credenciales" class="btn btn-primary">Solicitar credenciales</a>
+              <a href="usuario_app/solicitar_credenciales" class="btn btn-primary">Solicitar credenciales</a>
               
           </td>
+          
           <td>
               <!-- <button type="button" class="btn btn-primary">Ayuda</button> -->
+              
              <a href="#ingreso" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
                <div class="modal fade" id="ingreso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
