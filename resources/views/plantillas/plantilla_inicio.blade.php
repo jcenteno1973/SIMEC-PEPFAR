@@ -4,6 +4,10 @@
      * Descripción:
      * Fecha de creación:11/11/2016
      * Creado por: Juan Carlos Centeno Borja
+     * 
+     * Fecha de Modificacion :2911/2016
+     * Modificado por: Yamileth Campos
+     * Descripcion: Cambio de referencias: de bootstrap y js
 -->
 <html lang="es" xml:lang="es"></html>
 <head>
@@ -12,8 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     @section('head')
+       <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
+       <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
+        <!-- 
         {!! Html::style('assets/css/bootstrap.css') !!}
-        {!! Html::style('assets/css/bootstrap.min.css') !!}
+        {!! Html::style('assets/css/bootstrap.min.css') !!}-->
     @show    
 </head>
 <body>
@@ -65,8 +72,12 @@
 	</div>
 	</div>
     
-    <script src="assets/js/jquery.min.js"></script>
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/scripts.js')}}"></script>
+
+<!-- <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/scripts.js"></script> -->
 </body>
 
