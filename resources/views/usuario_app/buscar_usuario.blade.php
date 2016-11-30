@@ -12,7 +12,8 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-<h4 class="text-center">Pantalla buscar usuario</h4>
+  <h4 class="text-center">Buscar usuario</h4>
+    <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -27,6 +28,26 @@
 @stop
 @section('contenido')
 <div class="panel panel-default">
+    <!-- filtro busqueda de usuario, los "&nbsp; son espacios"-->
+        {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+        
+                <div class="form-group" >
+                    Nombre de usuario
+                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Nombre de usuario'])!!}
+                  &nbsp;&nbsp;Roles
+                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Roles'])!!}
+                </div>
+                 &nbsp;&nbsp; &nbsp;
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="opciones" id="opciones_1" value="opcion_1" checked>
+                     Activo
+                    </label>
+                  </div>
+                &nbsp;&nbsp;<button type="submit" class="btn btn-default"> Buscar</button>
+   {!! Form::close() !!}
+    <!-- fin filtro busqueda usuario-->
+     
     {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
     <table class="table">   
     <thead>
@@ -56,6 +77,52 @@
    @endforeach   
     </tbody>
   </table>
+    <div>
+       <table class="table">
+        <tr>
+          <td>
+              <button type="submit" class="btn btn-primary">editar</button>  
+              <button type="reset" class="btn btn-primary">Regresar</button>
+              <!--Boton de ayuda-->
+              <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
+               <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content"> 
+                            <!--header de la ventana-->
+                            <div class="modal-header">                    
+                                <p class="modal-title"> Ayuda para buscar usuario</p>
+                            </div>
+                            <!-- Contenido de la ventana -->
+                            <div class="modal-body">
+                                 <table> 
+                                    <tr>
+                                        <td>
+                                            <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
+                                        </td>
+                                        <td>
+                                             <p ><font color="white">...</font></p>
+                                        </td>
+                                        <td>
+                                             <p>contenido de la ventana</p>
+                                        </td>
+                                    </tr>
+
+                                </table>  
+
+                            </div>
+                            <!--footer de la ventana-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+              <!--FIN Boton de ayuda-->
+          </td>
+        </tr>        
+        </table> 
+    </div>
  {!! Form::close() !!}
 </div>
 @stop   
