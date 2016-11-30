@@ -8,7 +8,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\bitacoraController;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -23,6 +23,8 @@ class principalController extends Controller
         $this->middleware('auth');
     }
     public function fnc_principal(){
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
         return view('principal');
     }
 

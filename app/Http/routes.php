@@ -15,6 +15,7 @@
 */
 use Illuminate\Http\Request;
 use App\Http\Controllers\ubicacion_orgController;
+use Carbon\Carbon;
 Route::get('/','ingresarController@index');
 Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => 'Auth\AuthController@fnc_ingresar']);
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
@@ -28,8 +29,13 @@ Route::get('administracion/consultar_bitacora',['as' => 'administracion/consulta
 //Route::get('/principal', function () {    return view('principal');});
 
 Route::get('/prueba',function(){
-    $obj=new ubicacion_orgController();
-    echo $obj->fnc_obtener_id('informatica');
+    $fecha = Carbon::now();
+    $obj=new \App\Models\bitacora();
+    $obj->id_usuario_app=1;
+    $obj->fecha_hora_transaccion= $fecha;
+    $obj->transaccion_realizada="{$_SERVER['REQUEST_URI']}";
+    $obj->save();
+    echo $obj;
 //obtenemos al usuario al que queremos asignar roles
 //$user = User::find(1);
 //mediante la function attachRole() que es propia del componente, 

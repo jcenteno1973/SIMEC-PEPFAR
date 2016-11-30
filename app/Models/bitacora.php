@@ -21,9 +21,11 @@ class bitacora extends Model
         'transaccion_realizada'
     ];
     
-   //relacion con usuario
+   /*relacion con usuario
     public function fnc_usuarios_app()
     {
         return $this->hasMany('App\User');
     }
+    * 
+    */
 }

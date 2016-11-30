@@ -6,6 +6,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Http\Controllers\bitacoraController;
 use Validator;
 use Auth;
 use Illuminate\Http\Request;
@@ -46,6 +47,8 @@ class AuthController extends Controller
     if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_usuario'=>1]))
       
       {
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
         return redirect('/principal');
     }
         echo 'Usuario o contraseña no coincide';

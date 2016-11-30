@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Role;
 use Auth;
+use App\Http\Controllers\bitacoraController;
 use App\Models\ubicacion_organizacional;
 use App\Models\cargo_emp;
 use Illuminate\Http\Request;
@@ -72,10 +73,14 @@ class usuario_appController extends Controller
         return $this->fnc_show_buscar_usuario();
         }
     public function fnc_show_buscar_usuario() {
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create();
         $obj_usuario=  User::all();               
         return view('usuario_app/buscar_usuario',  compact('obj_usuario'));
     }
     public function fnc_show_create() {
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create();
         $obj_role= Role::all();
         $obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_cargo_emp= cargo_emp::all();
