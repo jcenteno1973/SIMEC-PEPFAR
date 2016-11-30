@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     @section('head')
-        {!! Html::style('assets/css/bootstrap.css') !!}
-        {!! Html::style('assets/css/bootstrap.min.css') !!}
+       <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
+       <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
     @show    
 </head>
 <body>
@@ -119,13 +119,13 @@
     </div>
 	<div class="row"><!--pie de pagina -->
 		<div class="col-md-12">
-		<p ALIGN=center>Derechos reservados</p>
+		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, Universidad de El Salvador</h5></div>
 		</div>
 	</div>
 	</div>
     
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/scripts.js')}}"></script>
 </body>
 
