@@ -4,6 +4,10 @@
      * Descripción:
      * Fecha de creación:11/11/2016
      * Creado por: Juan Carlos Centeno Borja
+     * 
+     * Modificado por: Karla Barrera 
+     * Fecha modificación: 28/11/2016
+     * Descripción: Quitar ayuda del menú y ruta para ficha agregada
 -->
 <html lang="es" xml:lang="es"></html>
 <head>
@@ -44,7 +48,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="#">Fichas</a>
+							<a href="../ficha/buscar_ficha">Fichas</a>
 						</li>
 						<li>
 							<a href="#">Inventario</a>
@@ -60,9 +64,6 @@
 						</li>
 						<li>
 							<a href="administracion/buscar_usuario">Administración</a>
-						</li>
-                                                <li>
-							<a href="#">Ayuda</a>
 						</li>
 						<li>
 							<a href="{{route('usuario_app/salir')}}">Salir</a>
