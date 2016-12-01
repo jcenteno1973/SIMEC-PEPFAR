@@ -12,7 +12,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-<h4 class="text-center">Pantalla nuevo usuario</h4>
+<h4 class="text-center">Editar usuario</h4>
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -35,7 +35,7 @@
         <tr>
           <td>
               <td>
-              <button type="submit" class="btn btn-primary">editar</button>  
+              <button type="submit" class="btn btn-primary">Guardar</button>  
               <button type="reset" class="btn btn-primary">Regresar</button>
               <!--Boton de ayuda-->
               <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
