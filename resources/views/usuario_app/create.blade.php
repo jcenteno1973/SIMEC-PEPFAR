@@ -96,7 +96,7 @@
           </td>
         </tr>        
         </table> 
-        <p>*Campo requerido</p>
+        <p>* Campo requerido</p>
     </div>
     {!! Form::close() !!}        
         </div>

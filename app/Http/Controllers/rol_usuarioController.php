@@ -28,6 +28,7 @@ class rol_usuarioController extends Controller
      *
      * @return id del rol
      */
+  
      public function fnc_obtener_id($param) {
          $id_rol_usuario=0;
          $obj_rol_usuario=  Role::all();
@@ -47,6 +48,7 @@ class rol_usuarioController extends Controller
     public function create()
     {
         //
+        return view('usuario_app/nuevo_rol');
     }
 
     /**
@@ -58,6 +60,7 @@ class rol_usuarioController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
@@ -80,6 +83,7 @@ class rol_usuarioController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**

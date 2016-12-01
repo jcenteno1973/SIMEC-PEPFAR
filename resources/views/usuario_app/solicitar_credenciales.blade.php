@@ -38,7 +38,7 @@
                           <button type="submit" class="btn btn-primary">Enviar</button>  
                       </td>
                       <td align="center">
-                          <a href="/principal" class="btn btn-primary">Regresar</a>
+                          <a href="/" class="btn btn-primary">Regresar</a>
                       </td>
                       <td align="left">
                         <a href="#ventana1" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>

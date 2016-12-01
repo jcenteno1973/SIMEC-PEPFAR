@@ -3,6 +3,8 @@
      * Descripción:
      * Fecha de creación:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
+     * modificado por: yamileth Campos
+     * Fecha de modificacion:1/12/16
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -20,7 +22,7 @@
     <a class="list-group-item active">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
     <a href="#" class="list-group-item">Cambio de contraseña</a>
-    <a href="#" class="list-group-item">Nuevo rol</a>
+    <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
@@ -90,7 +92,7 @@
                         <div class="modal-content"> 
                             <!--header de la ventana-->
                             <div class="modal-header">                    
-                                <p class="modal-title"> Ayuda para buscar usuario</p>
+                                <p class="modal-title">Ayuda para busqueda usuario </p>
                             </div>
                             <!-- Contenido de la ventana -->
                             <div class="modal-body">
