@@ -81,7 +81,7 @@
        <table class="table">
         <tr>
           <td>
-              <button type="submit" class="btn btn-primary">editar</button>  
+              <a href="{{route('admin.usuario.edit')}}" class="btn btn-primary">Editar </a> 
               <button type="reset" class="btn btn-primary">Regresar</button>
               <!--Boton de ayuda-->
               <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>

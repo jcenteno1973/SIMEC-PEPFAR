@@ -51,3 +51,11 @@ Route::get('usuario_app/solicitar_credenciales', function () {
     return view('usuario_app/solicitar_credenciales');
     //return view('test.index');
 });
+
+/**********Ruta para prefix de rutas usuario
+//******************************************************/
+Route::group(['prefix'=>'admin'], function(){
+    Route::resource('usuario','usuario_appController' );
+
+});    
+//*******************************************************

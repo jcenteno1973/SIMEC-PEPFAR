@@ -121,6 +121,9 @@ class usuario_appController extends Controller
     public function edit($id)
     {
         //
+         $usuario=User::find($id);//se crea una variable que capte los datos del usuario a modificar
+       return view('usuario_app/editar_usuario')->with('usuario',$usuario);//retorna a la vista para la edicion
+        //dd('esta es la pagina de edicion');
     }
 
     /**
