@@ -2,6 +2,10 @@
 /**
      * Fecha de modificación:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
+     *
+     * Modificado por: Karla Barrera 
+     * Fecha modificación: 2/12/2016
+     * Descripción: Ruta para cambio de contraseña 
      */
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +65,9 @@ Route::group(['prefix'=>'admin'], function(){
 
 });    
 //*******************************************************
+
+//ruta vista cambio contraseña
+Route::get('administracion/contrasenia/cambiar', function () {
+    return view('usuario_app/cambiar_contrasenia');
+    //return view('test.index');
+});

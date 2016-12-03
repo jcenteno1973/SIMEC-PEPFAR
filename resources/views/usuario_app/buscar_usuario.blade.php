@@ -5,6 +5,10 @@
      * Creado por: Juan Carlos Centeno Borja
      * modificado por: yamileth Campos
      * Fecha de modificacion:1/12/16
+     *
+     * Modificado por: Karla Barrera 
+     * Fecha modificación: 1/12/2016
+     * Descripción: Rutas agregadas al submenu
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -21,7 +25,7 @@
 <div class="list-group">
     <a class="list-group-item active">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="#" class="list-group-item">Cambio de contraseña</a>
+    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
     <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
