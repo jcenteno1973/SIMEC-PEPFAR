@@ -28,21 +28,68 @@
 @stop
 @section('contenido')
 <div class="panel panel-default">    
-        <!-- filtro busqueda de usuario, los "&nbsp; son espacios"-->
+        <!-- busqueda de reporte de bitacora -->
         {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
             
                 <div class="form-group" >
                     <br /><br />Nombre de usuario
                   {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Nombre de usuario'])!!}
-                  &nbsp;&nbsp;<br /><br /><br />Fecha&nbsp;&nbsp;&nbsp;&nbsp;Desde
+                  &nbsp;&nbsp;<br /><br /><br />Fecha:&nbsp;&nbsp;&nbsp;&nbsp;Desde
                   {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Fecha inicio'])!!}
                   &nbsp;&nbsp;Hasta
                   {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Fecha fin'])!!}
                 </div>
                  &nbsp;&nbsp; &nbsp;
-                
+                <br /><br /><br />
    {!! Form::close() !!}
-    <!-- fin filtro busqueda usuario-->
+    <!-- fin busqueda de bitacora -->
+
+<div>
+       <table class="table">
+        <tr>
+          <td>
+              <a href="../administracion/consultar_bitacora" class="btn btn-primary">Reporte </a> 
+              <button type="reset" class="btn btn-primary">Regresar</button>
+              <!--Boton de ayuda-->
+              <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
+               <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content"> 
+                            <!--header de la ventana-->
+                            <div class="modal-header">                    
+                                <p class="modal-title">Ayuda para b&uacute;squeda de reporte de bit&aacute;cora </p>
+                            </div>
+                            <!-- Contenido de la ventana -->
+                            <div class="modal-body">
+                                 <table> 
+                                    <tr>
+                                        <td>
+                                            <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
+                                        </td>
+                                        <td>
+                                             <p ><font color="white">...</font></p>
+                                        </td>
+                                        <td>
+                                             <p>contenido de la ventana</p>
+                                        </td>
+                                    </tr>
+
+                                </table>  
+
+                            </div>
+                            <!--footer de la ventana-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+              <!--FIN Boton de ayuda-->
+          </td>
+        </tr>        
+        </table> 
+    </div>
      
 </div>
 @stop   
