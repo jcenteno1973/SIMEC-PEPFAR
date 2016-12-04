@@ -1,10 +1,10 @@
 <!-- 
-     * Nombre del archivo:cambiar_contrasenia.blade.php
+     * Nombre del archivo: inicio_cambio_contrasenia.blade.php
      * Descripción: Pantalla para cambiar contrasenia
-     * Fecha de creación:1/12/2016
+     * Fecha de creación:2/12/2016
      * Creado por: Karla Barrera
 -->
-@extends('plantillas.plantilla_base')
+@extends('plantillas.plantilla_sin_columna')
 @section('fecha_sistema')
 <p align=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop  
@@ -12,20 +12,10 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Cambiar contrase&ntilde;a</h4>
+  <h4 class="text-center">Cambio de contrase&ntilde;a</h4>
     <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
 @stop 
-@section('menu_lateral')
-<div class="list-group">
-    <a href="../../administracion/buscar_usuario"class="list-group-item">Buscar usuarios</a>
-    <a href="../../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a class="list-group-item active">Cambio de contraseña</a>
-    <a href="../../admin/rol/create" class="list-group-item">Nuevo rol</a>
-    <a href="#" class="list-group-item">Editar rol</a>
-    <a href="../../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="#" class="list-group-item">Catalogos</a>
-</div>
-@stop
+
 @section('contenido')
 <div class="panel panel-default">
     <div class="panel-body">
@@ -40,28 +30,33 @@
         <div class="col-md-4 col-md-offset-4">
             <form class="form-signin" action="" method="POST">
                 <br>
-                <table class="table table-responsive" border-style= "none">
-                    <tr>                       
-                      <td>Usuario* </td>
-                      <td><input type="text" maxlength="25" style="width:100%" class="form-control" name="usuario" placeholder="Nombre de Usuario" required autofocus></td>
-                    </tr> 
-                    <tr>                       
-                      <td>Contrase&ntilde;a* </td>
-                      <td><input type="text" maxlength="25" style="width:100%" class="form-control" name="contrasenia" placeholder="Nueva contrase&ntilde;a" required autofocus></td>
-                    </tr>                    
-                </table> 
+                <!-- Ingresar nombre de usuario -->
+                  {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+        
+                <div class="form-group" >
+                    Contrase&ntilde;a*&nbsp;&nbsp;
+                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Nueva Contrase&ntilde;a'])!!}
+                  &nbsp;&nbsp;Repetir Contrase&ntilde;a*&nbsp;&nbsp;
+                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Vuelva a digitar la contrase&ntilde;a'])!!}
+                </div>
+                 &nbsp;&nbsp; &nbsp;                
+   {!! Form::close() !!}
+    <!-- fin filtro busqueda usuario-->
+
+                
                 <table class="table table-responsive">
                     <tr>
-                 <!--     <td align="left">
+                      <td align="left">
                           <button type="submit" class="btn btn-primary">Guardar</button>  
+                      </td>
+                      <td align="left">
+                          <a href="../../Controllers/usuario_appController" class="btn btn-primary">Cancelar</a>
+                      </td>
+                  <!--    <td align="left">
+                          <a href="../../administracion/buscar_usuario" class="btn btn-primary">Regresar</a>
                       </td>  -->
                       <td align="left">
-                      <!--    <button type="submit" class="btn btn-primary">Guardar</button>  -->
-                          <a href="../../administracion/contrasenia_cambio" class="btn btn-primary">Guardar</a>
-                      </td>
-
-                      <td align="left">
-                          <a href="../../administracion/buscar_usuario" class="btn btn-primary">Regresar</a>
+                          <a href="../administracion/buscar_usuario" class="btn btn-primary">Regresar</a>
                       </td>
                       <td align="left">
                         <a href="#ventana1" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
