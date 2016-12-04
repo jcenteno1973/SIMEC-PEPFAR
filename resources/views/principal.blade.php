@@ -3,6 +3,10 @@
      * Descripción:
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
+
+     * Fecha de modificacion: 4/12/16
+     * Modificado por: Yamileth Campos
+     * Descripcion:Se agregan imagenes y link del menu 
 -->
 @extends('plantillas.plantilla_sin_columna')
 @section('fecha_sistema')
