@@ -20,6 +20,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\ubicacion_orgController;
 use Carbon\Carbon;
+use JasperPHP\JasperPHP;
 Route::get('/','ingresarController@index');
 Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => 'Auth\AuthController@fnc_ingresar']);
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
@@ -33,13 +34,26 @@ Route::get('administracion/consultar_bitacora',['as' => 'administracion/consulta
 //Route::get('/principal', function () {    return view('principal');});
 
 Route::get('/prueba',function(){
-    $fecha = Carbon::now();
-    $obj=new \App\Models\bitacora();
-    $obj->id_usuario_app=1;
-    $obj->fecha_hora_transaccion= $fecha;
-    $obj->transaccion_realizada="{$_SERVER['REQUEST_URI']}";
-    $obj->save();
-    echo $obj;
+    $reporte_generado='/reportes/'.time().'_bitacora3';//time le aggrega un número generado por la hora
+    $output = public_path() .$reporte_generado; 
+    $report = new JasperPHP;
+    $report->process(
+        public_path() . '/reportes/bitacora3.jrxml', 
+        $output, 
+        array('pdf'),//, 'rtf', 'html'),
+        array(),
+            array('driver' => 'mysql',                
+                'host' => '127.0.0.1',
+                'port' => '3306',
+                'database' => 'sicafam',                
+                'username' => 'sicafam',
+                'password' => 'sicafam123654')
+        )->execute();
+    $reporte_generado='../public'.$reporte_generado.'.pdf';
+    echo $reporte_generado;
+    return view('welcome',  compact('reporte_generado'));
+
+    
 //obtenemos al usuario al que queremos asignar roles
 //$user = User::find(1);
 //mediante la function attachRole() que es propia del componente, 
@@ -55,19 +69,15 @@ Route::get('usuario_app/solicitar_credenciales', function () {
     return view('usuario_app/solicitar_credenciales');
     //return view('test.index');
 });
-
-/**********Ruta para prefix de rutas Administracion
-//******************************************************/
-Route::group(['prefix'=>'admin'], function(){
-    Route::resource('usuario','usuario_appController' );
-    Route::resource('rol','rol_usuarioController' );
- 
-
-});    
-//*******************************************************
-
-//ruta vista cambio contraseña
-Route::get('administracion/contrasenia/cambiar', function () {
+Route::get('administracion/cambiar_contrasenia', function () {
     return view('usuario_app/cambiar_contrasenia');
+    //return view('test.index');
+});
+Route::get('administracion/editar_usuario', function () {
+    return view('usuario_app/editar_usuario');
+    //return view('test.index');
+});
+Route::get('administracion/nuevo_rol', function () {
+    return view('usuario_app/nuevo_rol');
     //return view('test.index');
 });
