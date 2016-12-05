@@ -13,6 +13,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Auth;
+use JasperPHP\JasperPHP;
 
 class bitacoraController extends Controller
 {
@@ -25,7 +26,7 @@ class bitacoraController extends Controller
         $this->middleware('auth');
     }
     public function fnc_show_consultar_bitacora() {
-       $this->create();
+    $this->create();
     $reporte_generado='/reportes/'.time().'_bitacora3';//time le aggrega un número generado por la hora
     $output = public_path() .$reporte_generado; 
     $report = new JasperPHP;

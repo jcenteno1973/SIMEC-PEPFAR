@@ -1,5 +1,5 @@
 <!-- 
-     * Nombre del archivo:principal.blade.php
+     * Nombre del archivo:create.blade.php
      * Descripción:
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
