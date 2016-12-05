@@ -25,8 +25,24 @@ class bitacoraController extends Controller
         $this->middleware('auth');
     }
     public function fnc_show_consultar_bitacora() {
-        $this->create();
-        return view('bitacora/consultar_bitacora');
+       $this->create();
+    $reporte_generado='/reportes/'.time().'_bitacora3';//time le aggrega un número generado por la hora
+    $output = public_path() .$reporte_generado; 
+    $report = new JasperPHP;
+    $report->process(
+    public_path() . '/reportes/bitacora3.jrxml', 
+    $output, 
+    array('pdf'),//, 'rtf', 'html'),
+    array(),
+        array('driver' => 'mysql',                
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'database' => 'sicafam',                
+            'username' => 'sicafam',
+            'password' => 'sicafam123654')
+    )->execute();
+    $reporte_generado='..'.$reporte_generado.'.pdf';
+    return view('bitacora/consultar_bitacora',compact('reporte_generado'));
     }
     public function index()
     {
