@@ -1,4 +1,4 @@
-<!-- 
+﻿<!-- 
      * Nombre del archivo:principal.blade.php
      * Descripción:
      * Fecha de creación:18/11/2016
@@ -31,5 +31,5 @@
 @stop
 @section('contenido')
 <iframe src="{{$reporte_generado}}" width="100%" height="500px">   
-</iframe>
+</iframe> 
 @stop   
