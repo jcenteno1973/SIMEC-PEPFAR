@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-02T23:17:55 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bitacora3" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="366147e9-48cd-48ae-9523-8a226c3d3cdd">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="Yml0YWNvcmEgLDIyLDE4LDkxOWNkNDMzLTY0N2EtNGIzZS1iZjE2LTIxYzc5YzIxMzljMDt1c3Vh&#xA;cmlvX2FwcCAsMTA2LDE1LDEwOWUyZmEyLWFiMTAtNGFlOC1iNjAzLWM3OTNhNjA4ZTMwMTs="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicafam"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT id_bitacora,
+	nombre_usuario,
+	transaccion_realizada,
+	fecha_hora_transaccion
+FROM usuario_app u
+	INNER JOIN bitacora b ON 
+	b.id_usuario_app=u.id_usuario_app]]>
+	</queryString>
+	<field name="id_bitacora" class="java.lang.Integer"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="transaccion_realizada" class="java.lang.String"/>
+	<field name="fecha_hora_transaccion" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<textField>
+				<reportElement x="138" y="0" width="270" height="20" uuid="d1e87340-d46d-4fea-b453-0ef5110609a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ALCALDIA MUNICIPAL DE MEJICANOS"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="21" width="270" height="20" uuid="5e60f29f-86e3-4f02-a0d1-5f031deffd60"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GERENCIA ADMINISTRATIVA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="40" width="270" height="20" uuid="8cbed882-10ed-441d-b820-06ead7d4e1b1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDAD DE ACTIVO FIJO"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="3" y="2" width="77" height="68" uuid="493d3d03-53b7-453a-b780-821ead112e39"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/escudo.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="493" y="2" width="77" height="68" uuid="2d8c21bb-c4b4-4b5d-aa3d-780e9a3d2588">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="-4" width="60" height="30" uuid="5b7aceb0-3cdc-4dc0-a10d-4b90df3ea842"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="-4" width="123" height="30" uuid="0dbb6e23-6fcd-4cec-b736-de48a5520119"/>
+				<text><![CDATA[Nombre usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="-2" width="230" height="30" uuid="67cdf3a9-282c-47c6-87b9-f4c11e731e07"/>
+				<text><![CDATA[Transaccion realizada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="130" height="30" uuid="68b24c7a-a6b6-4749-9d1c-238c04ae3449"/>
+				<text><![CDATA[Fecha hora transaccion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="60" height="20" uuid="b8987049-d702-4c3f-85c6-582f4ae0d82e"/>
+				<textFieldExpression><![CDATA[$F{id_bitacora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="0" width="123" height="20" uuid="a085aa16-e0f0-4c90-bdfa-3911828ed7ed"/>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="230" height="50" uuid="09205882-5d47-41b1-82dc-60c295053fad"/>
+				<textFieldExpression><![CDATA[$F{transaccion_realizada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="0" width="128" height="20" uuid="f0167b86-d1ff-46ce-af05-837c384fad73"/>
+				<textFieldExpression><![CDATA[$F{fecha_hora_transaccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement x="373" y="30" width="100" height="30" uuid="dadc2038-c870-41cb-a252-d9c1641c7b5f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="479" y="30" width="100" height="30" uuid="31da13fc-b1e4-45e2-9163-75c7e5cfdddf"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="44" splitType="Stretch"/>
+	</summary>
+</jasperReport>
