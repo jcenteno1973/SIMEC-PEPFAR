@@ -75,7 +75,7 @@ class usuario_appController extends Controller
     public function fnc_show_buscar_usuario() {
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();
-        $obj_usuario=  User::all();               
+        $obj_usuario=  User::paginate(5);               
         return view('usuario_app/buscar_usuario',  compact('obj_usuario'));
     }
     public function fnc_show_create() {

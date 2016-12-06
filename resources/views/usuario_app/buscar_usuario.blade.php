@@ -81,8 +81,11 @@
         <td>{!! Form::radio('seleccionar', null, ['class' => 'form-control' , 'required' => 'required']) !!}</td>       
       </tr>
    @endforeach   
-    </tbody>
+    </tbody>   
   </table>
+     <div align="center"> 
+              {!!$obj_usuario->render()!!}
+   </div>
     <div>
        <table class="table">
         <tr>
