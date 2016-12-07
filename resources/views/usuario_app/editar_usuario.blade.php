@@ -7,6 +7,10 @@
      * Modificado por: Karla Barrera 
      * Fecha modificación: 1/12/2016
      * Descripción: Rutas agregadas al submenu
+     *
+     * Modificado por: Yamileth Campos
+     * Fecha modificación: 5/12/2016
+     * Descripción: Agregar campos de edicion de usuario
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -32,57 +36,73 @@
 @section('contenido')
 <div class="panel panel-default">
     <div class="panel-body">
-      <!--  {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
-               
-      -->
+       <!-- Aqui deberia ir el formulario-->
+       <table class="table table-bordered">    
+        <tbody>
+           <tr>
+            <td>No DUI *</td>
+            <td>
+                {!! Form::text('numero_dui', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </td>
+            <td>Unidad o Departamento *</td>
+            <td>
+                <select name="id_ubicacion_org" class="form-control">
+                       
+                </select>
+             </td>
+            </tr>
+            <tr>
+            <td>Nombres *</td>
+            <td>  
+                {!! Form::text('nombres_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+            </td>
+            <td>Apellidos *</td>
+            <td>                 
+                {!! Form::text('apellidos_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+            </td>
+            </tr>
+            <tr>
+            <td>Correo electrónico *</td>
+            <td>
+                {!! Form::email('email_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+            </td>
+            <td> Contraseña *</td>
+            <td>                    
+                <input type="password" class="form-control" name="password" required>                                  
+            </td>
+            </tr>
+            <tr>
+              <td>Rol *</td>
+                <td>
+                    <select name="rol_usuario" class="form-control" >
+                           
+                    </select>
+                </td>
+              <td>Cargo *</td>
+                 <td>                 
+                    <select name="cargo_emp" class="form-control">
+                                         
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+     </table>  
+       <!-- Botones"--> 
+    <div>
        <table class="table">
         <tr>
           <td>
-              <td>
-              <button type="submit" class="btn btn-primary">Guardar</button>  
+              {!! Form::submit('Guardar cambios',['class'=>'btn btn-primary'])!!}              
               <button type="reset" class="btn btn-primary">Regresar</button>
-              <!--Boton de ayuda-->
-              <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-               <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content"> 
-                            <!--header de la ventana-->
-                            <div class="modal-header">                    
-                                <p class="modal-title"> Ayuda para buscar usuario</p>
-                            </div>
-                            <!-- Contenido de la ventana -->
-                            <div class="modal-body">
-                                 <table> 
-                                    <tr>
-                                        <td>
-                                            <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
-                                        </td>
-                                        <td>
-                                             <p ><font color="white">...</font></p>
-                                        </td>
-                                        <td>
-                                             <p>contenido de la ventana</p>
-                                        </td>
-                                    </tr>
-
-                                </table>  
-
-                            </div>
-                            <!--footer de la ventana-->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              <!--FIN Boton de ayuda-->
-          </td>
+              @include('usuario_app/ayuda_usuario/ayuda_edit_usuario')
+       </td>
         </tr>        
-        </table> 
-    <!--
+        
+    <!-- Fin botones-->
+      </table> 
     </div>
-    {!! Form::close() !!}      -->  
+    {!! Form::close()!!}
+ 
     </div>
 </div>
 @stop   
