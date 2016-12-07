@@ -75,8 +75,31 @@ class usuario_appController extends Controller
     public function fnc_show_buscar_usuario() {
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();
+        $obj_role= Role::all();
         $obj_usuario=  User::paginate(5);               
-        return view('usuario_app/buscar_usuario',  compact('obj_usuario'));
+        return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
+    }
+    
+    public function fnc_filtro_buscar_usuario(Request $request) {
+        $obj_rol_usuario= new rol_usuarioController();
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create();
+        $obj_role= Role::all();
+        if($request->estado_usuario!=1){
+           $request->estado_usuario=0; 
+        }else{
+           $request->estado_usuario=1; 
+        }   
+        if($request->rol_usuario!=''){
+        $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
+        $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->id_rol_usuario($id_rol_usuario)->estado_usuario($request->estado_usuario)->paginate(5); 
+        }
+        else
+        {
+         $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->estado_usuario($request->estado_usuario)->paginate(5);    
+        }
+        return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
+        
     }
     public function fnc_show_create() {
         $obj_controller_bitacora=new bitacoraController();
@@ -121,9 +144,9 @@ class usuario_appController extends Controller
     public function edit($id)
     {
         //
-         $usuario=User::find($id);//se crea una variable que capte los datos del usuario a modificar
+      $usuario=User::find($id);//se crea una variable que capte los datos del usuario a modificar
        return view('usuario_app/editar_usuario')->with('usuario',$usuario);//retorna a la vista para la edicion
-        //dd('esta es la pagina de edicion');
+       
     }
 
     /**

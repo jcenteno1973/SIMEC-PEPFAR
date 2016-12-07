@@ -35,18 +35,24 @@
 @section('contenido')
 <div class="panel panel-default">
     <!-- filtro busqueda de usuario, los "&nbsp; son espacios"-->
-        {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+        {!! Form::open(['route' => 'administracion/buscar_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
         
                 <div class="form-group" >
                     Nombre de usuario
-                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Nombre de usuario'])!!}
+                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Nombre de usuario'])!!}
                   &nbsp;&nbsp;Roles
-                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Roles'])!!}
+                  <!--{!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Roles'])!!} Borrar ya que roles es una lista  -->
                 </div>
-                 &nbsp;&nbsp; &nbsp;
+                 <select name="rol_usuario" class="form-control" >
+                     <option> </option>
+                        @foreach($obj_role as $obj_roles)
+                        <option>{{$obj_roles->nombre_rol}}</option>
+                        @endforeach
+                 </select>
+                &nbsp;&nbsp; &nbsp;
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="opciones" id="opciones_1" value="opcion_1" checked>
+                    <input type="checkbox" name="estado_usuario" id="estado_usuario" value="1" checked>                     
                      Activo
                     </label>
                   </div>
@@ -70,7 +76,11 @@
       <tr>
         <td>{{$obj_usuarios->id_usuario_app}}</td>
         <td>{{$obj_usuarios->nombre_usuario}}</td>
-        <td></td>
+         @foreach($obj_role as $obj_roles)
+          @if($obj_roles->id_rol_usuario==$obj_usuarios->id_rol_usuario)
+        <td>{{$obj_roles->nombre_rol}}</td>
+        @endif
+         @endforeach
         <td>
             @if($obj_usuarios->estado_usuario==1)
             Activo

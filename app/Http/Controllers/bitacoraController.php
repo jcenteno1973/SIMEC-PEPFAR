@@ -35,12 +35,7 @@ class bitacoraController extends Controller
     $output, 
     array('pdf'),//, 'rtf', 'html'),
     array(),
-        array('driver' => 'mysql',                
-            'host' => '127.0.0.1',
-            'port' => '3306',
-            'database' => 'sicafam',                
-            'username' => 'sicafam',
-            'password' => 'sicafam123654')
+    config('conexion_report.conexion')
     )->execute();
     $reporte_generado='..'.$reporte_generado.'.pdf';
     return view('bitacora/consultar_bitacora',compact('reporte_generado'));
