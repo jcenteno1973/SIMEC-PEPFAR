@@ -1,38 +1,48 @@
 <!--Boton de ayuda-->
     <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
         <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog"> <!---div class="modal-dialog">-->
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title"> Ayuda para nuevo rol</p>
+                        <p class="modal-title"> AYUDA PARA NUEVO ROL</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
                     <table> 
                         <tr>
                             <td>
-                                <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
+                                <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
+                            <td>
+                                <p> Para realizar la modificaci&oacute;n de usuario usted podrá editar lo siguientes:</p>
+                            </td>
+                        <tr>    
+                            <td>
+                                <p><font color="white">...</font></p>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Nombres: los nombres del usuario.</li>
+                                    <li>Apellidos: los apellidos del usuario.</li>
+                                    <li>Unidad o departamento al que pertenece el usuario.</li>
+                                    <li>Rol: Especifica a que tendra acceso en el sistema.</li>
+                                    <li>Correo electr&oacute;nico: muy importante para recuperacion de contrase&ntilde;as.</li>
+                                    <li>Cargo: el cargo que desempe&ntilde;a actualmente el usuario.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <p ><font color="white">...</font></p>
                             </td>
                             <td>
-                                <p>Para realizar la modificaci&oacute;n de usuario usted podrá editar lo siguientes:</p>
-                                <p> Nombres: los nombres del usuario<br>
-                                    Apellidos: los apellidos del usuario<br>
-                                    Unidad o departamento al que pertenece<br>
-                                    Rol: Especifica a que tendra acceso en el sistema<br>
-                                    Correo electr&oacute;nico: muy importante para recuperacion de contrase&ntilde;as.<br>
-                                    Cargo: el cargo que desempe&ntilde;a actualmente el usuario.
-                                </p>
                                 <p>
-                                    Al finalizar de realizar los cambios, debe hacer un clic en el bot&oacute;n "Guardar cambios"<br>
-                                    sino desea realizar ningun cambio, por favor presione "Regresar", para cancelar los cambios
+                                    Al realizar todos los cambios, debe hacer un clic en el bot&oacute;n "Guardar"<br>
+                                    para cancelar los cambios presione "Regresar".
                                 </p>
                             </td>
-                        </tr>
-
+                        </tr>                    
                     </table>  
 
                     </div>
