@@ -5,7 +5,7 @@
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title"> EDITAR USUARIO</p>
+                        <p class="modal-title">SOLICITAR CREDENCIALES</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -15,22 +15,18 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar la modificaci&oacute;n de usuario usted podrá editar lo siguientes:</p>
+                                <p> Para solicitar nombre de usuario y/o contrase&ntilde;a, seguir los siguientes pasos:</p>
                             </td>
                         <tr>    
                             <td>
                                 <p><font color="white">...</font></p>
                             </td>
                             <td>
-                                <ul>
-                                    <li><strong>Nombres </strong>: los nombres del usuario.</li>
-                                    <li><strong>Apellidos</strong>: los apellidos del usuario.</li>
-                                    <li><strong>Unidad o departamento</strong> al que pertenece el usuario.</li>
-                                    <li><strong>Rol</strong>: Especifica a que tendra acceso en el sistema.</li>
-                                    <li><strong>Correo electr&oacute;nico</strong>: muy importante para recuperacion de contrase&ntilde;as.</li>
-                                    <li><strong>Cargo</strong>: el cargo que desempe&ntilde;a actualmente el usuario.</li>
-                                </ul>
-                            </td>
+                                <ol>
+                                    <li>Digite el correo electr&oacute;nico inscrito en el sistema, sino lo recuerda comuniquese con el administrador  </li>
+                                    <li>Presione el bot&oacute;n <strong>Enviar</strong> para solicitar sus credenciales .</li>                                    
+                                </ol>
+                            </td>                         
                         </tr>
                         <tr>
                             <td>
@@ -38,8 +34,7 @@
                             </td>
                             <td>
                                 <p>
-                                    Al realizar todos los cambios, debe hacer un clic en el bot&oacute;n "Guardar"<br>
-                                    para cancelar los cambios presione "Regresar".
+                                    Si no desea realizar la solicitud presione el bot&oacute;n <strong> Regresar</strong> para volver la pagina de ingreso
                                 </p>
                             </td>
                         </tr>                    

@@ -23,10 +23,10 @@
                             </td>
                             <td>
                                 <ul>
-                                    <li>Nombre del rol: el nombre que le dar&aacute; al nuevo rol.</li>
-                                    <li>Descripci&oacute;n: descripci&oacute;n corta del rol a crear, no m&oacute; de 25 caracteres.</li>
-                                    <li>Unidad o departamento al que pertenece el usuario.</li>
-                                    <li>Botones:
+                                    <li><strong>Nombre del rol</strong>: el nombre que le dar&aacute; al nuevo rol.</li>
+                                    <li><strong>Descripci&oacute;n</strong>: descripci&oacute;n corta del rol a crear, no m&oacute; de 25 caracteres.</li>
+                                    <li><strong>Unidad o departamento</strong> al que pertenece el usuario.</li>
+                                    <li><strong>Botones</strong>:
                                         <ul>
                                             <li>Guardar: ejecutar&aacute; el registro del nuevo rol</li>
                                             <li>Regresar: lo llevar&aacute; a la ventana anterior</li>

@@ -5,7 +5,7 @@
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title"> INGRESO AL SISTEMA</p>
+                        <p class="modal-title">BUSCAR USUARIO</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -15,21 +15,19 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar el ingreso al sistema:</p>
+                                <p> Para realizar una b&uacute;squeda de usuario:</p>
                             </td>
                         <tr>    
                             <td>
                                 <p><font color="white">...</font></p>
                             </td>
                             <td>
+                                Se desplegan todos los usuarios del sistema, donde puede moverse a trav&eacute;s del paginador <img src="{{asset('images/paginador.jpg')}}"/>
                                 <ul>
-                                    <li> <strong>Nombre de usuario </strong>: este nombre debe ser proporcionado por el administrador del sistema.</li>
-                                    <li> <strong>Contrase&ntilde;a </strong>: escriba su contre&ntilde;a de ingreso proporcionada por el administrador del sistema,
-                                        si no la recuerda puede solicitarla mediante el bot&oacute;n "Solicitar credenciales"</li>
-                                    <li> El bot&oacute;n <strong> Cancelar </strong>: limpia los datos del formulario.</li>
-                                    <li> <strong>Solicitar credenciales </strong>: en caso de olviadar los accesos al sistema podr&aacute; solicitarlos.</li>
-                                    <li>El bot&oacute;n <strong> Ayuda</strong> le proporcionar&aacute; informaci&oacute;n para f&aacute;cilitar el uso del sistema.</li>
+                                    <li> Para realizar la b&uacute;squeda de usuarios llene los campos de  <strong>Nombre de usuario </strong> y/o <strong> Rol</strong>,   presione luego en el bot&oacute;n <button class="btn btn-default">Buscar</button></li>                                    
+                                    <li>el bot&oacute;n <strong>Regresar</strong> vuelve a la p&aacute;gina que anteriormente estaba.</li>
                                 </ul>
+                                
                             </td>
                         </tr>                                
                     </table>  
