@@ -25,7 +25,7 @@
                                 <ul>
                                     <li>Nombre de usuario, este nombre debe ser proporcionado por el administrador del sistema.</li>
                                     <li>La contrase&ntilde;a,escriba su contre&ntilde;a de ingreso proporcionada por el administrador del sistema,
-                                        si puede solicitarla mediante presionando el bot&oacut&oacute;n "Solicitar credenciales"</li>
+                                        si no la recuerda puede solicitarla mediante el bot&oacute;n "Solicitar credenciales"</li>
                                     <li>Cancelar: limpia los datos del formulario.</li>
                                     <li>Solicitar credenciales: en caso de olviadar los accesos al sistema podr&aacute; solicitarlos.</li>
                                     <li>Ayuda: muestra una descripci&oacute;n de la pantalla de ingreso</li>
@@ -44,3 +44,4 @@
             </div>
         </div>
 <!--FIN Boton de ayuda-->
+        
