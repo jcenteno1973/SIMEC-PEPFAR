@@ -17,73 +17,47 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
-    <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
-    <a href="#" class="list-group-item">Editar rol</a>
-    <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bit&aacute;cora</a>
-    <a href="../administracion/catalogos" class="list-group-item active">C&aacute;talogos</a>
+    <a href="../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
+    <a href="#" class="list-group-item active">Nueva ubicaci&oacute;n organizacional</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
         <div class="panel-body">
-        {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
+<!--        {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}  -->
             <table class="table table-bordered">    
             <tbody>
               <tr>
-                <td>No DUI *</td>
+                <td>C&oacute;digo de Unidad/Departamento *</td>
                 <td>                 
-                      {!! Form::text('numero_dui', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                      {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
                 </td>
                 <td>Unidad o Departamento *</td>
                 <td>
-                    <select name="id_ubicacion_org" class="form-control">
-                        @foreach($obj_ubicacion_org as $obj_ubicaciones_org)
-                        <option>{{$obj_ubicaciones_org->nombre_unidad_dep}}</option>
-                        @endforeach
+                    <select name="id_ubicacion_org" class="form-control" placeholder="Unidad o Departamento">
+                        <option disabled selected>Unidad o Departamento</option>
                    </select>
                 </td>
               </tr>
               <tr>
-                <td>Nombres *</td>
+                <td>Responsable *</td>
                 <td>                     
-                      {!! Form::text('nombres_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                      {!! Form::text('nombre_responsable', null, ['class' => 'form-control' , 'placeholder'=>'Responsable', 'required' => 'required']) !!}
                 </td>
-                <td>Apellidos *</td>
+                <td>Alquilado *</td>
                 <td>                 
-                      {!! Form::text('apellidos_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+                                        
+                
+                  <div class="checkbox">
+                    <label>
+                    <input type="checkbox" name="alquilado" id="alquilado" value="1" checked>                     
+                     
+                    </label>
+                  </div>
                 </td>
               </tr>
-              <tr>
-                <td>Correo electrónico *</td>
-                <td>
-                      {!! Form::email('email_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
-                </td>
-                <td> Contraseña *</td>
-                <td>                    
-                    <input type="password" class="form-control" name="password" required>                                  
-                </td>
-              </tr>
-               <tr>
-                <td>Rol *</td>
-                <td>
-                   <select name="rol_usuario" class="form-control" >
-                        @foreach($obj_role as $obj_roles)
-                        <option>{{$obj_roles->nombre_rol}}</option>
-                        @endforeach
-                   </select>
-                </td>
-                <td>Cargo *</td>
-                <td>                 
-                    <select name="cargo_emp" class="form-control">
-                        @foreach($obj_cargo_emp as $obj_cargos_emp)
-                        <option>{{$obj_cargos_emp->nombre_cargo}}</option>
-                        @endforeach                      
-                   </select>
-                </td>
-              </tr>
+             
+               
             </tbody>
           </table>       
     <div>

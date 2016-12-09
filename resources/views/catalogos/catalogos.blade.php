@@ -23,7 +23,7 @@
             <table class="table" align="center">
                 <tr>
                     <th><a href=""> <center><img src="{{asset('images/smile.jpg')}}" alt="colores" class="img-responsive"/></center></a></th>
-                    <th><a href="../../administracion/catalogos/ubicacion"><center><img src="{{asset('images/inventario.jpg')}}" alt="ubicacion_organizacional" class="img-responsive"/></center></a></th>
+                    <th><a href="../administracion/buscar_ubicacion"><center><img src="{{asset('images/inventario.jpg')}}" alt="ubicacion_organizacional" class="img-responsive"/></center></a></th>
                     <th><a href=""><center><img src="{{asset('images/solicitudes.jpg')}}" alt="municipios" class="img-responsive"/></center></a></th>
                     <th><a href=""><center><img src="{{asset('images/procesos.jpg')}}" alt="departamentos" class="img-responsive"/></center></a></th>
                 </tr>             

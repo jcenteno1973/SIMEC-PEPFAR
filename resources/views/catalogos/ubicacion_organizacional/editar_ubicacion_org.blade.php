@@ -16,69 +16,75 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../administracion/buscar_usuario" class="list-group-item active">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
-    <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
-    <a href="#" class="list-group-item">Editar rol</a>
-    <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bit&aacute;cora</a>
-    <a href="#" class="list-group-item">Cat&aacute;logos</a>
+    <a class="list-group-item active">Buscar ubicaci&oacute;n organizacional</a>
+    <a href="../administracion/nueva_ubicacion" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
     <div class="panel-body">
-      <!--  {!! Form::open(['route' => 'administracion/edita_ubicacion', 'class' => 'form']) !!}
-               
-      -->
+      
+
+
+<table class="table table-bordered">    
+        <tbody>
+           <tr>
+            <td>C&oacute;digo de Unidad/Departamento *</td>
+            <td>
+                {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
+            </td>
+            <td>Unidad o Departamento *</td>
+            <td>
+                <select name="id_ubicacion_org" class="form-control" placeholder="Unidad o Departamento">
+                        <option disabled selected>Unidad o Departamento</option>
+                </select>
+             </td>
+            </tr>
+            <tr>
+            <td>Responsable *</td>
+            <td>  
+                {!! Form::text('nombre_responsable', null, ['class' => 'form-control', 'placeholder'=>'Responsable', 'required' => 'required']) !!}
+            </td>
+            <td>Alquilado *</td>
+            <td>                 
+                                        
+                
+                  <div class="checkbox">
+                    <label>
+                    <input type="checkbox" name="alquilado" id="alquilado" value="1" checked>                     
+                     
+                    </label>
+                  </div>
+                </td>
+            </tr>
+            <tr>
+            
+        </tbody>
+     </table>  
+
+
+       <!-- Botones"--> 
+    <div><br />
        <table class="table">
         <tr>
           <td>
-              <td>
-              <button type="submit" class="btn btn-primary">Guardar</button>  
+              {!! Form::submit('Guardar cambios',['class'=>'btn btn-primary'])!!}              
               <button type="reset" class="btn btn-primary">Regresar</button>
-              <!--Boton de ayuda-->
-              <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-               <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content"> 
-                            <!--header de la ventana-->
-                            <div class="modal-header">                    
-                                <p class="modal-title"> Ayuda para editar ubicaci&oacute;n organizacional</p>
-                            </div>
-                            <!-- Contenido de la ventana -->
-                            <div class="modal-body">
-                                 <table> 
-                                    <tr>
-                                        <td>
-                                            <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
-                                        </td>
-                                        <td>
-                                             <p ><font color="white">...</font></p>
-                                        </td>
-                                        <td>
-                                             <p>contenido de la ventana</p>
-                                        </td>
-                                    </tr>
-
-                                </table>  
-
-                            </div>
-                            <!--footer de la ventana-->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-              <!--FIN Boton de ayuda-->
-          </td>
+              @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
+       </td>
         </tr>        
-        </table> 
+        
+    <!-- Fin botones-->
+      </table> 
+    </div>
+<!--    {!! Form::close()!!}      -->
+
+      
     <!--
     </div>
     {!! Form::close() !!}      -->  
     </div>
 </div>
 @stop   
+
+
