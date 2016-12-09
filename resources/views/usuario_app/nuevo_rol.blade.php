@@ -41,7 +41,7 @@
             @endforeach
             </div>
           @endif 
-        <!--Crear nuevo usuario-->
+        <!--Crear nuevo rol-->
         <div class="col-lg-8">
             <form class="form-signin" action="" method="POST">
                 <br>
@@ -55,7 +55,7 @@
                       <td><input type="text" maxlength="25" class="form-control" name="descripcion" placeholder="Descripci&oacute;n" required autofocus></td>
                     </tr>                    
                 </table>
-        <!-- fin crear nuevo usuario-->
+        <!-- fin crear nuevo rol-->
         <!-- Busqueda de rol
        
                 <table class="table">   
