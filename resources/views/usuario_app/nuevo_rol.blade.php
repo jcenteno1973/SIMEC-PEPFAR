@@ -1,12 +1,12 @@
 <!-- 
      * Nombre del archivo:principal.blade.php
-     * Descripci贸n:
-     * Fecha de creaci贸n:30/11/2016
+     * Descripci髇:
+     * Fecha de creaci髇:30/11/2016
      * Creado por: Yamileth Campos
      *
      * Modificado por: Karla Barrera 
-     * Fecha modificaci贸n: 1/12/2016
-     * Descripci贸n: Rutas agregadas al submenu
+     * Fecha modificaci髇: 1/12/2016
+     * Descripci髇: Rutas agregadas al submenu
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -23,7 +23,7 @@
 <div class="list-group">
     <a href="../../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
     <a href="../../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contrase帽a</a>
+    <a href="../../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contrase馻</a>
     <a class="list-group-item active">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
@@ -33,74 +33,60 @@
 @section('contenido')
 <div class="panel panel-default">
     <div class="panel-body">
-    <!-- crear nuevo rol-->
-    <table class="table table-striped">
-     
-   
-    <!-- fin Crear nuevo rol-->
-    {!! Form::open(['route'=>'admin.rol.store','method'=>'POST'])!!}
-    <div class="form-group">
-    <table>
-        <tr>        
-            <td>{!! Form::label('rol','Nombre del rol *')!!}</td>
-            <td ><font color="white">...</font></td><!--genera el espacio-->
-            <td>{!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre Rol','required']) !!}</td>
-        </tr>
-     </table>
-    </div>
-
-    <!-- Botones"--> 
-    <div>
-       <table class="table">
-        <tr>
-          <td>
-              {!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}              
-              <button type="reset" class="btn btn-primary">Regresar</button>
-                <!--Boton de ayuda-->
-                <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-                 <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content"> 
-                              <!--header de la ventana-->
-                              <div class="modal-header">                    
-                                  <p class="modal-title"> Ayuda para nuevo rol</p>
-                              </div>
-                              <!-- Contenido de la ventana -->
-                              <div class="modal-body">
-                                   <table> 
-                                      <tr>
-                                          <td>
-                                              <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
-                                          </td>
-                                          <td>
-                                               <p ><font color="white">...</font></p>
-                                          </td>
-                                          <td>
-                                               <p>contenido de la ventana</p>
-                                          </td>
-                                      </tr>
-
-                                  </table>  
-
-                              </div>
-                              <!--footer de la ventana-->
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                              </div>
-                          </div>
-
-                      </div>
-                  </div>
-              <!--FIN Boton de ayuda-->
-          </td>
-        </tr>        
-        
-    </div>
-    <!-- Fin botones-->
-    
-    {!! Form::close()!!}
-    </table>
-    </div>
+         @if($errors->any())
+            <div class="alert alert-warning" role="alert">
+            <p>Por favor corregir los siguientes errores</p>
+            @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+            @endforeach
+            </div>
+          @endif 
+        <!--Crear nuevo usuario-->
+        <div class="col-lg-8">
+            <form class="form-signin" action="" method="POST">
+                <br>
+                <table class="table">
+                    <tr>                       
+                      <td>Nombre del Rol* </td>
+                      <td><input type="text" maxlength="25" class="form-control" name="nuevo_rol" placeholder="Nombre del rol" required autofocus></td>
+                    </tr>
+                    <tr>
+                        <td>Descripci&oacute;n* </td>
+                      <td><input type="text" maxlength="25" class="form-control" name="descripcion" placeholder="Descripci&oacute;n" required autofocus></td>
+                    </tr>                    
+                </table>
+        <!-- fin crear nuevo usuario-->
+        <!-- Busqueda de rol
+       
+                <table class="table">   
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre de Rol</th>
+                    <th>Descripcion</th>
+                    <th>Seleccionar</th>        
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                </tbody>
+              </table>
+    <!-- fin busqueda rol-->
+                <table class="table table-responsive">
+                    <tr>               
+                        <td align="left">
+                          <a href="../../administracion/contrasenia_cambio" class="btn btn-primary">Guardar</a>
+                      
+                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+                 
+                          @include('usuario_app/ayuda_usuario/ayuda_nuevo_rol')               
+                      </td>
+                    </tr>
+                </table>
+                <p>*Campo requerido</p>
+            </form>
+        </div>
+    </div><br><br>
 </div>
 @stop   
 
