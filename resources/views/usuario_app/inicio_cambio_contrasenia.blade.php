@@ -12,7 +12,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Cambio de contrase&ntilde;a</h4>
+  <h4 class="text-center">Pantalla cambiar contrase&ntilde;a</h4>
     <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
 @stop 
 
@@ -30,8 +30,8 @@
         <div class="col-md-4 col-md-offset-4">
             <form class="form-signin" action="" method="POST">
                 <br>
-                <!-- Ingresar nombre de usuario -->
-                  {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+                <!-- cambiar contraseña -->
+      <!--            {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
         
                 <div class="form-group" >
                     Contrase&ntilde;a*&nbsp;&nbsp;
@@ -40,19 +40,30 @@
                   {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Vuelva a digitar la contrase&ntilde;a'])!!}
                 </div>
                  &nbsp;&nbsp; &nbsp;                
-   {!! Form::close() !!}
-    <!-- fin filtro busqueda usuario-->
+                  {!! Form::close() !!}   -->
+    <!-- fin cambiar contraseña-->
 
-                
-                <table class="table table-responsive">
+    <table class="table table-responsive" border-style= "none">
+                    <tr>                       
+                      <td>Contrase&ntilde;a* </td>
+                      <td><input type="text" maxlength="25" style="width:100%" class="form-control" name="usuario" placeholder="Nueva Contrase&ntilde;a" required autofocus></td>
+                    </tr> 
+                    <tr>                       
+                      <td>Repetir contrase&ntilde;a* </td>
+                      <td><input type="text" maxlength="25" style="width:100%" class="form-control" name="contrasenia" placeholder="Vuelva a digitar la contrase&ntilde;a" required autofocus></td>
+                    </tr>                    
+                </table> 
+
+              <div class= "table-responsive"> 
+                <table class="table">
                     <tr>
                       <td align="left">
                           <button type="submit" class="btn btn-primary">Guardar</button>  
                       </td>
-                      <td align="left">
+                  <!--    <td align="left">
                           <a href="../../Controllers/usuario_appController" class="btn btn-primary">Cancelar</a>
                       </td>
-                  <!--    <td align="left">
+                      <td align="left">
                           <a href="../../administracion/buscar_usuario" class="btn btn-primary">Regresar</a>
                       </td>  -->
                       <td align="left">
@@ -96,6 +107,7 @@
                       </td>
                     </tr>
                 </table>
+              </div>
                 <p>*Campo requerido</p>
                 <br>
             </form>

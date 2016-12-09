@@ -12,7 +12,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Cambiar contrase&ntilde;a</h4>
+  <h4 class="text-center">Pantalla cambio de contrase&ntilde;a</h4>
     <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
 @stop 
 @section('menu_lateral')

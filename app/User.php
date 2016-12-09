@@ -32,5 +32,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function roles(){
         return $this->belongsToMany('App\Role');
     }
-       
+    public function scopeNombre_usuario($query,$nombre_usuario) {
+        
+        $query->where('nombre_usuario',"LIKE",'%'.$nombre_usuario.'%');
+    }
+    public function scopeId_rol_usuario($query,$id_rol_usuario) {
+        
+        $query->where('id_rol_usuario',$id_rol_usuario);   
+    }
+    public function scopeEstado_usuario($query,$estado_usuario) {
+        
+      $query->where('estado_usuario',$estado_usuario);  
+    }
 }

@@ -26,6 +26,7 @@ Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => '
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
 Route::get('principal',['as' => '/principal','uses' => 'principalController@fnc_principal']);
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_show_buscar_usuario'] );
+Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario'] );
 //Agregar un nuevo usuario
 Route::get('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@fnc_show_create'] );
 Route::post('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@create'] );
