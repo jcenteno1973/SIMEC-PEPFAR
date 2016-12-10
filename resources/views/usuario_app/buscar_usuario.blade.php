@@ -30,9 +30,9 @@
 <div class="list-group">
     <a class="list-group-item active">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/cambio_contrasenia" class="list-group-item">Cambio de contraseña</a>
-    <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
-    <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
+    <a href="" class="list-group-item">Cambio de contraseña</a>
+    <a href="" class="list-group-item">Nuevo rol</a>
+    <a href="" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
 </div>
