@@ -30,6 +30,9 @@ Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usua
 //Agregar un nuevo usuario
 Route::get('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@fnc_show_create'] );
 Route::post('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@create'] );
+//Editar un usuario
+Route::post('administracion/editar_usuario',['as' => 'administracion/editar_usuario', 'uses' => 'usuario_appController@edit'] );
+Route::post('administracion/guardar_usuario',['as' => 'administracion/guardar_usuario', 'uses' => 'usuario_appController@fnc_guardar_modificacion'] );
 
 Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 //Route::get('/principal', function () {    return view('principal');});
@@ -74,10 +77,7 @@ Route::get('administracion/cambiar_contrasenia', function () {
     return view('usuario_app/cambiar_contrasenia');
     //return view('test.index');
 });
-Route::get('administracion/editar_usuario', function () {
-    return view('usuario_app/editar_usuario');
-    //return view('test.index');
-});
+
 Route::get('administracion/nuevo_rol', function () {
     return view('usuario_app/nuevo_rol');
     //return view('test.index');

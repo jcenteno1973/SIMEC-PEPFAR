@@ -27,11 +27,11 @@ class bitacoraController extends Controller
     }
     public function fnc_show_consultar_bitacora() {
     $this->create();
-    $reporte_generado='/reportes/'.time().'_bitacora3';//time le aggrega un número generado por la hora
+    $reporte_generado='/reportes/'.time().'_bitacora';//time le aggrega un número generado por la hora
     $output = public_path() .$reporte_generado; 
     $report = new JasperPHP;
     $report->process(
-    public_path() . '/reportes/bitacora3.jrxml', 
+    public_path() . '/reportes/bitacora.jrxml', 
     $output, 
     array('pdf'),//, 'rtf', 'html'),
     array(),

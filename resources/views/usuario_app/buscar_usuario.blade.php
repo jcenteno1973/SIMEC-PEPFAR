@@ -18,15 +18,15 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Buscar usuario</h4>
+  <h4 class="text-center">Pantalla Buscar usuario</h4>
     <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
 @stop 
 @section('menu_lateral')
 <div class="list-group">
     <a class="list-group-item active">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
-    <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
+    <a href="#" class="list-group-item">Cambio de contraseña</a>
+    <a href="#" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
@@ -58,9 +58,8 @@
                   </div>
                 &nbsp;&nbsp;<button type="submit" class="btn btn-default"> Buscar</button>
    {!! Form::close() !!}
-    <!-- fin filtro busqueda usuario-->
-     
-    {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
+    <!-- fin filtro busqueda usuario -->
+    {!! Form::open(['route' => 'administracion/editar_usuario', 'class' => 'form']) !!}
     <table class="table">   
     <thead>
       <tr>
@@ -88,11 +87,13 @@
             Bloqueado
             @endif
         </td>        
-        <td>{!! Form::radio('seleccionar', null, ['class' => 'form-control' , 'required' => 'required']) !!}</td>       
-      </tr>
+        <td>
+        {!! Form::radio('seleccionar',$obj_usuarios->id_usuario_app, ['class' => 'form-control' , 'required' => 'required']) !!}        
+        </td>         
+      </tr>   
    @endforeach   
     </tbody>   
-  </table>
+  </table>   
      <div align="center"> 
               {!!$obj_usuario->render()!!}
    </div>
@@ -100,8 +101,9 @@
        <table class="table">
         <tr>
           <td>
-              <a href="{{route('administracion/nuevo_usuario')}}" class="btn btn-primary">Editar </a> 
-              <button type="reset" class="btn btn-primary">Regresar</button>
+               {!! Form::submit('Editar',['class'=>'btn btn-primary'])!!}
+             <!--<a href="{{ route ('administracion/editar_usuario',[])}}" class="btn btn-primary">Editar </a>--> 
+              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
               <!--Boton de ayuda-->
               <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
                <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -142,6 +144,6 @@
         </tr>        
         </table> 
     </div>
- {!! Form::close() !!}
+    {!! Form::close() !!}    
 </div>
 @stop   

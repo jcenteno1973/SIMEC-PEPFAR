@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\rol_usuarioController;
 use App\Http\Controllers\cargo_empController;
 use App\Http\Controllers\ubicacion_orgController;
+use Illuminate\Support\Facades\Input;
 
 //use Illuminate\Support\Facades\Request;
 
@@ -49,6 +50,7 @@ class usuario_appController extends Controller
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
                       'email_usuario'=>'unique:usuario_app',
                       'numero_dui'=>'digits:9|unique:usuario_app');
+        //dd($request);
         $this->validate($request, $rules);
         $date = Carbon::now();
         $usuario = new User();        
@@ -76,7 +78,8 @@ class usuario_appController extends Controller
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();
         $obj_role= Role::all();
-        $obj_usuario=  User::paginate(5);               
+        $obj_usuario=  User::paginate(5);
+        
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
     }
     
@@ -85,6 +88,7 @@ class usuario_appController extends Controller
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();
         $obj_role= Role::all();
+        
         if($request->estado_usuario!=1){
            $request->estado_usuario=0; 
         }else{
@@ -98,6 +102,7 @@ class usuario_appController extends Controller
         {
          $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->estado_usuario($request->estado_usuario)->paginate(5);    
         }
+       
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
         
     }
@@ -141,24 +146,62 @@ class usuario_appController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-      $usuario=User::find($id);//se crea una variable que capte los datos del usuario a modificar
-       return view('usuario_app/editar_usuario')->with('usuario',$usuario);//retorna a la vista para la edicion
-       
+    public function edit()
+    {   
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create();
+        $obj_role= Role::all();
+        $obj_ubicacion_org=  ubicacion_organizacional::all();
+        $obj_cargo_emp= cargo_emp::all();
+       $obj_inputs=Input::all();      
+       $id_usuario_app=$obj_inputs['seleccionar'];
+       $obj_usuario=User::find($id_usuario_app);
+       return view('usuario_app/editar_usuario',compact(
+               'obj_usuario',
+               'obj_role',
+               'obj_cargo_emp',
+               'obj_ubicacion_org'));     
+        
     }
 
-    /**
-     * Update the specified resource in storage.
+   /**
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function fnc_guardar_modificacion(Request $request)
+    {   
+        $obj_rol_usuario= new rol_usuarioController();
+        $obj_cargo_emp= new cargo_empController();
+        $obj_ubicacion_org= new ubicacion_orgController();
+        $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
+                      'email_usuario'=>'unique:usuario_app',
+                      'numero_dui'=>'digits:9|unique:usuario_app');   
+        //dd($request);
+        //$this->validate($request, $rules);
+        $date = Carbon::now();
+        $usuario = User::find($request->id_usuario_app);        
+        $usuario->id_ubicacion_org =$obj_ubicacion_org->fnc_obtener_id($request->id_ubicacion_org);
+        $usuario->id_cargo_emp=$obj_cargo_emp->fnc_obtener_id($request->cargo_emp);
+        $usuario->email_usuario=$request->email_usuario;        
+        $usuario->password=  bcrypt($request->password);
+        $usuario->nombres_usuario=$request->nombres_usuario;
+        $usuario->apellidos_usuario=$request->apellidos_usuario;
+        $usuario->numero_dui=$request->numero_dui;
+        $usuario->cambiar_contrasenia=1;
+        $usuario->fecha_validez_contrasenia=$date;
+        $usuario->estado_usuario=$request->estado_usuario;
+        $usuario->estado_registro=1;
+        $usuario->id_usuario_crea=Auth::user()->id_usuario_app;
+        $usuario->ip_dispositivo=$request->ip();
+        $usuario->nombre_usuario=$request->nombre_usuario;
+        $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
+        $usuario->id_rol_usuario=$id_rol_usuario;
+        //dd($usuario);
+        $usuario->save();
+        //$obj_rol_asignado= Role::find($id_rol_usuario);
+        //$usuario->attachRole($obj_rol_asignado);
+        return $this->fnc_show_buscar_usuario();
     }
 
     /**

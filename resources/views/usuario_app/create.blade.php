@@ -21,8 +21,8 @@
 <div class="list-group">
     <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
     <a class="list-group-item active">Nuevo usuario</a>
-    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
-    <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
+    <a href="../administracion/cambiar_contrasenia" class="list-group-item">Cambio de contraseña</a>
+    <a href="../admin/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
@@ -92,9 +92,7 @@
        <table class="table">
         <tr>
           <td>
-              <button type="submit" class="btn btn-primary">Guardar</button>  
-          </td>
-          <td>
+             <button type="submit" class="btn btn-primary">Guardar</button>  
               <button type="reset" class="btn btn-primary">Regresar</button> 
           </td>
         </tr>        
@@ -102,6 +100,6 @@
         <p>* Campo requerido</p>
     </div>
     {!! Form::close() !!}        
-        </div>
+  </div>
 </div>
 @stop   

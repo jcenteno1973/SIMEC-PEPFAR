@@ -48,7 +48,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="../ficha/buscar_ficha">Fichas</a>
+							<a href="#">Fichas</a>
 						</li>
 						<li>
 							<a href="#">Inventario</a>
@@ -63,10 +63,10 @@
 							<a href="#">Reportes</a>
 						</li>
 						<li>
-							<a href="administracion/buscar_usuario">Administración</a>
+							<a href="../administracion/buscar_usuario">Administración</a>
 						</li>
 						<li>
-							<a href="{{route('usuario_app/salir')}}">Salir</a>
+							<a href="../usuario_app/salir">Salir</a>
 						</li>
 					</ul>					
 					
