@@ -1,7 +1,7 @@
 <!-- 
      * Nombre del archivo:principal.blade.php
-     * Descripción:
-     * Fecha de creación:20/11/2016
+     * Descripcion:
+     * Fecha de creacion:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
      * modificado por: yamileth Campos
      * Fecha de modificacion:1/12/16
@@ -9,6 +9,11 @@
      * Modificado por: Karla Barrera 
      * Fecha modificación: 1/12/2016
      * Descripción: Rutas agregadas al submenu
+
+     * Modificado por: Yamileth Campos 
+     * Fecha modificacion: 08/12/2016
+     * Descripción: botones de ayuda
+
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -25,9 +30,9 @@
 <div class="list-group">
     <a class="list-group-item active">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="#" class="list-group-item">Cambio de contraseña</a>
-    <a href="#" class="list-group-item">Nuevo rol</a>
-    <a href="#" class="list-group-item">Editar rol</a>
+    <a href="../administracion/cambio_contrasenia" class="list-group-item">Cambio de contraseña</a>
+    <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
+    <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
 </div>
@@ -105,40 +110,7 @@
              <!--<a href="{{ route ('administracion/editar_usuario',[])}}" class="btn btn-primary">Editar </a>--> 
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
               <!--Boton de ayuda-->
-              <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-               <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content"> 
-                            <!--header de la ventana-->
-                            <div class="modal-header">                    
-                                <p class="modal-title">Ayuda para busqueda usuario </p>
-                            </div>
-                            <!-- Contenido de la ventana -->
-                            <div class="modal-body">
-                                 <table> 
-                                    <tr>
-                                        <td>
-                                            <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
-                                        </td>
-                                        <td>
-                                             <p ><font color="white">...</font></p>
-                                        </td>
-                                        <td>
-                                             <p>contenido de la ventana</p>
-                                        </td>
-                                    </tr>
-
-                                </table>  
-
-                            </div>
-                            <!--footer de la ventana-->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+              @include('usuario_app/ayuda_usuario/ayuda_busca_usuario') 
               <!--FIN Boton de ayuda-->
           </td>
         </tr>        

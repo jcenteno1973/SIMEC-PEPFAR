@@ -3,6 +3,11 @@
      * Descripción: Pantalla para cambiar contrasenia
      * Fecha de creación:1/12/2016
      * Creado por: Karla Barrera
+
+
+     * Fecha modificacion:8/12/2016
+     * Modificado por: Yamileth Campos
+     * Descripcion: cambio en botones
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -61,43 +66,11 @@
                       </td>
 
                       <td align="left">
-                          <a href="../../administracion/buscar_usuario" class="btn btn-primary">Regresar</a>
+                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
                       </td>
                       <td align="left">
-                        <a href="#ventana1" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-                        <div class="modal fade" id="ventana1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                             <div class="modal-dialog">
-                                 <div class="modal-content"> 
-                                     <!--header de la ventana-->
-                                     <div class="modal-header">                    
-                                         <p class="modal-title"> Ayuda para cambio de contrase&ntilde;a</p>
-                                     </div>
-                                     <!-- Contenido de la ventana -->
-                                     <div class="modal-body">
-                                          <table> 
-                                             <tr>
-                                                 <td>
-                                                     <img src="{{asset('images/informativo.png')}}" alt="informativo" class="img-thumbnail"/>                                
-                                                 </td>
-                                                 <td>
-                                                      <p ><font color="white">...</font></p>
-                                                 </td>
-                                                 <td>
-                                                      <p>contenido de la ventana</p>
-                                                 </td>
-                                             </tr>
+                       @include('usuario_app/ayuda_usuario/ayuda_cambia_clave')
 
-                                         </table>  
-
-                                     </div>
-                                     <!--footer de la ventana-->
-                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                                     </div>
-                                 </div>
-
-                             </div>
-                         </div>
                       </td>
                     </tr>
                 </table>
