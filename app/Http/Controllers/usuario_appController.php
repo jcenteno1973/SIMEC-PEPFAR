@@ -69,6 +69,7 @@ class usuario_appController extends Controller
         $usuario->ip_dispositivo=$request->ip();
         $usuario->nombre_usuario=$this->fnc_nombre_usuario($request);
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
+        $usuario->id_rol_usuario=$id_rol_usuario;
         $usuario->save();
         $obj_rol_asignado= Role::find($id_rol_usuario);
         $usuario->attachRole($obj_rol_asignado);
