@@ -12,7 +12,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Buscar ubicacion organizacional</h4>
+  <h4 class="text-center">Buscar ubicación organizacional</h4>
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -78,8 +78,8 @@
         <tr>
           <td>
               <a href="../administracion/editar_ubicacion" class="btn btn- btn-primary">Editar</a>
-              <button type="reset" class="btn btn-primary">Borrar</button>             
-              <button type="reset" class="btn btn-primary">Regresar</button>
+              <a href="../administracion/eliminar_ubicacion" class="btn btn-primary">Borrar</a> 
+              <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>  
              @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
 
           </td>

@@ -67,7 +67,7 @@
               <button type="submit" class="btn btn-primary">Guardar</button>  
           </td>
           <td>
-              <button type="reset" class="btn btn-primary">Regresar</button> 
+              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a> 
           </td>
         </tr>        
         </table> 

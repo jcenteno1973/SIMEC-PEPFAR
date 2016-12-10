@@ -22,29 +22,36 @@
         <div class="container">
             <table class="table" align="center">
                 <tr>
-                    <th><a href=""> <center><img src="{{asset('images/smile.jpg')}}" alt="colores" class="img-responsive"/></center></a></th>
-                    <th><a href="../administracion/buscar_ubicacion"><center><img src="{{asset('images/inventario.jpg')}}" alt="ubicacion_organizacional" class="img-responsive"/></center></a></th>
-                    <th><a href=""><center><img src="{{asset('images/solicitudes.jpg')}}" alt="municipios" class="img-responsive"/></center></a></th>
-                    <th><a href=""><center><img src="{{asset('images/procesos.jpg')}}" alt="departamentos" class="img-responsive"/></center></a></th>
+                    <th><a href=""> <center><img src="{{asset('images/colores.png')}}" alt="colores" class="img-responsive"/></center></a></th>
+                    <th><a href="../administracion/buscar_ubicacion"><center><img src="{{asset('images/organiz.png')}}" alt="ubicacion_organizacional" class="img-responsive"/></center></a></th>
+                    <th><a href=""><center><img src="{{asset('images/munic.jpg')}}" alt="municipios" class="img-responsive"/></center></a></th>
+                    <th><a href=""><center><img src="{{asset('images/dpto.png')}}" alt="departamentos" class="img-responsive"/></center></a></th>
+                    <th><a href="../administracion/buscar_usuario"><center><img src="{{asset('images/financia.jpg')}}" alt="fuente de financiamiento" class="img-responsive"/></center></a></th>
+                    <th><a href=""><center><img src="{{asset('images/clase_bien.jpg')}}" alt="clase de bien" class="img-responsive"/></center></a></th>
                 </tr>             
                 <tr align="center">
                     <td>Colores</td>
                   <td>Ubicaci&oacute;n Organizacional</td>
                   <td>Municipios</td>
                   <td>Departamentos</td>
+                  <td>Fuente de Financiamiento</td>
+                  <td>Clase de Bien</td>
                 </tr>
-                <tr>
-                    <th><a href=""><center><img src="{{asset('images/reportes.jpg')}}" alt="reportes" class="img-responsive"/></center></a></th>
-                    <th><a href="../administracion/buscar_usuario"><center><img src="{{asset('images/admin.jpg')}}" alt="administracion" class="img-responsive"/></center></a></th>
+                <tr>                    
+                    <th><a href="../administracion/buscar_usuario"><center><img src="{{asset('images/tipo_bm.jpg')}}" alt="tipo de bien mueble" class="img-responsive"/></center></a></th>
+                    <th><a href=""><center><img src="{{asset('images/ubicacion.jpg')}}" alt="ubicacion de bien mueble" class="img-responsive"/></center></a></th>
+                    <th><a href=""><center><img src="{{asset('images/tipo_bi.jpg')}}" alt="tipo de bien inmueble" class="img-responsive"/></center></a></th>
+                                        
                     <th> <a href="#ingreso" data-toggle="modal">
                          <center><img src="{{asset('images/ayuda.jpg')}}" alt="ayuda" class="img-responsive"/></center>
                         </a>
                     </th>
                     <th><a href="{{route('usuario_app/salir')}}"><center><img src="{{asset('images/salir.jpg')}}" alt="salir" class="img-thumbnail"/></center></a></th>
                 </tr>  
-                 <tr align="center">
-                    <td>Reportes</td>
-                  <td>Administracion</td>
+                 <tr align="center">                    
+                  <td>Tipo de Bien Mueble</td>
+                  <td>Ubicación de Bien Mueble</td>
+                  <td>Tipo de Bien Inmueble</td>                  
                   <td>Ayuda</td>
                   <td>Salir</td>
                 </tr>
