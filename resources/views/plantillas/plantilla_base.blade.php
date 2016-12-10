@@ -48,7 +48,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="../ficha/buscar_ficha">Fichas</a>
+							<a href="#">Fichas</a>
 						</li>
 						<li>
 							<a href="#">Inventario</a>

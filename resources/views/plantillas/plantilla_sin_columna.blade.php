@@ -63,10 +63,10 @@
 							<a href="#">Reportes</a>
 						</li>
 						<li>
-							<a href="../administracion/buscar_usuario">Administración</a>
+							<a href="{{route('administracion/buscar_usuario')}}">Administración</a>
 						</li>
 						<li>
-							<a href="../usuario_app/salir">Salir</a>
+							<a href="{{route('usuario_app/salir')}}">Salir</a>
 						</li>
 					</ul>					
 					

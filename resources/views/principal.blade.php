@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <th><a href=""><center><img src="{{asset('images/reportes.jpg')}}" alt="reportes" class="img-thumbnail"/></center></a></th>
-                    <th><a href="../administracion/buscar_usuario"><center><img src="{{asset('images/admin.jpg')}}" alt="administracion" class="img-thumbnail"/></center></a></th>
+                    <th><a href="{{route('administracion/buscar_usuario')}}"><center><img src="{{asset('images/admin.jpg')}}" alt="administracion" class="img-thumbnail"/></center></a></th>
                     <th> <a href="#ingreso" data-toggle="modal">
                          <center><img src="{{asset('images/ayuda.jpg')}}" alt="ayuda" class="img-thumbnail"/></center>
                         </a>
