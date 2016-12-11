@@ -65,11 +65,11 @@
    {!! Form::close() !!}
     <!-- fin filtro busqueda usuario -->
     {!! Form::open(['route' => 'administracion/editar_usuario', 'class' => 'form']) !!}
-    <table class="table">   
+    <table class="table table-condensed">   
     <thead>
       <tr>
         <th>#</th>
-        <th>Usuario</th>
+        <th>Codígo de usuario</th>
         <th>Rol</th>
         <th>Estado</th>
         <th>Seleccionar</th>        
@@ -98,13 +98,13 @@
       </tr>   
    @endforeach   
     </tbody>   
-  </table>   
-     <div align="center"> 
-              {!!$obj_usuario->render()!!}
-   </div>
+  </table> 
     <div>
        <table class="table">
         <tr>
+            <td>
+                {!!$obj_usuario->render()!!}
+            </td>
           <td>
                {!! Form::submit('Editar',['class'=>'btn btn-primary'])!!}
              <!--<a href="{{ route ('administracion/editar_usuario',[])}}" class="btn btn-primary">Editar </a>--> 

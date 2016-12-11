@@ -18,7 +18,6 @@
 @stop
 @section('nombre_pantalla')
   <h4 class="text-center">Pantalla cambio de contrase&ntilde;a</h4>
-    <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -42,8 +41,9 @@
             @endforeach
             </div>
           @endif 
-        <div class="col-md-4 col-md-offset-4">
-            <form class="form-signin" action="" method="POST">
+        <div class="col-md-8 col-md-offset-2">
+            {!! Form::open(['route' => 'administracion/guardar_usuario', 'class' => 'form']) !!}
+          <!--  <form class="form-signin" action="" method="POST"> -->
                 <br>
                 <table class="table table-responsive" border-style= "none">
                     <tr>                       
@@ -61,22 +61,23 @@
                           <button type="submit" class="btn btn-primary">Guardar</button>  
                       </td>  -->
                       <td align="left">
-                      <!--    <button type="submit" class="btn btn-primary">Guardar</button>  -->
-                          <a href="../../administracion/contrasenia_cambio" class="btn btn-primary">Guardar</a>
+                        <button type="submit" class="btn btn-primary">Guardar</button> 
+                          <!--  <a href="../administracion/cambiar_contrasenia" class="btn btn-primary">Guardar</a> -->
                       </td>
 
                       <td align="left">
                           <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
                       </td>
                       <td align="left">
-                       @include('usuario_app/ayuda_usuario/ayuda_cambia_clave')
+                       @include('usuario_app/ayuda_usuario/ayuda_cambio_clave')
 
                       </td>
                     </tr>
                 </table>
                 <p>*Campo requerido</p>
                 <br>
-            </form>
+           <!-- </form> -->
+            {!! Form::close()!!}
         </div>
     </div><br><br>
 </div>
