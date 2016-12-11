@@ -32,7 +32,10 @@ class principalController extends Controller
     {
         
     }
-
+    public function fnc_show_catalogos() {
+        
+         return view('home'); 
+    }
     /**
      * Show the form for creating a new resource.
      *

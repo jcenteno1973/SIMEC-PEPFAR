@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2016-12-09T20:09:18 -->
+<!-- 2016-12-10T08:05:33 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bitacora3" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="366147e9-48cd-48ae-9523-8a226c3d3cdd">
 	<property name="com.jaspersoft.studio.data.sql.tables" value="Yml0YWNvcmEgLDIyLDE4LDkxOWNkNDMzLTY0N2EtNGIzZS1iZjE2LTIxYzc5YzIxMzljMDt1c3Vh&#xA;cmlvX2FwcCAsMTA2LDE1LDEwOWUyZmEyLWFiMTAtNGFlOC1iNjAzLWM3OTNhNjA4ZTMwMTs="/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicafam"/>
@@ -82,7 +82,7 @@ FROM usuario_app u
 			</textField>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="94" y="4" width="140" height="20" uuid="ad9b98de-efca-471b-ba8b-d94c9f0aa95d"/>
-				<textFieldExpression><![CDATA[ new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="5" width="90" height="18" uuid="9b941466-606a-4315-abee-7409e33239ce"/>
@@ -147,13 +147,13 @@ FROM usuario_app u
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="48" splitType="Stretch"/>
+		<band height="11" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="62" splitType="Stretch"/>
+		<band height="13" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="46" splitType="Stretch">
+		<band height="32" splitType="Stretch">
 			<textField>
 				<reportElement x="96" y="3" width="80" height="15" uuid="734ebb1e-5aa0-41ab-be45-ecca5e7d3254">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>

@@ -6,7 +6,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Welcome!</div>
                     <div class="panel-body">
-                        <p>You are logged in. </p>
+                        <p>You are logged in SICAFAM. </p>
                     </div> 
                 </div>
             </div>

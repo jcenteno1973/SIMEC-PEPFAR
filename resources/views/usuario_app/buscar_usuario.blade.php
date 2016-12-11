@@ -34,7 +34,7 @@
     <a href="" class="list-group-item">Nuevo rol</a>
     <a href="" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="#" class="list-group-item">Catalogos</a>
+    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
 </div>
 @stop
 @section('contenido')

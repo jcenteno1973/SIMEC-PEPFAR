@@ -6,7 +6,6 @@
      * Creado por: Juan Carlos Centeno Borja
      */
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\ubicacion_organizacional;
 use App\Http\Requests;
@@ -21,9 +20,11 @@ class ubicacion_orgController extends Controller
      */
     public function index()
     {
-        //
+        return view('home');
     }
-
+    public function fnc_busqueda_filtro(Request $request) {
+      return view('home');
+    }
     /**
      * 
      */
@@ -44,7 +45,7 @@ class ubicacion_orgController extends Controller
      */
     public function create()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -55,7 +56,7 @@ class ubicacion_orgController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('home');
     }
 
     /**
@@ -68,7 +69,10 @@ class ubicacion_orgController extends Controller
     {
         //
     }
-
+    public function fnc_show_catalogos() {
+        
+         return view('home'); 
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,6 +84,10 @@ class ubicacion_orgController extends Controller
         //
     }
 
+    public function fnc_guardar_modificacion(Request $request) {
+        
+        return view('home');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -89,7 +97,7 @@ class ubicacion_orgController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('home');
     }
 
     /**
