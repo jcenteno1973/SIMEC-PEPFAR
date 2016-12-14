@@ -58,3 +58,29 @@ Route::get('administracion/nuevo_rol', function () {
 });
 
 
+//ruta catalogos
+
+Route::get('administracion/catalogos', function () {
+    return view('catalogos/catalogos');
+});
+
+Route::get('administracion/buscar_ubicacion', function () {
+    return view('catalogos/ubicacion_organizacional/buscar_ubicacion_org');
+    //return view('catalogos/ubicacion_organizacional/ubicacion_orgController@edit');
+}); 
+
+Route::get('administracion/editar_ubicacion', function () {
+    return view('catalogos/ubicacion_organizacional/editar_ubicacion_org');
+    //return view('catalogos/ubicacion_organizacional/ubicacion_orgController@edit');
+}); 
+
+
+Route::get('administracion/nueva_ubicacion', function () {
+    return view('catalogos/ubicacion_organizacional/nueva_ubicacion_org');
+    //return view('catalogos/ubicacion_organizacional/ubicacion_orgController@edit');
+}); 
+
+Route::get('administracion/eliminar_ubicacion', function () {
+    return view('catalogos/ubicacion_organizacional/eliminar_ubicacion_org');
+    //return view('catalogos/ubicacion_organizacional/ubicacion_orgController@edit');
+});
