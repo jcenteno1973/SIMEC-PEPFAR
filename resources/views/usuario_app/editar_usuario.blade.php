@@ -25,8 +25,7 @@
 @section('menu_lateral')
 <div class="list-group">
     <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>    
     <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
@@ -38,7 +37,7 @@
     <div class="panel-body">
        <!-- Aqui deberia ir el formulario-->
        {!! Form::open(['route' => 'administracion/guardar_usuario', 'class' => 'form']) !!}
-       <table class="table table-bordered">    
+       <table class="table table-condensed">    
         <tbody>
             <tr>
                 <td>Id</td>
@@ -46,7 +45,7 @@
                 {!! Form::text('id_usuario_app',$obj_usuario->id_usuario_app, ['class' => 'form-control' , 'required' => 'required', 'readonly'=>'true']) !!}
                
             </td>
-           <td>Nombre de usuario </td>
+           <td>Código de usuario </td>
            <td>
                {!! Form::text('nombre_usuario',$obj_usuario->nombre_usuario, ['class' => 'form-control' , 'required' => 'required', 'readonly'=>'true']) !!} 
             </td>
@@ -72,7 +71,7 @@
             <td>
                 {!! Form::email('email_usuario',$obj_usuario->email_usuario, ['class' => 'form-control' , 'required' => 'required']) !!}                   
             </td>
-            <td> Contraseña *</td>
+            <td> Contraseña</td>
             <td>                    
                 <input type="password" class="form-control" name="password" required="true" >                                  
             </td>

@@ -11,24 +11,14 @@
 @section('contenido')
 <div class="panel panel-primary">
   <div class="panel-heading"  >
-      <h5 class="text-center">Solicitud de Credenciales</h5>
+      <h5 class="text-center">Restablecer contraseña</h5>
   </div> 
     <div class="panel-body">
-         @if($errors->any())
-            <div class="alert alert-warning" role="alert">
-            <p>Por favor corregir los siguientes errores</p>
-            @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-            @endforeach
-            </div>
-          @endif 
-        <div class="col-md-4 col-md-offset-4">
-            <form class="form-signin" action="" method="POST">
-                <br>
-                <p align="center">Por favor Ingrese su correo electr&oacute;nico:</p>
-                <table class="table table-bordered">
+         <div class="col-md-6 col-md-offset-3">
+            <form class="form-signin" action="" method="POST">               
+                <table class="table table-condensed">
                     <tr>                       
-                      <td>Correo Electr&oacute;nico* </td>
+                      <td>Por favor Ingrese su Correo Electr&oacute;nico* </td>
                       <td><input type="text" class="form-control" name="email" placeholder="Correo Electronico" required autofocus></td>
                     </tr>                    
                 </table> 
@@ -38,7 +28,7 @@
                           <button type="submit" class="btn btn-primary">Enviar</button>  
                       </td>
                       <td align="center">
-                          <a href="/" class="btn btn-primary">Regresar</a>
+                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
                       </td>
                       <td align="left">
                         <a href="#ventana1" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>

@@ -21,8 +21,7 @@
 @section('menu_lateral')
 <div class="list-group">
     <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/cambiar_contrasenia" class="list-group-item">Cambio de contraseña</a>
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>   
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a class="list-group-item active">Consultar bitacora</a>

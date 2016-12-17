@@ -20,6 +20,7 @@ class ubicacion_orgController extends Controller
      */
     public function index()
     {
+        
         return view('home');
     }
     public function fnc_busqueda_filtro(Request $request) {

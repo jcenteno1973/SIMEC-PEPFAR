@@ -18,8 +18,7 @@
 @section('menu_lateral')
 <div class="list-group">
     <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../administracion/contrasenia/cambiar" class="list-group-item">Cambio de contraseña</a>
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>   
     <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="administracion/parametros_bitacora" class="list-group-item active">Consultar bit&aacute;cora</a>

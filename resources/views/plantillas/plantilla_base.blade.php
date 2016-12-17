@@ -87,7 +87,10 @@
                     @yield('menu_lateral') 
 		
 		</div>
-		<div class="col-md-9"><!--area de trabajo -->                   
+		<div class="col-md-9"><!--area de trabajo -->  
+                @if (session()->has('flash_notification.message'))
+                @include ('flash::message')
+                @endif 
                 @if($errors->any())
                     <div class="alert alert-warning" role="alert">
                     <p>Por favor corregir los siguientes errores</p>

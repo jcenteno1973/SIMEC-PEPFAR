@@ -21,48 +21,47 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../../administracion/buscar_usuario"class="list-group-item">Buscar usuarios</a>
-    <a href="../../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
+    <a href="../administracion/buscar_usuario"class="list-group-item">Buscar usuarios</a>
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
     <a class="list-group-item active">Cambio de contraseña</a>
-    <a href="../../admin/rol/create" class="list-group-item">Nuevo rol</a>
+    <a href="../admin/rol/create" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
-    <a href="../../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
+    <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    <div class="panel-body">
-         @if($errors->any())
-            <div class="alert alert-warning" role="alert">
-            <p>Por favor corregir los siguientes errores</p>
-            @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-            @endforeach
-            </div>
-          @endif 
+    <div class="panel-body">        
         <div class="col-md-8 col-md-offset-2">
-            {!! Form::open(['route' => 'administracion/guardar_usuario', 'class' => 'form']) !!}
+            {!! Form::open(['route' => 'administracion/cambiar_contrasenia', 'class' => 'form']) !!}
           <!--  <form class="form-signin" action="" method="POST"> -->
                 <br>
-                <table class="table table-responsive" border-style= "none">
+                <table class="table table-condensed">
                     <tr>                       
-                      <td>Usuario* </td>
-                      <td><input type="text" maxlength="25" style="width:100%" class="form-control" name="usuario" placeholder="Nombre de Usuario" required autofocus></td>
+                      <td>Id* </td>
+                      <td>
+                         {!! Form::text('id_usuario_app',$obj_usuario->id_usuario_app, ['class' => 'form-control' , 'required' => 'required', 'readonly'=>'true']) !!} 
+                      </td>
+                    </tr> 
+                    <tr>                       
+                      <td>Código de usuario* </td>
+                      <td>
+                         {!! Form::text('nombre_usuario',$obj_usuario->nombre_usuario, ['class' => 'form-control' , 'required' => 'required', 'readonly'=>'true']) !!} 
+                      </td>
                     </tr> 
                     <tr>                       
                       <td>Contrase&ntilde;a* </td>
-                      <td><input type="text" maxlength="25" style="width:100%" class="form-control" name="contrasenia" placeholder="Nueva contrase&ntilde;a" required autofocus></td>
+                      <td><input type="password" maxlength="25" style="width:100%" class="form-control" name="password" placeholder="Nueva contrase&ntilde;a" required autofocus></td>
                     </tr>                    
                 </table> 
-                <table class="table table-responsive">
+                <table class="table table-condensed">
                     <tr>
                  <!--     <td align="left">
                           <button type="submit" class="btn btn-primary">Guardar</button>  
                       </td>  -->
                       <td align="left">
-                        <button type="submit" class="btn btn-primary">Guardar</button> 
-                          <!--  <a href="../administracion/cambiar_contrasenia" class="btn btn-primary">Guardar</a> -->
+                        <button type="submit" class="btn btn-primary">Guardar</button>                          
                       </td>
 
                       <td align="left">

@@ -20,8 +20,7 @@
 @section('menu_lateral')
 <div class="list-group">
     <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a class="list-group-item active">Nuevo usuario</a>
-    <a href="../administracion/cambiar_contrasenia" class="list-group-item">Cambio de contraseña</a>
+    <a class="list-group-item active">Nuevo usuario</a>    
     <a href="../admin/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="#" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
@@ -32,7 +31,7 @@
 <div class="panel panel-default">
         <div class="panel-body">
         {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
-            <table class="table table-bordered">    
+            <table class="table table-condensed">    
             <tbody>
               <tr>
                 <td>No DUI *</td>

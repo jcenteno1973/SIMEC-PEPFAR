@@ -8,7 +8,7 @@
      * Modificado por: Yamileth Campos
      * Descripción: se agrega funcionalidad en boton de ayuda y boton de solicitud de contraseña  
 -->
-<!--@extends('plantillas.plantilla_inicio')-->
+@extends('plantillas.plantilla_inicio')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop  
@@ -18,24 +18,16 @@
       <h5 class="text-center">Pantalla de ingreso</h5>
   </div> 
     <div class="panel-body">
-         @if($errors->any())
-            <div class="alert alert-warning" role="alert">
-            <p>Por favor corregir los siguientes errores</p>
-            @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-            @endforeach
-            </div>
-          @endif 
-        <div class="col-md-4 col-md-offset-4">
-            <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3">
             <img class="profile-img" src="/sicafam/public/images/logo_login2.png" width="150" height="150"> 
             </div>
         <form class="form-signin" action="{{ url('usuario_app/ingresar') }}" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <table class="table table-bordered">
+        <table class="table table-condensed">
         <tr>
-          <td>Nombre de usuario* </td>
-          <td><input type="text" class="form-control" name="nombre_usuario" placeholder="Nombre de usuario*" required autofocus></td>
+          <td>Código de usuario* </td>
+          <td><input type="text" class="form-control" name="nombre_usuario" placeholder="Código de usuario*" required autofocus></td>
         </tr>
         <tr>
           <td>Contraseña*</td>
@@ -51,14 +43,13 @@
               <button type="reset" class="btn btn-primary">Cancelar</button> 
           </td>
           <td>
-              <!-- <button type="button" class="btn btn-primary">Solicitar contraseña</button> -->
-              <a href="usuario_app/solicitar_credenciales" class="btn btn-primary">Solicitar credenciales</a>
+              
+              <a href="usuario_app/solicitar_credenciales" class="btn btn-primary">Restablecer contraseña</a>
               
           </td>
           
           <td>
-              <!-- <button type="button" class="btn btn-primary">Ayuda</button> -->
-			  @include('usuario_app/ayuda_usuario/ayuda_ingreso')			
+               @include('usuario_app/ayuda_usuario/ayuda_ingreso')			
           </td>
         </tr>
         </table>

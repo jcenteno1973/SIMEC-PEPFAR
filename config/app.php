@@ -147,7 +147,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
@@ -198,7 +198,7 @@ return [
         'Entrust'   => \Zizaco\Entrust\EntrustFacade::class,
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
-
+        'Flash'     => 'Laracasts\Flash\Flash',
     ],
 
 ];
