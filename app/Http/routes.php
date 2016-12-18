@@ -52,6 +52,9 @@ Route::get('administracion/cambiar_estado',['as' => 'administracion/cambiar_esta
 
 Route::get('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@create']);
 Route::post('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@store']);
+
+Route::get('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@edit']);
+Route::post('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@update']);
 //*Ruta para solicitud de credenciales
 Route::get('usuario_app/solicitar_credenciales', function () {
     return view('usuario_app/solicitar_credenciales');

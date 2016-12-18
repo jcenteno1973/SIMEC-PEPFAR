@@ -26,7 +26,7 @@ class rol_usuarioController extends Controller
      */
     public function index()
     {
-        //
+       
     }
      /**
      * 
@@ -93,12 +93,13 @@ class rol_usuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
+       return view('rol_usuario/editar_rol');
         
     }
 
@@ -111,7 +112,7 @@ class rol_usuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**
