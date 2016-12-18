@@ -48,7 +48,7 @@ class rol_usuarioController extends Controller
     public function create()
     {
         //
-        return view('usuario_app/nuevo_rol');
+        return view('rol_usuario/nuevo_rol');
     }
 
     /**

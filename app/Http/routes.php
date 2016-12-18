@@ -49,14 +49,11 @@ Route::get('administracion/cambiar_contrasenia',['as' => 'administracion/cambiar
 Route::post('administracion/cambiar_contrasenia',['as' => 'administracion/cambiar_contrasenia', 'uses' => 'usuario_appController@fnc_guardar_contrasenia'] );
 
 Route::get('administracion/cambiar_estado',['as' => 'administracion/cambiar_estado', 'uses' => 'usuario_appController@fnc_cambiar_estado'] );
+
+Route::get('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@create']);
+Route::post('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@store']);
 //*Ruta para solicitud de credenciales
 Route::get('usuario_app/solicitar_credenciales', function () {
     return view('usuario_app/solicitar_credenciales');
-    //return view('test.index');
-});
-
-
-Route::get('administracion/nuevo_rol', function () {
-    return view('usuario_app/nuevo_rol');
     //return view('test.index');
 });
