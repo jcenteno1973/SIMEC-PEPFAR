@@ -9,11 +9,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Role;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\bitacoraController;
 
 class rol_usuarioController extends Controller
 {
+     public function __construct() {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +51,8 @@ class rol_usuarioController extends Controller
      */
     public function create()
     {
-        //
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create();
         return view('rol_usuario/nuevo_rol');
     }
 
@@ -59,7 +64,7 @@ class rol_usuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       dd($request);
         
     }
 

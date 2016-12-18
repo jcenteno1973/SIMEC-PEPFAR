@@ -3,7 +3,6 @@
      * Descripci�n:
      * Fecha de creaci�n:30/11/2016
      * Creado por: Yamileth Campos
-     *
      * Modificado por: Karla Barrera 
      * Fecha modificaci�n: 1/12/2016
      * Descripci�n: Rutas agregadas al submenu
@@ -35,32 +34,29 @@
     <div class="panel-body">         
         <!--Crear nuevo rol-->
         <div class="col-lg-8">
-            <form class="form-signin" action="" method="POST">
-                <br>
-                <table class="table">
+             {!! Form::open(['route' => 'administracion/nuevo_rol', 'class' => 'form']) !!}
+                <table class="table table-condensed">
                     <tr>                       
                       <td>Nombre del Rol* </td>
-                      <td><input type="text" maxlength="25" class="form-control" name="nuevo_rol" placeholder="Nombre del rol" required autofocus></td>
+                      <td><input type="text" maxlength="25" class="form-control" name="nombre_rol" placeholder="Nombre del rol" required autofocus></td>
                     </tr>
                     <tr>
                         <td>Descripci&oacute;n* </td>
-                      <td><input type="text" maxlength="25" class="form-control" name="descripcion" placeholder="Descripci&oacute;n" required autofocus></td>
+                      <td><input type="text" maxlength="25" class="form-control" name="nombre_mostrar" placeholder="Descripci&oacute;n" required autofocus></td>
                     </tr>                    
                 </table>
         <!-- fin crear nuevo rol-->        
-                <table class="table table-responsive">
+                <table class="table table-condensed">
                     <tr>               
-                        <td align="left">
-                          <a href="../administracion/contrasenia_cambio" class="btn btn-primary">Guardar</a>
-                      
-                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-                 
+                      <td align="left">
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>                 
                           @include('usuario_app/ayuda_usuario/ayuda_nuevo_rol')               
                       </td>
                     </tr>
                 </table>
                 <p>*Campo requerido</p>
-            </form>
+            {!! Form::close() !!} 
         </div>
     </div><br><br>
 </div>
