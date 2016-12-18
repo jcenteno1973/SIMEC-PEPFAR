@@ -14,17 +14,18 @@
 @stop
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>    
-    <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
-    <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
-    <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
+    <a href="administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
+    <a href="administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>    
+    <a href="administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
+    <a href="administracion/editar_rol" class="list-group-item">Editar rol</a>
+    <a href="administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Cat&aacute;logos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
     <div class="panel-heading" align="center">ADMINISTRACION</div>
+    <div class="panel-body">
     <center>
         <br>
         <img src="{{asset('images/admins.jpg')}}"/><br>
@@ -32,5 +33,6 @@
         <div>Para m&aacute;s opciones acceda al men&uacute; de la izquierda.</div>
       <br><br>
     </center>
+    </div>
 </div>
 @stop  
