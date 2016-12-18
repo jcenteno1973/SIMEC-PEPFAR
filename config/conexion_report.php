@@ -5,14 +5,18 @@
  * Autor:Juan Carlos Centeno
  * Fecha:07/12/2016
  * 
+ * Modificado por: Karla Barrera
+ * Fecha: 12/12/2016
+ * Descripción: usando variables de configuración para conexión con BD
  */
+
 return array(
   'conexion'=>[
       'driver' => 'mysql',                
-      'host' => '127.0.0.1',
+      'host' => env('DB_HOST', 'localhost'),
       'port' => '3306',
-      'database' => 'sicafam',                
-      'username' => 'sicafam',
-      'password' => 'sicafam123654'
+      'database' => env('DB_DATABASE', 'forge'),               
+      'username' => env('DB_USERNAME', 'forge'),
+      'password' => env('DB_PASSWORD', ''),
   ]  
 );
