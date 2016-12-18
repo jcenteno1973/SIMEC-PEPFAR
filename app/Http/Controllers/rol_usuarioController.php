@@ -24,9 +24,9 @@ class rol_usuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       
+       dd($request);
     }
      /**
      * 
@@ -99,7 +99,8 @@ class rol_usuarioController extends Controller
     {
        $obj_controller_bitacora=new bitacoraController();
        $obj_controller_bitacora->create();
-       return view('rol_usuario/editar_rol');
+       $obj_role=  Role::all();
+       return view('rol_usuario/editar_rol', compact('obj_role'));
         
     }
 
@@ -110,9 +111,18 @@ class rol_usuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-       
+    public function update(Request $request)
+    {  
+       if($request->rol_usuario=='')
+       {
+         flash()->warning('Seleccione un rol') ;  
+       }
+      else {
+       $id_rol_usuario=$this->fnc_obtener_id($request->rol_usuario);
+       $obj_rol_usuario= Role::find($id_rol_usuario);
+       dd($request);
+       }
+      return redirect()->back();  
     }
 
     /**
