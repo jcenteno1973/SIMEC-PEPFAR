@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td>Descripci&oacute;n* </td>
-                      <td><input type="text" maxlength="25" class="form-control" name="nombre_mostrar" placeholder="Descripci&oacute;n" required autofocus></td>
+                      <td><input type="text" maxlength="25" class="form-control" name="descripcion" placeholder="Descripci&oacute;n" required></td>
                     </tr>                    
                 </table>
         <!-- fin crear nuevo rol-->        

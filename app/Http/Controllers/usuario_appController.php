@@ -51,8 +51,7 @@ class usuario_appController extends Controller
         $obj_ubicacion_org= new ubicacion_orgController();
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
                       'email_usuario'=>'unique:usuario_app',
-                      'numero_dui'=>'digits:9|unique:usuario_app');
-        //dd($request);
+                      'numero_dui'=>'digits:9|unique:usuario_app');        
         $this->validate($request, $rules);
         $date = Carbon::now();
         $usuario = new User();        

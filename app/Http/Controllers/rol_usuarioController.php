@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\bitacoraController;
+use Carbon\Carbon;
 
 class rol_usuarioController extends Controller
 {
@@ -64,8 +65,18 @@ class rol_usuarioController extends Controller
      */
     public function store(Request $request)
     {
-       dd($request);
-        
+       $obj_rol_usuario= new Role();
+       $date = Carbon::now();
+       $rules =array('nombre_rol'=>'unique:rol_usuario');        
+       $this->validate($request, $rules);
+       $obj_rol_usuario->nombre_rol=$request->nombre_rol;
+       $obj_rol_usuario->descripcion=$request->descripcion;
+       $obj_rol_usuario->estado_registro=1;
+       $obj_rol_usuario->fecha_hora_creacion=$date;
+       //dd($obj_rol_usuario);
+       $obj_rol_usuario->save();
+       flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' creado exitosamente ');
+       return redirect()->back();         
     }
 
     /**
