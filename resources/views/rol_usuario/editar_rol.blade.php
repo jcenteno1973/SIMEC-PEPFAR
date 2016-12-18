@@ -1,7 +1,7 @@
 <!-- 
      * Nombre del archivo:principal.blade.php
-     * Descripción:
-     * Fecha de creación:08/12/2016
+     * Descripciï¿½n:
+     * Fecha de creaciï¿½n:08/12/2016
      * Creado por: Yamileth Campos
 
 -->
@@ -18,26 +18,18 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a href="../../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
-    <a href="../../administracion/cambiar_contrasenia" class="list-group-item">Cambio de contrase&ntilde;a</a>
-    <a href="../../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
-    <a href="#" class="list-group-item" class="list-group-item active">Editar rol</a>
-    <a href="../../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
+    <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
+    <a href="../administracion/cambiar_contrasenia" class="list-group-item">Cambio de contrase&ntilde;a</a>
+    <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
+    <a class="list-group-item active">Editar rol</a>
+    <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="#" class="list-group-item">Catalogos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    <div class="panel-body">
-         @if($errors->any())
-            <div class="alert alert-warning" role="alert">
-            <p>Por favor corregir los siguientes errores</p>
-            @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-            @endforeach
-            </div>
-          @endif 
+    <div class="panel-body">         
         <!--Crear nuevo rol-->             
         <div class="col-lg-8">
             <form class="form-signin" action="" method="POST">
@@ -59,28 +51,11 @@
                       </td>
                     </tr>                    
                 </table>
-        <!-- fin crear nuevo rol-->
-        <!-- Busqueda de rol
        
-                <table class="table">   
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre de Rol</th>
-                    <th>Descripcion</th>
-                    <th>Seleccionar</th>        
-                  </tr>
-                </thead>
-                <tbody>
-                 
-                </tbody>
-              </table>
-    <!-- fin busqueda rol-->
                 <table class="table table-responsive">
                     <tr>               
                         <td align="left">
-                          <a href="../../administracion/contrasenia_cambio" class="btn btn-primary">Guardar</a>
-                      
+                          <a href="../administracion/contrasenia_cambio" class="btn btn-primary">Guardar</a>                      
                           <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>              
                           @include('usuario_app/ayuda_usuario/ayuda_editar_rol')               
                       </td>
