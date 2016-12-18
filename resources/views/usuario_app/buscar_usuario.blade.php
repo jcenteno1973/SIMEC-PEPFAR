@@ -1,5 +1,5 @@
 <!-- 
-     * Nombre del archivo:principal.blade.php
+     * Nombre del archivo:buscar_usuario.blade.php
      * Descripcion:
      * Fecha de creacion:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
@@ -23,8 +23,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Pantalla Buscar usuario</h4>
-    <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
+  <h4 class="text-center">Pantalla Buscar usuario</h4>    
 @stop 
 @section('menu_lateral')
 <div class="list-group">

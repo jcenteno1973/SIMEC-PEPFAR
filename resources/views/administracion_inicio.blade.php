@@ -14,7 +14,7 @@
 @stop
 @section('menu_lateral')
 <div class="list-group">
-    <a href="/administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
+    <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>    
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>

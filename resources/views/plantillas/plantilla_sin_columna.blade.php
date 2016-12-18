@@ -53,7 +53,7 @@
 						<li>
 							<a href="../inventario/inicio">Inventario</a>
 						</li>
-                        <li>
+                                                <li>
 							<a href="../solicitudes/inicio">Solicitudes</a>
 						</li>
 						<li>
@@ -63,7 +63,7 @@
 							<a href="../reportes/inicio">Reportes</a>
 						</li>
 						<li>
-							<a href="../administracion/inicio">Administración</a>
+							<a href="{{route('administracion')}}">Administración</a>
 						</li>
 						<li>
 							<a href="{{route('usuario_app/salir')}}">Salir</a>

@@ -32,6 +32,9 @@ class principalController extends Controller
     {
         
     }
+    public function fnc_show_administracion() {
+        return view('administracion_inicio'); 
+    }
     public function fnc_show_catalogos() {
         
          return view('home'); 
