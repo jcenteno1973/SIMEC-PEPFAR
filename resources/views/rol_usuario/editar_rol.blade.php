@@ -13,8 +13,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Editar Rol</h4>
-    <!--<h4 class="text-center">Pantalla buscar usuario</h4> -->
+  <h4 class="text-center">Pantalla Editar rol</h4>    
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -24,7 +23,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a class="list-group-item active">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="#" class="list-group-item">Catalogos</a>
+    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
 </div>
 @stop
 @section('contenido')
