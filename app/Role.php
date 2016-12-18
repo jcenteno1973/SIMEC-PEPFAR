@@ -18,7 +18,7 @@ class Role extends EntrustRole
 {
    protected $fillable = [
         'nombre_rol',
-        'nombre_mostar'
+        'descripcion'
     ];
     protected $table = 'rol_usuario';
     protected $primaryKey = 'id_rol_usuario';

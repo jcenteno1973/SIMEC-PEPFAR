@@ -75,7 +75,7 @@ class usuario_appController extends Controller
         $obj_rol_asignado= Role::find($id_rol_usuario);
         $usuario->attachRole($obj_rol_asignado);
         $obj_usuario=  User::find($usuario->id_usuario_app);
-        flash()->success('Usuario creado exitosamente '.$obj_usuario->nombre_usuario);
+        flash()->success('Usuario creado exitosamente: '.$obj_usuario->nombre_usuario);
         return redirect()->back(); 
         }
     public function fnc_show_buscar_usuario() {
