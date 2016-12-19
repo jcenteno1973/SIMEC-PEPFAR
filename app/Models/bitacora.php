@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class bitacora extends Model
 {
     //
-     protected $table = 'bitacora';
+    protected $table = 'bitacora';
     protected $primaryKey = 'id_bitacora';
     public $timestamps = false;
     protected $fillable = [

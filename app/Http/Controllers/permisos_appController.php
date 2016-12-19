@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Permission;
+use App\Role;
+use App\Http\Controllers\rol_usuarioController;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -47,7 +49,21 @@ class permisos_appController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        if(empty($request->permisos))
+        {
+         flash()->warning('Seleccione por lo menos un permiso') ; 
+         return redirect()->back();    
+        }
+        $obj_rol_usuario= new rol_usuarioController();
+        $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->nombre_rol);        
+        $obj_role=  Role::find($id_rol_usuario);        
+        foreach ($request->input('permisos') as $value) 
+        {
+            $obj_role->attachPermission($value);
+        }        
+        flash()->success('Permisos asignados exitosamente') ; 
+        return redirect()->back();  
+       
     }
 
     /**

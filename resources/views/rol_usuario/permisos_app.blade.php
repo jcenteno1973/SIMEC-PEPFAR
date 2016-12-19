@@ -1,19 +1,8 @@
 <!-- 
-     * Nombre del archivo:buscar_usuario.blade.php
+     * Nombre del archivo:permisos_app.blade.php
      * Descripcion:
-     * Fecha de creacion:20/11/2016
-     * Creado por: Juan Carlos Centeno Borja
-     * modificado por: yamileth Campos
-     * Fecha de modificacion:1/12/16
-     *
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 1/12/2016
-     * Descripción: Rutas agregadas al submenu
-
-     * Modificado por: Yamileth Campos 
-     * Fecha modificacion: 08/12/2016
-     * Descripción: botones de ayuda
-
+     * Fecha de creacion:18/12/2016
+     * Creado por: Juan Carlos Centeno Borja    
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')

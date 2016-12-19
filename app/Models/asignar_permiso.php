@@ -9,7 +9,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class asignar_permiso extends Model
 {
-    protected $table = 'asignar_permiso';
+    protected $table = 'permission_role';
     public $timestamps = false;
     
     
