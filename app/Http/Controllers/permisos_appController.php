@@ -8,6 +8,7 @@ use App\Role;
 use App\Http\Controllers\rol_usuarioController;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 class permisos_appController extends Controller
 {
@@ -25,8 +26,14 @@ class permisos_appController extends Controller
          return redirect()->back();  
        }
       else {
-        $obj_permiso_app=  Permission::all();        
-        return view('rol_usuario/permisos_app', compact('obj_permiso_app','nombre_rol'));
+          $obj_rol_usuario= new rol_usuarioController();
+          $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->nombre_rol);  
+          $obj_permiso_app=  Permission::all(); 
+          $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id_rol_usuario)
+            ->lists('permission_role.permission_id','permission_role.permission_id');
+        return view('rol_usuario/permisos_app',compact('obj_permiso_app','rolePermissions','nombre_rol'));
+               
+        //return view('rol_usuario/permisos_app', compact('obj_permiso_app','nombre_rol'));
        }
         
     }
@@ -55,7 +62,8 @@ class permisos_appController extends Controller
          return redirect()->back();    
         }
         $obj_rol_usuario= new rol_usuarioController();
-        $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->nombre_rol);        
+        $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->nombre_rol);
+        DB::table("permission_role")->where("permission_role.role_id",$id_rol_usuario)->delete();        
         $obj_role=  Role::find($id_rol_usuario);        
         foreach ($request->input('permisos') as $value) 
         {

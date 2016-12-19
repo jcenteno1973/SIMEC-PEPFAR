@@ -37,13 +37,16 @@
         <th>Nombre del permiso</th>
       </tr>
     </thead>
-    <tbody>
-  @foreach($obj_permiso_app as $obj_permisos_app)
+    <tbody>        
+      @foreach($obj_permiso_app as $obj_permisos_app)
       <tr>
       <td>
-          <input type="checkbox" name="permisos[]" value={{$obj_permisos_app->id_permiso_app}}>
+       {!! Form::checkbox('permisos[]', $obj_permisos_app->id_permiso_app, in_array($obj_permisos_app->id_permiso_app, $rolePermissions) ? true : false)!!}
+              
       </td>
-        <td>{{$obj_permisos_app->nombre_mostrar}}</td>
+      <td>
+         {{ $obj_permisos_app->nombre_mostrar }} 
+      </td>
       </tr>   
    @endforeach   
     </tbody>   
