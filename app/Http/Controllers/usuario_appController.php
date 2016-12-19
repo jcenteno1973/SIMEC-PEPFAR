@@ -252,8 +252,9 @@ class usuario_appController extends Controller
         $usuario->fecha_validez_contrasenia=$date->addMonth(3);
         $usuario->id_usuario_modifica=Auth::user()->id_usuario_app;
         $usuario->ip_dispositivo=$request->ip();
-        $usuario->save();        
-        return redirect()->back(); 
+        $usuario->save();
+        flash()->success('Cambio de contraseña realizado exitosamente');
+        return redirect()->route('administracion/buscar_usuario'); 
    }
     
     public function fnc_guardar_modificacion(Request $request)

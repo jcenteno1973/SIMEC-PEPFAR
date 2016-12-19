@@ -121,8 +121,7 @@ class rol_usuarioController extends Controller
       else {
         $id_rol_usuario=$this->fnc_obtener_id($request->rol_usuario);
         $obj_rol_usuario= Role::find($id_rol_usuario);
-       if($request->nombre_rol!=$request->rol_usuario){
-         //dd($request);  
+       if($request->nombre_rol!=$request->rol_usuario){ 
          $rules =array('nombre_rol'=>'unique:rol_usuario');        
          $this->validate($request, $rules);
          $obj_rol_usuario->nombre_rol=$request->nombre_rol;
