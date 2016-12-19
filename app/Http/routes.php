@@ -56,8 +56,8 @@ Route::post('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'use
 Route::get('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@edit']);
 Route::post('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@update']);
 
-Route::get('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'rol_usuarioController@index'] );
-Route::post('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'rol_usuarioController@index'] );
+Route::get('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@index']);
+Route::post('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@store']);
 //*Ruta para solicitud de credenciales
 Route::get('usuario_app/solicitar_credenciales', function () {
     return view('usuario_app/solicitar_credenciales');

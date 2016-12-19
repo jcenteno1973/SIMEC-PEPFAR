@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Permission;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,9 +14,19 @@ class permisos_appController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $nombre_rol=$request->nombre_rol;
+        if($request->nombre_rol=='')
+       {
+         flash()->warning('Seleccione un rol') ; 
+         return redirect()->back();  
+       }
+      else {
+        $obj_permiso_app=  Permission::all();        
+        return view('rol_usuario/permisos_app', compact('obj_permiso_app','nombre_rol'));
+       }
+        
     }
 
     /**
@@ -37,7 +47,7 @@ class permisos_appController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

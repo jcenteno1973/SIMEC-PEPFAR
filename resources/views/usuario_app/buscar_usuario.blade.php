@@ -37,6 +37,7 @@
 @stop
 @section('contenido')
 <div class="panel panel-default">
+    <div class="panel-body">
     <!-- filtro busqueda de usuario, los "&nbsp; son espacios"-->
         {!! Form::open(['route' => 'administracion/buscar_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
         
@@ -132,7 +133,8 @@
           </td>
         </tr>        
         </table> 
-    </div>  
+    </div> 
+    </div>
 </div>
 <script>
 function myFunction(seleccionar) {

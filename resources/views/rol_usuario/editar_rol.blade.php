@@ -27,16 +27,14 @@
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    <div class="panel-body">         
-        <!--Crear nuevo rol-->             
-        <div class="col-lg-8">
+    <div class="panel-body">                    
+        <div class="col-lg-6">
             {!! Form::open(['route' => 'administracion/editar_rol', 'class' => 'form']) !!}
-                <br>
-                <table class="table">
+                <table class="table table-condensed">
                     <tr>                       
                       <td>Rol* </td>
                       <td>
-                        <select name="rol_usuario" class="form-control">
+                          <select name="rol_usuario" class="form-control" onchange="myFunction(this.value)">
                         <option></option>
                         @foreach($obj_role as $obj_roles)
                         <option>{{$obj_roles->nombre_rol}}</option>
@@ -47,13 +45,13 @@
                      <tr>
                         <td>Nombre del rol </td>
                       <td>
-                          <input type="text" maxlength="25" class="form-control" name="nombre_rol"  placeholder="Nombre del rol">
+                          <input type="text" maxlength="25" class="form-control" name="nombre_rol" id="result2" placeholder="Nombre del rol">
                       </td>
                     </tr>
                     <tr>
                         <td>Descripci&oacute;n* </td>
                       <td>
-                          <input type="text" maxlength="25" class="form-control" name="descripcion" placeholder="Descripci&oacute;n" required>
+                          <input type="text" maxlength="25" class="form-control" name="descripcion" id="result3" placeholder="Descripci&oacute;n" required>
                       </td>
                     </tr>                    
                 </table>
@@ -62,9 +60,11 @@
                     <tr>               
                           <td align="left">
                           <button type="submit" class="btn btn-primary">Guardar</button> 
+                          {!! Form::close() !!}
                           </td>
                           <td>
                              {!! Form::open(['route' => 'administracion/asignar_permiso', 'class' => 'form','method' => 'get']) !!}     
+                             <input type="hidden" name="nombre_rol" id="result" >  
                              {!! Form::submit('Asignar permisos', array('class'=> 'btn btn-primary'))!!}
                              {!! Form::close()!!} 
                           </td>
@@ -76,11 +76,16 @@
                           </td>
                     </tr>
                 </table>
-                <p>*Campo requerido</p>
-              {!! Form::close() !!}
+                <p>*Campo requerido</p>              
         </div>
     </div>
 </div>
+<script>
+function myFunction(rol_usuario) {
+    document.getElementById("result").value = rol_usuario;
+    document.getElementById("result2").value = rol_usuario;
+}   
+</script>
 @stop   
 
 

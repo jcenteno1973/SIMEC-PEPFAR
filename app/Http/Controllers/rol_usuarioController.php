@@ -115,14 +115,30 @@ class rol_usuarioController extends Controller
     {  
        if($request->rol_usuario=='')
        {
-         flash()->warning('Seleccione un rol') ;  
+         flash()->warning('Seleccione un rol') ; 
+         return redirect()->back();  
        }
       else {
-       $id_rol_usuario=$this->fnc_obtener_id($request->rol_usuario);
-       $obj_rol_usuario= Role::find($id_rol_usuario);
-       dd($request);
+        $id_rol_usuario=$this->fnc_obtener_id($request->rol_usuario);
+        $obj_rol_usuario= Role::find($id_rol_usuario);
+       if($request->nombre_rol!=$request->rol_usuario){
+         //dd($request);  
+         $rules =array('nombre_rol'=>'unique:rol_usuario');        
+         $this->validate($request, $rules);
+         $obj_rol_usuario->nombre_rol=$request->nombre_rol;
+         $obj_rol_usuario->descripcion=$request->descripcion;
+         $obj_rol_usuario->save();
+         flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' modificado exitosamente');
+         return redirect()->back(); 
        }
-      return redirect()->back();  
+       else{
+         $obj_rol_usuario->nombre_rol=$request->nombre_rol;
+         $obj_rol_usuario->descripcion=$request->descripcion;
+         $obj_rol_usuario->save();
+         flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' modificado exitosamente');
+         return redirect()->back(); 
+       }
+       }      
     }
 
     /**
