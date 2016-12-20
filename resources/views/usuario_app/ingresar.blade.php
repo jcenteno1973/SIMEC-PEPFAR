@@ -43,9 +43,7 @@
               <button type="reset" class="btn btn-primary">Cancelar</button> 
           </td>
           <td>
-              
-              <a href="usuario_app/solicitar_credenciales" class="btn btn-primary">Restablecer contraseña</a>
-              
+              <a href="{{ url('password/email') }}" class="btn btn-primary">Restablecer contraseña</a>
           </td>
           
           <td>

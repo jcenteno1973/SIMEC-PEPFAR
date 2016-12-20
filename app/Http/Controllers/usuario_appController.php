@@ -50,14 +50,14 @@ class usuario_appController extends Controller
         $obj_cargo_emp= new cargo_empController();
         $obj_ubicacion_org= new ubicacion_orgController();
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
-                      'email_usuario'=>'unique:usuario_app',
+                      'email'=>'unique:usuario_app',
                       'numero_dui'=>'digits:9|unique:usuario_app');        
         $this->validate($request, $rules);
         $date = Carbon::now();
         $usuario = new User();        
         $usuario->id_ubicacion_org =$obj_ubicacion_org->fnc_obtener_id($request->id_ubicacion_org);
         $usuario->id_cargo_emp=$obj_cargo_emp->fnc_obtener_id($request->cargo_emp);
-        $usuario->email_usuario=$request->email_usuario;        
+        $usuario->email=$request->email;        
         $usuario->password=  bcrypt($request->password);
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
@@ -264,14 +264,14 @@ class usuario_appController extends Controller
         $obj_ubicacion_org= new ubicacion_orgController();        
         $usuario = User::find($request->id_usuario_app); 
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
-                      'email_usuario'=>'unique:usuario_app',
+                      'email'=>'unique:usuario_app',
                       'numero_dui'=>'digits:9|unique:usuario_app');   
         
         $this->validate($request, $rules);        
         $date = Carbon::now();               
         $usuario->id_ubicacion_org =$obj_ubicacion_org->fnc_obtener_id($request->id_ubicacion_org);
         $usuario->id_cargo_emp=$obj_cargo_emp->fnc_obtener_id($request->cargo_emp);
-        $usuario->email_usuario=$request->email_usuario;        
+        $usuario->email=$request->email;        
         $usuario->password=  bcrypt($request->password);
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;

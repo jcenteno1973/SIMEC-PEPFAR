@@ -60,7 +60,7 @@
               <tr>
                 <td>Correo electrónico *</td>
                 <td>
-                      {!! Form::email('email_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+                      {!! Form::email('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
                 </td>
                 <td> Contraseña *</td>
                 <td>                    
