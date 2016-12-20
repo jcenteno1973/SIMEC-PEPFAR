@@ -24,6 +24,7 @@ Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_s
 Route::get('fichas',['as' => 'fichas','uses' => 'principalController@fnc_show_fichas']);
 Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
+Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
 Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion'] );
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show'] );
 Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario'] );
