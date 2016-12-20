@@ -20,7 +20,8 @@
 Route::get('/','ingresarController@index');
 Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => 'Auth\AuthController@fnc_ingresar']);
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
-Route::get('principal',['as' => '/principal','uses' => 'principalController@fnc_principal']);
+Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);
+Route::get('fichas',['as' => 'fichas','uses' => 'principalController@fnc_show_fichas']);
 Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion'] );
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show'] );
 Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario'] );

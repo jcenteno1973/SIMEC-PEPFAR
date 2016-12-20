@@ -22,22 +22,29 @@ class principalController extends Controller
     public function __construct() {
         $this->middleware('auth');
     }
-    public function fnc_principal(){
+    public function fnc_show_principal(){
        $obj_controller_bitacora=new bitacoraController();
        $obj_controller_bitacora->create();
         return view('principal');
     }
-
+     public function fnc_show_fichas(){
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
+        return view('ficha_inicio');
+    }
     public function index()
     {
         
     }
     public function fnc_show_administracion() {
+        $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
         return view('administracion_inicio'); 
     }
     public function fnc_show_catalogos() {
-        
-         return view('home'); 
+        $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
+         return view('catalogos/catalogos'); 
     }
     /**
      * Show the form for creating a new resource.
