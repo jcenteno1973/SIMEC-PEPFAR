@@ -51,16 +51,16 @@
 							<a href="fichas">Fichas</a>
 						</li>
 						<li>
-							<a href="../inventario/inicio">Inventario</a>
+							<a href="inventario">Inventario</a>
 						</li>
                         <li>
-							<a href="../solicitudes/inicio">Solicitudes</a>
+							<a href="solicitudes">Solicitudes</a>
 						</li>
 						<li>
-							<a href="../procesos/inicio">Procesos</a>
+							<a href="procesos">Procesos</a>
 						</li>
 						<li>
-							<a href="../reportes/inicio">Reportes</a>
+							<a href="reportes">Reportes</a>
 						</li>
 						<li>
 							<a href="{{route('administracion')}}">Administración</a>

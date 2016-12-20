@@ -32,6 +32,11 @@ class principalController extends Controller
        $obj_controller_bitacora->create();
         return view('ficha_inicio');
     }
+     public function fnc_show_inventario(){
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
+        return view('inventario_inicio');
+    }
     public function index()
     {
         
