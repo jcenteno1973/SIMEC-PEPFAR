@@ -1,6 +1,6 @@
 <?php
 /**
-     * Fecha de modificación:20/11/2016
+     * Fecha de modificación:20/12/2016
      * Creado por: Juan Carlos Centeno Borja
      *
      * Modificado por: Karla Barrera 
@@ -25,6 +25,7 @@ Route::get('fichas',['as' => 'fichas','uses' => 'principalController@fnc_show_fi
 Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
+Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
 Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion'] );
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show'] );
 Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario'] );

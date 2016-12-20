@@ -47,15 +47,21 @@ class principalController extends Controller
        $obj_controller_bitacora->create();
         return view('procesos_inicio');
     }
-    public function index()
-    {
-        
+    public function fnc_show_reportes(){
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create();
+        return view('reportes_inicio');
     }
-    public function fnc_show_administracion() {
+     public function fnc_show_administracion() {
         $obj_controller_bitacora=new bitacoraController();
        $obj_controller_bitacora->create();
         return view('administracion_inicio'); 
     }
+    public function index()
+    {
+        
+    }
+   
     public function fnc_show_catalogos() {
         $obj_controller_bitacora=new bitacoraController();
        $obj_controller_bitacora->create();

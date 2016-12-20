@@ -67,7 +67,7 @@
     <table class="table table-condensed">   
     <thead>
       <tr>
-        <th>#</th>
+        <th>id</th>
         <th>Código de usuario</th>
         <th>Rol</th>
         <th>Estado</th>
