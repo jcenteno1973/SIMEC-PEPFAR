@@ -42,16 +42,21 @@ class AuthController extends Controller
       $nombre_usuario = $request->nombre_usuario; // Input::get('nombre_usuario');
       $password = $request->password; //Input::get('password');
       $rules =array('password'=> array('min:8','max:25')); //reglas de validación
-      $this->validate($request, $rules);//Realizar validación
-      
-    if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_usuario'=>1]))
+      $this->validate($request, $rules);//Realizar validación      
+    if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password]))
       {
        $obj_controller_bitacora=new bitacoraController();
        $obj_controller_bitacora->create();
-        return redirect('/principal');
-    }
-        echo 'Usuario o contraseña no coincide';
-        return redirect('/');
+       if(Auth::user()->estado_usuario==0)
+       {
+          Auth::logout();
+          flash()->warning('Usuario bloqueado'); 
+          return redirect('/');
+       }
+       return redirect('/principal');
+      }
+      flash()->warning('Usuario o contraseña no coincide');
+      return redirect('/');
     }
     /**
      * Get a validator for an incoming registration request.

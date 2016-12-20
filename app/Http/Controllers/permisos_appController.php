@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Permission;
 use App\Role;
+use App\Http\Controllers\bitacoraController;
 use App\Http\Controllers\rol_usuarioController;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,9 @@ use DB;
 
 class permisos_appController extends Controller
 {
+     public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +23,8 @@ class permisos_appController extends Controller
      */
     public function index(Request $request)
     {
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create();
         $nombre_rol=$request->nombre_rol;
         if($request->nombre_rol=='')
        {
