@@ -27,4 +27,11 @@ class ubicacion_organizacional extends Model
     {
         return $this->hasMany('App\Models\usuario_app');
     }
+    
+    public function scope_buscar($query, $codigo_unidad_dep) {
+         if (trim($codigo_unidad_dep) !="")
+            {
+                $query->where('codigo_unidad_dep', $codigo_unidad_dep);
+            }
+    }
 }
