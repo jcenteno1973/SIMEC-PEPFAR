@@ -25,7 +25,7 @@ class ubicacion_orgController extends Controller
     public function index(Request $request)
     {
         //   return view('home');
-        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->orderBy('id_ubicacion_org', 'ASC')->paginate(10);
+        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->orderBy('id_ubicacion_org', 'ASC')->paginate(20);
         return view('catalogos/ubicacion_organizacional/buscar_ubicacion_org', compact('ubicacion_org'));
     }
     public function fnc_busqueda_filtro(Request $request) {
@@ -51,7 +51,8 @@ class ubicacion_orgController extends Controller
      */
     public function create()
     {
-        return view('home');
+        //return view('home');
+                return view('catalogos/ubicacion_organizacional/nueva_ubicacion_org');
     }
 
     /**
@@ -62,7 +63,16 @@ class ubicacion_orgController extends Controller
      */
     public function store(Request $request)
     {
-        return view('home');
+        //return view('home');
+        /*$ubicacion= new ubicacion_organizacional($request->all());*/
+        $ubicacion= new ubicacion_organizacional();
+        $ubicacion->codigo_unidad_dep=$request->codigo_unidad_dep;
+        $ubicacion->nombre_unidad_dep=$request->nombre_unidad_dep;
+        $ubicacion->nombre_responsable=$request->nombre_responsable;
+        $ubicacion->alquilado=$request->alquilado;
+        $ubicacion->estado_registro=$request->estado_registro;
+        $ubicacion->save();
+        return redirect()->route('administracion.buscar_ubicacion.index');
     }
 
     /**
@@ -88,6 +98,9 @@ class ubicacion_orgController extends Controller
     public function edit($id)
     {
         //
+        $ubicacion= ubicacion_organizacional::find($id);
+         //dd($ubicacion);
+        return view('catalogos/ubicacion_organizacional/editar_ubicacion_org')->with('ubicacion',$ubicacion);
     }
 
     public function fnc_guardar_modificacion(Request $request) {
@@ -103,7 +116,15 @@ class ubicacion_orgController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return view('home');
+        //return view('home');
+        $ubicacion= ubicacion_organizacional::find($id);
+        $ubicacion->codigo_unidad_dep=$request->codigo_unidad_dep;
+        $ubicacion->nombre_unidad_dep=$request->nombre_unidad_dep;
+        $ubicacion->nombre_responsable=$request->nombre_responsable;
+        $ubicacion->alquilado=$request->alquilado;
+        $ubicacion->estado_registro=$request->estado_registro;
+        $ubicacion->save();
+        return redirect()->route('administracion.buscar_ubicacion.index');
     }
 
     /**
