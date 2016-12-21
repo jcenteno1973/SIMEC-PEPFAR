@@ -42,25 +42,25 @@
 					 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="principal">Principal</a>
+					</button> <a class="navbar-brand" href="{{route('principal')}}">Principal</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="fichas">Fichas</a>
+							<a href="{{route('fichas')}}">Fichas</a>
 						</li>
 						<li>
-							<a href="inventario">Inventario</a>
+							<a href="{{route('inventario')}}">Inventario</a>
 						</li>
                                                 <li>
-							<a href="solicitudes">Solicitudes</a>
+							<a href="{{route('solicitudes')}}">Solicitudes</a>
 						</li>
 						<li>
-							<a href="procesos">Procesos</a>
+							<a href="{{route('procesos')}}">Procesos</a>
 						</li>
 						<li>
-							<a href="reportes">Reportes</a>
+							<a href="{{route('reportes')}}">Reportes</a>
 						</li>
 						<li>
 							<a href="{{route('administracion')}}">Administración</a>
