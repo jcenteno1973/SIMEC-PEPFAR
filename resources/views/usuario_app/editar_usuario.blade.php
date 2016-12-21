@@ -73,7 +73,7 @@
             </td>
             <td> Contraseña</td>
             <td>                    
-                <input type="password" class="form-control" name="password" required="true" >                                  
+                <input type="password" class="form-control" name="password">                                  
             </td>
             </tr>
             <tr>

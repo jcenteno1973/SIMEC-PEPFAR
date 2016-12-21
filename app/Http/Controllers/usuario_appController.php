@@ -1,6 +1,6 @@
 <?php
 /**
-     * Nombre del archivo: .php
+     * Nombre del archivo:usuario_appController.php
      * Descripción:
      * Fecha de creación:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
@@ -254,7 +254,7 @@ class usuario_appController extends Controller
         $usuario->ip_dispositivo=$request->ip();
         $usuario->save();
         flash()->success('Cambio de contraseña realizado exitosamente');
-        return redirect()->route('administracion/buscar_usuario'); 
+        return  redirect()->back(); 
    }
     
     public function fnc_guardar_modificacion(Request $request)
@@ -262,17 +262,47 @@ class usuario_appController extends Controller
         $obj_rol_usuario= new rol_usuarioController();
         $obj_cargo_emp= new cargo_empController();
         $obj_ubicacion_org= new ubicacion_orgController();        
-        $usuario = User::find($request->id_usuario_app); 
-        $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
-                      'email'=>'unique:usuario_app',
-                      'numero_dui'=>'digits:9|unique:usuario_app');   
-        
-        $this->validate($request, $rules);        
+        $usuario = User::find($request->id_usuario_app);
+        $validar_email=array('email'=>'unique:usuario_app');
+        $validar_dui=array('numero_dui'=>'digits:9|unique:usuario_app');
+        if($request->password!=''){
+            $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'));    
+            $usuario->password=  bcrypt($request->password);
+            if($usuario->numero_dui!=$request->numero_dui){
+              $rules= array_merge($rules,$validar_dui);
+            }
+            if($usuario->email!=$request->email){
+               $rules= array_merge($rules,$validar_email);
+            }
+        $validar=1; 
+        }
+        else
+        {
+          if($usuario->numero_dui!=$request->numero_dui){
+               $rules=$validar_dui;
+              if($usuario->email!=$request->email){
+               $rules= array_merge($rules,$validar_email);
+               }
+           $validar=1;
+          } 
+          else {
+               if($usuario->email!=$request->email){
+               $rules= $validar_email;
+               $validar=1;
+                  }else
+                   {
+                    $validar=0;   
+                   }
+               }    
+        } 
+        if($validar==1)
+        {
+           $this->validate($request, $rules);      
+        } 
         $date = Carbon::now();               
         $usuario->id_ubicacion_org =$obj_ubicacion_org->fnc_obtener_id($request->id_ubicacion_org);
         $usuario->id_cargo_emp=$obj_cargo_emp->fnc_obtener_id($request->cargo_emp);
-        $usuario->email=$request->email;        
-        $usuario->password=  bcrypt($request->password);
+        $usuario->email=$request->email;  
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
         $usuario->numero_dui=$request->numero_dui;
@@ -289,7 +319,8 @@ class usuario_appController extends Controller
         $usuario->save();
         //$obj_rol_asignado= Role::find($id_rol_usuario);
         //$usuario->attachRole($obj_rol_asignado);
-        return $this->show();
+        flash()->success('Cambio realizado exitosamente');
+        return  redirect()->back(); 
     }
 
     /**
