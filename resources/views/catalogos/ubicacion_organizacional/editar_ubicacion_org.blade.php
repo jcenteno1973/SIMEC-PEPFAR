@@ -2,7 +2,11 @@
      * Nombre del archivo: editar_ubicacion_org.blade.php
      * Descripción: Editar ubicación organizacional
      * Fecha de creación:6/12/2016
-     * Creado por: Karla Barrera 
+     * Creado por: Karla Barrera
+
+     * Modificacion: funcionalidad a editar
+     * Fecha de creación:19/12/16
+     * Creado por: Yamileth Campos 
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -16,8 +20,8 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a class="list-group-item active">Buscar ubicaci&oacute;n organizacional</a>
-    <a href="../administracion/nueva_ubicacion" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
+    <a class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
+    <a href="../../../administracion/buscar_ubicacion/create" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
 </div>
 @stop
 @section('contenido')
@@ -25,50 +29,66 @@
     <div class="panel-body">
       
 
-
-<table class="table table-bordered">    
+{!! Form::open(['route' => ['administracion.buscar_ubicacion.update',$ubicacion],'method'=>'PUT']) !!}
+    <table class="table table-condensed">    
         <tbody>
            <tr>
-            <td>C&oacute;digo de Unidad/Departamento *</td>
+               <td>ID</td>
             <td>
-                {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
+                {!! Form::text('id_ubicacion_org', $ubicacion->id_ubicacion_org, ['class' => 'form-control' , 'required' => 'required', 'readonly'=>'true']) !!}
+            </td>
+            <td>C&oacute;digo*</td>
+            <td>
+                {!! Form::text('codigo_unidad_dep', $ubicacion->codigo_unidad_dep, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
             </td>
             <td>Unidad o Departamento *</td>
             <td>
-                <select name="id_ubicacion_org" class="form-control" placeholder="Unidad o Departamento">
-                        <option disabled selected>Unidad o Departamento</option>
-                </select>
+                {!! Form::text('nombre_unidad_dep',$ubicacion->nombre_unidad_dep, ['class' => 'form-control' , 'required' => 'required']) !!}
              </td>
             </tr>
             <tr>
-            <td>Responsable *</td>
-            <td>  
-                {!! Form::text('nombre_responsable', null, ['class' => 'form-control', 'placeholder'=>'Responsable', 'required' => 'required']) !!}
-            </td>
-            <td>Alquilado *</td>
-            <td>                 
-                                        
-                
-                  <div class="checkbox">
-                    <label>
-                    <input type="checkbox" name="alquilado" id="alquilado" value="1" checked>                     
-                     
-                    </label>
-                  </div>
+                <td>Responsable*</td>
+                <td>  
+                    {!! Form::text('nombre_responsable',$ubicacion->nombre_responsable, ['class' => 'form-control', 'placeholder'=>'Responsable', 'required' => 'required']) !!}
+                </td>
+                <td>Alquilado*</td>                 
+                <td>
+                      @if($ubicacion->alquilado==1)
+                        <select name="alquilado" class="form-control">
+                            <option value="1" >Si </option>
+                            <option value="0">No </option>
+                        </select>                    
+                      @else
+                        <select name="alquilado" class="form-control">
+                            <option value="0">hola </option>
+                            <option value="1">Si </option>
+                         </select> 
+                      @endif
+                </td>
+                <td>Estado*</td>                 
+                <td>
+                      @if($ubicacion->estado_registro==1)
+                        <select name="estado_registro" class="form-control">
+                            <option value="1" >Activo</option>
+                            <option value="0">Inactivo </option>
+                        </select>                    
+                      @else
+                        <select name="estado_registro" class="form-control">
+                            <option value="0">Inactivo</option>
+                            <option value="1">Activo</option>
+                         </select> 
+                      @endif
                 </td>
             </tr>
-            <tr>
             
         </tbody>
      </table>  
-
-
        <!-- Botones"--> 
     <div><br />
        <table class="table">
         <tr>
           <td>
-              {!! Form::submit('Guardar cambios',['class'=>'btn btn-primary'])!!}              
+              {!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}              
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
               @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
        </td>
@@ -76,8 +96,10 @@
         
     <!-- Fin botones-->
       </table> 
+        
+    
     </div>
-<!--    {!! Form::close()!!}      -->
+ {!! Form::close()!!} 
 
       
     <!--
@@ -85,6 +107,6 @@
     {!! Form::close() !!}      -->  
     </div>
 </div>
-@stop   
+@stop  
 
 

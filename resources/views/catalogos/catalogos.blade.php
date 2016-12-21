@@ -24,7 +24,7 @@
                 <tr>
                     <th><a href=""> <center><img src="{{asset('images/colores.png')}}" alt="colores" class="img-responsive"/></center></a></th>
                     <th><a href="../administracion/buscar_ubicacion"><center><img src="{{asset('images/organiz.png')}}" alt="ubicacion_organizacional" class="img-responsive"/></center></a></th>
-                    <th><a href=""><center><img src="{{asset('images/munic.jpg')}}" alt="municipios" class="img-responsive"/></center></a></th>
+                    <th><a href="../administracion/contable"><center><img src="{{asset('images/cuentas.png')}}" alt="cuentas contables" class="img-responsive"/></center></a></th>
                     <th><a href=""><center><img src="{{asset('images/dpto.png')}}" alt="departamentos" class="img-responsive"/></center></a></th>
                     <th><a href="../administracion/buscar_usuario"><center><img src="{{asset('images/financia.jpg')}}" alt="fuente de financiamiento" class="img-responsive"/></center></a></th>
                     <th><a href=""><center><img src="{{asset('images/clase_bien.jpg')}}" alt="clase de bien" class="img-responsive"/></center></a></th>
@@ -32,7 +32,7 @@
                 <tr align="center">
                     <td>Colores</td>
                   <td>Ubicaci&oacute;n Organizacional</td>
-                  <td>Municipios</td>
+                  <td>Cuentas Contables</td>
                   <td>Departamentos</td>
                   <td>Fuente de Financiamiento</td>
                   <td>Clase de Bien</td>

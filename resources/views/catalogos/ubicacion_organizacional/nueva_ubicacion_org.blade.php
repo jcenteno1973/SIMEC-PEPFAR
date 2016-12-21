@@ -3,6 +3,10 @@
      * Descripción: Crear nueva ubicacion organizacional
      * Fecha de creación:5/12/2016
      * Creado por: Karla Barrera 
+
+     * Modificacion: Funcionalidad para crear usuario
+     * Fecha de creación:19/12/16
+     * Creado por: Yamileth Campos
 -->
 
 @extends('plantillas.plantilla_base')
@@ -17,63 +21,68 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
+    <a href="../../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
     <a href="#" class="list-group-item active">Nueva ubicaci&oacute;n organizacional</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-        <div class="panel-body">
-<!--        {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}  -->
-            <table class="table table-bordered">    
-            <tbody>
-              <tr>
-                <td>C&oacute;digo de Unidad/Departamento *</td>
-                <td>                 
-                      {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
-                </td>
-                <td>Unidad o Departamento *</td>
-                <td>
-                    <select name="id_ubicacion_org" class="form-control" placeholder="Unidad o Departamento">
-                        <option disabled selected>Unidad o Departamento</option>
-                   </select>
-                </td>
-              </tr>
-              <tr>
+    <div class="panel-body">
+    {!! Form::open(['route' => 'administracion.buscar_ubicacion.store','method'=>'POST']) !!}
+    <table class="table table-bordered">    
+        <tbody>
+           <tr>
+            <td>C&oacute;digo *</td>
+            <td>
+                {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
+            </td>
+            <td>Unidad o Departamento *</td>
+            <td>
+                {!! Form::text('nombre_unidad_dep',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+             </td>
+            </tr>
+            <tr>
                 <td>Responsable *</td>
-                <td>                     
-                      {!! Form::text('nombre_responsable', null, ['class' => 'form-control' , 'placeholder'=>'Responsable', 'required' => 'required']) !!}
+                <td>  
+                    {!! Form::text('nombre_responsable',null, ['class' => 'form-control', 'placeholder'=>'Responsable', 'required' => 'required']) !!}
                 </td>
-                <td>Alquilado *</td>
-                <td>                 
-                                        
-                
-                  <div class="checkbox">
-                    <label>
-                    <input type="checkbox" name="alquilado" id="alquilado" value="1" checked>                     
-                     
-                    </label>
-                  </div>
+                <td>Alquilado *</td>                 
+                <td>
+                        <select name="alquilado" class="form-control">
+                            <option value="1" >Si </option>
+                            <option value="0">No </option>
+                        </select>                    
+                </td>                
+            </tr>
+            <tr>
+                <td>Estado *</td> 
+                <td>
+                        <select name="estado_registro" class="form-control">
+                            <option value="1" >Activo </option>
+                            <option value="0">Inactivo</option>
+                        </select>                    
                 </td>
-              </tr>
-             
-               
-            </tbody>
-          </table>       
-    <div>
+            </tr>            
+        </tbody>
+     </table>  
+       <!-- Botones"--> 
+    <div><br />
        <table class="table">
         <tr>
           <td>
-              <button type="submit" class="btn btn-primary">Guardar</button>  
-          </td>
-          <td>
-              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a> 
-          </td>
+              {!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}              
+              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+              @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
+       </td>
         </tr>        
-        </table> 
-        <p>* Campo requerido</p>
+        
+    <!-- Fin botones-->
+      </table> 
+        
+    
     </div>
-    {!! Form::close() !!}        
-        </div>
+ {!! Form::close()!!} 
+   
+    </div>
 </div>
 @stop   

@@ -39,9 +39,13 @@ Route::post('administracion/guardar_usuario',['as' => 'administracion/guardar_us
 
 Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 
-//catalogos
+//***  catalogos
 Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos'] );
+//ruta para ubicacion organizacional
 Route::resource('administracion/buscar_ubicacion','ubicacion_orgController');
+//ruta para cuentas contables
+Route::resource('administracion/contable','cuenta_contaController');
+
 
 Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);
 Route::post('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@fnc_busqueda_filtro']);
