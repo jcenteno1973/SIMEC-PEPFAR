@@ -35,16 +35,11 @@
       <table class="table table-responsive"> 
                     <tr border="0">
                       <td>C&oacute;digo</td> 
-                      <td>  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'C&oacute;digo de Unidad/Depto'])!!}</td> 
+                      <td>  {!!Form::text('codigo_unidad_dep',null,['class'=>'form-control', 'placeholder'=>'C&oacute;digo de Unidad/Depto'])!!}</td> 
                         <td>&nbsp;&nbsp;Unidad/<br />Departamento</td>
-                      <td>
-                        <select name="id_ubicacion_org" class="form-control" placeholder="Unidad/Depto">
-                          <option disabled selected>Unidad/Depto</option>
-                        </select>
-                      </td> 
-
+                      <td>{!! Form::select('type', ['' => 'Unidad/Depto', 'activo fijo' => 'Activo Fijo', 'informatica' => 'Informática'], null, ['class' => 'form-control']) !!} </td>
                         <td>Responsable</td>
-                      <td>   {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Responsable'])!!}</td> 
+                      <td>   {!!Form::text('nombre_responsable',null,['class'=>'form-control', 'placeholder'=>'Responsable'])!!}</td> 
                 
                         <td>&nbsp;&nbsp;<button type="submit" class="btn btn-default"> Buscar</button></td>
                     </tr>
