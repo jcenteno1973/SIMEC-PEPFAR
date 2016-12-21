@@ -16,14 +16,7 @@ class ficha extends Model
     protected $table = 'ficha_activo_fijo';
     protected $primaryKey = 'id_ficha_activo_fijo';
     public $timestamps = false;
-    protected $fillable = [
-        'id_lista_color',
-        'fic_id_ficha_activo_fijo',
-        'id_estado',
-        'id_cuenta_contable',
-        'id_descargo',
-        'id_tipo_inventario',
-        'id_tipo_doc_propiedad',
+    protected $fillable = [        
         'responsable_bien',
         'descripcion',
         'marca_bien',
@@ -51,10 +44,7 @@ class ficha extends Model
         'estado_ficha',
         'es_mejora',
         'es_revaluo',
-        'estado_registro',
-        'id_usuario_crea',
-        'id_usuario_modifica',
-        'ip_dispositivo'
+        'estado_registro'       
     ];
     
     
