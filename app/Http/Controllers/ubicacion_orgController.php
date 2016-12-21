@@ -4,6 +4,10 @@
      * Descripción:
      * Fecha de creación:25/11/2016
      * Creado por: Juan Carlos Centeno Borja
+     *
+     * Modificado por: Karla Barrera 
+     * Fecha modificación: 20/12/2016
+     * Descripción: Ruta para buscar catálogo
      */
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
@@ -18,7 +22,7 @@ class ubicacion_orgController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //   return view('home');
         $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->orderBy('id_ubicacion_org', 'ASC')->paginate(10);

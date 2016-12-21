@@ -4,8 +4,8 @@
      * Creado por: Juan Carlos Centeno Borja
      *
      * Modificado por: Karla Barrera 
-     * Fecha modificación: 2/12/2016
-     * Descripción: Ruta para cambio de contraseña 
+     * Fecha modificación: 2/12/2016, 20/12/2016
+     * Descripción: Ruta para: cambio de contraseña, buscar catálogo
      */
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,9 @@ Route::post('administracion/guardar_usuario',['as' => 'administracion/guardar_us
 
 Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 
+//catalogos
 Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos'] );
+Route::resource('administracion/buscar_ubicacion','ubicacion_orgController');
 
 Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);
 Route::post('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@fnc_busqueda_filtro']);

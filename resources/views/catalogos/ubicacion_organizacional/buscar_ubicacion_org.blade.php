@@ -29,21 +29,19 @@
   <div class="form-group" >
       <table class="table table-responsive"> 
                     <tr border="0">
-                      <td>C&oacute;digo&nbsp;</td> 
+                      <td>C&oacute;digo</td> 
                       <td>  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'C&oacute;digo de Unidad/Depto'])!!}</td> 
-                        &nbsp;<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unidad/Departamento&nbsp;</td>
+                        <td>&nbsp;&nbsp;Unidad/<br />Departamento</td>
                       <td>
-                        <select name="id_ubicacion_org" class="form-control" placeholder="Unidad o Departamento">
+                        <select name="id_ubicacion_org" class="form-control" placeholder="Unidad/Depto">
                           <option disabled selected>Unidad/Depto</option>
                         </select>
                       </td> 
-         <!--       </div>   -->
-                    </tr>
-                    <tr>
-                        &nbsp;<td>Responsable&nbsp;</td>
+
+                        <td>Responsable</td>
                       <td>   {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Responsable'])!!}</td> 
                 
-                        &nbsp;<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-default"> Buscar</button></td>
+                        <td>&nbsp;&nbsp;<button type="submit" class="btn btn-default"> Buscar</button></td>
                     </tr>
                   </table>
                 </div>
