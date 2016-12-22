@@ -21,7 +21,7 @@ class Permission extends EntrustPermission
     public $timestamps = false;
     protected $primaryKey = 'id_permiso_app';
     protected $fillable = [
-        'nombre_permiso',
+        'name',
         'nombre_mostrar'
     ];
  
