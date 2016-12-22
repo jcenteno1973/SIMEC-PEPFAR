@@ -26,21 +26,21 @@ Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
 Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
-Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion'] );
-Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show'] );
-Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario'] );
+Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion','middleware' => ['permission:administracion']] );
+Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show','middleware' => ['permission:buscar_usuario']] );
+Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario','middleware' => ['permission:buscar_usuario']] );
 //Agregar un nuevo usuario
-Route::get('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@fnc_show_create'] );
+Route::get('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@fnc_show_create','middleware' => ['permission:nuevo_usuario']] );
 Route::post('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@create'] );
 //Editar un usuario
 //Route::post('administracion/editar_usuario',['as' => 'administracion/editar_usuario', 'uses' => 'usuario_appController@store'] );
-Route::get('administracion/guardar_usuario',['as' => 'administracion/guardar_usuario', 'uses' => 'usuario_appController@edit'] );
+Route::get('administracion/guardar_usuario',['as' => 'administracion/guardar_usuario', 'uses' => 'usuario_appController@edit','middleware' => ['permission:guardar_usuario']] );
 Route::post('administracion/guardar_usuario',['as' => 'administracion/guardar_usuario', 'uses' => 'usuario_appController@fnc_guardar_modificacion'] );
 
 Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 
 //***  catalogos
-Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos'] );
+Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos','middleware' => ['permission:catalogos']] );
 //ruta para ubicacion organizacional
 Route::resource('administracion/buscar_ubicacion','ubicacion_orgController');
 //ruta para cuentas contables
@@ -61,13 +61,13 @@ Route::post('administracion/cambiar_contrasenia',['as' => 'administracion/cambia
 
 Route::get('administracion/cambiar_estado',['as' => 'administracion/cambiar_estado', 'uses' => 'usuario_appController@fnc_cambiar_estado'] );
 
-Route::get('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@create']);
+Route::get('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@create','middleware' => ['permission:nuevo_rol']]);
 Route::post('administracion/nuevo_rol',['as' => 'administracion/nuevo_rol', 'uses' => 'rol_usuarioController@store']);
 
-Route::get('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@edit']);
+Route::get('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@edit','middleware' => ['permission:editar_rol']]);
 Route::post('administracion/editar_rol',['as' => 'administracion/editar_rol', 'uses' => 'rol_usuarioController@update']);
 
-Route::get('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@index']);
+Route::get('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@index','middleware' => ['permission:asignar_permiso']]);
 Route::post('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@store']);
 
 // Password reset link request routes...

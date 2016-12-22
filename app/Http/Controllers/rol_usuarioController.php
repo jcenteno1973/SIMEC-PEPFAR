@@ -12,6 +12,7 @@ use App\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\bitacoraController;
 use Carbon\Carbon;
+use Auth;
 
 class rol_usuarioController extends Controller
 {
@@ -51,7 +52,7 @@ class rol_usuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();
         return view('rol_usuario/nuevo_rol');
