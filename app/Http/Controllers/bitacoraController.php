@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Auth;
 use JasperPHP\JasperPHP;
 
+
 class bitacoraController extends Controller
 {
     /**
@@ -26,11 +27,13 @@ class bitacoraController extends Controller
         $this->middleware('auth');
     }
     public function fnc_show_parametros() {
-        
+      $this->create();
       return view('bitacora/get_parametros');  
     }
-    public function fnc_show_consultar_bitacora() {
-    $this->create();
+    public function fnc_show_consultar_bitacora(Request $request) {
+    $fecha_inicio=Carbon::createFromFormat('d/m/Y', $request->fecha_inicio);
+    $fecha_fin=Carbon::createFromFormat('d/m/Y', $request->fecha_fin);
+    $fecha_fin->addDay();    
     $reporte_generado='/reportes_jasper/'.time().'_bitacora';//time le aggrega un número generado por la hora
     $output = public_path() .$reporte_generado; 
     $report = new JasperPHP;
@@ -38,7 +41,7 @@ class bitacoraController extends Controller
     public_path() . '/reportes_jasper/bitacora_parametros.jrxml', 
     $output, 
     array('pdf'),//, 'rtf', 'html'),
-    array('usuario_app'=> 'adminadmin','fecha_inicio' =>'2016-11-30','fecha_fin'=>'2016-12-10'),
+    array('usuario_app'=> $request->nombre_usuario,'fecha_inicio' =>$fecha_inicio->toDateString(),'fecha_fin'=>$fecha_fin->toDateString()),
     config('conexion_report.conexion')
     )->execute();
     $reporte_generado='..'.$reporte_generado.'.pdf';

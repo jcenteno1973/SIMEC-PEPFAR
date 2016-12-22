@@ -99,7 +99,7 @@ class usuario_appController extends Controller
         }
         else
         {
-         $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->estado_usuario($request->estado_usuario)->paginate(5);    
+         $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->estado_usuario($request->estado_usuario)->paginate(10);    
         }
        
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
@@ -151,7 +151,7 @@ class usuario_appController extends Controller
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();
         $obj_role= Role::all();
-        $obj_usuario=  User::paginate(5);
+        $obj_usuario=  User::paginate(10);
         
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
     }

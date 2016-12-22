@@ -20,18 +20,20 @@
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+    {!! Form::open(['route' => 'administracion/consultar_bitacora', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
             
                 <div class="form-group" >
                     <br /><br />Código de usuario
-                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
+                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
                   &nbsp;&nbsp;<br /><br /><br />Fecha:&nbsp;&nbsp;&nbsp;&nbsp;Desde                  
-                  {!!Form::text('name',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio'])!!}
+                  {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio'])!!}
                   &nbsp;&nbsp;Hasta
-                  {!!Form::text('name',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin'])!!}
+                  {!!Form::text('fecha_fin',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin'])!!}
                 </div>
                  &nbsp;&nbsp; &nbsp;
                 <br /><br /><br />
+                {!! Form::submit('Generar reporte',['class'=>'btn btn-primary'])!!}  
+                <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>   
    {!! Form::close() !!}
     
 </div>
