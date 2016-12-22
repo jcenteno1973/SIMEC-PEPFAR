@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\contable_request;
 use App\Http\Controllers\Controller;
 use App\Models\cuenta_contable;
 use Carbon\Carbon;
@@ -43,7 +44,7 @@ class cuenta_contaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(contable_request $request)
     {
         //
         $date = Carbon::now();
@@ -90,7 +91,7 @@ class cuenta_contaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+public function update(Request $request, $id)
     {
         //
         $date = Carbon::now();
