@@ -35,10 +35,10 @@ class bitacoraController extends Controller
     $output = public_path() .$reporte_generado; 
     $report = new JasperPHP;
     $report->process(
-    public_path() . '/reportes_jasper/bitacora.jrxml', 
+    public_path() . '/reportes_jasper/bitacora_parametros.jrxml', 
     $output, 
     array('pdf'),//, 'rtf', 'html'),
-    array(),
+    array('usuario_app'=> 'adminadmin','fecha_inicio' =>'2016-11-30','fecha_fin'=>'2016-12-10'),
     config('conexion_report.conexion')
     )->execute();
     $reporte_generado='..'.$reporte_generado.'.pdf';

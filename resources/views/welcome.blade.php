@@ -14,6 +14,8 @@
 <div class="panel panel-default">
     <div class="panel-heading">Inicio</div>
     <div class="panel-body">You are using bootstrap</div>
+    <iframe src="{{$reporte_generado}}" width="100%" height="500px">   
+</iframe> 
 </div>
 @stop   
 @section('botones')
