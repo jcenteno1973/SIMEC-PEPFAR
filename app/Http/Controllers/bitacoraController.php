@@ -25,6 +25,10 @@ class bitacoraController extends Controller
      public function __construct() {
         $this->middleware('auth');
     }
+    public function fnc_show_parametros() {
+        
+      return view('bitacora/get_parametros');  
+    }
     public function fnc_show_consultar_bitacora() {
     $this->create();
     $reporte_generado='/reportes_jasper/'.time().'_bitacora';//time le aggrega un número generado por la hora
