@@ -65,12 +65,14 @@ class ubicacion_orgController extends Controller
     {
         //return view('home');
         /*$ubicacion= new ubicacion_organizacional($request->all());*/
+        $date = Carbon::now();
         $ubicacion= new ubicacion_organizacional();
         $ubicacion->codigo_unidad_dep=$request->codigo_unidad_dep;
         $ubicacion->nombre_unidad_dep=$request->nombre_unidad_dep;
         $ubicacion->nombre_responsable=$request->nombre_responsable;
         $ubicacion->alquilado=$request->alquilado;
         $ubicacion->estado_registro=$request->estado_registro;
+        $ubicacion->fecha_hora_creacion=$date; 
         $ubicacion->save();
         return redirect()->route('administracion.buscar_ubicacion.index');
     }
@@ -117,12 +119,14 @@ class ubicacion_orgController extends Controller
     public function update(Request $request, $id)
     {
         //return view('home');
+        $date = Carbon::now();
         $ubicacion= ubicacion_organizacional::find($id);
         $ubicacion->codigo_unidad_dep=$request->codigo_unidad_dep;
         $ubicacion->nombre_unidad_dep=$request->nombre_unidad_dep;
         $ubicacion->nombre_responsable=$request->nombre_responsable;
         $ubicacion->alquilado=$request->alquilado;
         $ubicacion->estado_registro=$request->estado_registro;
+        $ubicacion->fecha_hora_modificacion=$date;
         $ubicacion->save();
         return redirect()->route('administracion.buscar_ubicacion.index');
     }
