@@ -1,3 +1,9 @@
+<!-- 
+     * Nombre del archivo:get_parametros.blade.php
+     * Descripción:
+     * Fecha de creación:21/12/2016
+     * Creado por: Juan Carlos Centeno Borja     
+-->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
@@ -24,11 +30,11 @@
             
                 <div class="form-group" >
                     <br /><br />Código de usuario
-                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
+                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario', 'required' => 'required'])!!}
                   &nbsp;&nbsp;<br /><br /><br />Fecha:&nbsp;&nbsp;&nbsp;&nbsp;Desde                  
-                  {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio'])!!}
+                  {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio', 'required' => 'required'])!!}
                   &nbsp;&nbsp;Hasta
-                  {!!Form::text('fecha_fin',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin'])!!}
+                  {!!Form::text('fecha_fin',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin', 'required' => 'required'])!!}
                 </div>
                  &nbsp;&nbsp; &nbsp;
                 <br /><br /><br />
