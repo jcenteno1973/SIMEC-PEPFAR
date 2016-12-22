@@ -18,3 +18,28 @@
     <a href="../administracion/catalogos" class="list-group-item">Catálogos</a>
 </div>
 @stop
+@section('contenido')
+<div class="panel panel-default">
+    {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+            
+                <div class="form-group" >
+                    <br /><br />Código de usuario
+                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
+                  &nbsp;&nbsp;<br /><br /><br />Fecha:&nbsp;&nbsp;&nbsp;&nbsp;Desde                  
+                  {!!Form::text('name',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio'])!!}
+                  &nbsp;&nbsp;Hasta
+                  {!!Form::text('name',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin'])!!}
+                </div>
+                 &nbsp;&nbsp; &nbsp;
+                <br /><br /><br />
+   {!! Form::close() !!}
+    
+</div>
+<script>
+    $('.datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        language: "es",
+        autoclose: true
+    });
+</script>
+@stop
