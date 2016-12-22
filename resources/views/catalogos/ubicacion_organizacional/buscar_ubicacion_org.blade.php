@@ -37,7 +37,12 @@
                       <td>C&oacute;digo</td> 
                       <td>  {!!Form::text('codigo_unidad_dep',null,['class'=>'form-control', 'placeholder'=>'C&oacute;digo de Unidad/Depto'])!!}</td> 
                         <td>&nbsp;&nbsp;Unidad/<br />Departamento</td>
-                      <td>{!! Form::select('type', ['' => 'Unidad/Depto', 'activo fijo' => 'Activo Fijo', 'informatica' => 'Informática'], null, ['class' => 'form-control']) !!} </td>
+                   {{--   <td>{!! Form::select('type', ['' => 'Unidad/Depto', 'activo fijo' => 'Activo Fijo', 'informatica' => 'Informática'], null, ['class' => 'form-control']) !!} </td>  --}}
+                        <td><select name="rol_usuario" class="form-control" >
+                        @foreach($ubicacion_org as $ubicacion)
+                        <option>{{$ubicacion->nombre_unidad_dep}}</option>
+                        @endforeach
+                      </select></td>
                         <td>Responsable</td>
                       <td>   {!!Form::text('nombre_responsable',null,['class'=>'form-control', 'placeholder'=>'Responsable'])!!}</td> 
                 

@@ -60,7 +60,7 @@
                         </select>                    
                       @else
                         <select name="alquilado" class="form-control">
-                            <option value="0">hola </option>
+                            <option value="0">No </option>
                             <option value="1">Si </option>
                          </select> 
                       @endif
