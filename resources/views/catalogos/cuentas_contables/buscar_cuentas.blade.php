@@ -25,7 +25,7 @@
     <!-- filtro busqueda de ubicacion, los "&nbsp; son espacios"-->
     {!! Form::open(['route' => 'administracion.contable.index', 'class' => 'navbar-form navbar-left', 'method'=>'GET']) !!}
         <div class="form-group">
-          <label for="codigo">Cuenta Contable :</label>
+          <label for="codigo">C&oacute;digo de la cuenta Contable :</label>
           {!!Form::text('codigo',null,['class'=>'form-control', 'placeholder'=>'Codigo cuenta contable'])!!}
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
@@ -41,13 +41,8 @@
         <thead>
             <th><center> #</center></th>
             <th> <center>C&oacute;digo</center></th>
-            <th> <center>Cuenta</center></th>
+            <th> <center>Nombre de Cuenta</center></th>
             <th><center>Estado</center></th>
-        <th><center> Usuario cre&oacute;</center></th>            
-            <th><center>Usuario Modifica</center></th>
-            <th><center>Fecha Creaci&oacute;n</center></th>
-            <th><center>Fecha Modificaci&oacute;n</center></th>
-
             <th><center>Opciones</center></th>
 
         </thead>
@@ -58,14 +53,9 @@
                 <td><center>{{$cuentas->cta_contable_activo_fijo}}</center></td>
                 <td><center>{{$cuentas->cta_contable_depreciacion}}</center></td>        
                 <td><center>{{$cuentas->estado_registro}}</center></td>
-                <td><center>{{$cuentas->id_usuario_crea}}</center></td>
-                <td><center>{{$cuentas->id_usuario_modifica}}</center></td>
-                <td><center>{{$cuentas->fecha_hora_creacion}}</center></td>
-                <td><center>{{$cuentas->fecha_hora_modificacion}}</center></td>
-               {{-- <td><center>{{$cuentas->ip_dispositivo}}</center></td> --}}
                 <td><center>
-                    <a href="{{route('administracion.contable.edit',$cuentas->id_cuenta_contable)}}" class="btn btn-danger"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a> 
-                    <a href="{{route('administracion.contable.destroy',$cuentas->id_cuenta_contable)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-warning"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                    <a href="{{route('administracion.contable.edit',$cuentas->id_cuenta_contable)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a> 
+                    <a href="{{route('administracion.contable.destroy',$cuentas->id_cuenta_contable)}}" onclick="return confirm('¿Seguro desea cambiar el estado?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                     </center>
                 </td>
         
