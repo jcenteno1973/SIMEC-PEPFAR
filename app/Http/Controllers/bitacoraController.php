@@ -27,7 +27,7 @@ class bitacoraController extends Controller
         $this->middleware('auth');
     }
     public function fnc_show_parametros() {
-      $this->create();
+      $this->create_mensaje('/imprimiendo reporte');
       return view('bitacora/get_parametros');  
     }
     public function fnc_show_consultar_bitacora(Request $request) {
@@ -66,7 +66,15 @@ class bitacoraController extends Controller
        $obj_bitacora->transaccion_realizada="{$_SERVER['REQUEST_URI']}";
        $obj_bitacora->save();
     }
-
+public function create_mensaje($mensajes)
+    { 
+       $fecha_hora= Carbon::now();
+       $obj_bitacora= new bitacora();
+       $obj_bitacora->id_usuario_app=Auth::user()->id_usuario_app;
+       $obj_bitacora->fecha_hora_transaccion=$fecha_hora;
+       $obj_bitacora->transaccion_realizada="{$_SERVER['REQUEST_URI']}".$mensajes;
+       $obj_bitacora->save();
+    }
     /**
      * Store a newly created resource in storage.
      *
