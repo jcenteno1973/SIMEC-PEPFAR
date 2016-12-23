@@ -75,6 +75,8 @@ class usuario_appController extends Controller
         $obj_rol_asignado= Role::find($id_rol_usuario);
         $usuario->attachRole($obj_rol_asignado);
         $obj_usuario=  User::find($usuario->id_usuario_app);
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create_mensaje('cambio de contraseña de usuario: '.$obj_usuario->nombre_usuario);
         flash()->success('Usuario creado exitosamente: '.$obj_usuario->nombre_usuario);
         return redirect()->back(); 
         }
@@ -83,15 +85,12 @@ class usuario_appController extends Controller
     }
     
     public function fnc_filtro_buscar_usuario(Request $request) {
-        $obj_rol_usuario= new rol_usuarioController();
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
-        $obj_role= Role::all();
-        
+        $obj_rol_usuario= new rol_usuarioController();            
+        $obj_role= Role::all();        
         if($request->estado_usuario!=1){
-           $request->estado_usuario=0; 
+           $request->estado_usuario=0;           
         }else{
-           $request->estado_usuario=1; 
+           $request->estado_usuario=1;            
         }   
         if($request->rol_usuario!=''){
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
@@ -106,8 +105,7 @@ class usuario_appController extends Controller
         
     }
     public function fnc_show_create() {
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
+        
         $obj_role= Role::all();
         $obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_cargo_emp= cargo_emp::all();
@@ -124,15 +122,14 @@ class usuario_appController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store()
-    {
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
+    { 
+             
         $obj_role= Role::all();
         $obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_cargo_emp= cargo_emp::all();
        $obj_inputs=Input::all();      
        $id_usuario_app=$obj_inputs['seleccionar'];
-       $obj_usuario=User::find($id_usuario_app);
+       $obj_usuario=User::find($id_usuario_app);      
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
                'obj_role',
@@ -141,18 +138,17 @@ class usuario_appController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 
+     * 
      */
+    
     public function show()
     {
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
+        //Listado de usuarios
         $obj_role= Role::all();
-        $obj_usuario=  User::paginate(10);
-        
+        $obj_usuario=  User::paginate(10);        
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
     }
 
@@ -163,14 +159,11 @@ class usuario_appController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit()
-    {   
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
+    {         
         $obj_role= Role::all();
         $obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_cargo_emp= cargo_emp::all();
-       $obj_inputs=Input::all(); 
-       //dd($obj_inputs);
+       $obj_inputs=Input::all();        
        if(sizeof($obj_inputs)==0)
        {
           flash()->warning('Seleccione un usuario') ;
@@ -190,8 +183,7 @@ class usuario_appController extends Controller
     }
     public function fnc_cambiar_estado(Request $request) {
     
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create(); 
+       $obj_controller_bitacora=new bitacoraController();       
        if($request->resultado=='')
        {
            flash()->warning('Seleccione un usuario') ;
@@ -204,9 +196,11 @@ class usuario_appController extends Controller
         if($obj_usuario->estado_usuario==1)
         {
              $obj_usuario->estado_usuario=0;
+             $obj_controller_bitacora->create_mensaje('Bloquear usuario: '.$obj_usuario->nombre_usuario);
         }  
         else {
-           $obj_usuario->estado_usuario=1;  
+           $obj_usuario->estado_usuario=1;
+           $obj_controller_bitacora->create_mensaje('Activar usuario: '.$obj_usuario->nombre_usuario);
         }
         $obj_usuario->id_usuario_modifica=Auth::user()->id_usuario_app;
         $obj_usuario->ip_dispositivo=$request->ip();
@@ -253,6 +247,8 @@ class usuario_appController extends Controller
         $usuario->id_usuario_modifica=Auth::user()->id_usuario_app;
         $usuario->ip_dispositivo=$request->ip();
         $usuario->save();
+         $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create_mensaje('cambio de contraseña de usuario: '.$usuario->nombre_usuario);
         flash()->success('Cambio de contraseña realizado exitosamente');
         return  redirect()->back(); 
    }
@@ -314,12 +310,13 @@ class usuario_appController extends Controller
         $usuario->ip_dispositivo=$request->ip();
         $usuario->nombre_usuario=$request->nombre_usuario;
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
-        $usuario->id_rol_usuario=$id_rol_usuario;
-        //dd($usuario);
+        $usuario->id_rol_usuario=$id_rol_usuario;        
         $usuario->save();
         //$obj_rol_asignado= Role::find($id_rol_usuario);
         //$usuario->attachRole($obj_rol_asignado);
-        flash()->success('Cambio realizado exitosamente');
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create_mensaje('Modificacion de usuario: '.$usuario->nombre_usuario);
+        flash()->success('Modificación realizada exitosamente');
         return  redirect()->back(); 
     }
 

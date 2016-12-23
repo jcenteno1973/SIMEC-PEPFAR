@@ -26,8 +26,7 @@ class bitacoraController extends Controller
      public function __construct() {
         $this->middleware('auth');
     }
-    public function fnc_show_parametros() {
-      $this->create_mensaje('/imprimiendo reporte');
+    public function fnc_show_parametros() {      
       return view('bitacora/get_parametros');  
     }
     public function fnc_show_consultar_bitacora(Request $request) {
@@ -35,6 +34,7 @@ class bitacoraController extends Controller
     $fecha_fin=Carbon::createFromFormat('d/m/Y', $request->fecha_fin);
     $fecha_fin->addDay();    
     $reporte_generado='/reportes_jasper/'.time().'_bitacora';//time le aggrega un número generado por la hora
+    $this->create_mensaje('Generar reporte: Bitacora');
     $output = public_path() .$reporte_generado; 
     $report = new JasperPHP;
     $report->process(
@@ -44,7 +44,7 @@ class bitacoraController extends Controller
     array('usuario_app'=> $request->nombre_usuario,'fecha_inicio' =>$fecha_inicio->toDateString(),'fecha_fin'=>$fecha_fin->toDateString()),
     config('conexion_report.conexion')
     )->execute();
-    $reporte_generado='..'.$reporte_generado.'.pdf';
+    $reporte_generado='..'.$reporte_generado.'.pdf';    
     return view('bitacora/consultar_bitacora',compact('reporte_generado'));
     }
     public function index()
@@ -72,7 +72,7 @@ public function create_mensaje($mensajes)
        $obj_bitacora= new bitacora();
        $obj_bitacora->id_usuario_app=Auth::user()->id_usuario_app;
        $obj_bitacora->fecha_hora_transaccion=$fecha_hora;
-       $obj_bitacora->transaccion_realizada="{$_SERVER['REQUEST_URI']}".$mensajes;
+       $obj_bitacora->transaccion_realizada=$mensajes;
        $obj_bitacora->save();
     }
     /**
