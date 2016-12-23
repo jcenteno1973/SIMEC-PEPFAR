@@ -44,7 +44,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12"><!--area de trabajo --> 
+		<div class="col-md-12"><!--area de trabajo -->                     
                     @if (session()->has('flash_notification.message'))
                     @include ('flash::message')
                     @endif 
@@ -55,7 +55,7 @@
                           <div>{{ $error }}</div>
                       @endforeach
                     </div>
-                @endif 
+                    @endif 
 			<div class="row"><!--filtros -->
 				<div class="col-md-12">
                                     @yield('filtros_consulta') 

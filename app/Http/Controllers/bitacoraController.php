@@ -58,7 +58,7 @@ class bitacoraController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
        $fecha_hora= Carbon::now();
        $obj_bitacora= new bitacora();
        $obj_bitacora->id_usuario_app=Auth::user()->id_usuario_app;
