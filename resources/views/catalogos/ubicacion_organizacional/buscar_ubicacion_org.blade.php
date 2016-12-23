@@ -80,8 +80,8 @@
                 <td>&nbsp;&nbsp;{{$ubicacion->estado_registro}}</td>
                 <td>
                     <center>
-                    <a href="{{route('administracion.buscar_ubicacion.edit',$ubicacion->id_ubicacion_org)}}" class="btn btn-danger"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a> 
-                    <a href="{{route('administracion.buscar_ubicacion.destroy',$ubicacion->id_ubicacion_org)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-warning"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                    <a href="{{route('administracion.buscar_ubicacion.edit',$ubicacion->id_ubicacion_org)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a> 
+                    <a href="{{route('administracion.buscar_ubicacion.destroy',$ubicacion->id_ubicacion_org)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
                     </center>
                 </td>
         
