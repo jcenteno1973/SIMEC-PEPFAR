@@ -17,8 +17,23 @@
   <div class="panel-heading"  >
       <h5 class="text-center">Pantalla de ingreso</h5>
   </div> 
-    <div class="panel-body">
-        <div class="col-md-6 col-md-offset-3">
+    <div class="panel-body"> 
+        <h4>
+       <strong>
+        @if (session()->has('flash_notification.message'))
+        @include ('flash::message')
+        @endif 
+        @if($errors->any())
+        <div class="alert alert-warning" role="alert">
+       Por favor corregir los siguientes errores
+           @foreach ($errors->all() as $error)
+              <div>{{ $error }}</div>
+          @endforeach
+        </div>
+        @endif
+        </strong>
+        </h4>
+        <div class="col-md-6 col-md-offset-3">        
             <div class="col-md-6 col-md-offset-3">
             <img class="profile-img" src="/sicafam/public/images/logo_login2.png" width="150" height="150"> 
             </div>

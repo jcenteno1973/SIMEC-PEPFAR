@@ -44,18 +44,8 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12"><!--area de trabajo -->                     
-                    @if (session()->has('flash_notification.message'))
-                    @include ('flash::message')
-                    @endif 
-                    @if($errors->any())
-                    <div class="alert alert-warning" role="alert">
-                    <p>Por favor corregir los siguientes errores</p>
-                       @foreach ($errors->all() as $error)
-                          <div>{{ $error }}</div>
-                      @endforeach
-                    </div>
-                    @endif 
+		<div class="col-md-12"><!--area de trabajo -->                    
+                   
 			<div class="row"><!--filtros -->
 				<div class="col-md-12">
                                     @yield('filtros_consulta') 
