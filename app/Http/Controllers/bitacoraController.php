@@ -26,7 +26,7 @@ class bitacoraController extends Controller
      public function __construct() {
         $this->middleware('auth');
     }
-    public function fnc_show_parametros() {      
+    public function fnc_show_parametros() {         
       return view('bitacora/get_parametros');  
     }
     public function fnc_show_consultar_bitacora(Request $request) {
