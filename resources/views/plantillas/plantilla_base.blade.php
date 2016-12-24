@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     @section('head')
-    <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />    
     <!-- Jquery -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
