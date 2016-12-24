@@ -1,6 +1,6 @@
 <?php
 /**
-     * Nombre del archivo: .php
+     * Nombre del archivo: rol_usuario.php
      * Descripción:
      * Fecha de creación:24/11/2016
      * Creado por: Juan Carlos Centeno Borja
@@ -73,8 +73,7 @@ class rol_usuarioController extends Controller
        $obj_rol_usuario->nombre_rol=$request->nombre_rol;
        $obj_rol_usuario->descripcion=$request->descripcion;
        $obj_rol_usuario->estado_registro=1;
-       $obj_rol_usuario->fecha_hora_creacion=$date;
-       //dd($obj_rol_usuario);
+       $obj_rol_usuario->fecha_hora_creacion=$date;      
        $obj_rol_usuario->save();
        flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' creado exitosamente ');
        return redirect()->back();         

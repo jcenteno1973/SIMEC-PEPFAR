@@ -20,7 +20,7 @@ use App\Http\Controllers\rol_usuarioController;
 use App\Http\Controllers\cargo_empController;
 use App\Http\Controllers\ubicacion_orgController;
 use Illuminate\Support\Facades\Input;
-
+use DB;
 //use Illuminate\Support\Facades\Request;
 
 class usuario_appController extends Controller
@@ -40,13 +40,12 @@ class usuario_appController extends Controller
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create(Request $request)
-    {   $obj_rol_usuario= new rol_usuarioController();
+    {   /**    
+         * Guarda en la base de datos un nuevo usuario
+         */
+        $obj_rol_usuario= new rol_usuarioController();
         $obj_cargo_emp= new cargo_empController();
         $obj_ubicacion_org= new ubicacion_orgController();
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
@@ -85,6 +84,9 @@ class usuario_appController extends Controller
     }
     
     public function fnc_filtro_buscar_usuario(Request $request) {
+        /**    
+         * Realiza busqueda de usuarios con filtros
+         */
         $obj_rol_usuario= new rol_usuarioController();            
         $obj_role= Role::all();        
         if($request->estado_usuario!=1){
@@ -105,7 +107,9 @@ class usuario_appController extends Controller
         
     }
     public function fnc_show_create() {
-        
+        /**    
+         * Crea el formulario de nuevo usuario
+         */
         $obj_role= Role::all();
         $obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_cargo_emp= cargo_emp::all();
@@ -115,12 +119,7 @@ class usuario_appController extends Controller
                 'obj_ubicacion_org'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store()
     { 
              
@@ -137,12 +136,6 @@ class usuario_appController extends Controller
                'obj_ubicacion_org'));     
     }
 
-    /**
-     * 
-     *
-     * 
-     * 
-     */
     
     public function show()
     {
@@ -152,14 +145,12 @@ class usuario_appController extends Controller
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit()
-    {         
+    {      
+        /**    
+         * Crea el formulario para modificar un usuario
+         */
         $obj_role= Role::all();
         $obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_cargo_emp= cargo_emp::all();
@@ -183,6 +174,9 @@ class usuario_appController extends Controller
     }
     public function fnc_cambiar_estado(Request $request) {
     
+        /**    
+         * Cambia el estado de un usuario
+         */
        $obj_controller_bitacora=new bitacoraController();       
        if($request->resultado=='')
        {
@@ -211,6 +205,9 @@ class usuario_appController extends Controller
         
     }
     public function fnc_cambiar_contrasenia() {
+        /**    
+         * Crea formulario para cambiar la contraseña de un usuario
+         */
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create();       
        $obj_inputs=Input::all(); 
@@ -236,7 +233,9 @@ class usuario_appController extends Controller
      * @return \Illuminate\Http\Response
      */
    public function fnc_guardar_contrasenia(Request $request) {
-        
+        /**    
+         * Guarda en la base de datos la nueva contraseña del usuario
+         */
         $usuario = User::find($request->id_usuario_app); 
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'));   
         $this->validate($request, $rules);    
@@ -254,7 +253,9 @@ class usuario_appController extends Controller
    }
     
     public function fnc_guardar_modificacion(Request $request)
-    {   
+    {   /**    
+         * Guarda en la base de datos las modificaciones de un usuario
+         */
         $obj_rol_usuario= new rol_usuarioController();
         $obj_cargo_emp= new cargo_empController();
         $obj_ubicacion_org= new ubicacion_orgController();        
@@ -311,9 +312,10 @@ class usuario_appController extends Controller
         $usuario->nombre_usuario=$request->nombre_usuario;
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
         $usuario->id_rol_usuario=$id_rol_usuario;        
-        $usuario->save();
-        //$obj_rol_asignado= Role::find($id_rol_usuario);
-        //$usuario->attachRole($obj_rol_asignado);
+        $usuario->save();        
+        $obj_rol_asignado= Role::find($id_rol_usuario);
+        DB::table("role_user")->where("role_user.user_id",$request->id_usuario_app)->delete();    
+        $usuario->attachRole($obj_rol_asignado);
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create_mensaje('Modificacion de usuario: '.$usuario->nombre_usuario);
         flash()->success('Modificación realizada exitosamente');
@@ -330,13 +332,12 @@ class usuario_appController extends Controller
     {
         //
     }
-    /**
+       
+    public function limpiar($String){
+        /**
      *Descripción:Elimina los acentos, la ñ y caracteres especiales.
      *@author: https://coudlain.wordpress.com/2013/02/05/php-funcion-para-quitar-acentos-y-caracteres-especiales-by-estebannovo/
-     *@param:  String  $String
-     *@return: $String
-     */    
-    public function limpiar($String){
+     */ 
     $String = str_replace(array('á','à','â','ã','ª','ä'),"a",$String);
     $String = str_replace(array('Á','À','Â','Ã','Ä'),"a",$String);
     $String = str_replace(array('Í','Ì','Î','Ï'),"i",$String);
@@ -353,8 +354,7 @@ class usuario_appController extends Controller
     $String = str_replace("ñ","n",$String);
     $String = str_replace("Ñ","n",$String);
     $String = str_replace("Ý","y",$String);
-    $String = str_replace("ý","y",$String);
-     
+    $String = str_replace("ý","y",$String);     
     $String = str_replace("&aacute;","a",$String);
     $String = str_replace("&Aacute;","a",$String);
     $String = str_replace("&eacute;","e",$String);
@@ -367,13 +367,11 @@ class usuario_appController extends Controller
     $String = str_replace("&Uacute;","u",$String);
     return $String;
 }
-    /**
-     * .
-     *
-     * @param  Request $request
-     * @return $nombre_usuario
-     */
+   
     public function fnc_nombre_usuario(Request $request) {
+        /**    
+         * Crea el nombre de usaurio de la aplicación
+         */
        $nombres=$request->nombres_usuario;
        $apellidos=$request->apellidos_usuario;
        //Obtener el primer nombre
