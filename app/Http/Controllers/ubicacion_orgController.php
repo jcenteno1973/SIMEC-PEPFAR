@@ -25,7 +25,7 @@ class ubicacion_orgController extends Controller
     public function index(Request $request)
     {
         //   return view('home');
-        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->orderBy('id_ubicacion_org', 'ASC')->paginate(20);
+        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->orderBy('id_ubicacion_org', 'ASC')->paginate(10);
         return view('catalogos/ubicacion_organizacional/buscar_ubicacion_org', compact('ubicacion_org'));
     }
     public function fnc_busqueda_filtro(Request $request) {
