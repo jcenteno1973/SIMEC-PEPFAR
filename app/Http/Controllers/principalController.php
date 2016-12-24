@@ -8,7 +8,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\bitacoraController;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -22,39 +22,31 @@ class principalController extends Controller
     public function __construct() {
         $this->middleware('auth');
     }
-    public function fnc_show_principal(){
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+    public function fnc_show_principal(){       
         return view('principal');
     }
      public function fnc_show_fichas(){
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
         return view('ficha_inicio');
     }
      public function fnc_show_inventario(){
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
         return view('inventario_inicio');
     }
      public function fnc_show_solicitudes(){
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
         return view('solicitudes_inicio');
     }
     public function fnc_show_procesos(){
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
         return view('procesos_inicio');
     }
     public function fnc_show_reportes(){
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
         return view('reportes_inicio');
     }
      public function fnc_show_administracion() {
-        $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
         return view('administracion_inicio'); 
     }
     public function index()
@@ -63,8 +55,7 @@ class principalController extends Controller
     }
    
     public function fnc_show_catalogos() {
-        $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       
          return view('catalogos/catalogos'); 
     }
     /**
