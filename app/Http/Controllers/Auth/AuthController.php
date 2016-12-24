@@ -11,8 +11,7 @@ use Validator;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-//use Illuminate\Routing\Controller;
-//use Illuminate\Support\Facades\Input;
+
 
 class AuthController extends Controller
 {
@@ -39,6 +38,9 @@ class AuthController extends Controller
     }
    public function fnc_ingresar(Request $request)//Agregando request
     {
+       /**     
+     * Autenticación de usuario
+     */
       $nombre_usuario = $request->nombre_usuario; // Input::get('nombre_usuario');
       $password = $request->password; //Input::get('password');
       $rules =array('password'=> array('min:8','max:25')); //reglas de validación
@@ -46,9 +48,10 @@ class AuthController extends Controller
     if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_registro'=>1]))
       {
        $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+       $obj_controller_bitacora->create_mensaje('Ingreso a la aplicación');
        if(Auth::user()->estado_usuario==0)
        {
+          $obj_controller_bitacora->create_mensaje('Usuario bloqueado');
           Auth::logout();
           flash()->warning('Usuario bloqueado'); 
           return redirect('/');
