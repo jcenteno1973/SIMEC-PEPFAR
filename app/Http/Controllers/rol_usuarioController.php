@@ -27,7 +27,7 @@ class rol_usuarioController extends Controller
      */
     public function index(Request $request)
     {
-       dd($request);
+       
     }
      /**
      * 
@@ -36,6 +36,9 @@ class rol_usuarioController extends Controller
      */
   
      public function fnc_obtener_id($param) {
+    /**
+     * Devuelve el id del rol que recibe como parametro
+    */
          $id_rol_usuario=0;
          $obj_rol_usuario=  Role::all();
          foreach ($obj_rol_usuario as $obj_roles_usuarios){
@@ -64,6 +67,9 @@ class rol_usuarioController extends Controller
      */
     public function store(Request $request)
     {
+    /**
+     * Crea un nuevo rol
+    */
        $obj_rol_usuario= new Role();
        $date = Carbon::now();
        $rules =array('nombre_rol'=>'unique:rol_usuario');        
@@ -73,6 +79,8 @@ class rol_usuarioController extends Controller
        $obj_rol_usuario->estado_registro=1;
        $obj_rol_usuario->fecha_hora_creacion=$date;      
        $obj_rol_usuario->save();
+       $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create_mensaje('Crear rol: '.$obj_rol_usuario->nombre_rol);
        flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' creado exitosamente ');
        return redirect()->back();         
     }
@@ -95,8 +103,9 @@ class rol_usuarioController extends Controller
      */
     public function edit()
     {
-       $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create();
+    /**
+     * Crea formulario para editar rol
+    */
        $obj_role=  Role::all();
        return view('rol_usuario/editar_rol', compact('obj_role'));
         
@@ -111,6 +120,9 @@ class rol_usuarioController extends Controller
      */
     public function update(Request $request)
     {  
+    /**
+     * Guarda en la base de datos modificación de rol
+    */
        if($request->rol_usuario=='')
        {
          flash()->warning('Seleccione un rol') ; 
@@ -125,6 +137,8 @@ class rol_usuarioController extends Controller
          $obj_rol_usuario->nombre_rol=$request->nombre_rol;
          $obj_rol_usuario->descripcion=$request->descripcion;
          $obj_rol_usuario->save();
+          $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create_mensaje('Modificar rol: '.$obj_rol_usuario->nombre_rol);
          flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' modificado exitosamente');
          return redirect()->back(); 
        }
@@ -132,6 +146,8 @@ class rol_usuarioController extends Controller
          $obj_rol_usuario->nombre_rol=$request->nombre_rol;
          $obj_rol_usuario->descripcion=$request->descripcion;
          $obj_rol_usuario->save();
+          $obj_controller_bitacora=new bitacoraController();
+       $obj_controller_bitacora->create_mensaje('Modificar rol: '.$obj_rol_usuario->nombre_rol);
          flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' modificado exitosamente');
          return redirect()->back(); 
        }
