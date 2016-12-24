@@ -23,8 +23,9 @@ class permisos_appController extends Controller
      */
     public function index(Request $request)
     {
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
+      /**     
+     * Crea formulario con los permisos de la aplicación
+     */       
         $nombre_rol=$request->nombre_rol;
         if($request->nombre_rol=='')
        {
@@ -62,6 +63,9 @@ class permisos_appController extends Controller
      */
     public function store(Request $request)
     {
+     /**     
+     * Asignar permisos a un rol
+     */
         if(empty($request->permisos))
         {
          flash()->warning('Seleccione por lo menos un permiso') ; 
@@ -74,7 +78,9 @@ class permisos_appController extends Controller
         foreach ($request->input('permisos') as $value) 
         {
             $obj_role->attachPermission($value);
-        }        
+        } 
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create_mensaje('Asignar permisos al rol: '.$request->nombre_rol);
         flash()->success('Permisos asignados exitosamente') ; 
         return redirect()->back();  
        

@@ -52,9 +52,7 @@ class rol_usuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();
+    {         
         return view('rol_usuario/nuevo_rol');
     }
 
