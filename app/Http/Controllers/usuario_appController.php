@@ -207,9 +207,7 @@ class usuario_appController extends Controller
     public function fnc_cambiar_contrasenia() {
         /**    
          * Crea formulario para cambiar la contraseña de un usuario
-         */
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create();       
+         */        
        $obj_inputs=Input::all(); 
      if($obj_inputs['resultado']=='')
      {
