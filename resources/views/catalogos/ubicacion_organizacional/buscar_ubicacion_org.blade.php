@@ -24,6 +24,7 @@
 <div class="list-group">
     <a class="list-group-item active">Buscar ubicaci&oacute;n organizacional</a>
     <a href="../administracion/buscar_ubicacion/create" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a> 
+    <a href="../administracion/catalogos" class="list-group-item">Men&uacute; cat&aacute;logos</a> 
 </div>
 @stop
 @section('contenido')

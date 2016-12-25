@@ -20,7 +20,7 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
+    <a href="../../../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
     <a href="../../../administracion/buscar_ubicacion/create" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
 </div>
 @stop
