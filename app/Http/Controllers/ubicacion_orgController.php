@@ -7,13 +7,14 @@
      *
      * Modificado por: Karla Barrera 
      * Fecha modificación: 20/12/2016
-     * Descripción: Ruta para buscar catálogo
+     * Descripción: Ruta y funciones para buscar ubicacion organizacional 
      */
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ubicacion_organizacional;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class ubicacion_orgController extends Controller
 {
@@ -25,7 +26,7 @@ class ubicacion_orgController extends Controller
     public function index(Request $request)
     {
         //   return view('home');
-        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->orderBy('id_ubicacion_org', 'ASC')->paginate(10);
+        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->_buscar_u_dpto($request->get('nombre_unidad_dep'))->_buscar_responsable($request->get('nombre_responsable'))->orderBy('id_ubicacion_org', 'ASC')->paginate(10);
         return view('catalogos/ubicacion_organizacional/buscar_ubicacion_org', compact('ubicacion_org'));
     }
     public function fnc_busqueda_filtro(Request $request) {
