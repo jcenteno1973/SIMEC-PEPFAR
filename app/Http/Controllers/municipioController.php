@@ -6,20 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\ficha;
-use App\Models\departamento;
 use App\Models\municipio;
 
-class fichaController extends Controller
+class municipioController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function fnc_get_municipios($id) {
+        $obj_municipios=  municipio::fnc_municipios($id);
+        return $obj_municipios->lists('nombre_municipio','id_municipio');         
+    }
     public function index()
     {
         //
@@ -34,30 +33,7 @@ class fichaController extends Controller
     {
         //
     }
-    public function fnc_create_mueble() {
-    /**
-    * Crea formulario para crear nueva ficha de mueble
-     */  
-     $departamentos=  departamento::lists('nombre_departamento','id_departamento');
-     $obj_municipios= municipio::fnc_municipios(6);
-     $municipios=$obj_municipios->lists('nombre_municipio','id_municipio');
-     return view('ficha/nueva_ficha_mueble',  compact('departamentos','municipios'));   
-        
-    }
-    public function fnc_create_inmueble() {
-        /**
-    * Crea formulario para crear nueva ficha de inmueble
-     */
-     return view('ficha/nueva_ficha_inmueble');   
-        
-    }
-    public function fnc_create_vehiculo() {
-    /**
-    * Crea formulario para crear nueva ficha de vehiculo
-    */    
-     return view('ficha/nueva_ficha_vehiculo');   
-        
-    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -66,8 +42,7 @@ class fichaController extends Controller
      */
     public function store(Request $request)
     {
-        //Primero crear el codigo de inventario
-        
+        //
     }
 
     /**
@@ -76,10 +51,9 @@ class fichaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-       
-        
+        //
     }
 
     /**

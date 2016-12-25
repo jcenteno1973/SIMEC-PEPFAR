@@ -25,7 +25,52 @@
 @stop 
 @section('contenido')
 <div class="panel panel-default">
-    
-    
+    <table class="table table-condensed">    
+            <tbody>
+              <tr>
+                <td>Departamento *</td>
+                <td>                 
+                      {!! Form::select('departamento',$departamentos,6,['id'=>'departamento']) !!}
+                </td>
+                <td>Municipio *</td>
+                <td>                    
+                   {!! Form::select('municipio',$municipios,104,['id'=>'municipio']) !!}
+                </td>
+              </tr>
+              <tr>
+                <td>Unidad o departamento *</td>
+                <td>                     
+                      {!! Form::text('nombres_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td>
+                <td>Clase del bien *</td>
+                <td>                 
+                      {!! Form::text('apellidos_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+                </td>
+              </tr>
+              <tr>
+                <td>Fuente financiamiento *</td>
+                <td>
+                      {!! Form::email('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+                </td>
+                <td> Tipo bienes *</td>
+                <td>                    
+                     {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}                               
+                </td>
+              </tr>
+               <tr>
+                   <td>Descripción *</td>
+                <td>                 
+                   {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td>
+                <td>Estado *</td>
+                <td>
+                   {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td>                
+              </tr>
+              <tr>
+               
+              </tr>
+            </tbody>
+          </table>       
 </div>
 @stop   

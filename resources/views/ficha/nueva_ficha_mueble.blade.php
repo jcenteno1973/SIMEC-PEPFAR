@@ -28,56 +28,47 @@
     <table class="table table-condensed">    
             <tbody>
               <tr>
-                <td>No DUI *</td>
+                <td>Departamento *</td>
                 <td>                 
-                      {!! Form::text('numero_dui', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                      {!! Form::select('departamento',$departamentos,6,['id'=>'departamento']) !!}
                 </td>
-                <td>Unidad o Departamento *</td>
-                <td>
-                    <select name="id_ubicacion_org" class="form-control">
-                        @foreach($obj_ubicacion_org as $obj_ubicaciones_org)
-                        <option>{{$obj_ubicaciones_org->nombre_unidad_dep}}</option>
-                        @endforeach
-                   </select>
+                <td>Municipio *</td>
+                <td>                    
+                   {!! Form::select('municipio',$municipios,104,['id'=>'municipio']) !!}
                 </td>
               </tr>
               <tr>
-                <td>Nombres *</td>
+                <td>Unidad o departamento *</td>
                 <td>                     
                       {!! Form::text('nombres_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>
-                <td>Apellidos *</td>
+                <td>Clase del bien *</td>
                 <td>                 
                       {!! Form::text('apellidos_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
                 </td>
               </tr>
               <tr>
-                <td>Correo electrónico *</td>
+                <td>Fuente financiamiento *</td>
                 <td>
                       {!! Form::email('email', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
                 </td>
-                <td> Contraseña *</td>
+                <td> Tipo bienes *</td>
                 <td>                    
-                    <input type="password" class="form-control" name="password" required>                                  
+                     {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}                               
                 </td>
               </tr>
                <tr>
-                <td>Rol *</td>
-                <td>
-                   <select name="rol_usuario" class="form-control" >
-                        @foreach($obj_role as $obj_roles)
-                        <option>{{$obj_roles->nombre_rol}}</option>
-                        @endforeach
-                   </select>
-                </td>
-                <td>Cargo *</td>
+                   <td>Descripción *</td>
                 <td>                 
-                    <select name="cargo_emp" class="form-control">
-                        @foreach($obj_cargo_emp as $obj_cargos_emp)
-                        <option>{{$obj_cargos_emp->nombre_cargo}}</option>
-                        @endforeach                      
-                   </select>
+                   {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>
+                <td>Estado *</td>
+                <td>
+                   {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td>                
+              </tr>
+              <tr>
+               
               </tr>
             </tbody>
           </table>       

@@ -18,5 +18,8 @@ class departamento extends Model
     protected $fillable = [
         'codigo_departamento',
         'nombre_departamento'
-];    
+     ]; 
+     public function municipios() {
+         return $this->hasMany('municipio');
+     }   
 }

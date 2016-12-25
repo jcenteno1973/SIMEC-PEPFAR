@@ -18,11 +18,14 @@
     @section('head')
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />    
-    <!-- Jquery -->
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+     
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/scripts.js')}}"></script>
        <!-- Datepicker Files -->
     <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
-    <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-standalone.css')}}">
+    <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.standalone.css')}}">
     <script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
     <!-- Languaje -->
     <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
@@ -136,8 +139,6 @@
 	</div>
 	</div>
     
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/js/scripts.js')}}"></script>
+
 </body>
 

@@ -18,9 +18,9 @@
     @section('head')
        <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
        <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
-        <!-- 
-        {!! Html::style('assets/css/bootstrap.css') !!}
-        {!! Html::style('assets/css/bootstrap.min.css') !!}-->
+       <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('assets/js/scripts.js')}}"></script>
     @show    
 </head>
 <body>
@@ -73,12 +73,5 @@
 	</div>
 	</div>
     
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/js/scripts.js')}}"></script>
-
-<!-- <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/scripts.js"></script> -->
 </body>
 

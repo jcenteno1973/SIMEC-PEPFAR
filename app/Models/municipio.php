@@ -17,5 +17,13 @@ class municipio extends Model
     public $timestamps = false;
     protected $fillable = [
         'nombre_municipio'
-    ];    
+    ]; 
+    public static function fnc_municipios($parametro) {
+        
+     return municipio::where('id_departamento','=',$parametro)
+             ->get();
+    }
+    public function departamentos() {        
+        return $this->belongsTo('departamento','id_departamento');
+    }
 }
