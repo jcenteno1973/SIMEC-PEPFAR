@@ -68,7 +68,10 @@
                 </td>                
               </tr>
               <tr>
-               
+                  <td></td>
+                  <td>
+                      <input type="file" class="form-control" name="file" >
+                  </td>
               </tr>
             </tbody>
           </table>       
