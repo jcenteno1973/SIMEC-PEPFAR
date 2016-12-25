@@ -10,6 +10,9 @@ use App\Models\ficha;
 
 class fichaController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +32,27 @@ class fichaController extends Controller
     {
         //
     }
-
+    public function fnc_create_mueble() {
+    /**
+    * Crea formulario para crear nueva ficha de mueble
+     */   
+     return view('ficha/nueva_ficha_mueble');   
+        
+    }
+    public function fnc_create_inmueble() {
+        /**
+    * Crea formulario para crear nueva ficha de inmueble
+     */
+     return view('ficha/nueva_ficha_inmueble');   
+        
+    }
+    public function fnc_create_vehiculo() {
+    /**
+    * Crea formulario para crear nueva ficha de vehiculo
+    */    
+     return view('ficha/nueva_ficha_vehiculo');   
+        
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,7 +61,8 @@ class fichaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Primero crear el codigo de inventario
+        
     }
 
     /**
@@ -49,8 +73,8 @@ class fichaController extends Controller
      */
     public function show()
     {
-        //
-        return view('ficha_buscar.blade.php');
+       
+        
     }
 
     /**

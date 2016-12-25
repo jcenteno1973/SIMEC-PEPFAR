@@ -23,6 +23,9 @@ Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => '
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
 Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);
 Route::get('fichas',['as' => 'fichas','uses' => 'principalController@fnc_show_fichas']);
+Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );
+Route::get('ficha/nueva_ficha_vehiculo',['as' => 'ficha/nueva_ficha_vehiculo', 'uses' => 'fichaController@fnc_create_vehiculo'] );
+Route::get('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_create_mueble'] );
 Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
