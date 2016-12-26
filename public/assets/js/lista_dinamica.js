@@ -10,8 +10,9 @@ $(document).ready(function(){
 			{ option: $(this).val() },
 			function(data) {
 				$('#municipio').empty();
-				$.each(data, function(key, element) {
-					$('#municipio').append("<option value='" + key + "'>" + element + "</option>");
+				$.each(data, function(key, element) 
+                                {
+				$('#municipio').append("<option value='" + key + "'>" + element + "</option>");
 				});
 			});
 		});

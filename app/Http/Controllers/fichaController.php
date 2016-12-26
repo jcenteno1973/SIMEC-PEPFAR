@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Models\ficha;
 use App\Models\departamento;
 use App\Models\municipio;
+use App\Models\ubicacion_organizacional;
+use App\Models\clase_bien;
+use App\Models\fuente_financiamiento;
+use App\Models\tipo_bien_mueble;
+use App\Models\cuenta_contable;
+use App\Models\estado_af;
 
 class fichaController extends Controller
 {
@@ -39,9 +45,25 @@ class fichaController extends Controller
     * Crea formulario para crear nueva ficha de mueble
      */  
      $departamentos=  departamento::lists('nombre_departamento','id_departamento');
+     $ubicacion_org=  ubicacion_organizacional::lists('nombre_unidad_dep','id_ubicacion_org');
+     $clase_bien=  clase_bien::lists('nombre_clase_bien','id_clase_bien');
+     $fuente_financiamiento=  fuente_financiamiento::lists('nombre_fuente_financ','id_fuente_financiamiento');
+     $tipo_bien=  tipo_bien_mueble::lists('nombre_tipo_bien_mueble','id_tipo_bien_mueble');
+     $cuenta_contable=  cuenta_contable::all();
+     $cuenta_contable2=  cuenta_contable::lists('cta_contable_depreciacion','id_cuenta_contable');
+     $estado_af=  estado_af::lists('nombre_estado','id_estado');
      $obj_municipios= municipio::fnc_municipios(6);
      $municipios=$obj_municipios->lists('nombre_municipio','id_municipio');
-     return view('ficha/nueva_ficha_mueble',  compact('departamentos','municipios'));   
+     
+     return view('ficha/nueva_ficha_mueble',  compact('departamentos',
+             'municipios',
+             'clase_bien',
+             'fuente_financiamiento',
+             'tipo_bien',
+             'cuenta_contable',
+             'cuenta_contable2',
+             'estado_af',
+             'ubicacion_org'));   
         
     }
     public function fnc_create_inmueble() {

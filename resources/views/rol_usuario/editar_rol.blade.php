@@ -3,7 +3,8 @@
      * Descripci�n:
      * Fecha de creaci�n:08/12/2016
      * Creado por: Yamileth Campos
-
+     *Modificado por:Juan Carlos Centeno
+     *Fecha modificación: 26/12/2016
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -34,7 +35,7 @@
                     <tr>                       
                       <td>Rol* </td>
                       <td>
-                          <select name="rol_usuario" class="form-control" onchange="myFunction(this.value)">
+                        <select name="rol_usuario" class="form-control" onchange="myFunction(this.value)">
                         <option></option>
                         @foreach($obj_role as $obj_roles)
                         <option>{{$obj_roles->nombre_rol}}</option>
