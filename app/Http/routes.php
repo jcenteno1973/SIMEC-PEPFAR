@@ -52,7 +52,7 @@ Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses
 Route::resource('administracion/buscar_ubicacion','ubicacion_orgController');
 //ruta para cuentas contables
 Route::resource('administracion/contable','cuenta_contaController');
-Route::resource('administracion/colores','coloresController');
+Route::resource('administracion/color','coloresController');
 
 
 Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);
