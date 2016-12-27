@@ -31,9 +31,9 @@ class lista_color extends Model
 //validacion
     public function scope_nombre($query, $nombre)
     {
-	if($nombre!="")
+	if(trim($nombre)!="")
         {
-            $query->where('desc_color',$nombre);
+            $query->where('desc_color',"LIKE","%$nombre%");
         }
             
 
