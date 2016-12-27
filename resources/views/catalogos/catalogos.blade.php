@@ -22,7 +22,7 @@
         <div class="container">
             <table class="table" align="center">
                 <tr>
-                    <th><a href=""> <center><img src="{{asset('images/colores.png')}}" alt="colores" class="img-responsive"/></center></a></th>
+                    <th><a href="../administracion/color"> <center><img src="{{asset('images/colores.png')}}" alt="colores" class="img-responsive"/></center></a></th>
                     <th><a href="../administracion/buscar_ubicacion"><center><img src="{{asset('images/organiz.png')}}" alt="ubicacion_organizacional" class="img-responsive"/></center></a></th>
                     <th><a href="../administracion/contable"><center><img src="{{asset('images/cuentas.png')}}" alt="cuentas contables" class="img-responsive"/></center></a></th>
                     <th><a href=""><center><img src="{{asset('images/dpto.png')}}" alt="departamentos" class="img-responsive"/></center></a></th>

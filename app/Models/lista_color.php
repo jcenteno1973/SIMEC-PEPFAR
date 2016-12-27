@@ -29,11 +29,11 @@ class lista_color extends Model
  */
 
 //validacion
-    public function scope_color($query, $color)
+    public function scope_nombre($query, $nombre)
     {
-	if($color!="")
+	if($nombre!="")
         {
-            $query->where('',$color);
+            $query->where('desc_color',$nombre);
         }
             
 
