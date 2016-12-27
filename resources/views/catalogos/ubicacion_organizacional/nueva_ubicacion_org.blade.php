@@ -1,4 +1,4 @@
-<!-- 
+{{-- 
      * Nombre del archivo: nueva_ubicacion_org.blade.php
      * Descripción: Crear nueva ubicacion organizacional
      * Fecha de creación:5/12/2016
@@ -7,7 +7,7 @@
      * Modificacion: Funcionalidad para crear usuario
      * Fecha de creación:19/12/16
      * Creado por: Yamileth Campos
--->
+--}}
 
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -23,6 +23,7 @@
 <div class="list-group">
     <a href="../../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
     <a href="#" class="list-group-item active">Nueva ubicaci&oacute;n organizacional</a>
+    <a href="../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a>
 </div>
 @stop
 @section('contenido')

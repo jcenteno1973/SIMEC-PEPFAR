@@ -1,4 +1,4 @@
-<!-- 
+{{-- 
      * Nombre del archivo: editar_ubicacion_org.blade.php
      * Descripción: Editar ubicación organizacional
      * Fecha de creación:6/12/2016
@@ -7,7 +7,7 @@
      * Modificacion: funcionalidad a editar
      * Fecha de creación:19/12/16
      * Creado por: Yamileth Campos 
--->
+--}}
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
@@ -22,6 +22,7 @@
 <div class="list-group">
     <a href="../../../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
     <a href="../../../administracion/buscar_ubicacion/create" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
+    <a href="../administracion/catalogos" class="list-group-item"><span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a>
 </div>
 @stop
 @section('contenido')

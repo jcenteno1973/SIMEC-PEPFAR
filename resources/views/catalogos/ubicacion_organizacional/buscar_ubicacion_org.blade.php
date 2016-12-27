@@ -24,7 +24,7 @@
 <div class="list-group">
     <a class="list-group-item active">Buscar ubicaci&oacute;n organizacional</a>
     <a href="../administracion/buscar_ubicacion/create" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a> 
-    <a href="../administracion/catalogos" class="list-group-item">Men&uacute; cat&aacute;logos</a> 
+    <a href="../administracion/catalogos" class="list-group-item"><span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a> 
 </div>
 @stop
 @section('contenido')
@@ -40,10 +40,11 @@
                         <td>&nbsp;&nbsp;Unidad/<br />Departamento</td>
                    {{--   <td>{!! Form::select('type', ['' => 'Unidad/Depto', 'activo fijo' => 'Activo Fijo', 'informatica' => 'Informática'], null, ['class' => 'form-control']) !!} </td>  --}}
                         <td><select name="rol_usuario" class="form-control" >
-                        @foreach($ubicacion_org as $ubicacion)
-                        <option>{{$ubicacion->nombre_unidad_dep}}</option>
-                        @endforeach
-                      </select></td>
+                             <option>Seleccione Unidad/Depto</option>
+                             @foreach($ubicacion_org as $ubicacion)
+                             <option>{{$ubicacion->nombre_unidad_dep}}</option>
+                             @endforeach
+                            </select></td>
                         <td>Responsable</td>
                       <td>   {!!Form::text('nombre_responsable',null,['class'=>'form-control', 'placeholder'=>'Responsable'])!!}</td> 
                 
@@ -77,12 +78,16 @@
                 <td>{{$ubicacion->codigo_unidad_dep}}</td>
                 <td>{{$ubicacion->nombre_unidad_dep}}</td>
                 <td>{{$ubicacion->nombre_responsable}}</td>
-                <td>&nbsp;&nbsp;{{$ubicacion->alquilado}}</td>
+                <td>&nbsp;&nbsp;@if ($ubicacion->alquilado == 0)
+                  No
+                @else
+                  Si
+                @endif </td> 
                 <td>&nbsp;&nbsp;{{$ubicacion->estado_registro}}</td>
                 <td>
                     <center>
                     <a href="{{route('administracion.buscar_ubicacion.edit',$ubicacion->id_ubicacion_org)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a> 
-                    <a href="{{route('administracion.buscar_ubicacion.destroy',$ubicacion->id_ubicacion_org)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>
+                    <a href="{{route('administracion.buscar_ubicacion.destroy',$ubicacion->id_ubicacion_org)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                     </center>
                 </td>
         
