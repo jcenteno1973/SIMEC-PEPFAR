@@ -15,6 +15,7 @@ use App\Models\fuente_financiamiento;
 use App\Models\tipo_bien_mueble;
 use App\Models\cuenta_contable;
 use App\Models\estado_af;
+use App\Models\lista_color;
 
 class fichaController extends Controller
 {
@@ -52,6 +53,7 @@ class fichaController extends Controller
      $cuenta_contable=  cuenta_contable::all();
      $cuenta_contable2=  cuenta_contable::lists('cta_contable_depreciacion','id_cuenta_contable');
      $estado_af=  estado_af::lists('nombre_estado','id_estado');
+     $lista_color=  lista_color::lists('desc_color','id_lista_color');
      $obj_municipios= municipio::fnc_municipios(6);
      $municipios=$obj_municipios->lists('nombre_municipio','id_municipio');
      
@@ -63,21 +65,62 @@ class fichaController extends Controller
              'cuenta_contable',
              'cuenta_contable2',
              'estado_af',
+             'lista_color',
              'ubicacion_org'));   
         
     }
     public function fnc_create_inmueble() {
-        /**
+     /**
     * Crea formulario para crear nueva ficha de inmueble
      */
-     return view('ficha/nueva_ficha_inmueble');   
+     $departamentos=  departamento::lists('nombre_departamento','id_departamento');
+     $ubicacion_org=  ubicacion_organizacional::lists('nombre_unidad_dep','id_ubicacion_org');
+     $clase_bien=  clase_bien::lists('nombre_clase_bien','id_clase_bien');
+     $fuente_financiamiento=  fuente_financiamiento::lists('nombre_fuente_financ','id_fuente_financiamiento');
+     $tipo_bien=  tipo_bien_mueble::lists('nombre_tipo_bien_mueble','id_tipo_bien_mueble');
+     $cuenta_contable=  cuenta_contable::all();
+     $cuenta_contable2=  cuenta_contable::lists('cta_contable_depreciacion','id_cuenta_contable');
+     $estado_af=  estado_af::lists('nombre_estado','id_estado');
+     $lista_color=  lista_color::lists('desc_color','id_lista_color');
+     $obj_municipios= municipio::fnc_municipios(6);
+     $municipios=$obj_municipios->lists('nombre_municipio','id_municipio'); 
+     return view('ficha/nueva_ficha_inmueble',compact('departamentos',
+             'municipios',
+             'clase_bien',
+             'fuente_financiamiento',
+             'tipo_bien',
+             'cuenta_contable',
+             'cuenta_contable2',
+             'estado_af',
+             'lista_color',
+             'ubicacion_org'));   
         
     }
     public function fnc_create_vehiculo() {
     /**
     * Crea formulario para crear nueva ficha de vehiculo
-    */    
-     return view('ficha/nueva_ficha_vehiculo');   
+    */  
+     $departamentos=  departamento::lists('nombre_departamento','id_departamento');
+     $ubicacion_org=  ubicacion_organizacional::lists('nombre_unidad_dep','id_ubicacion_org');
+     $clase_bien=  clase_bien::lists('nombre_clase_bien','id_clase_bien');
+     $fuente_financiamiento=  fuente_financiamiento::lists('nombre_fuente_financ','id_fuente_financiamiento');
+     $tipo_bien=  tipo_bien_mueble::lists('nombre_tipo_bien_mueble','id_tipo_bien_mueble');
+     $cuenta_contable=  cuenta_contable::all();
+     $cuenta_contable2=  cuenta_contable::lists('cta_contable_depreciacion','id_cuenta_contable');
+     $estado_af=  estado_af::lists('nombre_estado','id_estado');
+     $lista_color=  lista_color::lists('desc_color','id_lista_color');
+     $obj_municipios= municipio::fnc_municipios(6);
+     $municipios=$obj_municipios->lists('nombre_municipio','id_municipio');
+     return view('ficha/nueva_ficha_vehiculo',compact('departamentos',
+             'municipios',
+             'clase_bien',
+             'fuente_financiamiento',
+             'tipo_bien',
+             'cuenta_contable',
+             'cuenta_contable2',
+             'estado_af',
+             'lista_color',
+             'ubicacion_org'));   
         
     }
     /**
