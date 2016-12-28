@@ -23,7 +23,7 @@
 <div class="list-group">
     <a href="../../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
     <a href="#" class="list-group-item active">Nueva ubicaci&oacute;n organizacional</a>
-    <a href="../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a>
+    <a href="../../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a>
 </div>
 @stop
 @section('contenido')
