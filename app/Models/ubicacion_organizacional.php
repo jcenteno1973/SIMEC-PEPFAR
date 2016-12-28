@@ -31,20 +31,21 @@ class ubicacion_organizacional extends Model
     public function scope_buscar($query, $codigo_unidad_dep) {
          if (trim($codigo_unidad_dep) !="")
             {
-                $query->where('codigo_unidad_dep', $codigo_unidad_dep);
+                $query->where('codigo_unidad_dep',"LIKE","%$codigo_unidad_dep%");
             }
     }
-        public function scope_buscar_u_dpto($query, $nombre_unidad_dep) {
-         if (trim($nombre_unidad_dep) !="")
+    
+    public function scope_buscar_u_dpto($query, $nombre_unidad_dep) {
+         if (trim($nombre_unidad_dep)!="")
             {
-                $query->where('nombre_unidad_dep', $nombre_unidad_dep);
+                $query->where('nombre_unidad_dep', "LIKE","%$nombre_unidad_dep%");
             }
     }
 
     public function scope_buscar_responsable($query, $nombre_responsable) {
          if (trim($nombre_responsable) !="")
             {
-                $query->where('nombre_responsable', $nombre_responsable);
+                $query->where('nombre_responsable', "LIKE","%$nombre_responsable%");
             }
     } 
 }
