@@ -40,7 +40,7 @@
             </td>
             <td>C&oacute;digo*</td>
             <td>
-                {!! Form::text('codigo_unidad_dep', $ubicacion->codigo_unidad_dep, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
+                {!! Form::text('codigo_unidad_dep', $ubicacion->codigo_unidad_dep, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required', 'readonly'=>'true']) !!}
             </td>
             <td>Unidad o Departamento *</td>
             <td>
