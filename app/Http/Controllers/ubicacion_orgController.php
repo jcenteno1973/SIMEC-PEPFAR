@@ -7,10 +7,11 @@
      *
      * Modificado por: Karla Barrera 
      * Fecha modificación: 20/12/2016
-     * Descripción: Ruta y funciones para buscar ubicacion organizacional 
+     * Descripción: Ruta y funciones para buscar ubicacion organizacional. Validaciones de campos 
      */
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Requests\ubicacion_org_request;
 use App\Models\ubicacion_organizacional;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -62,7 +63,7 @@ class ubicacion_orgController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ubicacion_org_request $request)
     {
         //return view('home');
         /*$ubicacion= new ubicacion_organizacional($request->all());*/
@@ -117,7 +118,7 @@ class ubicacion_orgController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ubicacion_org_request $request, $id)
     {
         //return view('home');
         $date = Carbon::now();

@@ -1,9 +1,9 @@
-<!-- 
+{{-- 
      * Nombre del archivo: catalogos.blade.php
      * Descripción: Pantalla para seleccionar catalogos
      * Fecha de creación: 4/12/2016
      * Creado por: Karla Barrera
--->
+--}}
 @extends('plantillas.plantilla_sin_columna')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
