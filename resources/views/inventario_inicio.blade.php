@@ -11,8 +11,8 @@
 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="#" class="list-group-item">Buscar verificaci&oacute;n f&iacute;sica</a>
-    <a href="#" class="list-group-item">Nueva verificaci&oacute;n f&iacute;sica</a>
+    <a href="administracion/verificacion_fisica" class="list-group-item">Buscar verificaci&oacute;n f&iacute;sica</a>
+    <a href="administracion/verificacion_fisica/create" class="list-group-item">Nueva verificaci&oacute;n f&iacute;sica</a>
     <a href="#" class="list-group-item">Buscar ficha de descargo</a>
     <a href="#" class="list-group-item">Ejecutar destino</a>
     <a href="#" class="list-group-item">Revertir destino</a>
