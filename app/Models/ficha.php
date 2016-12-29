@@ -9,10 +9,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ficha extends Model
 {
-    //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $table = 'ficha_activo_fijo';
     protected $primaryKey = 'id_ficha_activo_fijo';
     public $timestamps = false;

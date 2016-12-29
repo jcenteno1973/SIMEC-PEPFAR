@@ -39,8 +39,13 @@
               </tr>
               <tr>
                 <td>Unidad o departamento*</td>
-                <td>                     
-                      {!! Form::select('id_ubicacion_org',$ubicacion_org,null,['id'=>'id_ubicacion_org','class' => 'form-control']) !!}
+                <td>  
+                    <select name="id_ubicacion_org" class="form-control" onchange="fnc_unidad(this.value)">
+                        <option></option>
+                        @foreach($obj_unidad as $obj_unidades)
+                        <option value="{{$obj_unidades->id_ubicacion_org}}">{{$obj_unidades->nombre_unidad_dep}}</option>
+                        @endforeach 
+                    </select> 
                 </td>
                 <td>Clase del bien*</td>
                 <td>                 
@@ -90,7 +95,7 @@
                 </td>
                 <td>Modelo</td>
                 <td>
-                   {!! Form::text('modelo_bien ', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                   {!! Form::text('modelo_bien', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>  
               </tr>
               <tr>
@@ -110,7 +115,7 @@
                 </td>
                 <td>Nombre del responsable*</td>
                 <td>
-                   {!! Form::text('nombre_responsable', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                   {!! Form::text('responsable_bien', null, ['class' => 'form-control' ,'id'=>'resultado_unidad', 'required' => 'required']) !!}
                 </td>   
               </tr>
               <tr>
@@ -151,6 +156,17 @@ function myFunction(id_cuenta_contable) {
     if(id_cuenta_contable=={{ $cuentas_contable->id_cuenta_contable }})
     {
     document.getElementById("resultado").value= {{ $cuentas_contable->cta_contable_depreciacion }}; 
+    }
+    <?php } ?>   
+}   
+</script>
+<script>
+function fnc_unidad(id_ubicacion_org) { 
+    document.getElementById("resultado_unidad").value="";
+    <?php foreach($obj_unidad as $obj_unidades){ ?>
+    if(id_ubicacion_org=={{ $obj_unidades->id_ubicacion_org }})
+    {
+    document.getElementById("resultado_unidad").value="{{$obj_unidades->nombre_responsable}}";  
     }
     <?php } ?>   
 }   

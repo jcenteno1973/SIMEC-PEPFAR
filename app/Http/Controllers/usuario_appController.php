@@ -75,7 +75,7 @@ class usuario_appController extends Controller
         $usuario->attachRole($obj_rol_asignado);
         $obj_usuario=  User::find($usuario->id_usuario_app);
         $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create_mensaje('cambio de contraseña de usuario: '.$obj_usuario->nombre_usuario);
+        $obj_controller_bitacora->create_mensaje('Creación de nuevo usuario: '.$obj_usuario->nombre_usuario);
         flash()->success('Usuario creado exitosamente: '.$obj_usuario->nombre_usuario);
         return redirect()->back(); 
         }
