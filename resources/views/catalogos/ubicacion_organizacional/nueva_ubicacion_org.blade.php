@@ -35,11 +35,11 @@
            <tr>
             <td>C&oacute;digo *</td>
             <td>
-                {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de Unidad/Departamento', 'required' => 'required']) !!}
+                {!! Form::text('codigo_unidad_dep', null, ['class' => 'form-control' , 'placeholder'=>'C&oacute;digo de la Unidad y Depto.', 'required' => 'required']) !!}
             </td>
             <td>Unidad o Departamento *</td>
             <td>
-                {!! Form::text('nombre_unidad_dep',null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                {!! Form::text('nombre_unidad_dep',null, ['class' => 'form-control' , 'placeholder'=>'Nombre de la Unidad y Depto.', 'required' => 'required']) !!}
              </td>
             </tr>
             <tr>
@@ -50,16 +50,23 @@
                 <td>Alquilado *</td>                 
                 <td>
                         <select name="alquilado" class="form-control">
-                            <option value="1" >Si </option>
                             <option value="0">No </option>
+                            <option value="1" >Si </option>
                         </select>                    
                 </td>                
             </tr>
             <tr>
+                <td>Dentro del inmueble *</td>                 
+                <td>
+                        <select name="dentro_inmueble" class="form-control">
+                            <option value="1" >Si </option>
+                            <option value="0">No </option>                            
+                        </select>                    
+                </td>                 
                 <td>Estado *</td> 
                 <td>
                         <select name="estado_registro" class="form-control">
-                            <option value="1" >Activo </option>
+                            <option value="1">Activo </option>
                             <option value="0">Inactivo</option>
                         </select>                    
                 </td>
@@ -83,7 +90,7 @@
     
     </div>
  {!! Form::close()!!} 
-   
+   * Campo requerido
     </div>
 </div>
 @stop   

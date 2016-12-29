@@ -4,10 +4,9 @@
      * Fecha de creación: 4/12/2016
      * Creado por: Karla Barrera
      
-     * Descripcion: renderizado y bonton de editar, agrega filtro unidad/depto
+     * Descripcion: renderizado, bonton de editar, y agrega filtro unidad/depto
      * Fecha de modificacion: 21/12/16
-     * Modificado por: Yamileth Campos
-     
+     * Modificado por: Yamileth Campos     
 --}}
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -53,7 +52,7 @@
         <th><center>Unidad/Departamento</center></th>
         <th><center>Responsable</center></th>
         <th><center>Alquilado</center></th>
-
+    
         <th><center>Opciones</center></th>        
       </tr>
     </thead>

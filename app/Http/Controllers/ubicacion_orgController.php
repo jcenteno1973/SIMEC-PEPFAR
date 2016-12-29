@@ -27,7 +27,7 @@ class ubicacion_orgController extends Controller
     public function index(Request $request)
     {
         //   return view('home');
-        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->_buscar_u_dpto($request->get('nombre_unidad_dep'))->_buscar_responsable($request->get('nombre_responsable'))->orderBy('id_ubicacion_org', 'ASC')->paginate(10);
+        $ubicacion_org = ubicacion_organizacional::_buscar($request->get('codigo_unidad_dep'))->_buscar_u_dpto($request->get('nombre_unidad_dep'))->_buscar_responsable($request->get('nombre_responsable'))->orderBy('codigo_unidad_dep', 'ASC')->paginate(10);
         return view('catalogos/ubicacion_organizacional/buscar_ubicacion_org', compact('ubicacion_org'));
     }
     public function fnc_busqueda_filtro(Request $request) {
@@ -72,6 +72,7 @@ class ubicacion_orgController extends Controller
         $ubicacion->codigo_unidad_dep=$request->codigo_unidad_dep;
         $ubicacion->nombre_unidad_dep=$request->nombre_unidad_dep;
         $ubicacion->nombre_responsable=$request->nombre_responsable;
+        $ubicacion->dentro_inmueble=$request->dentro_inmueble;
         $ubicacion->alquilado=$request->alquilado;
         $ubicacion->estado_registro=$request->estado_registro;
         $ubicacion->fecha_hora_creacion=$date; 
@@ -118,7 +119,7 @@ class ubicacion_orgController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ubicacion_org_request $request, $id)
+    public function update(Request $request, $id)
     {
         //return view('home');
         $date = Carbon::now();
@@ -126,6 +127,7 @@ class ubicacion_orgController extends Controller
         $ubicacion->codigo_unidad_dep=$request->codigo_unidad_dep;
         $ubicacion->nombre_unidad_dep=$request->nombre_unidad_dep;
         $ubicacion->nombre_responsable=$request->nombre_responsable;
+        $ubicacion->dentro_inmueble=$request->dentro_inmueble;
         $ubicacion->alquilado=$request->alquilado;
         $ubicacion->estado_registro=$request->estado_registro;
         $ubicacion->fecha_hora_modificacion=$date;
