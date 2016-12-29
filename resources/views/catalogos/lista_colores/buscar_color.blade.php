@@ -75,7 +75,7 @@
              {{-- <a href="#" class="btn btn- btn-primary">Editar</a>
               <a href="#" class="btn btn-primary">Borrar</a> --}}
               <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>  
-             @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
+             @include('catalogos/ayuda_catalogos/ayuda_color/ayuda_busca_color')  
           </td>
         </tr>        
     <!-- Fin botones-->
@@ -83,5 +83,6 @@
     </div>
     <!-- Fin botones-->
    {!! Form::close() !!}  
+   
 </div>
 @stop   

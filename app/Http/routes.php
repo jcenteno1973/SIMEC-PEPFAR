@@ -86,3 +86,6 @@ Route::post('password/email', ['as' => 'password/postEmail', 'uses' => 'Auth\Pas
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', ['as' => 'password/postReset', 'uses' =>  'Auth\PasswordController@postReset']);
+
+//inventario
+Route::resource('administracion/verificacion_fisica','verif_fisicaController');

@@ -1,9 +1,3 @@
-<!--
- * Nombre del archivo: ayuda_cambio_clave.php
- * Descripción: ayuda para la pantalla cambio de clave
- * Fecha de creación:09/12/16
- * Creado por: Yamileth Campos
- -->
 <!--Boton de ayuda-->
     <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
         <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -11,7 +5,7 @@
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title">CAMBIO DE CLAVE</p>
+                        <p class="modal-title"> EDITAR USUARIO</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -21,20 +15,22 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar el cambio de clave haga lo siguiente:</p>
+                                <p> Para realizar la modificaci&oacute;n de usuario usted podrá editar lo siguientes:</p>
                             </td>
                         <tr>    
                             <td>
                                 <p><font color="white">...</font></p>
                             </td>
                             <td>
-                                <ol>
-                                    <li>Escriba el <strong>nombre</strong> del usuario al que le realizar&aacute; el cambio.</li>
-                                    <li>Escriba la nueva <strong>Contrase&ntilde;a</strong>.</li>    
-                                     <li>Para guardar los cambio haga clic en <strong>Guardar</strong>.</li>
-                                      <li><strong>Regresar</strong> va a la p&aacute;gina que anteriormente estaba.</li>
-                                </ol>
-                            </td>                         
+                                <ul>
+                                    <li><strong>Nombres </strong>: los nombres del usuario.</li>
+                                    <li><strong>Apellidos</strong>: los apellidos del usuario.</li>
+                                    <li><strong>Unidad o departamento</strong> al que pertenece el usuario.</li>
+                                    <li><strong>Rol</strong>: Especifica a que tendra acceso en el sistema.</li>
+                                    <li><strong>Correo electr&oacute;nico</strong>: muy importante para recuperacion de contrase&ntilde;as.</li>
+                                    <li><strong>Cargo</strong>: el cargo que desempe&ntilde;a actualmente el usuario.</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -42,7 +38,8 @@
                             </td>
                             <td>
                                 <p>
-                                    Si no desea realizar la solicitud presione el bot&oacute;n <strong> Regresar</strong> para volver la pagina de ingreso
+                                    Al realizar todos los cambios, debe hacer un clic en el bot&oacute;n "Guardar"<br>
+                                    para cancelar los cambios presione "Regresar".
                                 </p>
                             </td>
                         </tr>                    

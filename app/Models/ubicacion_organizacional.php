@@ -18,6 +18,7 @@ class ubicacion_organizacional extends Model
         'codigo_unidad_dep',
         'nombre_unidad_dep',
         'nombre_responsable',
+        'dentro_inmueble',
         'alquilado'
     ];
     
