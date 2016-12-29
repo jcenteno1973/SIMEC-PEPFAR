@@ -1,4 +1,11 @@
-<!--Boton de ayuda-->
+
+<!--
+ * Nombre del archivo: ayuda_busca_usuario.php
+ * Descripción: ayuda para la pantalla buscar usuario
+ * Fecha de creación:09/12/16
+ * Creado por: Yamileth Campos
+ -->
+ <!--Boton de ayuda-->
     <a href="#ingresosistema" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
         <div class="modal fade" id="ingresosistema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog"> <!---div class="modal-dialog">-->
@@ -24,7 +31,7 @@
                             <td>
                                 Se desplegan todos los usuarios del sistema, donde puede moverse a trav&eacute;s del paginador <img src="{{asset('images/paginador.jpg')}}"/>
                                 <ul>
-                                    <li> Para realizar la b&uacute;squeda de usuarios llene los campos de  <strong>Nombre de usuario </strong> y/o <strong> Rol</strong>,   presione luego en el bot&oacute;n <button class="btn btn-default">Buscar</button></li>                                    
+                                    <li> Para realizar la b&uacute;squeda de usuarios llene los campos de  <strong>Nombre de usuario </strong> y/o <strong> Rol</strong>,   presione luego en el bot&oacute;n <strong>Buscar</strong></li>                                    
                                     <li>el bot&oacute;n <strong>Regresar</strong> vuelve a la p&aacute;gina que anteriormente estaba.</li>
                                 </ul>
                                 

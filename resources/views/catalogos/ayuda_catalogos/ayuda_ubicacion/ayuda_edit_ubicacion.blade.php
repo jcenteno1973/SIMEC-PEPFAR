@@ -1,17 +1,17 @@
 <!--
- * Nombre del archivo: ayuda_cambio_clave.php
- * Descripción: ayuda para la pantalla cambio de clave
- * Fecha de creación:09/12/16
+ * Nombre del archivo: ayuda_editar_ubicacion.blade.php
+ * Descripción: ayuda para la pantalla de editar una ubicacion
+ * Fecha de creación:28/12/16
  * Creado por: Yamileth Campos
  -->
 <!--Boton de ayuda-->
-    <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-        <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <a href="#editubicacion" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
+        <div class="modal fade" id="editubicacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog"> <!---div class="modal-dialog">-->
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title">CAMBIO DE CLAVE</p>
+                        <p class="modal-title"> EDITAR UBICACION</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -21,28 +21,31 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar el cambio de clave haga lo siguiente:</p>
+                                <p> Para realizar la modificaci&oacute;n de una ubicaci&oacute;n, usted podrá editar lo siguientes:</p>
                             </td>
                         <tr>    
                             <td>
                                 <p><font color="white">...</font></p>
                             </td>
                             <td>
-                                <ol>
-                                    <li>Escriba el <strong>nombre</strong> del usuario al que le realizar&aacute; el cambio.</li>
-                                    <li>Escriba la nueva <strong>Contrase&ntilde;a</strong>.</li>    
-                                     <li>Para guardar los cambio haga clic en <strong>Guardar</strong>.</li>
-                                      <li><strong>Regresar</strong> va a la p&aacute;gina que anteriormente estaba.</li>
-                                </ol>
-                            </td>                         
+                                <ul>
+                                    <li><strong>Unidad o departamento </strong>: El nombre de la unidad o departamento.</li>
+                                    <li><strong>Responsable</strong>: nombre del responsable.</li>
+                                    <li><strong>Alquilado</strong>: Si el edificio donde se encuentra la unidad o departamento es alquilado.</li>
+                                    <li><strong>Dentro del inmueble</strong>:  indicar si la unidad o departamento esta dentro de la alcaldía o en otro edificio.</li>
+                                    <li><strong>Estado</strong>: la ubicaci&oacute;n esta activa o inactiva.</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td>
                                 <p ><font color="white">...</font></p>
                             </td>
                             <td>
+                                <p>El <strong>ID</strong> y <strong>C&oacute;digo</strong>, no se podr&aacute;n editar</p>
                                 <p>
-                                    Si no desea realizar la solicitud presione el bot&oacute;n <strong> Regresar</strong> para volver la pagina de ingreso
+                                    Al realizar todos los cambios, debe hacer un clic en el bot&oacute;n "Guardar"<br>
+                                    para cancelar los cambios presione "Regresar".
                                 </p>
                             </td>
                         </tr>                    

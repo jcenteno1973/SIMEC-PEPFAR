@@ -28,6 +28,7 @@
 @stop
 @section('contenido')
 <div class="panel panel-default">
+    <font color="white">{!! $i=1; !!}</font> {{--muestra el contenido de i en color blanco--}}
 <!-- filtro busqueda de ubicacion, los "&nbsp; son espacios"-->
 <br>
 {!! Form::open(['route' => 'administracion.buscar_ubicacion.index', 'method' => 'GET', 'class' => 'form-inline', 'role' => 'search']) !!}
@@ -60,7 +61,7 @@
              @foreach($ubicacion_org as $ubicacion)
             <tr> 
         
-                <td><center>{{$ubicacion->id_ubicacion_org}}</center></td>
+                <td><center>{{$i++}}</center></td>
                 <td><center>{{$ubicacion->codigo_unidad_dep}}</center></td>
                 <td><center>{{$ubicacion->nombre_unidad_dep}}</center></td>
                 <td><center>{{$ubicacion->nombre_responsable}}</center></td>
@@ -96,7 +97,7 @@
           <td>{!! $ubicacion_org->render() !!}</td>
           <td>
               <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>  
-             @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
+             @include('catalogos/ayuda_catalogos/ayuda_ubicacion/ayuda_buscar_ubicacion')  
           </td>
         </tr>        
     <!-- Fin botones-->

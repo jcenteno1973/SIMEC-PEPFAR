@@ -80,7 +80,7 @@
           <td>
               {!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}              
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-              @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
+              @include('catalogos/ayuda_catalogos/ayuda_ubicacion/ayuda_nueva_ubicacion') 
        </td>
         </tr>        
         

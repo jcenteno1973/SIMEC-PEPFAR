@@ -20,14 +20,14 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../../../administracion/buscar_ubicacion" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
-    <a href="../../../administracion/buscar_ubicacion/create" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
-    <a href="../administracion/catalogos" class="list-group-item"><span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a>
+    <a href="{{route('administracion.buscar_ubicacion.index')}}" class="list-group-item">Buscar ubicaci&oacute;n organizacional</a>
+    <a href="{{route('administracion.buscar_ubicacion.create')}}" class="list-group-item">Nueva ubicaci&oacute;n organizacional</a>
+    <a href="{{route('administracion/catalogos')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    <div class="panel-body">
+ <div class="panel-body">
       
 
 {!! Form::open(['route' => ['administracion.buscar_ubicacion.update',$ubicacion],'method'=>'PUT']) !!}
@@ -104,7 +104,7 @@
           <td>
               {!! Form::submit('Guardar',['class'=>'btn btn-primary'])!!}              
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-              @include('../../usuario_app/ayuda_usuario/ayuda_edit_usuario')  
+            @include('catalogos/ayuda_catalogos/ayuda_ubicacion/ayuda_edit_ubicacion')
        </td>
         </tr>        
         
@@ -116,10 +116,8 @@
  {!! Form::close()!!} 
 
  * Campo requerido  
-    <!--
-    </div>
-    {!! Form::close() !!}      -->  
-    </div>
+
+ </div>
 </div>
 @stop  
 
