@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\verif_fisica_crea_request;
+use App\Http\Requests\verif_fisica_edit_request;
 use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -95,7 +96,7 @@ class verif_fisicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(verif_fisica_edit_request $request, $id)
     {
         //
         $date = Carbon::now();
