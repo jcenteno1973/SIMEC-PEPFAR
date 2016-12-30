@@ -66,7 +66,7 @@
               <tr>
                 <td>Cuenta contable*</td>
                 <td> 
-                    <select name="id_cuenta_contable" class="form-control" onchange="myFunction(this.value)">
+                    <select name="id_cuenta_contable" class="form-control" onchange="myFunction(this.value)" required="required">
                         <option></option>
                         @foreach($cuenta_contable as $cuentas_contable)
                         <option value="{{$cuentas_contable->id_cuenta_contable}}">{{$cuentas_contable->cta_contable_activo_fijo}}</option>

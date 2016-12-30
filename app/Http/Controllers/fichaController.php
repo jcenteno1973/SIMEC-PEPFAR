@@ -18,9 +18,10 @@ use App\Models\estado_af;
 use App\Models\lista_color;
 use App\Models\lista_codigo;
 use Carbon\Carbon;
-use DB;
 use App\Http\Controllers\bitacoraController;
 use App\Models\documento_imagen;
+use App\Models\tipo_bien_inmueble;
+use App\Models\ubicacion_bien;
 
 class fichaController extends Controller
 {
@@ -77,12 +78,11 @@ class fichaController extends Controller
      */
      $departamentos=  departamento::lists('nombre_departamento','id_departamento');     
      $clase_bien=  clase_bien::lists('nombre_clase_bien','id_clase_bien');
-     $fuente_financiamiento=  fuente_financiamiento::lists('nombre_fuente_financ','id_fuente_financiamiento');
-     $tipo_bien=  tipo_bien_mueble::lists('nombre_tipo_bien_mueble','id_tipo_bien_mueble');
+     $fuente_financiamiento=  fuente_financiamiento::lists('nombre_fuente_financ','id_fuente_financiamiento');     
+     $tipo_bien=tipo_bien_inmueble::lists('nombre_tipo_bien_inmueble','id_tipo_bien_inmueble');
      $cuenta_contable=  cuenta_contable::all();
      $obj_unidad=  ubicacion_organizacional::all();
-     $estado_af=  estado_af::lists('nombre_estado','id_estado');
-     $lista_color=  lista_color::lists('desc_color','id_lista_color');
+     $ubicacion_bien=  ubicacion_bien::lists('nombre_ubicacion_bien','id_ubicacion_bien');     
      $obj_municipios= municipio::fnc_municipios(6);
      $municipios=$obj_municipios->lists('nombre_municipio','id_municipio');
      return view('ficha/nueva_ficha_inmueble',compact('departamentos',
@@ -91,8 +91,7 @@ class fichaController extends Controller
              'fuente_financiamiento',
              'tipo_bien',
              'cuenta_contable',
-             'estado_af',
-             'lista_color',
+             'ubicacion_bien',             
              'obj_unidad'));  
         
     }
