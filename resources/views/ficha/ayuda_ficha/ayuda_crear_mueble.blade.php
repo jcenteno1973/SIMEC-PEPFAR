@@ -50,7 +50,7 @@
                                     <li><strong> Monto de adquisici&oacute;n</strong>: Escriba el valor de adquisici&oacute;n del bien mueble, est&aacute; es seg&uacute;n factura o documento que ampare la adquisici&oacute;n.</li>
                                     <li><strong> Fecha adquisici&oacute;n</strong>: Registre la fecha de adquisici&oacute;n, est&aacute; es seg&uacute;n factura o documento que ampare la adquisici&oacute;n.</li>
                                     <li><strong> Imagen</strong>: Puede adjuntar una imagen para una mejor identificacion del bien mueble, haga clic en "Seleccionar Archivo" y se abrir&aacute; una ventana emergente que podr&aacute; buscar la ubicaci&oacute;n de imagen.</li>
-                                    <li><strong> A&ntilde;os vida &uacute;til</strong>: Est&aacute; regulado seg&uacute;n instructivo de bienes muebles secci&oacute;n 3.2, para edificaciones y obras de infraestructura 40 a&ntilde;os, para terrenos no Aplica .</li>
+                                    <li><strong> A&ntilde;os vida &uacute;til</strong>: Est&aacute; regulado seg&uacute;n instructivo de bienes muebles e inmuebles secci&oacute;n 3.2, para edificaciones y obras de infraestructura 40 a&ntilde;os, para terrenos no Aplica .</li>
                                     <li><strong> Observaci&oacute;n</strong>: Puede agregar aspectos que considere necesarios.</li>
                                     
                                     
