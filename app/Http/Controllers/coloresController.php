@@ -82,7 +82,7 @@ class coloresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(color_request $request, $id)
+    public function update(Request $request, $id)
     {
         //
         $color= lista_color::find($id);      

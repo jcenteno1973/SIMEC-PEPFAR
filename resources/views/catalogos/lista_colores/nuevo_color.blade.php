@@ -19,7 +19,7 @@
 <div class="list-group">
     <a href="../../administracion/color " class="list-group-item">Buscar color</a>
     <a href="#" class="list-group-item active">Nueva color</a>
-    <a href="../../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Catalogos</a> 
+    <a href="../../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a> 
 </div>
 @stop
 @section('contenido')

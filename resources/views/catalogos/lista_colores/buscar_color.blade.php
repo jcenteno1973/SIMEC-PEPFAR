@@ -18,7 +18,7 @@
 <div class="list-group">
     <a href="#" class="list-group-item active">Buscar color</a>
     <a href="../administracion/color/create" class="list-group-item">Nuevo color</a> 
-    <a href="../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Catalogos</a> 
+    <a href="../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a> 
 </div>
 @stop
 

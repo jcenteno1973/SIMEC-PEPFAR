@@ -18,8 +18,8 @@
 @section('menu_lateral')
 <div class="list-group">
     <a href="../../../administracion/color " class="list-group-item">Buscar cuenta contable</a>
-    <a href="../../../administracion/color/create" class="list-group-item active">Nueva cuenta contable</a>
-    <a href="../../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Catalogos</a> 
+    <a href="../../../administracion/color/create" class="list-group-item">Nueva cuenta contable</a>
+    <a href="../../administracion/catalogos" class="list-group-item"> <span class="glyphicon glyphicon-chevron-left"></span> Regresar a Cat&aacute;logos</a> 
 </div>
 @stop
 @section('contenido')

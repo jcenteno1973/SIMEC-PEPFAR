@@ -12,7 +12,7 @@
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title">BUSCAR UBICACION</p>
+                        <p class="modal-title">BUSCAR COLOR</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -22,18 +22,26 @@
                                <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar una b&uacute;squeda de usuario:</p>
+                                <p> La pantalla contiene los siguientes elementos:</p>
                             </td>
                         </tr>
                         <tr>    
                             <td>
                                 <p><font color="white">...</font></p>
                             </td>
-                            <td>
-                                Se desplegan todos los usuarios del sistema, donde puede moverse a trav&eacute;s del paginador
+                            <td>                            
                                 <ul>
-                                    <li> Para realizar la b&uacute;squeda de usuarios llene los campos de  <strong>Nombre de usuario </strong> y/o <strong> Rol</strong>,   presione luego en el bot&oacute;n</li>                                    
-                                    <li>el bot&oacute;n <strong>Regresar</strong> vuelve a la p&aacute;gina que anteriormente estaba.</li>
+                                    
+                                    <li><strong>Filtros</strong>: para realizar la b&uacute;squeda llene el campo de  <strong>Nombre de color </strong> presione luego en el bot&oacute;n "Buscar"</li>
+                                    <li> <strong>Opciones</strong>: las opciones que puede realizar se encuentran al lado izquierdo de cada uno de los registros.
+                                        <ul>
+                                            <li>El bot&oacute;n color naranja con un l&aacute;piz de  es  para "Editar", y</li>
+                                            <li>El rojo con una equis es para "Eliminar"</li>
+                                        </ul>
+                                     </li>
+                                    <li>  Se desplegan todos los colores registrados en el sistema, donde puede moverse a trav&eacute;s del paginador</li>
+                                    <li> El bot&oacute;n <strong>Regresar</strong> vuelve a la p&aacute;gina en que estaba anteriormente.</li>
+                                    <li> El bot&oacute;n <strong>Ayuda</strong> muestra  la descrici&oacute;n de la pantalla</li>
                                 </ul>
                                 
                             </td>
