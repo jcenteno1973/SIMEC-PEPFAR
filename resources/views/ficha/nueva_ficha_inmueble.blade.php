@@ -25,16 +25,17 @@
 @stop 
 @section('contenido')
 <div class="panel panel-default">
+    {!! Form::open(['route' => 'ficha/nueva_ficha_inmueble', 'class' => 'form','enctype'=>'multipart/form-data']) !!}
     <table class="table table-condensed">    
             <tbody>
               <tr>
                 <td>Departamento*</td>
                 <td>                 
-                      {!! Form::select('departamento',$departamentos,6,['id'=>'departamento','class' => 'form-control']) !!}
+                   {!! Form::select('departamento',$departamentos,6,['id'=>'departamento','class' => 'form-control','required' => 'required']) !!}
                 </td>
                 <td>Municipio*</td>
                 <td>                    
-                   {!! Form::select('municipio',$municipios,104,['id'=>'municipio','class' => 'form-control']) !!}
+                   {!! Form::select('municipio',$municipios,104,['id'=>'municipio','class' => 'form-control','required' => 'required']) !!}
                 </td>
               </tr>
               <tr>
@@ -47,76 +48,70 @@
                         @endforeach 
                     </select> 
                 </td>
-                <td>Clase del bien*</td>
-                <td>                 
-                      {!! Form::select('id_clase_bien',$clase_bien,1, ['class' => 'form-control' , 'readonly'=>'readonly','id'=>'id_clase_bien']) !!}                   
+                <td>Nombre del responsable*</td>
+                <td>
+                   {!! Form::text('responsable_bien', null, ['class' => 'form-control' ,'id'=>'resultado_unidad', 'required' => 'required']) !!}
                 </td>
               </tr>
               <tr>
                 <td>Fuente financiamiento*</td>
                 <td>
-                      {!! Form::select('id_fuente_financiamiento',$fuente_financiamiento, null, ['class' => 'form-control' ,'id'=>'id_fuente_financiamiento']) !!}                   
+                      {!! Form::select('id_fuente_financiamiento',$fuente_financiamiento,1, ['class' => 'form-control' ,'id'=>'id_fuente_financiamiento']) !!}                   
                 </td>
-                <td> Tipo bienes*</td>
+                <td>Ubicación del bien*</td>
+                <td>
+                   {!! Form::select('id_ubicacion_bien ',$ubicacion_bien,null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td>                 
+              </tr>
+              <tr>
+                   <td> Tipo del bien*</td>
                 <td>                    
                      {!! Form::select('id_tipo_bien_mueble',$tipo_bien, null, ['class' => 'form-control','id'=>'id_tipo_bien_mueble']) !!}                               
                 </td>
-              </tr>
-              <tr>
                 <td>Cuenta contable*</td>
                 <td> 
-                    <select name="id_cuenta_contable" class="form-control" onchange="myFunction(this.value)">
+                    <select name="id_cuenta_contable" class="form-control" onchange="myFunction(this.value)" required="required">
                         <option></option>
                         @foreach($cuenta_contable as $cuentas_contable)
                         <option value="{{$cuentas_contable->id_cuenta_contable}}">{{$cuentas_contable->cta_contable_activo_fijo}}</option>
                         @endforeach 
-                     </select>
-                  
-                </td>
+                     </select>                  
+                </td>                  
+              </tr>
+               <tr>                  
+              <td>Descripción*</td>
+                <td> 
+                    <input type="text" name="descripcion" id="descripcion" class="form-control" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" required/>
+                   
+                </td> 
                 <td>Cuenta de depreciación*</td>
                 <td>                    
                    {!! Form::text('cta_contable_depreciacion', null, ['class' => 'form-control' , 'id'=>'resultado','readonly'=>'readonly']) !!}
-                </td>    
-              </tr>
-               <tr>
-                   <td>Estado *</td>
-                <td>
-                   {!! Form::select('id_estado_af',$estado_af, null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td> 
-              <td>Descripción *</td>
-                <td>                 
-                   {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td>                               
-              </tr>
-              <tr>
-                 <td>Marca</td>
-                <td>                 
-                   {!! Form::text('marca_bien', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td>
-                <td>Modelo</td>
-                <td>
-                   {!! Form::text('modelo_bien', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>  
               </tr>
               <tr>
-                 <td>Color</td>
+                 <td>Tipo de documento</td>
                 <td>                 
-                   {!! Form::select('id_lista_color',$lista_color, null, ['class' => 'form-control']) !!}
+                   {!! Form::text('marca_bien', null, ['class' => 'form-control']) !!}
                 </td>
-                <td>Serie</td>
+                <td>No de registro de raiz e hipoteca</td>
                 <td>
-                   {!! Form::text('numero_serie', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td>    
-              </tr>
-              <tr>
-                <td>Número de factura</td>
+                   {!! Form::text('modelo_bien', null, ['class' => 'form-control']) !!}
+                </td>  
+              </tr>              
+              <tr>                
+                  <td>Años vida util *</td>
                 <td>                 
-                   {!! Form::text('numero_factura', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                   {!! Form::number('anios_vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>
-                <td>Nombre del responsable*</td>
-                <td>
-                   {!! Form::text('responsable_bien', null, ['class' => 'form-control' ,'id'=>'resultado_unidad', 'required' => 'required']) !!}
-                </td>   
+                <td>Estado de legalidad*</td>
+                <td>                 
+                    <select name="inscrita_registro" class="form-control"  required="required">
+                        <option></option>                        
+                        <option value="1">Inscrito</option>
+                        <option value="0">No inscrito</option>
+                     </select>
+                </td>
               </tr>
               <tr>
                 <td>Monto de adquisición*</td>
@@ -130,24 +125,26 @@
                 
               </tr>
               <tr>
-                  <td>Imagen</td>
+                  <td>Documento</td>
                   <td>
-                      <input type="file" class="form-control" name="file" >
+                      <input type="file" class="form-control" name="file" accept="image/*" >                      
                   </td>  
-               <td>Años vida util *</td>
-                <td>                 
-                   {!! Form::number('anios_vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td>
-                                 
-              </tr>
-              <tr>
                 <td>Observación</td>
                 <td>                 
                    {!! Form::text('observacion', null, ['class' => 'form-control' ]) !!}
-                </td>  
+                </td>                                   
               </tr>
-            </tbody>
-          </table>       
+            {!! Form::hidden('id_clase_bien',2, ['class' => 'form-control']) !!}
+              <tr>
+                  <td>
+                    <button type="submit" class="btn btn-primary">Guardar</button>    
+                  </td>
+               
+              </tr>
+            </tbody>            
+          </table>  
+    
+    {!! Form::close() !!} 
 </div>
 <script>
 function myFunction(id_cuenta_contable) { 
