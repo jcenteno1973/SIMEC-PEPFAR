@@ -19,7 +19,7 @@ class coloresController extends Controller
     public function index(Request $request)
     {
         //
-        $color= lista_color::_nombre($request->get('nombre'))->orderBy('id_lista_color', 'Asc')->paginate(10);
+        $color= lista_color::_nombre($request->get('nombre'))->orderBy('desc_color', 'Asc')->paginate(10);
         return view('catalogos/lista_colores/buscar_color',compact('color'));
     }
 
