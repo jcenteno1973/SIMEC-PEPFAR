@@ -19,6 +19,7 @@ use App\Models\lista_color;
 use App\Models\lista_codigo;
 use Carbon\Carbon;
 use DB;
+use App\Http\Controllers\bitacoraController;
 use App\Models\documento_imagen;
 
 class fichaController extends Controller
@@ -130,7 +131,8 @@ class fichaController extends Controller
       $id_ficha_af=$this->fnc_store_ficha($request);
      //Crear código
      $codigo_inventario=$this->fnc_store_codigo_mueble($request,$id_ficha_af);
-        
+        $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
        if($_FILES['file']['error']==1){
           flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
           flash()->warning('No se puede cargar el archivo');

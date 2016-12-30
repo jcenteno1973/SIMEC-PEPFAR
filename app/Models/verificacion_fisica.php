@@ -4,6 +4,10 @@
  * Descripción: modelo para la tabla verificacion_fisica
  * Fecha de creación:23/12/16
  * Creado por: Yamileth Campos
+ * 
+ * Modificado por: Karla Barrera 
+ * Fecha modificación: 30/12/2016
+ * Descripción: funcion scope_buscar_verificador
  */
 namespace App\Models;
 
@@ -24,4 +28,12 @@ class verificacion_fisica extends Model
         'id_usuario_modifica',
         'ip_dispositivo'
     ];
+    
+        public function scope_buscar_verificador($query, $nombre_verificador) {
+         if (trim($nombre_verificador) !="")
+            {
+             //   $query->where('nombre_verificador',"LIKE","%$nombre_verificador%"); 
+                $query->where('nombre_verificador',$nombre_verificador); 
+            }
+    }
 }
