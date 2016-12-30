@@ -79,15 +79,15 @@
                    {!! Form::text('cta_contable_depreciacion', null, ['class' => 'form-control' , 'id'=>'resultado','readonly'=>'readonly']) !!}
                 </td>    
               </tr>
-               <tr>
-                   <td>Estado *</td>
-                <td>
-                   {!! Form::select('id_estado',$estado_af,1, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td> 
+               <tr>                  
               <td>Descripción *</td>
                 <td>                 
                    {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td>                               
+                </td> 
+                 <td>Estado *</td>
+                <td>
+                   {!! Form::select('id_estado',$estado_af,1, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td> 
               </tr>
               <tr>
                  <td>Marca</td>
@@ -100,24 +100,26 @@
                 </td>  
               </tr>
               <tr>
+                
+                <td>Serie</td>
+                <td>
+                   {!! Form::text('numero_serie', null, ['class' => 'form-control' ]) !!}
+                </td> 
                  <td>Color</td>
                 <td>                 
                    {!! Form::select('id_lista_color',$lista_color, null, ['class' => 'form-control']) !!}
                 </td>
-                <td>Serie</td>
-                <td>
-                   {!! Form::text('numero_serie', null, ['class' => 'form-control' ]) !!}
-                </td>    
               </tr>
               <tr>
+                
+                  <td>Años vida util *</td>
+                <td>                 
+                   {!! Form::number('anios_vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </td>
                 <td>Número de factura</td>
                 <td>                 
                    {!! Form::text('numero_factura', null, ['class' => 'form-control']) !!}
                 </td>
-                  <td>Años vida util *</td>
-                <td>                 
-                   {!! Form::number('anios_vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
-                </td> 
               </tr>
               <tr>
                 <td>Monto de adquisición*</td>
