@@ -50,7 +50,8 @@
                 </td>
                 <td>Nombre del responsable*</td>
                 <td>
-                   {!! Form::text('responsable_bien', null, ['class' => 'form-control' ,'id'=>'resultado_unidad', 'required' => 'required']) !!}
+                <input type="text" name="responsable_bien" id="resultado_unidad" class="form-control" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" required/>
+                   
                 </td>
               </tr>
               <tr>
@@ -81,7 +82,7 @@
                <tr>                  
               <td>Descripción*</td>
                 <td> 
-                    <input type="text" name="descripcion" id="descripcion" class="form-control" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" required/>
+                <input type="text" name="descripcion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
                    
                 </td> 
                 <td>Cuenta de depreciación*</td>
@@ -92,11 +93,11 @@
               <tr>
                  <td>Tipo de documento</td>
                 <td>                 
-                   {!! Form::text('marca_bien', null, ['class' => 'form-control']) !!}
+                   {!! Form::select('id_tipo_doc_propiedad',$tipo_documento,1, ['class' => 'form-control']) !!}
                 </td>
                 <td>No de registro de raiz e hipoteca</td>
                 <td>
-                   {!! Form::text('modelo_bien', null, ['class' => 'form-control']) !!}
+                   <input type="text" name="numero_registro_propiedad" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />
                 </td>  
               </tr>              
               <tr>                
@@ -106,8 +107,7 @@
                 </td>
                 <td>Estado de legalidad*</td>
                 <td>                 
-                    <select name="inscrita_registro" class="form-control"  required="required">
-                        <option></option>                        
+                    <select name="inscrita_registro" class="form-control"  required="required">                      
                         <option value="1">Inscrito</option>
                         <option value="0">No inscrito</option>
                      </select>
@@ -127,11 +127,11 @@
               <tr>
                   <td>Documento</td>
                   <td>
-                      <input type="file" class="form-control" name="file" accept="image/*" >                      
+                      <input type="file" class="form-control" name="file" accept="*.pdf" >                      
                   </td>  
                 <td>Observación</td>
                 <td>                 
-                   {!! Form::text('observacion', null, ['class' => 'form-control' ]) !!}
+                <input type="text" name="observacion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
             {!! Form::hidden('id_clase_bien',2, ['class' => 'form-control']) !!}

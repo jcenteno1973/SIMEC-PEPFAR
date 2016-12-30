@@ -50,7 +50,7 @@
                 </td>
                 <td>Nombre del responsable*</td>
                 <td>
-                   {!! Form::text('responsable_bien', null, ['class' => 'form-control' ,'id'=>'resultado_unidad', 'required' => 'required']) !!}
+                   <input type="text" name="responsable_bien" id="resultado_unidad" class="form-control" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" required/>
                 </td>
               </tr>
               <tr>
@@ -82,7 +82,7 @@
                <tr>                  
               <td>Descripción *</td>
                 <td>                 
-                   {!! Form::text('descripcion', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                   <input type="text" name="descripcion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
                 </td> 
                  <td>Estado *</td>
                 <td>
@@ -91,34 +91,33 @@
               </tr>
               <tr>
                  <td>Marca</td>
-                <td>                 
-                   {!! Form::text('marca_bien', null, ['class' => 'form-control']) !!}
+                <td> 
+                   <input type="text" name="marca_bien" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                   
                 </td>
                 <td>Modelo</td>
                 <td>
-                   {!! Form::text('modelo_bien', null, ['class' => 'form-control']) !!}
+                  <input type="text" name="modelo_bien" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                   
                 </td>  
               </tr>
               <tr>
                 
                 <td>Serie</td>
                 <td>
-                   {!! Form::text('numero_serie', null, ['class' => 'form-control' ]) !!}
+                   <input type="text" name="numero_serie" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                   
                 </td> 
                  <td>Color</td>
                 <td>                 
                    {!! Form::select('id_lista_color',$lista_color, null, ['class' => 'form-control']) !!}
                 </td>
               </tr>
-              <tr>
-                
+              <tr>                
                   <td>Años vida util *</td>
                 <td>                 
                    {!! Form::number('anios_vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>
                 <td>Número de factura</td>
-                <td>                 
-                   {!! Form::text('numero_factura', null, ['class' => 'form-control']) !!}
+                <td>
+                 <input type="text" name="numero_factura" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                    
                 </td>
               </tr>
               <tr>
@@ -139,7 +138,7 @@
                   </td>  
                 <td>Observación</td>
                 <td>                 
-                   {!! Form::text('observacion', null, ['class' => 'form-control' ]) !!}
+                   <input type="text" name="observacion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
             {!! Form::hidden('id_clase_bien',1, ['class' => 'form-control']) !!}

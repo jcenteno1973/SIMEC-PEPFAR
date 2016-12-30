@@ -22,6 +22,7 @@ use App\Http\Controllers\bitacoraController;
 use App\Models\documento_imagen;
 use App\Models\tipo_bien_inmueble;
 use App\Models\ubicacion_bien;
+use App\Models\tipo_doc_propiedad;
 
 class fichaController extends Controller
 {
@@ -80,6 +81,7 @@ class fichaController extends Controller
      $clase_bien=  clase_bien::lists('nombre_clase_bien','id_clase_bien');
      $fuente_financiamiento=  fuente_financiamiento::lists('nombre_fuente_financ','id_fuente_financiamiento');     
      $tipo_bien=tipo_bien_inmueble::lists('nombre_tipo_bien_inmueble','id_tipo_bien_inmueble');
+     $tipo_documento=  tipo_doc_propiedad::lists('nombre_tipo_documento','id_tipo_doc_propiedad');
      $cuenta_contable=  cuenta_contable::all();
      $obj_unidad=  ubicacion_organizacional::all();
      $ubicacion_bien=  ubicacion_bien::lists('nombre_ubicacion_bien','id_ubicacion_bien');     
@@ -91,7 +93,8 @@ class fichaController extends Controller
              'fuente_financiamiento',
              'tipo_bien',
              'cuenta_contable',
-             'ubicacion_bien',             
+             'ubicacion_bien',
+             'tipo_documento',             
              'obj_unidad'));  
         
     }
