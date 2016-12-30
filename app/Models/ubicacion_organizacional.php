@@ -5,6 +5,10 @@
  * Descripción:
  * Fecha de creación:12/11/2016
  * Creado por: Juan Carlos Centeno Borja
+ * 
+ * Modificado por: Karla Barrera 
+ * Fecha modificación: 22/12/2016
+ * Descripción: funciones scope para búsqueda
  */
 
 namespace App\Models;

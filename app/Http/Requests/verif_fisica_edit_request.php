@@ -1,4 +1,10 @@
 <?php
+/* 
+     * Nombre del archivo: verif_fisica_edit_request
+     * Descripción: valida datos para editar verificación física
+     * Fecha de creación: 28/12/2016
+     * Creado por: Karla Barrera
+*/
 
 namespace App\Http\Requests;
 
