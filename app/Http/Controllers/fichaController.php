@@ -123,6 +123,10 @@ class fichaController extends Controller
              'obj_unidad'));  
         
     }
+    public function fnc_store_inmueble(Request $request) {
+        
+    dd($request);  
+    }
     
     public function fnc_store_mueble(Request $request) {
     /**
@@ -136,8 +140,9 @@ class fichaController extends Controller
         $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
        if($_FILES['file']['error']==1){
+          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']); 
           flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
-          flash()->warning('No se puede cargar el archivo');
+          flash()->warning('No se puede cargar el archivo: '.$_FILES['file']['name']);
           return redirect()->back();
        } 
        else

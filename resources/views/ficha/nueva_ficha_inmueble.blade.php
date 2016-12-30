@@ -121,13 +121,12 @@
                 <td>Fecha adquisición*</td>
                 <td>
                    {!! Form::text('fecha_adquisicion', null, ['class'=>'form-control datepicker', 'placeholder'=>'dd/mm/aaaa', 'required' => 'required']) !!}
-                </td> 
-                
+                </td>                 
               </tr>
               <tr>
                   <td>Documento</td>
                   <td>
-                      <input type="file" class="form-control" name="file" accept="*.pdf" >                      
+                      <input type="file" class="form-control" name="file" accept="application/pdf" >                      
                   </td>  
                 <td>Observación</td>
                 <td>                 

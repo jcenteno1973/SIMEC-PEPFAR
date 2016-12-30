@@ -134,7 +134,7 @@
               <tr>
                   <td>Imagen</td>
                   <td>
-                      <input type="file" class="form-control" name="file" accept="image/*" >                      
+                      <input type="file" class="form-control" name="file" accept="image/*" capture>                      
                   </td>  
                 <td>Observación</td>
                 <td>                 
