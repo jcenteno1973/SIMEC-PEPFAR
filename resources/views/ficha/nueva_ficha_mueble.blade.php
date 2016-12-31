@@ -92,18 +92,18 @@
               <tr>
                  <td>Marca</td>
                 <td> 
-                   <input type="text" name="marca_bien" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                   
+                   <input type="text" name="marca_bien" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />                   
                 </td>
                 <td>Modelo</td>
                 <td>
-                  <input type="text" name="modelo_bien" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                   
+                  <input type="text" name="modelo_bien" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />                   
                 </td>  
               </tr>
               <tr>
                 
                 <td>Serie</td>
                 <td>
-                   <input type="text" name="numero_serie" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                   
+                   <input type="text" name="numero_serie" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />                   
                 </td> 
                  <td>Color</td>
                 <td>                 
@@ -117,7 +117,7 @@
                 </td>
                 <td>Número de factura</td>
                 <td>
-                 <input type="text" name="numero_factura" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />                    
+                 <input type="text" name="numero_factura" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />                    
                 </td>
               </tr>
               <tr>

@@ -65,11 +65,18 @@
                 </td>                 
               </tr>
               <tr>
+                  <td>Descripción*</td>
+                <td> 
+                <input type="text" name="descripcion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
+                   
+                </td> 
                    <td> Tipo del bien*</td>
                 <td>                    
                      {!! Form::select('id_tipo_bien_inmueble',$tipo_bien, null, ['class' => 'form-control']) !!}                               
-                </td>
-                <td>Cuenta contable*</td>
+                </td>          
+              </tr>
+               <tr>
+               <td>Cuenta contable*</td>
                 <td> 
                     <select name="id_cuenta_contable" class="form-control" onchange="myFunction(this.value)" required="required">
                         <option></option>
@@ -77,14 +84,7 @@
                         <option value="{{$cuentas_contable->id_cuenta_contable}}">{{$cuentas_contable->cta_contable_activo_fijo}}</option>
                         @endforeach 
                      </select>                  
-                </td>                  
-              </tr>
-               <tr>                  
-              <td>Descripción*</td>
-                <td> 
-                <input type="text" name="descripcion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
-                   
-                </td> 
+                </td>
                 <td>Cuenta de depreciación*</td>
                 <td>                    
                    {!! Form::text('cta_contable_depreciacion', null, ['class' => 'form-control' , 'id'=>'resultado','readonly'=>'readonly']) !!}
@@ -97,7 +97,7 @@
                 </td>
                 <td>No de registro de raiz e hipoteca</td>
                 <td>
-                   <input type="text" name="numero_registro_propiedad" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,35}" />
+                   <input type="text" name="numero_registro_propiedad" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />
                 </td>  
               </tr>              
               <tr>                

@@ -151,6 +151,37 @@ class fichaController extends Controller
     
     }
     
+     public function fnc_store_vehiculo(Request $request) {
+    /**
+     * Guarda en la base de datos una nueva ficha de mueble
+     *          
+     */ 
+     $obj_controller_bitacora=new bitacoraController();     
+       if($_FILES['file']['error']==1){
+         $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']);           
+         $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
+          return redirect()->back()->withInput()->withErrors($errors);
+       } 
+       else
+       {
+         //Crear ficha    
+         $id_ficha_af=$this->fnc_store_ficha_m($request);
+        //Crear código
+        $codigo_inventario=$this->fnc_store_codigo_mueble($request,$id_ficha_af);        
+        $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+            $this->fnc_guardar_archivo($request,$id_ficha_af);            
+            flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
+            return redirect()->back();  
+           }
+       }
+    }
     public function fnc_store_mueble(Request $request) {
     /**
      * Guarda en la base de datos una nueva ficha de mueble
@@ -287,7 +318,36 @@ class fichaController extends Controller
      $obj_codigo->save();
      return $obj_codigo;
     }
-    public function fnc_store_ficha_m($request) {
+     public function fnc_store_ficha_v($request) {
+     //Guarda en la base de datos una nueva ficha vehiculo
+     $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);   
+     $obj_ficha=  new ficha();
+     $obj_ficha->id_lista_color=$request->id_lista_color;
+     $obj_ficha->id_estado=$request->id_estado;
+     $obj_ficha->id_cuenta_contable=$request->id_cuenta_contable;
+     $obj_ficha->id_tipo_inventario=2;
+     $obj_ficha->responsable_bien =$request->responsable_bien;
+     $obj_ficha->descripcion=$request->descripcion;
+     $obj_ficha->marca_bien=$request->marca_bien;
+     $obj_ficha->modelo_bien=$request->modelo_bien;
+     $obj_ficha->placa_bien=$request->placa_bien;
+     $obj_ficha->numero_vin_chasis=$request->numero_vin_chasis;
+     $obj_ficha->numero_motor=$request->numero_motor;
+     $obj_ficha->anio_bien=$request->anio_bien;
+     $obj_ficha->numero_equipo=$request->numero_equipo;
+     $obj_ficha->numero_factura=$request->numero_factura;
+     $obj_ficha->observacion=$request->observacion;
+     $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+     $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
+     $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
+     $obj_ficha->estado_ficha=1;
+     $obj_ficha->id_usuario_crea=Auth::user()->id_usuario_app;
+     $obj_ficha->ip_dispositivo=$request->ip();
+     $obj_ficha->save();     
+     return $obj_ficha->id_ficha_activo_fijo;
+    }
+     public function fnc_store_ficha_m($request) {
      //Guarda en la base de datos una nueva ficha mueble
      $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);   
      $obj_ficha=  new ficha();
