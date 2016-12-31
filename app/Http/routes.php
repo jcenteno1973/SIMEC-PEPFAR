@@ -31,7 +31,7 @@ Route::post('ficha/nueva_ficha_vehiculo',['as' => 'ficha/nueva_ficha_vehiculo', 
 Route::get('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_create_mueble'] );
 Route::post('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_store_mueble'] );
 Route::get('municipios/{id}','municipioController@fnc_get_municipios');
-
+Route::get('ficha/buscar_ficha',['as' => 'ficha/buscar_ficha', 'uses' => 'fichaController@show']);
 Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
