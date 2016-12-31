@@ -99,12 +99,12 @@
                     @yield('menu_lateral') 
 		
 		</div>
-		<div class="col-md-9"><!--area de trabajo -->  
-                @if (session()->has('flash_notification.message'))
+		<div class="col-md-9"><!--area de trabajo --> 
+                @if (session()->has('flash_notification.message'))                
                 @include ('flash::message')
-                @endif 
+                @endif                 
                 @if($errors->any())
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert-danger" role="alert">
                     <p>Por favor corregir los siguientes errores</p>
                        @foreach ($errors->all() as $error)
                           <div>{{ $error }}</div>

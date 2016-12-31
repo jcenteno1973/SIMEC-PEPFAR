@@ -20,11 +20,14 @@
     <div class="panel-body"> 
         <h4>
        <strong>
-        @if (session()->has('flash_notification.message'))
-        @include ('flash::message')
-        @endif 
+         @if (session('flash_notification.level')=='warning')
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {!! session('flash_notification.message') !!}
+        </div>
+         @endif
         @if($errors->any())
-        <div class="alert alert-warning" role="alert">
+        <div class="alert-danger" role="alert">
        Por favor corregir los siguientes errores
            @foreach ($errors->all() as $error)
               <div>{{ $error }}</div>

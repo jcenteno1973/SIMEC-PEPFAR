@@ -124,8 +124,31 @@ class fichaController extends Controller
         
     }
     public function fnc_store_inmueble(Request $request) {
-        
-    dd($request);  
+     
+     $obj_controller_bitacora=new bitacoraController();     
+     if($_FILES['file']['error']==1){
+          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']); 
+           $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
+          return redirect()->back()->withInput()->withErrors($errors);
+       } 
+       else
+       {
+           $id_ficha_af=$this->fnc_store_ficha_in($request);
+           $codigo_inventario= $this->fnc_store_codigo_inmueble($request, $id_ficha_af);
+           $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+            $this->fnc_guardar_documento($request,$id_ficha_af);            
+            flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
+            return redirect()->back();  
+           }
+       }
+    
     }
     
     public function fnc_store_mueble(Request $request) {
@@ -133,20 +156,20 @@ class fichaController extends Controller
      * Guarda en la base de datos una nueva ficha de mueble
      *          
      */ 
-     //Crear ficha    
-      $id_ficha_af=$this->fnc_store_ficha($request);
-     //Crear código
-     $codigo_inventario=$this->fnc_store_codigo_mueble($request,$id_ficha_af);
-        $obj_controller_bitacora=new bitacoraController();
-        $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
+     $obj_controller_bitacora=new bitacoraController();
+     
        if($_FILES['file']['error']==1){
-          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']); 
-          flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
-          flash()->warning('No se puede cargar el archivo: '.$_FILES['file']['name']);
-          return redirect()->back();
+         $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']);           
+         $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
+          return redirect()->back()->withInput()->withErrors($errors);
        } 
        else
        {
+         //Crear ficha    
+         $id_ficha_af=$this->fnc_store_ficha_m($request);
+        //Crear código
+        $codigo_inventario=$this->fnc_store_codigo_mueble($request,$id_ficha_af);        
+        $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
            if($_FILES['file']['name']=='')
            {
           flash()->success('Ficha creada exitosamente con el código de inventario:'.$codigo_inventario->codigo_inventario);
@@ -216,8 +239,56 @@ class fichaController extends Controller
      $obj_codigo->save();
      return $obj_codigo;
     }
-    public function fnc_store_ficha($request) {
-     //Guarda en la base de datos una nueva ficha
+     public function fnc_store_codigo_inmueble($request,$id_ficha_af) {
+     //Crea el código de inventario
+     $obj_codigo= new lista_codigo();
+     $codigo_departamento=  departamento::find($request->departamento);    
+     $codigo_municipio=  municipio::find($request->municipio);
+     $codigo_unidad=  ubicacion_organizacional::find($request->id_ubicacion_org);
+     $codigo_fondos=  fuente_financiamiento::find($request->id_fuente_financiamiento);
+     $codigo_bienes=  tipo_bien_inmueble::find($request->id_tipo_bien_inmueble);
+     $codigo_ubicacion= ubicacion_bien::find($request->id_ubicacion_bien);
+     $codigo_inventario=$codigo_departamento->codigo_departamento.'-'
+             .$codigo_municipio->codigo_municipio.' ('
+             .$codigo_unidad->codigo_unidad_dep.')-2-' 
+             .$codigo_fondos->codigo_fuente_financ.'-' 
+             .$codigo_ubicacion->codigo_ubicacion_bien.'-'
+             .$codigo_bienes->codigo_tipo_bien_inmueble.'-';      
+    $obj_listado=  lista_codigo::where('id_tipo_bien_inmueble',$request->id_tipo_bien_inmueble)->where('id_ubicacion_org',$request->id_ubicacion_org)->orderBy('correlativo','desc')->get();
+   
+    if($obj_listado->count()==0)
+    {
+       $correlativo=1; 
+    }
+    else
+    {
+       $correlativo=$obj_listado[0]->correlativo+1; 
+    }
+    if ($codigo_unidad->alquilado==0)
+    {
+    if($correlativo<10)
+    {
+       $codigo_inventario=$codigo_inventario.'0'.$correlativo;
+    }
+    else
+    {
+       $codigo_inventario=$codigo_inventario.$correlativo; 
+    } 
+    }
+     $obj_codigo->id_fuente_financiamiento=$request->id_fuente_financiamiento;
+     $obj_codigo->id_clase_bien=2;
+     $obj_codigo->id_ficha_activo_fijo=$id_ficha_af;
+     $obj_codigo->id_municipio=$request->municipio;
+     $obj_codigo->id_ubicacion_org=$request->id_ubicacion_org;
+     $obj_codigo->id_tipo_bien_inmueble=$request->id_tipo_bien_inmueble;
+     $obj_codigo->correlativo=$correlativo;
+     $obj_codigo->codigo_inventario =$codigo_inventario;
+     $obj_codigo->estado_codigo=1;
+     $obj_codigo->save();
+     return $obj_codigo;
+    }
+    public function fnc_store_ficha_m($request) {
+     //Guarda en la base de datos una nueva ficha mueble
      $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);   
      $obj_ficha=  new ficha();
      $obj_ficha->id_lista_color=$request->id_lista_color;
@@ -238,8 +309,29 @@ class fichaController extends Controller
      $obj_ficha->estado_ficha=1;
      $obj_ficha->id_usuario_crea=Auth::user()->id_usuario_app;
      $obj_ficha->ip_dispositivo=$request->ip();
-     $obj_ficha->save();
-     flash()->success('Ficha creada exítosamente');
+     $obj_ficha->save();     
+     return $obj_ficha->id_ficha_activo_fijo;
+    }
+     public function fnc_store_ficha_in($request) {
+     //Guarda en la base de datos una nueva ficha inmueble
+     $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);   
+     $obj_ficha=  new ficha();
+     $obj_ficha->id_tipo_doc_propiedad=$request->id_tipo_doc_propiedad;
+     $obj_ficha->numero_registro_propiedad=$request->numero_registro_propiedad;
+     $obj_ficha->id_cuenta_contable=$request->id_cuenta_contable;
+     $obj_ficha->id_tipo_inventario=3;
+     $obj_ficha->responsable_bien =$request->responsable_bien;
+     $obj_ficha->descripcion=$request->descripcion;
+     $obj_ficha->inscrita_registro=$request->inscrita_registro;     
+     $obj_ficha->observacion=$request->observacion;
+     $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+     $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
+     $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
+     $obj_ficha->estado_ficha=1;
+     $obj_ficha->id_usuario_crea=Auth::user()->id_usuario_app;
+     $obj_ficha->ip_dispositivo=$request->ip();
+     $obj_ficha->save();     
      return $obj_ficha->id_ficha_activo_fijo;
     }
     public function fnc_guardar_archivo($request,$id_ficha_af) {
@@ -258,6 +350,27 @@ class fichaController extends Controller
        $obj_documento->id_ficha_activo_fijo=$id_ficha_af;
        $obj_documento->nombre_archivo=$nombre_archivo;
        $obj_documento->url_doc_img='storage/imagenes';
+       $obj_documento->id_usuario_crea=Auth::user()->id_usuario_app;
+       $obj_documento->ip_dispositivo=$request->ip();
+       $obj_documento->fecha_hora_creacion=  Carbon::now(); 
+       $obj_documento->save();
+    }
+    public function fnc_guardar_documento($request,$id_ficha_af) {
+     /**
+     * Guarda archivo en el servidor
+     *          
+     */
+       $obj_documento = new documento_imagen();
+      //obtenemos el campo file definido en el formulario
+       $file = $request->file('file');
+       //obtenemos el nombre del archivo
+       $nombre = $file->getClientOriginalName();
+       $nombre_archivo=time().$nombre; 
+       //indicamos que queremos guardar un nuevo archivo en el disco local
+       \Storage::disk('local')->put('documentos/'.$nombre_archivo,  \File::get($file));
+       $obj_documento->id_ficha_activo_fijo=$id_ficha_af;
+       $obj_documento->nombre_archivo=$nombre_archivo;
+       $obj_documento->url_doc_img='storage/documentos';
        $obj_documento->id_usuario_crea=Auth::user()->id_usuario_app;
        $obj_documento->ip_dispositivo=$request->ip();
        $obj_documento->fecha_hora_creacion=  Carbon::now(); 

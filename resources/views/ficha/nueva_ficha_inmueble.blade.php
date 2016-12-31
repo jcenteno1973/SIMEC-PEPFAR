@@ -41,7 +41,7 @@
               <tr>
                 <td>Unidad o departamento*</td>
                 <td>  
-                    <select name="id_ubicacion_org" class="form-control" onchange="fnc_unidad(this.value)">
+                    <select name="id_ubicacion_org" class="form-control" onchange="fnc_unidad(this.value)" required="required">
                         <option></option>
                         @foreach($obj_unidad as $obj_unidades)
                         <option value="{{$obj_unidades->id_ubicacion_org}}">{{$obj_unidades->nombre_unidad_dep}}</option>
@@ -61,13 +61,13 @@
                 </td>
                 <td>Ubicación del bien*</td>
                 <td>
-                   {!! Form::select('id_ubicacion_bien ',$ubicacion_bien,null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                   {!! Form::select('id_ubicacion_bien',$ubicacion_bien,null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </td>                 
               </tr>
               <tr>
                    <td> Tipo del bien*</td>
                 <td>                    
-                     {!! Form::select('id_tipo_bien_mueble',$tipo_bien, null, ['class' => 'form-control','id'=>'id_tipo_bien_mueble']) !!}                               
+                     {!! Form::select('id_tipo_bien_inmueble',$tipo_bien, null, ['class' => 'form-control']) !!}                               
                 </td>
                 <td>Cuenta contable*</td>
                 <td> 
@@ -101,9 +101,9 @@
                 </td>  
               </tr>              
               <tr>                
-                  <td>Años vida util *</td>
+                  <td>Años vida util</td>
                 <td>                 
-                   {!! Form::number('anios_vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                   {!! Form::number('anios_vida_util',0, ['class' => 'form-control']) !!}
                 </td>
                 <td>Estado de legalidad*</td>
                 <td>                 
@@ -116,7 +116,7 @@
               <tr>
                 <td>Monto de adquisición*</td>
                 <td>   
-                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01', 'required' => 'required']) !!}                   
+                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01','placeholder'=>'$0.00', 'required' => 'required']) !!}                   
                 </td>
                 <td>Fecha adquisición*</td>
                 <td>

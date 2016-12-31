@@ -41,9 +41,9 @@ class AuthController extends Controller
        /**     
      * Autenticación de usuario
      */
-      $nombre_usuario = $request->nombre_usuario; // Input::get('nombre_usuario');
-      $password = $request->password; //Input::get('password');
-      $rules =array('password'=> array('min:8','max:25')); //reglas de validación
+      $nombre_usuario = $request->nombre_usuario; 
+      $password = $request->password; 
+      $rules =array('password'=> array('min:8','max:25')); 
       $this->validate($request, $rules);//Realizar validación      
     if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_registro'=>1]))
       {

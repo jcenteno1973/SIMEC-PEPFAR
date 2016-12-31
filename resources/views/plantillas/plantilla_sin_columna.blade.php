@@ -92,7 +92,7 @@
                     @include ('flash::message')
                     @endif 
                     @if($errors->any())
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert-danger" role="alert">
                     <p>Por favor corregir los siguientes errores</p>
                        @foreach ($errors->all() as $error)
                           <div>{{ $error }}</div>

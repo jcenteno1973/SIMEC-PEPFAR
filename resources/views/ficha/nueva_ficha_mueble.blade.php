@@ -123,7 +123,7 @@
               <tr>
                 <td>Monto de adquisición*</td>
                 <td>   
-                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01', 'required' => 'required']) !!}                   
+                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01','placeholder'=>'$0.00', 'required' => 'required']) !!}                   
                 </td>
                 <td>Fecha adquisición*</td>
                 <td>
