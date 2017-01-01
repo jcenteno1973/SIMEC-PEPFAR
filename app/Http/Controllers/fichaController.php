@@ -23,6 +23,7 @@ use App\Models\documento_imagen;
 use App\Models\tipo_bien_inmueble;
 use App\Models\ubicacion_bien;
 use App\Models\tipo_doc_propiedad;
+use App\Models\tipo_inventario;
 
 class fichaController extends Controller
 {
@@ -450,7 +451,12 @@ class fichaController extends Controller
      */
     public function show()
     {
-       
+      $obj_inventario= tipo_inventario::all();
+      $obj_unidad=  ubicacion_organizacional::all();
+      $obj_ficha=  ficha::paginate(10);
+      $obj_lista=  lista_codigo::where('estado_codigo',1)->get();
+      $obj_unidad= ubicacion_organizacional::all();
+      return view('ficha/buscar_ficha',  compact('obj_ficha','obj_lista','obj_unidad','obj_inventario','obj_unidad')); 
         
     }
 

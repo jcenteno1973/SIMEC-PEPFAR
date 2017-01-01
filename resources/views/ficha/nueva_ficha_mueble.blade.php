@@ -16,10 +16,10 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="#" class="list-group-item">Buscar ficha</a>
-    <a href="#" class="list-group-item">Nueva ficha inmueble</a>
+     <a href="../ficha/buscar_ficha" class="list-group-item">Buscar ficha</a>
+    <a href="../ficha/nueva_ficha_inmueble" class="list-group-item">Nueva ficha inmueble</a>
     <a class="list-group-item active">Nueva ficha mueble</a>
-    <a href="#" class="list-group-item">Nueva ficha veh&iacute;culo</a>
+    <a href="../ficha/nueva_ficha_vehiculo" class="list-group-item">Nueva ficha veh&iacute;culo</a>
 </div>
 @stop
 

@@ -11,7 +11,7 @@
 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="#" class="list-group-item">Buscar ficha</a>
+    <a href="ficha/buscar_ficha" class="list-group-item">Buscar ficha</a>
     <a href="ficha/nueva_ficha_inmueble" class="list-group-item">Nueva ficha inmueble</a>
     <a href="ficha/nueva_ficha_mueble" class="list-group-item">Nueva ficha mueble</a>
     <a href="ficha/nueva_ficha_vehiculo" class="list-group-item">Nueva ficha veh&iacute;culo</a>

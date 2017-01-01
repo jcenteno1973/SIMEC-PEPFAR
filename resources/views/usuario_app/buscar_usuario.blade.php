@@ -45,7 +45,6 @@
                     Código de usuario
                   {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
                   &nbsp;&nbsp;Roles
-                  <!--{!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Roles'])!!} Borrar ya que roles es una lista  -->
                 </div>
                  <select name="rol_usuario" class="form-control" >
                      <option> </option>
