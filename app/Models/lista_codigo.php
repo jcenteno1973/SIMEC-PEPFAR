@@ -8,10 +8,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class lista_codigo extends Model
 {
-    //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $table = 'lista_codigo';
     protected $primaryKey = 'id_codigo_inventario';
     public $timestamps = false;
@@ -23,4 +24,7 @@ class lista_codigo extends Model
         'fecha_hora_creacion',
         'feha_hora_modificacion'
     ];
+    public function fnc_ficha() {
+      return $this->belongsTo('App\Models\ficha'); 
+    }
 }

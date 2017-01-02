@@ -96,7 +96,7 @@ class usuario_appController extends Controller
         }   
         if($request->rol_usuario!=''){
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
-        $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->id_rol_usuario($id_rol_usuario)->estado_usuario($request->estado_usuario)->paginate(5); 
+        $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->id_rol_usuario($id_rol_usuario)->estado_usuario($request->estado_usuario)->paginate(10); 
         }
         else
         {

@@ -19,9 +19,8 @@
     @section('head')
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />    
-     
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>
+    <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>     
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
        <!-- Datepicker Files -->

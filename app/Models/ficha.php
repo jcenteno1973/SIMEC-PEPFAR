@@ -49,7 +49,10 @@ class ficha extends Model
         'estado_registro'       
     ];
     
-    
+    public function fnc_lista_codigo() {
+        
+    return $this->hasMany('App\Models\lista_codigo');   
+    } 
     
     
 }

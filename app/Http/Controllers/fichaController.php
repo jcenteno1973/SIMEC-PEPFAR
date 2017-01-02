@@ -24,6 +24,7 @@ use App\Models\tipo_bien_inmueble;
 use App\Models\ubicacion_bien;
 use App\Models\tipo_doc_propiedad;
 use App\Models\tipo_inventario;
+use DB;
 
 class fichaController extends Controller
 {
@@ -166,7 +167,7 @@ class fichaController extends Controller
        else
        {
          //Crear ficha    
-         $id_ficha_af=$this->fnc_store_ficha_m($request);
+         $id_ficha_af=$this->fnc_store_ficha_v($request);
         //Crear código
         $codigo_inventario=$this->fnc_store_codigo_mueble($request,$id_ficha_af);        
         $obj_controller_bitacora->create_mensaje('Creación de nueva ficha: '.$codigo_inventario->codigo_inventario);
@@ -449,17 +450,80 @@ class fichaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
+    public function show(Request $request)
+    {     
       $obj_inventario= tipo_inventario::all();
-      $obj_unidad=  ubicacion_organizacional::all();
-      $obj_ficha=  ficha::paginate(10);
-      $obj_lista=  lista_codigo::where('estado_codigo',1)->get();
-      $obj_unidad= ubicacion_organizacional::all();
-      return view('ficha/buscar_ficha',  compact('obj_ficha','obj_lista','obj_unidad','obj_inventario','obj_unidad')); 
+      $obj_unidad=  ubicacion_organizacional::all();      
+      if($request->codigo_inventario==''&&$request->id_ubicacion_org==''&&$request->id_tipo_inventario=='')
+     {
+        $lista_codigo= DB::table('lista_codigo')              
+              ->join('ficha_activo_fijo', 'lista_codigo.id_ficha_activo_fijo', '=', 'ficha_activo_fijo.id_ficha_activo_fijo')
+              ->join('ubicacion_organizacional','lista_codigo.id_ubicacion_org','=','ubicacion_organizacional.id_ubicacion_org')
+              ->select('lista_codigo.id_ficha_activo_fijo','lista_codigo.codigo_inventario','ficha_activo_fijo.descripcion','ubicacion_organizacional.nombre_unidad_dep')
+              ->whereNull('lista_codigo.deleted_at')
+              ->simplePaginate(10);
+     }    
+    
+     if($request->codigo_inventario!=''&&$request->id_ubicacion_org!=''&&$request->id_tipo_inventario!='')
+      {
+      $lista_codigo= DB::table('lista_codigo')              
+              ->join('ficha_activo_fijo', 'lista_codigo.id_ficha_activo_fijo', '=', 'ficha_activo_fijo.id_ficha_activo_fijo')
+              ->join('ubicacion_organizacional','lista_codigo.id_ubicacion_org','=','ubicacion_organizacional.id_ubicacion_org')
+              ->select('lista_codigo.id_ficha_activo_fijo','lista_codigo.codigo_inventario','ficha_activo_fijo.descripcion','ubicacion_organizacional.nombre_unidad_dep')
+              ->whereNull('lista_codigo.deleted_at')
+              ->where('lista_codigo.codigo_inventario',"LIKE",'%'.$request->codigo_inventario.'%')
+              ->where('lista_codigo.id_ubicacion_org',$request->id_ubicacion_org)
+              ->where('ficha_activo_fijo.id_tipo_inventario',$request->id_tipo_inventario)
+              ->simplePaginate(10);  
+      }
+      if($request->codigo_inventario!=''&&$request->id_ubicacion_org==''&&$request->id_tipo_inventario=='')
+      {
+      $lista_codigo= DB::table('lista_codigo')              
+              ->join('ficha_activo_fijo', 'lista_codigo.id_ficha_activo_fijo', '=', 'ficha_activo_fijo.id_ficha_activo_fijo')
+              ->join('ubicacion_organizacional','lista_codigo.id_ubicacion_org','=','ubicacion_organizacional.id_ubicacion_org')
+              ->select('lista_codigo.id_ficha_activo_fijo','lista_codigo.codigo_inventario','ficha_activo_fijo.descripcion','ubicacion_organizacional.nombre_unidad_dep')
+              ->whereNull('lista_codigo.deleted_at')
+              ->where('lista_codigo.codigo_inventario',"LIKE",'%'.$request->codigo_inventario.'%')              
+              ->simplePaginate(10);  
+      }
+      if($request->codigo_inventario==''&&$request->id_ubicacion_org!=''&&$request->id_tipo_inventario!='')
+      {
+      $lista_codigo= DB::table('lista_codigo')              
+              ->join('ficha_activo_fijo', 'lista_codigo.id_ficha_activo_fijo', '=', 'ficha_activo_fijo.id_ficha_activo_fijo')
+              ->join('ubicacion_organizacional','lista_codigo.id_ubicacion_org','=','ubicacion_organizacional.id_ubicacion_org')
+              ->select('lista_codigo.id_ficha_activo_fijo','lista_codigo.codigo_inventario','ficha_activo_fijo.descripcion','ubicacion_organizacional.nombre_unidad_dep')
+              ->whereNull('lista_codigo.deleted_at')             
+              ->where('lista_codigo.id_ubicacion_org',$request->id_ubicacion_org)
+              ->where('ficha_activo_fijo.id_tipo_inventario',$request->id_tipo_inventario)
+              ->simplePaginate(10);  
+      }
+      if($request->codigo_inventario==''&&$request->id_ubicacion_org==''&&$request->id_tipo_inventario!='')
+      {
+      $lista_codigo= DB::table('lista_codigo')              
+              ->join('ficha_activo_fijo', 'lista_codigo.id_ficha_activo_fijo', '=', 'ficha_activo_fijo.id_ficha_activo_fijo')
+              ->join('ubicacion_organizacional','lista_codigo.id_ubicacion_org','=','ubicacion_organizacional.id_ubicacion_org')
+              ->select('lista_codigo.id_ficha_activo_fijo','lista_codigo.codigo_inventario','ficha_activo_fijo.descripcion','ubicacion_organizacional.nombre_unidad_dep')
+              ->whereNull('lista_codigo.deleted_at')
+              ->where('ficha_activo_fijo.id_tipo_inventario',$request->id_tipo_inventario)
+              ->simplePaginate(10);  
+      }
+      if($request->codigo_inventario==''&&$request->id_ubicacion_org!=''&&$request->id_tipo_inventario=='')
+      {
+      $lista_codigo= DB::table('lista_codigo')              
+              ->join('ficha_activo_fijo', 'lista_codigo.id_ficha_activo_fijo', '=', 'ficha_activo_fijo.id_ficha_activo_fijo')
+              ->join('ubicacion_organizacional','lista_codigo.id_ubicacion_org','=','ubicacion_organizacional.id_ubicacion_org')
+              ->select('lista_codigo.id_ficha_activo_fijo','lista_codigo.codigo_inventario','ficha_activo_fijo.descripcion','ubicacion_organizacional.nombre_unidad_dep')
+              ->whereNull('lista_codigo.deleted_at')             
+              ->where('lista_codigo.id_ubicacion_org',$request->id_ubicacion_org)              
+              ->simplePaginate(10);  
+      }
+      if($request->ajax()){
+         return response()->json(view('ficha/codigos',  compact('lista_codigo'))->render()); 
+      } 
+      return view('ficha/buscar_ficha',  compact('lista_codigo','obj_inventario','obj_unidad')); 
         
     }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
