@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-01-02T14:36:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fi_inmueble" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c152312-645c-4c34-b9c4-9246d6883a32">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="118"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="875"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicaf"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT l.codigo_inventario,   d.nombre_departamento,  m.nombre_municipio,   u.nombre_unidad_dep,  b.nombre_clase_bien,  ff.nombre_fuente_financ,  bm.nombre_tipo_bien_mueble,  e.nombre_estado, c.cta_contable_depreciacion,  f.descripcion,  f.responsable_bien,  f.monto_adquisicion,   f.fecha_adquisicion,   t.nombre_tipo_documento, f.numero_registro_propiedad,  f.inscrita_registro,  f.observacion,   f.anios_vida_util,    di.nombre_archivo 
+FROM sicafam.lista_codigo l, sicafam.departamento d, sicafam.municipio m, sicafam.ubicacion_organizacional u, sicafam.clase_bien b, sicafam.fuente_financiamiento ff, sicafam.tipo_bien_mueble bm, sicafam.estado_af e, sicafam.cuenta_contable c, sicafam.ficha_activo_fijo f, sicafam.tipo_doc_propiedad t, sicafam.documento_imagen di
+WHERE f.id_ficha_activo_fijo=l.id_ficha_activo_fijo AND c.id_cuenta_contable=f.id_cuenta_contable  AND d.id_departamento = m.id_departamento AND
+ u.id_ubicacion_org = l.id_ubicacion_org AND  b.id_clase_bien = l.id_clase_bien AND ff.id_fuente_financiamiento = l.id_fuente_financiamiento AND bm.id_tipo_bien_mueble = l.id_tipo_bien_mueble AND e.id_estado = f.id_estado
+AND t.	id_tipo_doc_propiedad = f.	id_tipo_doc_propiedad AND f.id_ficha_activo_fijo=di.id_ficha_activo_fijo]]>
+	</queryString>
+	<field name="codigo_inventario" class="java.lang.String"/>
+	<field name="nombre_departamento" class="java.lang.String"/>
+	<field name="nombre_municipio" class="java.lang.String"/>
+	<field name="nombre_unidad_dep" class="java.lang.String"/>
+	<field name="nombre_clase_bien" class="java.lang.String"/>
+	<field name="nombre_fuente_financ" class="java.lang.String"/>
+	<field name="nombre_tipo_bien_mueble" class="java.lang.String"/>
+	<field name="nombre_estado" class="java.lang.String"/>
+	<field name="cta_contable_depreciacion" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="responsable_bien" class="java.lang.String"/>
+	<field name="monto_adquisicion" class="java.lang.Float"/>
+	<field name="fecha_adquisicion" class="java.sql.Date"/>
+	<field name="nombre_tipo_documento" class="java.lang.String"/>
+	<field name="numero_registro_propiedad" class="java.lang.String"/>
+	<field name="inscrita_registro" class="java.lang.Boolean"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="anios_vida_util" class="java.lang.Integer"/>
+	<field name="nombre_archivo" class="java.lang.String"/>
+	<group name="codigo_inventario">
+		<groupExpression><![CDATA[$F{codigo_inventario}]]></groupExpression>
+	</group>
+	<group name="nombre_departamento">
+		<groupExpression><![CDATA[$F{nombre_departamento}]]></groupExpression>
+	</group>
+	<group name="nombre_municipio">
+		<groupExpression><![CDATA[$F{nombre_municipio}]]></groupExpression>
+	</group>
+	<group name="nombre_unidad_dep">
+		<groupExpression><![CDATA[$F{nombre_unidad_dep}]]></groupExpression>
+	</group>
+	<group name="nombre_clase_bien">
+		<groupExpression><![CDATA[$F{nombre_clase_bien}]]></groupExpression>
+	</group>
+	<group name="nombre_fuente_financ">
+		<groupExpression><![CDATA[$F{nombre_fuente_financ}]]></groupExpression>
+	</group>
+	<group name="nombre_tipo_bien_mueble">
+		<groupExpression><![CDATA[$F{nombre_tipo_bien_mueble}]]></groupExpression>
+	</group>
+	<group name="nombre_estado">
+		<groupExpression><![CDATA[$F{nombre_estado}]]></groupExpression>
+	</group>
+	<group name="cta_contable_depreciacion">
+		<groupExpression><![CDATA[$F{cta_contable_depreciacion}]]></groupExpression>
+	</group>
+	<group name="descripcion">
+		<groupExpression><![CDATA[$F{descripcion}]]></groupExpression>
+	</group>
+	<group name="responsable_bien">
+		<groupExpression><![CDATA[$F{responsable_bien}]]></groupExpression>
+	</group>
+	<group name="monto_adquisicion">
+		<groupExpression><![CDATA[$F{monto_adquisicion}]]></groupExpression>
+	</group>
+	<group name="fecha_adquisicion">
+		<groupExpression><![CDATA[$F{fecha_adquisicion}]]></groupExpression>
+	</group>
+	<group name="observacion">
+		<groupExpression><![CDATA[$F{observacion}]]></groupExpression>
+	</group>
+	<group name="anios_vida_util">
+		<groupExpression><![CDATA[$F{anios_vida_util}]]></groupExpression>
+	</group>
+	<group name="nombre_archivo">
+		<groupExpression><![CDATA[$F{nombre_archivo}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="3" y="2" width="77" height="68" uuid="66e72772-b8d7-497a-b3cf-80ca38b757f1"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/escudo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="138" y="0" width="270" height="20" uuid="e1d90f3d-13b3-4fda-859b-2c3a5c04eb3d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ALCALDIA MUNICIPAL DE MEJICANOS"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="21" width="270" height="20" uuid="c694ed96-d318-4214-943e-8615950903e2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GERENCIA ADMINISTRATIVA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="40" width="270" height="20" uuid="c4ee968a-b743-4383-8c4f-f6f8a8e2120b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDAD DE ACTIVO FIJO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="60" width="270" height="20" uuid="e8b88836-b5fb-487e-82c5-da23c433bc56"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte de Ficha de Bien Inmueble"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="493" y="2" width="77" height="68" uuid="e3b184f2-526a-485c-9be6-f66bebbc2f27">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="90" height="18" uuid="39799ca9-de68-4ad9-a1ca-5a000297da23"/>
+				<textFieldExpression><![CDATA["Fecha de emisión"]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="104" y="-1" width="140" height="20" uuid="605d74e1-a431-417d-b637-da80abb3cba6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="-1" width="96" height="20" uuid="aea0e93d-8fff-4733-8b60-674b8a28904c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagína " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="516" y="-1" width="68" height="20" uuid="16ae0980-2088-434d-86f9-6fd6d1d955cf"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch">
+			<line>
+				<reportElement x="-3" y="0" width="578" height="1" uuid="2c1ded31-1ef9-4bde-98a3-a7996c22cd0f"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="365" splitType="Stretch">
+			<textField>
+				<reportElement x="130" y="30" width="168" height="30" uuid="50fac34c-f0fe-4db0-a315-3400f9ce41e4"/>
+				<textFieldExpression><![CDATA[$F{codigo_inventario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="30" width="100" height="30" uuid="bda787a6-1afc-4682-b0db-1ad08294be0f"/>
+				<text><![CDATA[Código de inventario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="50" width="168" height="30" uuid="d48c52b6-3580-4c9d-8070-b13f01a259bb"/>
+				<textFieldExpression><![CDATA[$F{nombre_departamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="50" width="114" height="30" uuid="9425ac3e-c8a0-40ac-9cae-aa53ef6807ab"/>
+				<text><![CDATA[Departamento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="50" width="173" height="30" uuid="9836dfcf-2af8-4114-acc0-164ae13d6b54"/>
+				<textFieldExpression><![CDATA[$F{nombre_municipio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="50" width="100" height="30" uuid="51795fd5-a773-49ce-8760-80a01de6ece4"/>
+				<text><![CDATA[Municipio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="70" width="168" height="30" uuid="3b24f534-c531-4e29-98ff-651f6e3befeb"/>
+				<textFieldExpression><![CDATA[$F{nombre_unidad_dep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="70" width="128" height="30" uuid="6576ff5b-4566-41f9-b9d2-874cf2220a1e"/>
+				<text><![CDATA[Unidad/Departamento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="70" width="173" height="30" uuid="90f0f59b-19a3-465c-bbac-193e47bfab17"/>
+				<textFieldExpression><![CDATA[$F{nombre_clase_bien}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="70" width="100" height="30" uuid="8edb20bc-3e7f-4d4b-986a-d255c3eafc35"/>
+				<text><![CDATA[Clase del bien:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="92" width="168" height="30" uuid="3fe12897-9a66-4c6b-89a5-7965ff408021"/>
+				<textFieldExpression><![CDATA[$F{nombre_fuente_financ}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="92" width="110" height="30" uuid="f91b3492-ac73-49ce-b404-264006cbcd89"/>
+				<text><![CDATA[Fuente financiamiento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="92" width="173" height="30" uuid="01ae8ba6-90a1-4622-ba85-8ab1d9f6f0df"/>
+				<textFieldExpression><![CDATA[$F{nombre_tipo_bien_mueble}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="92" width="117" height="30" uuid="4795454e-f687-4b87-9481-6c2cd4d10c55"/>
+				<text><![CDATA[Tipo bien:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="111" width="168" height="30" uuid="4b1f162f-2935-474b-b5f9-ad07f48ba4e8"/>
+				<textFieldExpression><![CDATA[$F{nombre_estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="111" width="100" height="30" uuid="481287d5-7a99-4ce9-a157-1acba9d415af"/>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="135" width="168" height="30" uuid="802f0e8e-7bad-4acc-a1d0-2f6629874b1f"/>
+				<textFieldExpression><![CDATA[$F{cta_contable_depreciacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="135" width="100" height="30" uuid="9844ca2a-e4f4-4519-9096-5f96ffc808a9"/>
+				<text><![CDATA[Cuenta Contable:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="125" width="443" height="30" uuid="8b21d73a-57a7-4a72-b2cc-9585b5749af8"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="155" width="100" height="30" uuid="855b4291-9163-493e-a88d-415a693c453e"/>
+				<text><![CDATA[Descripción:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="175" width="168" height="30" uuid="52a3924f-8bcd-4cf9-8edc-c9067f7d9c67"/>
+				<textFieldExpression><![CDATA[$F{responsable_bien}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="175" width="128" height="30" uuid="5fc2d615-0def-4322-9236-7da72b855cfe"/>
+				<text><![CDATA[Responsable del Inmueble:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="195" width="168" height="30" uuid="a9b81f86-370f-4425-8223-65ec1c6a85e0"/>
+				<textFieldExpression><![CDATA[$F{monto_adquisicion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="195" width="100" height="30" uuid="8b64c8e4-6c2e-41d6-a799-393e437c49ad"/>
+				<text><![CDATA[Monto adquisición:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="402" y="195" width="171" height="30" uuid="7b1bcee2-a72e-4d64-a444-951c1d7b0d9a"/>
+				<textFieldExpression><![CDATA[$F{fecha_adquisicion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="195" width="100" height="30" uuid="ecf0e4ee-ff51-44aa-85be-1587024670f5"/>
+				<text><![CDATA[Fecha adquisición:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="290" width="451" height="30" uuid="761771fb-e6f2-4d9b-8bfd-2e958cbdeb9b"/>
+				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="290" width="100" height="30" uuid="f3b592a8-bf94-413f-a1b4-b50779a610cb"/>
+				<text><![CDATA[Observación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="310" width="100" height="30" uuid="d462470d-15e7-47c7-9641-ec0b05a589fa"/>
+				<textFieldExpression><![CDATA[$F{anios_vida_util}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="310" width="100" height="30" uuid="2679564d-6c85-4231-9e83-91161e4aa4de"/>
+				<text><![CDATA[Años de vida útil:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="402" y="310" width="171" height="30" uuid="108fb633-87d1-435d-8bfd-586d0e6f8fc9"/>
+				<textFieldExpression><![CDATA[$F{nombre_archivo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="310" width="100" height="30" uuid="a607f4a8-fe81-4274-9fa1-0eec75657cbc"/>
+				<text><![CDATA[Imagen:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="220" width="170" height="30" uuid="43f95789-634a-410a-91d7-47cdb44c5801"/>
+				<textFieldExpression><![CDATA[$F{nombre_tipo_documento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="220" width="100" height="30" uuid="49ce4bf5-9d24-47cc-a39d-923a50949193"/>
+				<text><![CDATA[Tipo documento de propiedad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="408" y="220" width="165" height="30" uuid="2570371c-eef3-47a2-862d-fb7720d325fc"/>
+				<textFieldExpression><![CDATA[$F{numero_registro_propiedad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="306" y="220" width="100" height="30" uuid="7e36ff28-6b3e-4c24-85ac-fb2c0316cc70"/>
+				<text><![CDATA[No. registro de propiedad raíz e hipoteca:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="260" width="100" height="30" uuid="3ac8b609-bbe6-4b2f-85a3-011961c5e399"/>
+				<textFieldExpression><![CDATA[$F{inscrita_registro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="260" width="100" height="30" uuid="0c71843d-95ae-40bb-85d8-f7e863dc6e1d"/>
+				<text><![CDATA[Estado de legalidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="260" width="100" height="30" uuid="2e314615-f792-44a4-bcaa-9fbafaf4886f"/>
+				<text><![CDATA[Inscrito]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="61" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="40" width="89" height="15" uuid="3730f10f-00dc-42ed-a437-60bf74a29440"/>
+				<textFieldExpression><![CDATA["Total de registros"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="40" width="80" height="15" uuid="96ed2a1b-e01d-49d5-972b-b6b101ed51f6">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
