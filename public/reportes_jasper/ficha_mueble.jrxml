@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-01-04T19:20:11 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ficha_mueble" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="366147e9-48cd-48ae-9523-8a226c3d3cdd">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicafam"/>
+	<parameter name="id_ficha_activo_fijo" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{id_ficha_activo_fijo}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM ficha_activo_fijo f
+INNER JOIN lista_codigo l ON l.id_ficha_activo_fijo=f.id_ficha_activo_fijo
+INNER JOIN tipo_bien_mueble ti ON l.id_tipo_bien_mueble=ti.id_tipo_bien_mueble
+INNER JOIN ubicacion_organizacional u ON l.id_ubicacion_org=u.id_ubicacion_org
+INNER JOIN ubicacion_bien ub ON l.id_ubicacion_bien=ub.id_ubicacion_bien
+INNER JOIN cuenta_contable c ON f.id_cuenta_contable=c.id_cuenta_contable
+INNER JOIN lista_color lc ON lc.id_lista_color=f.id_lista_color
+INNER JOIN depreciacion d ON d.id_ficha_activo_fijo=f.id_ficha_activo_fijo
+INNER JOIN anio_depreciacion a ON a.id_anio_depreciacion= d.id_anio_depreciacion
+WHERE f.id_ficha_activo_fijo= $P{id_ficha_activo_fijo}]]>
+	</queryString>
+	<field name="id_ficha_activo_fijo" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="monto_adquisicion" class="java.lang.Float"/>
+	<field name="fecha_adquisicion" class="java.lang.String"/>
+	<field name="estado_ficha" class="java.lang.String"/>
+	<field name="codigo_inventario" class="java.lang.String"/>
+	<field name="nombre_unidad_dep" class="java.lang.String"/>
+	<field name="nombre_ubicacion_bien" class="java.lang.String"/>
+	<field name="cta_contable_depreciacion" class="java.lang.String"/>
+	<field name="desc_color" class="java.lang.String"/>
+	<field name="marca_bien" class="java.lang.String"/>
+	<field name="modelo_bien" class="java.lang.String"/>
+	<field name="serie_bien" class="java.lang.String"/>
+	<field name="numero_factura" class="java.lang.String"/>
+	<field name="id_usuario_crea" class="java.lang.String"/>
+	<field name="valor_residual" class="java.lang.Float"/>
+	<field name="costo_depreciar" class="java.lang.Float"/>
+	<field name="costo_anual_depreciacion" class="java.lang.Float"/>
+	<field name="valor_depreciar" class="java.lang.String"/>
+	<field name="cuota_anual" class="java.lang.String"/>
+	<field name="valor_libros" class="java.lang.String"/>
+	<field name="depreciacion_acumulada" class="java.lang.String"/>
+	<field name="digitos_anio" class="java.lang.String"/>
+	<field name="id_anio_depreciacion" class="java.lang.String"/>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="92" splitType="Stretch">
+			<textField>
+				<reportElement x="397" y="72" width="96" height="20" uuid="dadc2038-c870-41cb-a252-d9c1641c7b5f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagína " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="499" y="72" width="68" height="20" uuid="31da13fc-b1e4-45e2-9163-75c7e5cfdddf"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/ yyyy">
+				<reportElement x="92" y="73" width="106" height="18" uuid="ad9b98de-efca-471b-ba8b-d94c9f0aa95d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="74" width="90" height="18" uuid="9b941466-606a-4315-abee-7409e33239ce"/>
+				<textFieldExpression><![CDATA["Fecha de emisión"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="4" width="400" height="16" uuid="d1e87340-d46d-4fea-b453-0ef5110609a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ALCALDIA MUNICIPAL DE MEJICANOS"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="19" width="400" height="16" uuid="5e60f29f-86e3-4f02-a0d1-5f031deffd60">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GERENCIA ADMINISTRATIVA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="35" width="400" height="16" uuid="8cbed882-10ed-441d-b820-06ead7d4e1b1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNIDAD DE ACTIVO FIJO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="51" width="400" height="20" uuid="f797048a-e52e-4f1e-a23f-f0c0783deb9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reporte de Ficha de Bienes Muebles"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="1" y="0" width="77" height="68" uuid="c244d589-6d0e-423a-bc29-47d0a9ee94ed"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/escudo.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="496" y="1" width="77" height="68" uuid="3a07db7f-0d6c-4f5b-8d27-494d94f738ee">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement x="-5" y="1" width="578" height="1" uuid="b0f8cf99-3a4a-49e7-8c28-c5a9726c4671"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="279" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="127" y="0" width="170" height="20" uuid="b8987049-d702-4c3f-85c6-582f4ae0d82e">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_ficha_activo_fijo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="40" width="170" height="20" uuid="a085aa16-e0f0-4c90-bdfa-3911828ed7ed"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{monto_adquisicion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="127" y="60" width="170" height="20" uuid="f0167b86-d1ff-46ce-af05-837c384fad73"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_adquisicion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="0" width="109" height="20" uuid="c934b33d-0cad-4c10-b0af-cf3abba68fcc"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="21" width="109" height="20" uuid="c60a7f1a-c77b-4d51-b993-aecc8fd897f3"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Cantidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="40" width="109" height="20" uuid="cc653e40-37f3-436e-a529-32968cb14751"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Precio de Adquisición:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="61" width="109" height="20" uuid="b07d25ef-a6fe-43e0-8f87-253176ec9a1c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Fecha de Adquisición:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="81" width="109" height="20" uuid="287aca40-9c9e-4541-903b-e3c5fe420404"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Porcentaje residual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="101" width="109" height="20" uuid="23ad3868-e224-405d-9b54-e3f9b8fdbac5"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Valor residual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="121" width="109" height="19" uuid="ae944cc9-40fe-4f92-906d-399a965326a1"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Costo a depreciar:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="140" width="109" height="19" uuid="f172b9cc-f5a0-453a-a82a-30edeeff49c5"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Cuenta contable depre.]]></text>
+			</staticText>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="127" y="140" width="170" height="18" uuid="3975bf28-d246-4139-9048-9467a51a74d4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cta_contable_depreciacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="127" y="80" width="170" height="20" uuid="985087e6-549b-4ac7-94fc-932b2a27c981"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="100" height="20" uuid="e001fb77-dc5b-49df-a641-8b37ddb3872c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Codigo de inventario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="20" width="100" height="20" uuid="c8998e4a-df4e-4ab9-a022-9dad0a0b7d51"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Unidad/depto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="83" width="100" height="20" uuid="306a5a0f-20db-4647-869e-7af66e3ca41c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Modelo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="103" width="100" height="20" uuid="98e71630-c709-4405-9cd1-da57e713f991"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="63" width="100" height="20" uuid="1bc71a38-a928-4505-84ac-b56b4bf7ed3c"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Marca:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="123" width="100" height="18" uuid="036c5ead-efae-4b26-adfa-e9ea10086bab"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[Color:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="421" y="123" width="153" height="18" uuid="3e794efa-6a1e-402d-93dd-4d3eb539e9f1"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desc_color}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="421" y="63" width="153" height="20" uuid="08e9eab4-017c-4004-ab83-e30fae20fdd5"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marca_bien}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="421" y="83" width="153" height="20" uuid="83e39377-3e17-40a9-8859-04a8cbd06b7f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modelo_bien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="20" width="153" height="20" uuid="1f5eec37-c75c-4e0e-bbfd-b0ed67062ceb"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_unidad_dep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="0" width="153" height="20" uuid="6cda4cda-6a6b-43f1-8242-eb84e9e1bc96"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo_inventario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="421" y="103" width="153" height="20" uuid="a9edaf7b-ec91-4091-83e9-196a87aa3155"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serie_bien}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="180" width="53" height="30" uuid="3209761e-86f4-439b-a808-8beaf2428179"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="180" width="80" height="30" uuid="4752aad2-d697-49c9-8a90-6c070c96c287"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Valor Original]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="180" width="80" height="30" uuid="8a3ce5d1-7d6c-47b4-90fa-1e0e822a826b"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Valor Residual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="180" width="80" height="30" uuid="c0f29751-0410-42bc-be2f-eee158e04489"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Valor a depreciar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="180" width="80" height="30" uuid="5ca308e1-1f2e-4029-8f5b-cb22c84054b0"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cuota anual dep.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="180" width="80" height="30" uuid="3d3c5b63-eb2a-4d36-a738-7e1e17c673e1"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Valor en libros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="180" width="93" height="30" uuid="07ecbacf-2b0b-4ac9-be76-502c91e87dc8"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Depreciac. Acumulada]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="25" y="210" width="52" height="20" uuid="e9359363-8514-4cdb-aa18-d820107b4def"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{digitos_anio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="210" width="80" height="20" uuid="1dbf77e7-60b5-4862-b016-c8f5bf97c448"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{monto_adquisicion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="210" width="80" height="20" uuid="951758ec-976d-430c-91b5-5c11fe46574b"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{valor_residual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="210" width="80" height="20" uuid="c26e1d28-522e-4f7a-9c60-2b92f0936d43"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{valor_depreciar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.###;(#,##0.###)">
+				<reportElement positionType="Float" x="318" y="210" width="80" height="20" uuid="21f0fad2-28b3-4e68-bf5e-23b2042b7565"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cuota_anual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="210" width="80" height="20" uuid="ebf7befb-94a2-401f-883a-ae3a7f5d6b62"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{valor_libros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="210" width="94" height="20" uuid="b430b824-051d-4bfe-96a5-925f43f2a95d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{depreciacion_acumulada}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="127" y="21" width="170" height="20" uuid="a531e986-ec63-4735-b4fd-5a67f1efae2e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="141" width="100" height="18" uuid="6da27f06-aa33-4331-b9c2-f7feef61b447"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<text><![CDATA[No. Factura:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/ yyyy HH:mm:ss">
+				<reportElement x="421" y="141" width="153" height="18" uuid="534538c9-0346-4301-ab5d-61fcd2c09122"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero_factura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="101" width="170" height="20" uuid="fbc1f63d-105c-4be9-a7cc-d0412ae92727"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{valor_residual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="120" width="170" height="20" uuid="3840eb5b-8482-4afe-b4b5-2293bc5079a9"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{costo_depreciar}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="180" width="24" height="30" uuid="7c92fe6b-0843-49d2-9172-8724503c964d"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="210" width="24" height="20" uuid="50d77d4b-f8e2-4666-97eb-ea15cf8cc891"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_anio_depreciacion}
+]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="155" splitType="Stretch">
+			<frame>
+				<reportElement x="15" y="-2" width="542" height="142" uuid="2830db56-0d3d-4462-9ea9-b448b65e79ed"/>
+				<staticText>
+					<reportElement x="9" y="50" width="190" height="20" uuid="3ebeb71e-eef6-4f14-9cc7-dd4a2d0bc661">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.0" lineColor="#DBD9D9"/>
+					</box>
+					<textElement textAlignment="Left"/>
+					<text><![CDATA[F.____________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="9" y="70" width="70" height="20" uuid="5b8e8edb-9ea7-4116-8f7a-407894a40f80"/>
+					<box>
+						<pen lineWidth="0.0" lineColor="#DBD9D9"/>
+					</box>
+					<textElement textAlignment="Left"/>
+					<text><![CDATA[Elaborado por:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="350" y="70" width="70" height="20" uuid="842afae4-8ff7-424c-bc85-af3ee789e5a4"/>
+					<box>
+						<pen lineWidth="0.0" lineColor="#DBD9D9"/>
+					</box>
+					<textElement textAlignment="Left"/>
+					<text><![CDATA[Revisado por:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="350" y="50" width="190" height="20" uuid="e3894252-237c-4310-afa7-eadf276575a0">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.0" lineColor="#DBD9D9"/>
+					</box>
+					<textElement textAlignment="Left"/>
+					<text><![CDATA[F.____________________]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="90" width="100" height="20" uuid="a1b770ab-3e0f-4d7c-9c3b-d5eff263809c"/>
+					<box>
+						<pen lineWidth="0.0"/>
+					</box>
+					<textFieldExpression><![CDATA[$F{id_usuario_crea}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="9" y="90" width="70" height="20" uuid="b4b15930-4527-49ac-a95f-dbb14f203553"/>
+					<box>
+						<pen lineWidth="0.0"/>
+					</box>
+					<text><![CDATA[ID usuario]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="-1" y="127" width="89" height="15" uuid="f162c215-286d-4815-b0ba-d9701954f743"/>
+					<textFieldExpression><![CDATA["Total de registros"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="87" y="127" width="80" height="15" uuid="734ebb1e-5aa0-41ab-be45-ecca5e7d3254">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch"/>
+	</summary>
+</jasperReport>
