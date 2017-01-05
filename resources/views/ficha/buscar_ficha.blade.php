@@ -75,23 +75,11 @@
       {!!$lista_codigo->appends(Request::only(['codigo_inventario','id_ubicacion_org','id_tipo_inventario']))->render()!!}     
     </td>
     <td>
-       {!! Form::open(['route' => 'administracion/cambiar_contrasenia', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result" >                
+       {!! Form::open(['route' => 'ficha/editar', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="resultado" id="resultado_edit" >                
          {!! Form::submit('Editar', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}  
-    </td>
-    <td>
-       {!! Form::open(['route' => 'administracion/cambiar_contrasenia', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result" >                
-         {!! Form::submit('Agregar mejora', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}  
-    </td>
-     <td>
-       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result2" >
-         {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-    </td>  
+    </td>     
      <td>
        {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="resultado" id="result2" >
@@ -112,4 +100,10 @@
     </div>
     </div>
 </div>
+<script>
+function myFunction(seleccionar) {
+    document.getElementById("resultado_edit").value = seleccionar;
+    document.getElementById("result2").value = seleccionar;
+}   
+</script>
 @stop

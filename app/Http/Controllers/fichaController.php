@@ -26,6 +26,7 @@ use App\Models\tipo_doc_propiedad;
 use App\Models\tipo_inventario;
 use DB;
 
+
 class fichaController extends Controller
 {
     public function __construct() {
@@ -155,7 +156,7 @@ class fichaController extends Controller
     
      public function fnc_store_vehiculo(Request $request) {
     /**
-     * Guarda en la base de datos una nueva ficha de mueble
+     * Guarda en la base de datos una nueva ficha de vehiculo
      *          
      */ 
      $obj_controller_bitacora=new bitacoraController();     
@@ -517,9 +518,7 @@ class fichaController extends Controller
               ->where('lista_codigo.id_ubicacion_org',$request->id_ubicacion_org)              
               ->simplePaginate(10);  
       }
-      if($request->ajax()){
-         return response()->json(view('ficha/codigos',  compact('lista_codigo'))->render()); 
-      } 
+      
       return view('ficha/buscar_ficha',  compact('lista_codigo','obj_inventario','obj_unidad')); 
         
     }
@@ -542,9 +541,99 @@ class fichaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function fnc_update_inmueble(Request $request) {
+       
+        $obj_controller_bitacora=new bitacoraController();     
+     if($_FILES['file']['error']==1){
+          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']); 
+           $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
+          return redirect()->back()->withInput()->withErrors($errors);
+       } 
+       else
+       {
+         $obj_ficha =  ficha::find($request->id_ficha_activo_fijo);
+         $obj_ficha->id_cuenta_contable=$request->id_cuenta_contable;
+         $obj_ficha->descripcion=$request->descripcion;
+         $obj_ficha->responsable_bien=$request->responsable_bien;
+         $obj_ficha->id_tipo_doc_propiedad=$request->id_tipo_doc_propiedad;
+         $obj_ficha->numero_registro_propiedad=$request->numero_registro_propiedad;
+         $obj_ficha->anios_vida_util=$request->anios_vida_util;
+         $obj_ficha->inscrita_registro=$request->inscrita_registro;
+         $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
+         $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+         $obj_ficha->observacion=$request->observacion;
+         $obj_ficha->id_usuario_modifica=Auth::user()->id_usuario_app;
+         $obj_ficha->ip_dispositivo=$request->ip();
+         $obj_ficha->save();
+           $obj_controller_bitacora->create_mensaje('Modificacion de ficha: '.$request->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+           if($request->id_documento==0)
+           {
+            $this->fnc_guardar_documento($request,$request->id_ficha_activo_fijo);            
+            flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();    
+           }
+           else
+           {
+            $obj_documento= documento_imagen::find($request->id_documento);
+            $obj_documento->delete();
+            $this->fnc_guardar_documento($request,$request->id_ficha_activo_fijo);            
+            flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();    
+           }
+            
+           }
+       }
+    }
     public function update(Request $request)
     {
-       dd($request);
+       if($request->resultado==''){
+         flash()->warning('Seleccione una ficha');
+         return redirect()->back();
+       }
+       $obj_ficha=  ficha::find($request->resultado);
+       $obj_documento=DB::table('documento_imagen')
+               ->select('*')
+               ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+               ->whereNull('deleted_at')
+               ->get();
+      
+       $codigo_inventario= DB::table('lista_codigo')
+               ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+               ->whereNull('deleted_at')
+               ->get();
+       $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
+       //dd($fecha_adquisicion);
+       $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
+       if($obj_ficha->id_tipo_inventario==1){
+       return view('ficha/editar_ficha_mueble'); 
+       }
+       if($obj_ficha->id_tipo_inventario==2){
+        return view('ficha/editar_ficha_vehiculo');    
+       }
+       if($obj_ficha->id_tipo_inventario==3){
+         /**
+        * Crea formulario para modificar ficha de inmueble
+         */
+           //dd($obj_documento);
+         $tipo_documento=  tipo_doc_propiedad::lists('nombre_tipo_documento','id_tipo_doc_propiedad');
+         $cuenta_contable=  cuenta_contable::all();
+         return view('ficha/editar_ficha_inmueble',compact(
+                 'cuenta_contable',
+                 'tipo_documento',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada',
+                 'fecha_adquisicion',
+                 'obj_documento'
+                 ));
+       }
     }
 
     /**

@@ -8,10 +8,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class documento_imagen extends Model
 {
     //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $table = 'documento_imagen';
     protected $primaryKey = 'id_documento_imagen';
     public $timestamps = false;
