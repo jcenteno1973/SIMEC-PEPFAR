@@ -79,7 +79,13 @@
          <input type="hidden" name="resultado" id="resultado_edit" >                
          {!! Form::submit('Editar', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}  
-    </td>     
+    </td>  
+     <td>
+       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="resultado" id="result2" >
+         {!! Form::submit('Generar reporte', array('class'=> 'btn btn-primary'))!!}
+         {!! Form::close()!!}   
+    </td> 
      <td>
        {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="resultado" id="result2" >
@@ -87,11 +93,14 @@
          {!! Form::close()!!}   
     </td> 
      <td>
-       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result2" >
+       {!! Form::open(['route' => 'ficha/ver', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="resultado" id="resultado_ver" >
          {!! Form::submit('ver ficha', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td> 
+     <td>
+       <a href="javascript:history.back(-1);" class="btn btn-primary">Ayuda</a>
+    </td>  
      <td>
        <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
     </td>  
@@ -103,7 +112,7 @@
 <script>
 function myFunction(seleccionar) {
     document.getElementById("resultado_edit").value = seleccionar;
-    document.getElementById("result2").value = seleccionar;
+    document.getElementById("resultado_ver").value = seleccionar;
 }   
 </script>
 @stop

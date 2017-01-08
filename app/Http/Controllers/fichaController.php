@@ -591,6 +591,56 @@ class fichaController extends Controller
            }
        }
     }
+    public function fnc_ver_ficha(Request $request) {
+        if($request->resultado==''){
+         flash()->warning('Seleccione una ficha');
+         return redirect()->back();
+       }
+       $obj_ficha=  ficha::find($request->resultado);
+       $obj_documento=DB::table('documento_imagen')
+               ->select('*')
+               ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+               ->whereNull('deleted_at')
+               ->get();      
+       $codigo_inventario= DB::table('lista_codigo')
+               ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+               ->whereNull('deleted_at')
+               ->get();
+       $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
+       //dd($fecha_adquisicion);
+       $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
+       if($obj_ficha->id_tipo_inventario==1){
+       return view('ficha/editar_ficha_mueble'); 
+       }
+       if($obj_ficha->id_tipo_inventario==2){
+        return view('ficha/editar_ficha_vehiculo');    
+       }
+       if($obj_ficha->id_tipo_inventario==3){
+         /**
+        * Crea formulario para modificar ficha de inmueble
+         */
+           //dd($obj_documento);
+         $tipo_documento=  tipo_doc_propiedad::all();
+         
+         foreach($tipo_documento as $tipo_documentos)
+         {
+             if($obj_ficha->id_tipo_doc_propiedad==$tipo_documentos->id_tipo_doc_propiedad)
+             {
+               $nombre_tipo_doc=$tipo_documentos->nombre_tipo_documento;  
+             }
+         }
+         $cuenta_contable=  cuenta_contable::all();
+         return view('ficha/ver_ficha_inmueble',compact(
+                 'cuenta_contable',
+                 'nombre_tipo_doc',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada',
+                 'fecha_adquisicion',
+                 'obj_documento'
+                 ));
+       }
+    }
     public function update(Request $request)
     {
        if($request->resultado==''){

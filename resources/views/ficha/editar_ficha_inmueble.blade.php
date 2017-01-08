@@ -155,6 +155,9 @@
          {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td>
+    <td>
+         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+    </td>
               </tr>
             </tbody>            
           </table>  
