@@ -25,6 +25,7 @@ use App\Models\ubicacion_bien;
 use App\Models\tipo_doc_propiedad;
 use App\Models\tipo_inventario;
 use DB;
+use JasperPHP\JasperPHP;
 
 
 class fichaController extends Controller
@@ -685,7 +686,21 @@ class fichaController extends Controller
                  ));
        }
     }
-
+    public function fnc_rep_ficha_inmueble(Request $request) {
+     
+    $reporte_generado='/reportes_jasper/'.time().'_ficha_inmueble';//time le aggrega un número generado por la hora
+    $output = public_path() .$reporte_generado; 
+    $report = new JasperPHP;
+    $report->process(
+    public_path() . '/reportes_jasper/ficha_inmueble.jrxml', 
+    $output, 
+    array('pdf'),//, 'rtf', 'html'),
+    array('id_ficha_activo_fijo'=> $request->id_ficha_activo_fijo),
+    config('conexion_report.conexion')
+    )->execute();
+    $reporte_generado='..'.$reporte_generado.'.pdf';    
+    return view('ficha/reporte_ficha_inmueble',compact('reporte_generado'));  
+    }
     /**
      * Remove the specified resource from storage.
      *

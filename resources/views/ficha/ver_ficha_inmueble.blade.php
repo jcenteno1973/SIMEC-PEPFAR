@@ -25,7 +25,7 @@
 @stop 
 @section('contenido')
 <div class="panel panel-default">
-    {!! Form::open(['route' => 'ficha/editar_inmueble', 'class' => 'form','enctype'=>'multipart/form-data']) !!}
+    {!! Form::open(['route' => 'ficha/reporte_ficha_inmueble', 'class' => 'form']) !!}
     <table class="table table-condensed">    
             <tbody> 
                 <tr>
