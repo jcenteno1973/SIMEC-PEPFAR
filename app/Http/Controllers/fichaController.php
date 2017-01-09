@@ -316,6 +316,7 @@ class fichaController extends Controller
      $obj_codigo->id_municipio=$request->municipio;
      $obj_codigo->id_ubicacion_org=$request->id_ubicacion_org;
      $obj_codigo->id_tipo_bien_inmueble=$request->id_tipo_bien_inmueble;
+     $obj_codigo->id_ubicacion_bien=$request->id_ubicacion_bien;
      $obj_codigo->correlativo=$correlativo;
      $obj_codigo->codigo_inventario =$codigo_inventario;
      $obj_codigo->estado_codigo=1;
@@ -695,7 +696,7 @@ class fichaController extends Controller
     public_path() . '/reportes_jasper/ficha_inmueble.jrxml', 
     $output, 
     array('pdf'),//, 'rtf', 'html'),
-    array('id_ficha_activo_fijo'=> $request->id_ficha_activo_fijo),
+    array('id_ficha_activo_fijo'=> $request->id_ficha_activo_fijo,'nombre_usuario'=>Auth::user()->nombres_usuario.' '.Auth::user()->apellidos_usuario),
     config('conexion_report.conexion')
     )->execute();
     $reporte_generado='..'.$reporte_generado.'.pdf';    

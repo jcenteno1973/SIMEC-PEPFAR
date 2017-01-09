@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-01-08T21:41:20 -->
+<!-- 2017-01-09T13:00:29 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ficha_inmueble2" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="366147e9-48cd-48ae-9523-8a226c3d3cdd">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicafam"/>
@@ -8,14 +8,21 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 		<defaultValueExpression><![CDATA[$P{id_ficha_activo_fijo}]]></defaultValueExpression>
 	</parameter>
+	<parameter name="nombre_usuario" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT *
 FROM lista_codigo l
    INNER JOIN ficha_activo_fijo f ON f.id_ficha_activo_fijo=l.id_ficha_activo_fijo
    INNER JOIN tipo_doc_propiedad d ON d.id_tipo_doc_propiedad=f.id_tipo_doc_propiedad
+   INNER JOIN cuenta_contable cc ON cc.id_cuenta_contable=f.id_cuenta_contable
+   INNER JOIN ubicacion_organizacional u ON u.id_ubicacion_org=l.id_ubicacion_org
+   INNER JOIN ubicacion_bien ub ON ub.id_ubicacion_bien=l.id_ubicacion_bien
+   INNER JOIN tipo_bien_inmueble bi ON bi.id_tipo_bien_inmueble=l.id_tipo_bien_inmueble
 WHERE 
 	 l.id_ficha_activo_fijo = $P{id_ficha_activo_fijo} 
-	 AND l.estado_registro =1]]>
+	 AND l.estado_registro=1]]>
 	</queryString>
 	<field name="id_codigo_inventario" class="java.lang.Integer"/>
 	<field name="id_fuente_financiamiento" class="java.lang.Integer"/>
@@ -75,6 +82,32 @@ WHERE
 	<field name="ip_dispositivo" class="java.lang.String"/>
 	<field name="COLUMN_57" class="java.lang.Integer"/>
 	<field name="nombre_tipo_documento" class="java.lang.String"/>
+	<field name="COLUMN_59" class="java.lang.Integer"/>
+	<field name="cta_contable_activo_fijo" class="java.lang.String"/>
+	<field name="cta_contable_depreciacion" class="java.lang.String"/>
+	<field name="COLUMN_62" class="java.sql.Timestamp"/>
+	<field name="COLUMN_63" class="java.lang.Boolean"/>
+	<field name="COLUMN_64" class="java.lang.Integer"/>
+	<field name="COLUMN_65" class="java.lang.Integer"/>
+	<field name="COLUMN_66" class="java.sql.Timestamp"/>
+	<field name="COLUMN_67" class="java.sql.Timestamp"/>
+	<field name="COLUMN_68" class="java.lang.String"/>
+	<field name="COLUMN_69" class="java.lang.Integer"/>
+	<field name="codigo_unidad_dep" class="java.lang.String"/>
+	<field name="nombre_unidad_dep" class="java.lang.String"/>
+	<field name="nombre_responsable" class="java.lang.String"/>
+	<field name="dentro_inmueble" class="java.lang.Boolean"/>
+	<field name="alquilado" class="java.lang.Boolean"/>
+	<field name="COLUMN_75" class="java.sql.Timestamp"/>
+	<field name="COLUMN_76" class="java.lang.Boolean"/>
+	<field name="COLUMN_77" class="java.sql.Timestamp"/>
+	<field name="COLUMN_78" class="java.sql.Timestamp"/>
+	<field name="COLUMN_79" class="java.lang.Integer"/>
+	<field name="codigo_ubicacion_bien" class="java.lang.String"/>
+	<field name="nombre_ubicacion_bien" class="java.lang.String"/>
+	<field name="COLUMN_82" class="java.lang.Integer"/>
+	<field name="codigo_tipo_bien_inmueble" class="java.lang.String"/>
+	<field name="nombre_tipo_bien_inmueble" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -155,7 +188,7 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="185" splitType="Stretch">
+		<band height="199" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
 				<reportElement x="127" y="0" width="170" height="20" uuid="b8987049-d702-4c3f-85c6-582f4ae0d82e">
@@ -306,7 +339,7 @@ WHERE
 				<text><![CDATA[Tipo de bien:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/ yyyy HH:mm:ss">
-				<reportElement x="421" y="119" width="153" height="20" uuid="a9edaf7b-ec91-4091-83e9-196a87aa3155"/>
+				<reportElement x="421" y="119" width="149" height="20" uuid="a9edaf7b-ec91-4091-83e9-196a87aa3155"/>
 				<box>
 					<pen lineWidth="1.0" lineColor="#DBD9D9"/>
 				</box>
@@ -357,6 +390,26 @@ WHERE
 				<reportElement x="422" y="99" width="151" height="18" uuid="e4771465-b300-47f7-8f40-7e877f6de5cc"/>
 				<textFieldExpression><![CDATA[$F{nombre_tipo_documento}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="424" y="21" width="146" height="16" uuid="37043d13-0156-4880-9d92-526c9009507f"/>
+				<textFieldExpression><![CDATA[$F{nombre_unidad_dep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="143" width="165" height="16" uuid="a32c8e55-d797-465b-a189-fd7538a3dd04"/>
+				<textFieldExpression><![CDATA[$F{cta_contable_activo_fijo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="161" width="168" height="17" uuid="33398336-d71c-428b-951c-d2f49981e70e"/>
+				<textFieldExpression><![CDATA[$F{cta_contable_depreciacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="79" width="148" height="19" uuid="6b5b46c5-c444-46a8-bde6-25915e36aa71"/>
+				<textFieldExpression><![CDATA[$F{nombre_ubicacion_bien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="139" width="150" height="18" uuid="831654a8-1266-4dbc-bb67-790b350cd4f8"/>
+				<textFieldExpression><![CDATA[$F{nombre_tipo_bien_inmueble}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -402,6 +455,10 @@ WHERE
 					<textElement textAlignment="Left"/>
 					<text><![CDATA[F.____________________]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="80" y="70" width="160" height="20" uuid="5b2434e0-54f7-4154-a01a-3df471af87da"/>
+					<textFieldExpression><![CDATA[$P{nombre_usuario}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</pageFooter>
