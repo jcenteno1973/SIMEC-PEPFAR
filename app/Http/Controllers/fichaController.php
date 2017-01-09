@@ -688,7 +688,6 @@ class fichaController extends Controller
        }
     }
     public function fnc_rep_ficha_inmueble(Request $request) {
-     
     $reporte_generado='/reportes_jasper/'.time().'_ficha_inmueble';//time le aggrega un número generado por la hora
     $output = public_path() .$reporte_generado; 
     $report = new JasperPHP;

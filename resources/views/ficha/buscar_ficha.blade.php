@@ -81,8 +81,8 @@
          {!! Form::close()!!}  
     </td>  
      <td>
-       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result2" >
+       {!! Form::open(['route' => 'ficha/reporte_ficha_inmueble', 'class' => 'form']) !!}              
+         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_rep" >
          {!! Form::submit('Generar reporte', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td> 
@@ -113,6 +113,7 @@
 function myFunction(seleccionar) {
     document.getElementById("resultado_edit").value = seleccionar;
     document.getElementById("resultado_ver").value = seleccionar;
+    document.getElementById("resultado_rep").value = seleccionar;
 }   
 </script>
 @stop
