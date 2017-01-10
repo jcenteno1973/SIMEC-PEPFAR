@@ -269,6 +269,7 @@ class fichaController extends Controller
      $obj_codigo->id_ubicacion_org=$request->id_ubicacion_org;
      $obj_codigo->id_tipo_bien_mueble=$request->id_tipo_bien_mueble;
      $obj_codigo->correlativo=$correlativo;
+     $obj_codigo->estado_registro=1;
      $obj_codigo->codigo_inventario =$codigo_inventario;
      $obj_codigo->estado_codigo=1;
      $obj_codigo->save();
@@ -317,6 +318,7 @@ class fichaController extends Controller
      $obj_codigo->id_ubicacion_org=$request->id_ubicacion_org;
      $obj_codigo->id_tipo_bien_inmueble=$request->id_tipo_bien_inmueble;
      $obj_codigo->id_ubicacion_bien=$request->id_ubicacion_bien;
+     $obj_codigo->estado_registro=1;
      $obj_codigo->correlativo=$correlativo;
      $obj_codigo->codigo_inventario =$codigo_inventario;
      $obj_codigo->estado_codigo=1;
@@ -343,6 +345,7 @@ class fichaController extends Controller
      $obj_ficha->numero_factura=$request->numero_factura;
      $obj_ficha->observacion=$request->observacion;
      $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->estado_registro=1;
      $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
      $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
      $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
@@ -368,6 +371,7 @@ class fichaController extends Controller
      $obj_ficha->numero_factura=$request->numero_factura;
      $obj_ficha->observacion=$request->observacion;
      $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->estado_registro=1;
      $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
      $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
      $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
@@ -390,6 +394,7 @@ class fichaController extends Controller
      $obj_ficha->inscrita_registro=$request->inscrita_registro;     
      $obj_ficha->observacion=$request->observacion;
      $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->estado_registro=1;
      $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
      $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
      $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
