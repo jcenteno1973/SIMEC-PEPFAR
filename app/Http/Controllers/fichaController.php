@@ -541,13 +541,14 @@ class fichaController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function fnc_update_mueble(Request $request) {
+    
+    dd($request); 
+    }
+     public function fnc_update_vehiculo(Request $request) {
+    
+    dd($request); 
+    }
     public function fnc_update_inmueble(Request $request) {
        
         $obj_controller_bitacora=new bitacoraController();     
@@ -654,6 +655,9 @@ class fichaController extends Controller
          flash()->warning('Seleccione una ficha');
          return redirect()->back();
        }
+       $cuenta_contable=  cuenta_contable::all();
+       $estado_af=  estado_af::lists('nombre_estado','id_estado');
+       $lista_color=  lista_color::lists('desc_color','id_lista_color');
        $obj_ficha=  ficha::find($request->resultado);
        $obj_documento=DB::table('documento_imagen')
                ->select('*')
@@ -665,22 +669,48 @@ class fichaController extends Controller
                ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
                ->whereNull('deleted_at')
                ->get();
+       $nombre_unidad= ubicacion_organizacional::find($codigo_inventario[0]->id_ubicacion_org);
        $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
        //dd($fecha_adquisicion);
        $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
        if($obj_ficha->id_tipo_inventario==1){
-       return view('ficha/editar_ficha_mueble'); 
+        /**
+        * Crea formulario para modificar ficha de mueble
+        */
+       return view('ficha/editar_ficha_mueble',compact(
+                 'cuenta_contable',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada',
+                 'fecha_adquisicion',
+                 'estado_af',
+                 'lista_color',
+                 'obj_documento',
+                 'nombre_unidad'
+                 )); 
        }
        if($obj_ficha->id_tipo_inventario==2){
-        return view('ficha/editar_ficha_vehiculo');    
+       /**
+        * Crea formulario para modificar ficha de vehiculo
+        */
+           
+        return view('ficha/editar_ficha_vehiculo',compact(
+                 'cuenta_contable',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada',
+                 'fecha_adquisicion',
+                 'estado_af',
+                 'lista_color',
+                 'obj_documento',
+                 'nombre_unidad'
+                 ));    
        }
        if($obj_ficha->id_tipo_inventario==3){
          /**
         * Crea formulario para modificar ficha de inmueble
          */
-           //dd($obj_documento);
          $tipo_documento=  tipo_doc_propiedad::lists('nombre_tipo_documento','id_tipo_doc_propiedad');
-         $cuenta_contable=  cuenta_contable::all();
          return view('ficha/editar_ficha_inmueble',compact(
                  'cuenta_contable',
                  'tipo_documento',

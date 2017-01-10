@@ -45,7 +45,7 @@
                        {!!Form::text('codigo_inventario',$codigo_inventario[0]->codigo_inventario,['class'=>'form-control', 'placeholder'=>'Código de inventario','readonly'=>'readonly'])!!} 
                     </td>  
                 </tr>
-                 <tr>
+              <tr>
                <td>Cuenta contable*</td>
                 <td> 
                     <select name="id_cuenta_contable" class="form-control" onchange="myFunction(this.value)" required="required">
