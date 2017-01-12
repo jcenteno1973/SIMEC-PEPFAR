@@ -83,13 +83,25 @@
      <td>
        {!! Form::open(['route' => 'ficha/reporte_fichas', 'class' => 'form']) !!}              
          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_rep" >
-         {!! Form::submit('Generar reporte', array('class'=> 'btn btn-primary'))!!}
+         {!! Form::submit('Reporte', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td> 
      <td>
+       {!! Form::open(['route' => 'administracion/cambiar_contrasenia', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="resultado" id="result" >                
+         {!! Form::submit('Agregar mejora', array('class'=> 'btn btn-primary'))!!}
+         {!! Form::close()!!}  
+    </td>
+     <td>
        {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="resultado" id="result2" >
-         {!! Form::submit('Calcular depreciación', array('class'=> 'btn btn-primary'))!!}
+         {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
+         {!! Form::close()!!}   
+    </td>
+     <td>
+       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="resultado" id="result2" >
+         {!! Form::submit('Depreciación', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td> 
      <td>
