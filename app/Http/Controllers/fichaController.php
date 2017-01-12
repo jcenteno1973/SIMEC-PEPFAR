@@ -404,6 +404,57 @@ class fichaController extends Controller
      $obj_ficha->save();     
      return $obj_ficha->id_ficha_activo_fijo;
     }
+     public function fnc_update_ficha_m($request) {
+     //Guarda en la base de datos una nueva ficha mueble
+     $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);   
+     $obj_ficha= ficha::find($request->id_ficha_activo_fijo);
+     $obj_ficha->id_lista_color=$request->id_lista_color;
+     $obj_ficha->id_estado=$request->id_estado;
+     $obj_ficha->id_cuenta_contable=$request->id_cuenta_contable;
+     $obj_ficha->id_tipo_inventario=1;
+     $obj_ficha->responsable_bien =$request->responsable_bien;
+     $obj_ficha->descripcion=$request->descripcion;
+     $obj_ficha->marca_bien=$request->marca_bien;
+     $obj_ficha->modelo_bien=$request->modelo_bien;
+     $obj_ficha->serie_bien=$request->serie_bien;
+     $obj_ficha->numero_factura=$request->numero_factura;
+     $obj_ficha->observacion=$request->observacion;
+     $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+     $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
+     $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
+     $obj_ficha->id_usuario_modifica=Auth::user()->id_usuario_app;
+     $obj_ficha->ip_dispositivo=$request->ip();
+     $obj_ficha->save();     
+     return $obj_ficha->id_ficha_activo_fijo;
+    }
+    public function fnc_update_ficha_v($request) {
+     //Modificacion ficha vehiculo
+     $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);   
+     $obj_ficha=  ficha::find($request->id_ficha_activo_fijo);
+     $obj_ficha->id_lista_color=$request->id_lista_color;
+     $obj_ficha->id_estado=$request->id_estado;
+     $obj_ficha->id_cuenta_contable=$request->id_cuenta_contable;
+     $obj_ficha->responsable_bien =$request->responsable_bien;
+     $obj_ficha->descripcion=$request->descripcion;
+     $obj_ficha->marca_bien=$request->marca_bien;
+     $obj_ficha->modelo_bien=$request->modelo_bien;
+     $obj_ficha->placa_bien=$request->placa_bien;
+     $obj_ficha->numero_vin_chasis=$request->numero_vin_chasis;
+     $obj_ficha->numero_motor=$request->numero_motor;
+     $obj_ficha->anio_bien=$request->anio_bien;
+     $obj_ficha->numero_equipo=$request->numero_equipo;
+     $obj_ficha->numero_factura=$request->numero_factura;
+     $obj_ficha->observacion=$request->observacion;
+     $obj_ficha->anios_vida_util=$request->anios_vida_util;
+     $obj_ficha->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+     $obj_ficha->fin_vida_util=$fecha_adquisicio->addYears($request->anios_vida_util);
+     $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
+     $obj_ficha->id_usuario_modifica=Auth::user()->id_usuario_app;
+     $obj_ficha->ip_dispositivo=$request->ip();
+     $obj_ficha->save();     
+     return $obj_ficha->id_ficha_activo_fijo;
+    }
     public function fnc_guardar_archivo($request,$id_ficha_af) {
      /**
      * Guarda archivo en el servidor
@@ -414,7 +465,8 @@ class fichaController extends Controller
        $file = $request->file('file');
        //obtenemos el nombre del archivo
        $nombre = $file->getClientOriginalName();
-       $nombre_archivo=time().$nombre; 
+       $ext = end((explode(".", $nombre)));
+       $nombre_archivo=time().'.'.$ext; 
        //indicamos que queremos guardar un nuevo archivo en el disco local
        \Storage::disk('local')->put('imagenes/'.$nombre_archivo,  \File::get($file));
        $obj_documento->id_ficha_activo_fijo=$id_ficha_af;
@@ -435,7 +487,8 @@ class fichaController extends Controller
        $file = $request->file('file');
        //obtenemos el nombre del archivo
        $nombre = $file->getClientOriginalName();
-       $nombre_archivo=time().$nombre; 
+       $ext = end((explode(".", $nombre)));
+       $nombre_archivo=time().'.'.$ext; 
        //indicamos que queremos guardar un nuevo archivo en el disco local
        \Storage::disk('local')->put('documentos/'.$nombre_archivo,  \File::get($file));
        $obj_documento->id_ficha_activo_fijo=$id_ficha_af;
@@ -542,12 +595,84 @@ class fichaController extends Controller
     }
 
     public function fnc_update_mueble(Request $request) {
-    
-    dd($request); 
+    /**
+     * Modificar ficha mueble
+     *          
+     */ 
+     $obj_controller_bitacora=new bitacoraController();
+       if($_FILES['file']['error']==1){
+         $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']);           
+         $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
+          return redirect()->back()->withInput()->withErrors($errors);
+       } 
+       else
+       {
+         //Modificar ficha
+         $id_ficha_af=$this->fnc_update_ficha_m($request);
+         $obj_controller_bitacora->create_mensaje('Modificacion ficha: '.$request->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+            if($request->id_documento==0)
+           {
+            $this->fnc_guardar_archivo($request,$request->id_ficha_activo_fijo);            
+            flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();    
+           }
+           else
+           {
+            $obj_documento= documento_imagen::find($request->id_documento);
+            $obj_documento->delete();
+            $this->fnc_guardar_archivo($request,$request->id_ficha_activo_fijo);            
+            flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();    
+           }
+           }
+       }
     }
      public function fnc_update_vehiculo(Request $request) {
-    
-    dd($request); 
+     /**
+     * Modificar ficha vhiculo
+     *          
+     */ 
+     $obj_controller_bitacora=new bitacoraController();
+       if($_FILES['file']['error']==1){
+         $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']);           
+         $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
+          return redirect()->back()->withInput()->withErrors($errors);
+       } 
+       else
+       {
+         //Modificar ficha
+         $id_ficha_af=$this->fnc_update_ficha_v($request);
+         $obj_controller_bitacora->create_mensaje('Modificacion ficha: '.$request->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+            if($request->id_documento==0)
+           {
+            $this->fnc_guardar_archivo($request,$request->id_ficha_activo_fijo);            
+            flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();    
+           }
+           else
+           {
+            $obj_documento= documento_imagen::find($request->id_documento);
+            $obj_documento->delete();
+            $this->fnc_guardar_archivo($request,$request->id_ficha_activo_fijo);            
+            flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();    
+           }
+           }
+       }
     }
     public function fnc_update_inmueble(Request $request) {
        

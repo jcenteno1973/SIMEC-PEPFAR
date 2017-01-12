@@ -22,10 +22,8 @@
   <img src="../{{$obj_documentos->url_doc_img}}/{{$obj_documentos->nombre_archivo}}" alt="{{$obj_documentos->nombre_archivo}}">  
   <a target="_blank" href="../{{$obj_documentos->url_doc_img}}/{{$obj_documentos->nombre_archivo}}">Ver imagen completa</a>
   @endforeach
-  {!! Form::hidden('id_documento',$obj_documento[0]->id_documento_imagen, ['class' => 'form-control']) !!}
   </div>
   @else
-  {!! Form::hidden('id_documento',0, ['class' => 'form-control']) !!}
   @endif
 @stop
 @section('usuario_sesion')
@@ -147,15 +145,16 @@
                    <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
-               <tr>
-              
-              </tr>
+               @if($obj_documento!=[])
+                {!! Form::hidden('id_documento',$obj_documento[0]->id_documento_imagen, ['class' => 'form-control']) !!}
+               @else
+                {!! Form::hidden('id_documento',0, ['class' => 'form-control']) !!}
+               @endif
             {!! Form::hidden('id_clase_bien',1, ['class' => 'form-control']) !!}
               <tr>
                   <td>
                     <button type="submit" class="btn btn-primary">Guardar</button>    
                   </td>
-               
               </tr>
             </tbody>            
           </table>

@@ -16,6 +16,15 @@
    <a href="../ficha/nueva_ficha_mueble" class="list-group-item">Nueva ficha mueble</a>
     <a href="../ficha/nueva_ficha_vehiculo" class="list-group-item">Nueva ficha veh&iacute;culo</a>
 </div>
+@if($obj_documento!=[])
+  <div class="thumbnail">
+  @foreach($obj_documento as $obj_documentos)
+  <img src="../{{$obj_documentos->url_doc_img}}/{{$obj_documentos->nombre_archivo}}" alt="{{$obj_documentos->nombre_archivo}}">  
+  <a target="_blank" href="../{{$obj_documentos->url_doc_img}}/{{$obj_documentos->nombre_archivo}}">Ver imagen completa</a>
+  @endforeach
+  </div>
+  @else
+  @endif
 @stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
@@ -94,16 +103,38 @@
                   <input type="text" name="modelo_bien" value="{{$obj_ficha->modelo_bien}}" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />                   
                 </td>  
               </tr>
-              <tr>
-                
-                <td>Serie</td>
+               <tr>
+                <td>No de placa</td>
                 <td>
-                   <input type="text" name="numero_serie" value="{{$obj_ficha->serie_bien}}" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />                   
+                    <input type="text" name="placa_bien" value="{{$obj_ficha->placa_bien}}" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,12}" />
                 </td> 
                  <td>Color</td>
                 <td>                 
                    {!! Form::select('id_lista_color',$lista_color,$obj_ficha->id_lista_color, ['class' => 'form-control']) !!}
                 </td>
+              </tr>
+              <tr>
+                <td>No chasis</td>
+                <td> 
+                    <input type="text" name="numero_vin_chasis" value="{{$obj_ficha->numero_vin_chasis}}" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />
+                  
+                </td>
+                <td>No motor</td>
+                <td>
+                    <input type="text" name="numero_motor" value="{{$obj_ficha->numero_motor}}" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{2,25}" />
+                   
+                </td>  
+              </tr>
+              <tr>
+                 <td>Año</td>
+                <td> 
+                    <input type="text" name="anio_bien" value="{{$obj_ficha->anio_bien}}" class="form-control" pattern="[0-9]{4,4}" />
+                </td>
+                <td>No EQ</td>
+                <td>
+                  <input type="text" name="numero_equipo" value="{{$obj_ficha->numero_equipo}}" class="form-control" pattern="[0-9a-zA-Z ,#$%/().'-]{1,10}" />
+                  
+                </td>  
               </tr>
               <tr>                
                   <td>Años vida util *</td>
@@ -136,9 +167,11 @@
                    <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
-               <tr>
-              
-              </tr>
+                @if($obj_documento!=[])
+                {!! Form::hidden('id_documento',$obj_documento[0]->id_documento_imagen, ['class' => 'form-control']) !!}
+               @else
+                {!! Form::hidden('id_documento',0, ['class' => 'form-control']) !!}
+               @endif
             {!! Form::hidden('id_clase_bien',1, ['class' => 'form-control']) !!}
               <tr>
                   <td>

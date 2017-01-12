@@ -124,7 +124,7 @@
               <tr>
                  <td>Año</td>
                 <td> 
-                    <input type="text" name="placa_bien" class="form-control" pattern="[0-9]{4,4}" />
+                    <input type="text" name="anio_bien" class="form-control" pattern="[0-9]{4,4}" />
                 </td>
                 <td>No EQ</td>
                 <td>
