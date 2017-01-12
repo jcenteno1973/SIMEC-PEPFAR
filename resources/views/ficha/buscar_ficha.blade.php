@@ -81,7 +81,7 @@
          {!! Form::close()!!}  
     </td>  
      <td>
-       {!! Form::open(['route' => 'ficha/reporte_ficha_inmueble', 'class' => 'form']) !!}              
+       {!! Form::open(['route' => 'ficha/reporte_fichas', 'class' => 'form']) !!}              
          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_rep" >
          {!! Form::submit('Generar reporte', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   

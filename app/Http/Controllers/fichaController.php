@@ -411,7 +411,6 @@ class fichaController extends Controller
      $obj_ficha->id_lista_color=$request->id_lista_color;
      $obj_ficha->id_estado=$request->id_estado;
      $obj_ficha->id_cuenta_contable=$request->id_cuenta_contable;
-     $obj_ficha->id_tipo_inventario=1;
      $obj_ficha->responsable_bien =$request->responsable_bien;
      $obj_ficha->descripcion=$request->descripcion;
      $obj_ficha->marca_bien=$request->marca_bien;
@@ -730,6 +729,9 @@ class fichaController extends Controller
          return redirect()->back();
        }
        $obj_ficha=  ficha::find($request->resultado);
+       $cuenta_contable=  cuenta_contable::all();
+       $estado_af=  estado_af::lists('nombre_estado','id_estado');
+       $lista_color=  lista_color::lists('desc_color','id_lista_color');
        $obj_documento=DB::table('documento_imagen')
                ->select('*')
                ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
@@ -739,18 +741,40 @@ class fichaController extends Controller
                ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
                ->whereNull('deleted_at')
                ->get();
+       $nombre_unidad= ubicacion_organizacional::find($codigo_inventario[0]->id_ubicacion_org);
        $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
        //dd($fecha_adquisicion);
        $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
        if($obj_ficha->id_tipo_inventario==1){
-       return view('ficha/editar_ficha_mueble'); 
+           
+       return view('ficha/ver_ficha_mueble',compact(
+                 'cuenta_contable',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada',
+                 'fecha_adquisicion',
+                 'estado_af',
+                 'lista_color',
+                 'obj_documento',
+                 'nombre_unidad'
+                 )); 
        }
        if($obj_ficha->id_tipo_inventario==2){
-        return view('ficha/editar_ficha_vehiculo');    
+        return view('ficha/ver_ficha_vehiculo',compact(
+                 'cuenta_contable',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada',
+                 'fecha_adquisicion',
+                 'estado_af',
+                 'lista_color',
+                 'obj_documento',
+                 'nombre_unidad'
+                 ));    
        }
        if($obj_ficha->id_tipo_inventario==3){
          /**
-        * Crea formulario para modificar ficha de inmueble
+        * Crea formulario para ver ficha de inmueble
          */
            //dd($obj_documento);
          $tipo_documento=  tipo_doc_propiedad::all();
@@ -796,7 +820,7 @@ class fichaController extends Controller
                ->get();
        $nombre_unidad= ubicacion_organizacional::find($codigo_inventario[0]->id_ubicacion_org);
        $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
-       //dd($fecha_adquisicion);
+      
        $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
        if($obj_ficha->id_tipo_inventario==1){
         /**
@@ -846,6 +870,37 @@ class fichaController extends Controller
                  'obj_documento'
                  ));
        }
+    }
+    public function fnc_reporte_fichas(Request $request) {
+    dd($request);  
+    }
+    public function fnc_rep_ficha_vehiculo(Request $request) {
+    $reporte_generado='/reportes_jasper/'.time().'_ficha_vehiculo';//time le aggrega un número generado por la hora
+    $output = public_path() .$reporte_generado; 
+    $report = new JasperPHP;
+    $report->process(
+    public_path() . '/reportes_jasper/ficha_vehiculo.jrxml', 
+    $output, 
+    array('pdf'),//, 'rtf', 'html'),
+    array('id_ficha_activo_fijo'=> $request->id_ficha_activo_fijo,'nombre_usuario'=>Auth::user()->nombres_usuario.' '.Auth::user()->apellidos_usuario),
+    config('conexion_report.conexion')
+    )->execute();
+    $reporte_generado='..'.$reporte_generado.'.pdf';    
+    return view('ficha/reporte_ficha_vehiculo',compact('reporte_generado'));  
+    }
+    public function fnc_rep_ficha_mueble(Request $request) {
+    $reporte_generado='/reportes_jasper/'.time().'_ficha_mueble';//time le aggrega un número generado por la hora
+    $output = public_path() .$reporte_generado; 
+    $report = new JasperPHP;
+    $report->process(
+    public_path() . '/reportes_jasper/ficha_mueble.jrxml', 
+    $output, 
+    array('pdf'),//, 'rtf', 'html'),
+    array('id_ficha_activo_fijo'=> $request->id_ficha_activo_fijo,'nombre_usuario'=>Auth::user()->nombres_usuario.' '.Auth::user()->apellidos_usuario),
+    config('conexion_report.conexion')
+    )->execute();
+    $reporte_generado='..'.$reporte_generado.'.pdf';    
+    return view('ficha/reporte_ficha_mueble',compact('reporte_generado'));  
     }
     public function fnc_rep_ficha_inmueble(Request $request) {
     $reporte_generado='/reportes_jasper/'.time().'_ficha_inmueble';//time le aggrega un número generado por la hora

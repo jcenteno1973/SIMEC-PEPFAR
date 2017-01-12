@@ -38,9 +38,10 @@ Route::post('ficha/editar_mueble',['as' => 'ficha/editar_mueble', 'uses' => 'fic
 Route::post('ficha/editar_inmueble',['as' => 'ficha/editar_inmueble', 'uses' => 'fichaController@fnc_update_inmueble']);
 Route::post('ficha/editar_vehiculo',['as' => 'ficha/editar_vehiculo', 'uses' => 'fichaController@fnc_update_vehiculo']);
 Route::get('ficha/ver',['as' => 'ficha/ver', 'uses' => 'fichaController@fnc_ver_ficha']);
+Route::post('ficha/reporte_fichas',['as' => 'ficha/reporte_fichas', 'uses' => 'fichaController@fnc_reporte_fichas']);
 Route::post('ficha/reporte_ficha_inmueble',['as' => 'ficha/reporte_ficha_inmueble', 'uses' => 'fichaController@fnc_rep_ficha_inmueble']);
-Route::get('ficha/reporte_ficha_meble',['as' => 'ficha/reporte_ficha_meble', 'uses' => 'fichaController@fnc_rep_ficha_mueble']);
-Route::get('ficha/reporte_ficha_vehiculo',['as' => 'ficha/reporte_ficha_vehiculo', 'uses' => 'fichaController@fnc_rep_ficha_vehiculo']);
+Route::post('ficha/reporte_ficha_mueble',['as' => 'ficha/reporte_ficha_mueble', 'uses' => 'fichaController@fnc_rep_ficha_mueble']);
+Route::post('ficha/reporte_ficha_vehiculo',['as' => 'ficha/reporte_ficha_vehiculo', 'uses' => 'fichaController@fnc_rep_ficha_vehiculo']);
 Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);

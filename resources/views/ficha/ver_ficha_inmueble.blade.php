@@ -21,7 +21,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Pantalla editar ficha inmueble</h4>    
+  <h4 class="text-center">Pantalla ver ficha inmueble</h4>    
 @stop 
 @section('contenido')
 <div class="panel panel-default">
@@ -126,7 +126,7 @@
               <tr>
                   <td>
                     <button type="submit" class="btn btn-primary">Generar reporte</button> 
-                     <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+                     <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>
                   </td>
               </tr>
             </tbody>            
