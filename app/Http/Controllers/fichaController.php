@@ -872,6 +872,11 @@ class fichaController extends Controller
        }
     }
     public function fnc_reporte_fichas(Request $request) {
+    if($request->id_ficha_activo_fijo=='')
+     {
+       flash()->warning('Seleccione una ficha');
+       return redirect()->back();
+     }
     dd($request);  
     }
     public function fnc_rep_ficha_vehiculo(Request $request) {
@@ -915,6 +920,36 @@ class fichaController extends Controller
     )->execute();
     $reporte_generado='..'.$reporte_generado.'.pdf';    
     return view('ficha/reporte_ficha_inmueble',compact('reporte_generado'));  
+    }
+    public function fnc_create_mejora(Request $request){
+    
+     if($request->id_ficha_activo_fijo=='')
+     {
+         flash()->warning('Seleccione una ficha');
+         return redirect()->back();
+     }
+     $obj_ficha= ficha::find($request->id_ficha_activo_fijo);
+     if($obj_ficha->id_tipo_inventario!=3)
+     {
+       flash()->warning('La ficha seleccionada debe ser un inmueble');
+       return redirect()->back();  
+     }
+     dd($request);  
+    }
+    public function fnc_create_revaluo(Request $request){
+    
+     if($request->id_ficha_activo_fijo=='')
+     {
+         flash()->warning('Seleccione una ficha');
+         return redirect()->back();
+     }
+     $obj_ficha= ficha::find($request->id_ficha_activo_fijo);
+     if($obj_ficha->id_tipo_inventario!=3)
+     {
+       flash()->warning('La ficha seleccionada debe ser un inmueble');
+       return redirect()->back();  
+     }
+     dd($request);  
     }
     /**
      * Remove the specified resource from storage.

@@ -87,20 +87,20 @@
          {!! Form::close()!!}   
     </td> 
      <td>
-       {!! Form::open(['route' => 'administracion/cambiar_contrasenia', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result" >                
+       {!! Form::open(['route' => 'ficha/nueva_mejora', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_mejora" >                
          {!! Form::submit('Agregar mejora', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}  
     </td>
      <td>
-       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result2" >
+       {!! Form::open(['route' => 'ficha/nuevo_revaluo', 'class' => 'form','method' => 'get']) !!}              
+         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_revaluo" >
          {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td>
      <td>
        {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result2" >
+         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_depreciacion" >
          {!! Form::submit('Depreciación', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
     </td> 
@@ -126,6 +126,9 @@ function myFunction(seleccionar) {
     document.getElementById("resultado_edit").value = seleccionar;
     document.getElementById("resultado_ver").value = seleccionar;
     document.getElementById("resultado_rep").value = seleccionar;
+    document.getElementById("resultado_mejora").value = seleccionar;
+    document.getElementById("resultado_revaluo").value = seleccionar;
+    document.getElementById("resultado_depreciacion").value = seleccionar;
 }   
 </script>
 @stop
