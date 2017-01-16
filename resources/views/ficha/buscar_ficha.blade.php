@@ -29,21 +29,27 @@
                     Código de inventario
                   {!!Form::text('codigo_inventario',null,['class'=>'form-control', 'placeholder'=>'Código de inventario'])!!}
                 </div>
-                  Unidad/departamento
-                 <select name="id_ubicacion_org" class="form-control" >
-                     <option> </option> 
-                      @foreach($obj_unidad as $obj_unidades)
-                     <option value="{{$obj_unidades->id_ubicacion_org}}" >{{$obj_unidades->nombre_unidad_dep}}</option>
-                     @endforeach
-                 </select>
-                   Tipo inventario
+                <div class="form-group" >
+                     Unidad/departamento
+                         <select name="id_ubicacion_org" class="form-control" >
+                             <option> </option> 
+                              @foreach($obj_unidad as $obj_unidades)
+                             <option value="{{$obj_unidades->id_ubicacion_org}}" >{{$obj_unidades->nombre_unidad_dep}}</option>
+                             @endforeach
+                         </select>
+                </div>
+                  <div class="form-group" >
+                      Tipo inventario
                  <select name="id_tipo_inventario" class="form-control" >
                      <option> </option>
                      @foreach($obj_inventario as $obj_inventarios)
                      <option value="{{$obj_inventarios->id_tipo_inventario}}" >{{$obj_inventarios->nombre_tipo_inventario}}</option>
                      @endforeach
-                 </select>    
-                <button type="submit" class="btn btn-default"> Buscar</button>
+                 </select>   
+                  <button type="submit" class="btn btn-default"> Buscar</button>
+                  </div>
+                    
+                
    {!! Form::close() !!}
 <div class="panel-body">
  <div class="codigos">
@@ -51,8 +57,8 @@
     <thead>
       <tr>
         <th>id</th>
-        <th>Descripción</th>
         <th>Código inventario</th>
+         <th>Descripción</th>
         <th>Unidad/Departamento</th>
         <th>Seleccionar</th> 
       </tr>
@@ -61,63 +67,71 @@
     @foreach($lista_codigo as $lista_codigos)
       <tr>
         <td>{{$lista_codigos->id_ficha_activo_fijo}}</td> 
-        <td>{{$lista_codigos->descripcion}}</td> 
         <td>{{$lista_codigos->codigo_inventario}}</td>
+         <td>{{$lista_codigos->descripcion}}</td> 
         <td>{{$lista_codigos->nombre_unidad_dep}}</td>
         <td><input type="radio" name="seleccionar" onclick="myFunction(this.value)" value={{$lista_codigos->id_ficha_activo_fijo}}></td>
       </tr>   
    @endforeach
     </tbody> 
   </table> 
-<table class="table table-condensed"> 
- <tr>   
-    <td>
-      {!!$lista_codigo->appends(Request::only(['codigo_inventario','id_ubicacion_org','id_tipo_inventario']))->render()!!}     
-    </td>
-    <td>
-       {!! Form::open(['route' => 'ficha/editar', 'class' => 'form','method' => 'get']) !!}              
+     <div class="form-group">
+         {!!$lista_codigo->appends(Request::only(['codigo_inventario','id_ubicacion_org','id_tipo_inventario']))->render()!!}     
+     </div>
+<div class="col-sm-1">
+           <div class="form-group">
+            {!! Form::open(['route' => 'ficha/editar', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="resultado" id="resultado_edit" >                
          {!! Form::submit('Editar', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}  
-    </td>  
-     <td>
-       {!! Form::open(['route' => 'ficha/reporte_fichas', 'class' => 'form']) !!}              
+         {!! Form::close()!!}   
+        </div> 
+        </div>
+        <div class="col-sm-1">
+             <div class="form-group">
+            {!! Form::open(['route' => 'ficha/reporte_fichas', 'class' => 'form']) !!}              
          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_rep" >
          {!! Form::submit('Reporte', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}   
-    </td> 
-     <td>
-       {!! Form::open(['route' => 'ficha/nueva_mejora', 'class' => 'form','method' => 'get']) !!}              
+        </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+            {!! Form::open(['route' => 'ficha/nueva_mejora', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_mejora" >                
          {!! Form::submit('Agregar mejora', array('class'=> 'btn btn-primary'))!!}
          {!! Form::close()!!}  
-    </td>
-     <td>
-       {!! Form::open(['route' => 'ficha/nuevo_revaluo', 'class' => 'form','method' => 'get']) !!}              
+        </div> 
+        </div>
+        <div class="col-sm-2">
+           <div class="form-group">
+           {!! Form::open(['route' => 'ficha/nuevo_revaluo', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_revaluo" >
          {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-    </td>
-     <td>
-       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
+         {!! Form::close()!!}    
+        </div>  
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+           {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_depreciacion" >
          {!! Form::submit('Depreciación', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-    </td> 
-     <td>
-       {!! Form::open(['route' => 'ficha/ver', 'class' => 'form','method' => 'get']) !!}              
+         {!! Form::close()!!}    
+        </div> 
+        </div>
+        <div class="col-sm-1">
+         <div class="form-group">
+         {!! Form::open(['route' => 'ficha/ver', 'class' => 'form','method' => 'get']) !!}              
          <input type="hidden" name="resultado" id="resultado_ver" >
          {!! Form::submit('ver ficha', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-    </td> 
-     <td>
-       <a href="javascript:history.back(-1);" class="btn btn-primary">Ayuda</a>
-    </td>  
-     <td>
-       <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-    </td>  
- </tr> 
-</table>
+         {!! Form::close()!!}      
+        </div>   
+        </div>
+        <div class="col-sm-1">
+            <a href="javascript:history.back(-1);" class="btn btn-primary">Ayuda</a>
+        </div>
+        <div class="col-sm-1">
+         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>   
+        </div>
     </div>
     </div>
 </div>

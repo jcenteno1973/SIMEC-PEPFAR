@@ -119,7 +119,7 @@
                   </td>  
                 <td>Observación</td>
                 <td>                 
-                <input type="text" name="observacion" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
+                <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
               <tr>
@@ -141,23 +141,9 @@
             
               <tr>
                   <td>
-                    <button type="submit" class="btn btn-primary">Guardar</button>    
+                    <button type="submit" class="btn btn-primary">Guardar</button> 
+                    <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
                   </td>
-                <td>
-       {!! Form::open(['route' => 'administracion/cambiar_contrasenia', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result" >                
-         {!! Form::submit('Agregar mejora', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}  
-    </td>
-     <td>
-       {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="result2" >
-         {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-    </td>
-    <td>
-         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-    </td>
               </tr>
             </tbody>            
           </table>  

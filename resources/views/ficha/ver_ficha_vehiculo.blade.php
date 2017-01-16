@@ -30,7 +30,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Pantalla editar ficha vehiculo</h4>    
+  <h4 class="text-center">Pantalla ver ficha vehiculo</h4>    
 @stop 
 @section('contenido')
 <div class="panel panel-default">

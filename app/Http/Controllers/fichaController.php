@@ -921,6 +921,12 @@ class fichaController extends Controller
     $reporte_generado='..'.$reporte_generado.'.pdf';    
     return view('ficha/reporte_ficha_inmueble',compact('reporte_generado'));  
     }
+    public function fnc_store_mejora(Request $request) {
+    dd($request);
+    }
+    public function fnc_store_revaluo(Request $request) {
+    dd($request);
+    }
     public function fnc_create_mejora(Request $request){
     
      if($request->id_ficha_activo_fijo=='')
@@ -934,8 +940,21 @@ class fichaController extends Controller
        flash()->warning('La ficha seleccionada debe ser un inmueble');
        return redirect()->back();  
      }
-     dd($request);  
+       $cuenta_contable=  cuenta_contable::all();
+       $obj_ficha=  ficha::find($request->id_ficha_activo_fijo);
+       $codigo_inventario= DB::table('lista_codigo')
+               ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+               ->whereNull('deleted_at')
+               ->get();
+       $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
+       return view('ficha/nueva_ficha_mejora',compact(
+                 'cuenta_contable',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada'
+                 ));
     }
+    
     public function fnc_create_revaluo(Request $request){
     
      if($request->id_ficha_activo_fijo=='')
@@ -949,7 +968,19 @@ class fichaController extends Controller
        flash()->warning('La ficha seleccionada debe ser un inmueble');
        return redirect()->back();  
      }
-     dd($request);  
+     $cuenta_contable=  cuenta_contable::all();
+       $obj_ficha=  ficha::find($request->id_ficha_activo_fijo);
+       $codigo_inventario= DB::table('lista_codigo')
+               ->where('id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+               ->whereNull('deleted_at')
+               ->get();
+       $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
+       return view('ficha/nueva_ficha_revaluo',compact(
+                 'cuenta_contable',
+                 'obj_ficha',
+                 'codigo_inventario',
+                 'cuenta_asignada'
+                 ));  
     }
     /**
      * Remove the specified resource from storage.
