@@ -1,7 +1,7 @@
 <!--
  * Nombre del archivo: ayuda_crear_vehiculo.blade.php
- * Descripción: ayuda para la pantalla de editar_
- * Fecha de creación: 10/01/17
+ * Descripcion: ayuda para la pantalla de editar_
+ * Fecha de creacion: 10/01/17
  * Creado por: Yamileth Campos
  -->
  
@@ -53,9 +53,7 @@
                                     </li>
                                     <li>Botones:
                                         <ul>
-                                            <li><strong>Guardar</strong>: Hacer clic sobre este bot&oacute;n para mantener los cambios realizados.</li>                                          
-                                            <li><strong>Agregar mejora</strong>: Se crear&aacute; una mejora sobre el activo.</li>
-                                            <li><strong>Agregar reval&uacute;o</strong>: Se crear&aacute; un reval&uacute;o sobre el activo.</li>                                                                                        
+                                            <li><strong>Guardar</strong>: Hacer clic sobre este bot&oacute;n para mantener los cambios realizados.</li>                                           
                                             <li><strong>Regresar</strong>: Va a  la p&aacute;gina anterior.</li>
                                             <li><strong>Ayuda</strong>: Despliega la descripci&oacute;n de la pantalla actual.</li>
                                         </ul>                                         

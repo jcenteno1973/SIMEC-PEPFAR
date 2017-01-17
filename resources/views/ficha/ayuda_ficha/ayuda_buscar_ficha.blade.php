@@ -1,7 +1,7 @@
 <!--
  * Nombre del archivo: ayuda_buscar_ficha.blade.php
  * Descripcion: ayuda para la pantalla de buscar_ficha
- * Fecha de creacion: 05/01/17
+ * Fecha de creacion: 10/01/17
  * Creado por: Yamileth Campos
  -->
  
