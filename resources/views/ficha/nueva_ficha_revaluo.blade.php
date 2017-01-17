@@ -50,7 +50,7 @@
               <tr>
                 <td>Monto de revalúo*</td>
                 <td>   
-                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01','placeholder'=>'$0.00', 'required' => 'required']) !!}                   
+                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01','placeholder'=>'$0.00','required' => 'required']) !!}                   
                 </td>
                 <td>Fecha de revalúo*</td>
                 <td>
