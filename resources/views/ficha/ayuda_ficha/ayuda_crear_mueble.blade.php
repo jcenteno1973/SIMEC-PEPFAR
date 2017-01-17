@@ -8,7 +8,7 @@
  <!--Boton de ayuda-->
     <a href="#nuevom" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
         <div class="modal fade" id="nuevom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog"> <!---div class="modal-dialog">-->
+            <div class="modal-dialog modal-lg"> <!---div class="modal-dialog">-->
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    

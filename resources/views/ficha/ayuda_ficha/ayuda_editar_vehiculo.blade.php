@@ -36,13 +36,14 @@
                                             <li><strong> Id</strong>: N&uacute;mero correspondiente a la base de datos.</li>                                    
                                             <li><strong> C&oacute;digo de inventario</strong>: C&oacute;digo asignado para el activo fijo seg&uacute;n inventario.</li>                                    
                                             <li><strong> Unidad o departamento</strong>: Es la unidad o departamento a la que esta asignado el veh&iacute;culo.</li>
+                                            <li><strong>Cuenta de depreciaci&oacute;n</strong>: Cuenta asignada al activo para depreciaci&oacute;n.</li>
                                         </ul>
                                     </li>
                                     <li> Elementos que pueden ser modificados:
                                         <ul>
                                             <li>
                                                 <strong>Nombre del responsable</strong>, <strong>Cuenta contable</strong> a la que pertenece el activo,
-                                                <strong>Cuenta de depreciaci&oacute;n</strong>, <strong> Descripci&oacute;n</strong>, <strong>Estado</strong>
+                                                 <strong> Descripci&oacute;n</strong>, <strong>Estado</strong>
                                                 <strong>Marca</strong>, <strong>Modelo</strong>, <strong>No. de Placa</strong>, <strong>Color</strong>
                                                 <strong>No. de Chasis</strong>, <strong>No. de motor</strong>, <strong>a&ntilde;o</strong> del veh&iacute;culo, 
                                                 <strong>No de Equipo</strong>, <strong>a&ntilde;os de vida &uacute;tilde</strong>, <strong>N&uacute;mero de factura</strong>,
