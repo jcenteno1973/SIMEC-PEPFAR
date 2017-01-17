@@ -3,6 +3,10 @@
      * Descripción: 
      * Fecha de creación:31/12/16
      * Creado por: Juan Carlos Centeno Borja
+
+     * Modificacion: boton y enlace de ayuda para la pantalla
+     * Fecha de modificacion: 16/01/17
+     * Modificado por: Yamileth Campos
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -57,8 +61,8 @@
     <thead>
       <tr>
         <th>id</th>
-        <th>Código inventario</th>
-         <th>Descripción</th>
+        <th>C&oacute;digo inventario</th>
+        <th>Descripci&oacute;n</th>
         <th>Unidad/Departamento</th>
         <th>Seleccionar</th> 
       </tr>
@@ -130,7 +134,7 @@
             @include('ficha/ayuda_ficha/ayuda_buscar_ficha')
         </div>
         <div class="col-sm-1">
-         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>   
+         <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>   
         </div>
     </div>
     </div>
