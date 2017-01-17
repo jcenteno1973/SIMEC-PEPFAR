@@ -166,10 +166,9 @@
               </tr>
             {!! Form::hidden('id_clase_bien',1, ['class' => 'form-control']) !!}
               <tr>
-                  <td>
-                    <button type="submit" class="btn btn-primary">Guardar</button>    
-                  </td>
-               
+                  <td><button type="submit" class="btn btn-primary">Guardar</button></td>
+                  <td><a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a></td>
+                  <td>@include('ficha/ayuda_ficha/ayuda_crear_vehiculo')</td>               
               </tr>
             </tbody>            
           </table>  
