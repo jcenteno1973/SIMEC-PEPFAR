@@ -699,7 +699,7 @@ class fichaController extends Controller
          $obj_ficha->save();
            $obj_controller_bitacora->create_mensaje('Modificacion de ficha: '.$request->codigo_inventario);
            if($_FILES['file']['name']=='')
-           {
+          {
           flash()->success('Ficha modificada exitosamente con el código de inventario:'.$request->codigo_inventario);
           return redirect()->back();  
            }
@@ -925,7 +925,88 @@ class fichaController extends Controller
     dd($request);
     }
     public function fnc_store_revaluo(Request $request) {
-    dd($request);
+     $obj_controller_bitacora=new bitacoraController();
+     $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+     if($_FILES['file']['error']==1){
+          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']); 
+           $errors[0]='No se puede cargar el archivo: '.$_FILES['file']['name']; 
+    if($request->monto_adquisicion<=0)
+    {
+      $errors[1]="Revaluo debe ser mayor a cero";
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[2]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }else
+      {
+       return redirect()->back()->withInput()->withErrors($errors);   
+      }
+    }else
+    {
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[1]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }  
+    }
+          return redirect()->back()->withInput()->withErrors($errors);
+  } else
+       {
+    if($request->monto_adquisicion<=0)
+    {
+      $errors[0]="Revaluo debe ser mayor a cero";
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[1]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }else
+      {
+       return redirect()->back()->withInput()->withErrors($errors);   
+      }
+    }else
+    {
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[0]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }else
+      {
+       //Datos validados
+    $obj_ficha= ficha::find($request->id_ficha_activo_fijo);
+    $obj_revaluo= new ficha();
+    $obj_revaluo->monto_anterior=$obj_ficha->monto_adquisicion;
+    $obj_ficha->monto_adquisicion=$request->monto_adquisicion;
+    $obj_ficha->id_usuario_modifica=Auth::user()->id_usuario_app;
+    $obj_ficha->ip_dispositivo=$request->ip();
+    $obj_revaluo->id_usuario_crea=Auth::user()->id_usuario_app;
+    $obj_revaluo->ip_dispositivo=$request->ip();
+    $obj_revaluo->descripcion=$request->descripcion;
+    $obj_revaluo->observacion=$request->observacion;
+    $obj_revaluo->fic_id_ficha_activo_fijo=$request->id_ficha_activo_fijo;
+    $obj_revaluo->fecha_adquisicion=$request->fecha_adquisicion;
+    $obj_revaluo->es_revaluo=1;
+    $obj_revaluo->estado_registro=1;
+    $obj_revaluo->estado_ficha=1;
+    $obj_ficha->save();
+    $obj_revaluo->save();
+    $id_ficha_af=$obj_revaluo->id_ficha_activo_fijo;
+        $obj_controller_bitacora->create_mensaje('Modificación de ficha con código: '.$request->codigo_inventario);
+        $obj_controller_bitacora->create_mensaje('Creación de nueva ficha revaluo: '.$request->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Revalúo creado exitosamente con el código de inventario:'.$request->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+            $this->fnc_guardar_archivo($request,$id_ficha_af);            
+            flash()->success('Revalúo creado exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();  
+           }
+      }
+      
+    }
+    }
     }
     public function fnc_create_mejora(Request $request){
     
