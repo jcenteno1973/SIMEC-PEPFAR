@@ -30,7 +30,7 @@
             
                 <div class="form-group" >
                     <br /><br />Código de usuario
-                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario', 'required' => 'required'])!!}
+                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
                   &nbsp;&nbsp;<br /><br /><br />Fecha:&nbsp;&nbsp;&nbsp;&nbsp;Desde                  
                   {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio', 'required' => 'required'])!!}
                   &nbsp;&nbsp;Hasta

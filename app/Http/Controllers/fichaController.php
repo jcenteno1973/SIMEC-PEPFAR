@@ -922,9 +922,84 @@ class fichaController extends Controller
     return view('ficha/reporte_ficha_inmueble',compact('reporte_generado'));  
     }
     public function fnc_store_mejora(Request $request) {
-    dd($request);
+     $obj_controller_bitacora=new bitacoraController();
+     $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
+     if($_FILES['file']['error']==1){
+          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']); 
+           $errors[0]='No se puede cargar el archivo: '.$_FILES['file']['name']; 
+    if($request->monto_adquisicion<=0)
+    {
+      $errors[1]="Revaluo debe ser mayor a cero";
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[2]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }else
+      {
+       return redirect()->back()->withInput()->withErrors($errors);   
+      }
+    }else
+    {
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[1]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }  
     }
-    public function fnc_store_revaluo(Request $request) {
+          return redirect()->back()->withInput()->withErrors($errors);
+  } else
+       {
+    if($request->monto_adquisicion<=0)
+    {
+      $errors[0]="Revaluo debe ser mayor a cero";
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[1]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }else
+      {
+       return redirect()->back()->withInput()->withErrors($errors);   
+      }
+    }else
+    {
+      if($fecha_adquisicio>Carbon::now())
+      {
+       $errors[0]="La fecha debe ser menor o igual a la actual";
+        return redirect()->back()->withInput()->withErrors($errors);  
+      }else
+      {
+       //Datos validados
+    $obj_mejora= new ficha();
+    $obj_mejora->id_usuario_crea=Auth::user()->id_usuario_app;
+    $obj_mejora->ip_dispositivo=$request->ip();
+    $obj_mejora->descripcion=$request->descripcion;
+    $obj_mejora->observacion=$request->observacion;
+    $obj_mejora->fic_id_ficha_activo_fijo=$request->id_ficha_activo_fijo;
+    $obj_mejora->fecha_adquisicion=$request->fecha_adquisicion;
+    $obj_mejora->es_mejora=1;
+    $obj_mejora->estado_registro=1;
+    $obj_mejora->estado_ficha=1;
+    $obj_mejora->id_cuenta_contable=$request->id_cuenta_contable;
+    $obj_mejora->save();
+    $id_ficha_af=$obj_mejora->id_ficha_activo_fijo;
+        $obj_controller_bitacora->create_mensaje('Creación de nueva ficha mejora: '.$request->codigo_inventario);
+           if($_FILES['file']['name']=='')
+           {
+          flash()->success('Mejora creada exitosamente con el código de inventario:'.$request->codigo_inventario);
+          return redirect()->back();  
+           }
+           else
+           {
+            $this->fnc_guardar_archivo($request,$id_ficha_af);            
+            flash()->success('Mejora creada exitosamente con el código de inventario:'.$request->codigo_inventario);
+            return redirect()->back();  
+           }
+      }
+      
+    }
+    }
+    }
+public function fnc_store_revaluo(Request $request) {
      $obj_controller_bitacora=new bitacoraController();
      $fecha_adquisicio=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
      if($_FILES['file']['error']==1){

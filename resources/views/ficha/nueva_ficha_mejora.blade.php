@@ -68,17 +68,17 @@
               <tr>
                 <td>Monto de mejora*</td>
                 <td>   
-                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','step'=>'0.01','placeholder'=>'$0.00', 'required' => 'required']) !!}                   
+                    {!! Form::number('monto_adquisicion',null,['class' => 'form-control','min'=>'0.01','step'=>'0.01','placeholder'=>'$0.00', 'required' => 'required']) !!}                   
                 </td>
                 <td>Fecha mejora*</td>
                 <td>
-                   {!! Form::text('fecha_adquisicion',null, ['class'=>'form-control datepicker', 'placeholder'=>'dd/mm/aaaa', 'required' => 'required']) !!}
+                   {!! Form::text('fecha_adquisicion',date('d/m/Y'), ['class'=>'form-control datepicker','placeholder'=>'dd/mm/aaaa', 'required' => 'required']) !!}
                 </td>                 
               </tr>
               <tr>
                 <td>Años vida util*</td>
                 <td>                 
-                   {!! Form::number('anios_vida_util',null, ['class' => 'form-control','required' => 'required']) !!}
+                   {!! Form::number('anios_vida_util',null, ['class' => 'form-control','min'=>'1','required' => 'required']) !!}
                 </td>
                   <td>Documento</td>
                   <td>

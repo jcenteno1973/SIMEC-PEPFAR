@@ -48,7 +48,6 @@ class AuthController extends Controller
     if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_registro'=>1]))
       {
        $obj_controller_bitacora=new bitacoraController();
-       $obj_controller_bitacora->create_mensaje('Ingreso a la aplicación');
        if(Auth::user()->estado_usuario==0)
        {
           $obj_controller_bitacora->create_mensaje('Usuario bloqueado');
