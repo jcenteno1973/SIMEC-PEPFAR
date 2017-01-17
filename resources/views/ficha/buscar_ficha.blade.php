@@ -127,7 +127,7 @@
         </div>   
         </div>
         <div class="col-sm-1">
-            <a href="javascript:history.back(-1);" class="btn btn-primary">Ayuda</a>
+            @include('ficha/ayuda_ficha/ayuda_buscar_ficha')
         </div>
         <div class="col-sm-1">
          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>   
