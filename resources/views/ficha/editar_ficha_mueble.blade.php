@@ -61,7 +61,7 @@
                 </td>
                 <td>Nombre del responsable*</td>
                 <td>
-                   <input type="text" name="responsable_bien" value="{{$obj_ficha->responsable_bien}}" id="resultado_unidad" class="form-control" pattern="[a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" required/>
+                   <input type="text" name="responsable_bien" value="{{$obj_ficha->responsable_bien}}" id="resultado_unidad" class="form-control" pattern="[a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" required/>
                 </td>
               </tr>
              
@@ -86,7 +86,7 @@
                <tr>                  
               <td>Descripción *</td>
                 <td>                 
-                    <input type="text" name="descripcion" value="{{$obj_ficha->descripcion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
+                    <input type="text" name="descripcion" value="{{$obj_ficha->descripcion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
                 </td> 
                  <td>Estado *</td>
                 <td>
@@ -131,7 +131,7 @@
                 </td>
                 <td>Fecha adquisición*</td>
                 <td>
-                   {!! Form::text('fecha_adquisicion',$fecha_adquisicion, ['class'=>'form-control datepicker', 'placeholder'=>'dd/mm/aaaa', 'required' => 'required']) !!}
+                   {!! Form::text('fecha_adquisicion',$fecha_adquisicion, ['class'=>'form-control datepicker','placeholder'=>'dd/mm/aaaa', 'required' => 'required']) !!}
                 </td> 
                 
               </tr>
@@ -142,7 +142,7 @@
                   </td>  
                 <td>Observación</td>
                 <td>                 
-                   <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
+                   <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
                @if($obj_documento!=[])

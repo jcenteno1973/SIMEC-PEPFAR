@@ -19,7 +19,7 @@
     <a href="administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="administracion/catalogos" class="list-group-item">Cat&aacute;logos</a>
+    <a href="administracion/catalogos" class="list-group-item">Consultar documentos</a>
 </div>
 @stop
 @section('contenido')

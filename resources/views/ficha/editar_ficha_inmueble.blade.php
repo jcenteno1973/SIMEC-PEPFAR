@@ -66,11 +66,11 @@
               <tr> 
                  <td>Descripción*</td>
                 <td> 
-                    <input type="text" name="descripcion" value="{{$obj_ficha->descripcion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
+                    <input type="text" name="descripcion" value="{{$obj_ficha->descripcion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" required/>
                 </td> 
                 <td>Nombre del responsable*</td>
                 <td>
-                <input type="text" name="responsable_bien" value="{{$obj_ficha->responsable_bien}}" id="resultado_unidad" class="form-control" pattern="[a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" required/>
+                <input type="text" name="responsable_bien" value="{{$obj_ficha->responsable_bien}}" id="resultado_unidad" class="form-control" pattern="[a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" required/>
                 </td>
               </tr>
               
@@ -87,7 +87,7 @@
               <tr>                
                   <td>Años vida util</td>
                 <td>                 
-                   {!! Form::number('anios_vida_util',$obj_ficha->anios_vida_util, ['class' => 'form-control']) !!}
+                   {!! Form::number('anios_vida_util',$obj_ficha->anios_vida_util, ['class' => 'form-control','min'=>'1']) !!}
                 </td>
                 <td>Estado de legalidad*</td>
                 <td>                 
@@ -119,7 +119,7 @@
                   </td>  
                 <td>Observación</td>
                 <td>                 
-                <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
+                <input type="text" name="observacion" value="{{$obj_ficha->observacion}}" class="form-control" pattern="[0-9a-zA-Zàáâäãåą�?ćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñç�?šžÀ�?ÂÄÃÅĄĆČĖĘÈÉÊËÌ�?Î�?Į�?ŃÒÓÔÖÕØÙÚÛÜŲŪŸ�?ŻŹÑßÇŒÆČŠŽ∂ð ,#$%/().'-]{2,100}" title="No acepta caracteres especiales, minimo:2 y maximo:100" />
                 </td>                                   
               </tr>
               <tr>
@@ -138,17 +138,13 @@
               @endif
               </tr>
             {!! Form::hidden('id_clase_bien',2, ['class' => 'form-control']) !!}
-            
-              <tr>
-                  <td>
-                    <button type="submit" class="btn btn-primary">Guardar</button>                     
-                    <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>                    
-                    @include('ficha/ayuda_ficha/ayuda_editar_inmueble')
-                  </td>
-              </tr>
             </tbody>            
-          </table>  
-    
+          </table>
+ <div class="btn-group">
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+  @include('ficha/ayuda_ficha/ayuda_editar_inmueble')
+</div>
     {!! Form::close() !!} 
 </div>
 <script>

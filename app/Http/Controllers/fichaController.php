@@ -588,9 +588,12 @@ class fichaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+     
+    }
+    public function fnc_seleccionar(Request $request) {
+       dd($request); 
     }
 
     public function fnc_update_mueble(Request $request) {
@@ -743,8 +746,12 @@ class fichaController extends Controller
                ->get();
        $nombre_unidad= ubicacion_organizacional::find($codigo_inventario[0]->id_ubicacion_org);
        $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
-       //dd($fecha_adquisicion);
        $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
+       $obj_hijos=DB::table('ficha_activo_fijo')
+                  ->select('*')
+                  ->where('fic_id_ficha_activo_fijo',$obj_ficha->id_ficha_activo_fijo)
+                  ->whereNull('deleted_at')
+                  ->simplePaginate(5); 
        if($obj_ficha->id_tipo_inventario==1){
            
        return view('ficha/ver_ficha_mueble',compact(
@@ -794,12 +801,14 @@ class fichaController extends Controller
                  'codigo_inventario',
                  'cuenta_asignada',
                  'fecha_adquisicion',
-                 'obj_documento'
+                 'obj_documento',
+                 'obj_hijos'
                  ));
        }
     }
     public function update(Request $request)
     {
+     //Crea formulario para la modificación de fichas
        if($request->resultado==''){
          flash()->warning('Seleccione una ficha');
          return redirect()->back();
@@ -820,7 +829,6 @@ class fichaController extends Controller
                ->get();
        $nombre_unidad= ubicacion_organizacional::find($codigo_inventario[0]->id_ubicacion_org);
        $fecha_adquisicion= Carbon::createFromFormat('Y-m-d', $obj_ficha->fecha_adquisicion)->format('d/m/Y');
-      
        $cuenta_asignada=  cuenta_contable::find($obj_ficha->id_cuenta_contable);
        if($obj_ficha->id_tipo_inventario==1){
         /**
@@ -975,7 +983,7 @@ class fichaController extends Controller
     $obj_mejora->descripcion=$request->descripcion;
     $obj_mejora->observacion=$request->observacion;
     $obj_mejora->fic_id_ficha_activo_fijo=$request->id_ficha_activo_fijo;
-    $obj_mejora->fecha_adquisicion=$request->fecha_adquisicion;
+    $obj_mejora->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
     $obj_mejora->es_mejora=1;
     $obj_mejora->estado_registro=1;
     $obj_mejora->estado_ficha=1;
@@ -1058,7 +1066,7 @@ public function fnc_store_revaluo(Request $request) {
     $obj_revaluo->descripcion=$request->descripcion;
     $obj_revaluo->observacion=$request->observacion;
     $obj_revaluo->fic_id_ficha_activo_fijo=$request->id_ficha_activo_fijo;
-    $obj_revaluo->fecha_adquisicion=$request->fecha_adquisicion;
+    $obj_revaluo->fecha_adquisicion=Carbon::createFromFormat('d/m/Y', $request->fecha_adquisicion);
     $obj_revaluo->es_revaluo=1;
     $obj_revaluo->estado_registro=1;
     $obj_revaluo->estado_ficha=1;

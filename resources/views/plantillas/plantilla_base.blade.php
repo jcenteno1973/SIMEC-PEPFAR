@@ -59,19 +59,17 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="{{route('fichas')}}">Fichas</a>
+							<a href="#">Carga de datos</a>
 						</li>
 						<li>
-							<a href="{{route('inventario')}}">Inventario</a>
+							<a href="#">Configuración</a>
 						</li>
-                        <li>
-							<a href="{{route('solicitudes')}}">Solicitudes</a>
+                                                <li>
+							<a href="#">Catálogos</a>
 						</li>
+	
 						<li>
-							<a href="{{route('procesos')}}">Procesos</a>
-						</li>
-						<li>
-							<a href="{{route('reportes')}}">Reportes</a>
+							<a href="#">Reportes</a>
 						</li>
 						<li>
 							<a href="{{route('administracion')}}">Administración</a>
@@ -134,7 +132,7 @@
     </div>
 	<div class="row"><!--pie de pagina -->
 		<div class="col-md-12">
-		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, Universidad de El Salvador</h5></div>
+		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017, Universidad de El Salvador</h5></div>
 		</div>
 	</div>
 	</div>

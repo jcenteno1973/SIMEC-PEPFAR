@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-08-20T16:45:52 -->
+<!-- 2016-12-22T00:55:23 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bitacora3" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="366147e9-48cd-48ae-9523-8a226c3d3cdd">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicafam"/>
@@ -55,14 +55,14 @@ FROM usuario_app u
 				<textFieldExpression><![CDATA["Fecha de emisión"]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="10" y="4" width="70" height="68" uuid="493d3d03-53b7-453a-b780-821ead112e39"/>
+				<reportElement x="0" y="3" width="77" height="68" uuid="493d3d03-53b7-453a-b780-821ead112e39"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<imageExpression><![CDATA["http://localhost/images/escudo.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://localhost/sicafam/public/images/escudo.png"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="496" y="1" width="77" height="68" uuid="2d8c21bb-c4b4-4b5d-aa3d-780e9a3d2588">
@@ -75,21 +75,21 @@ FROM usuario_app u
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["SECRETARIA EJECUTIVA"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ALCALDIA MUNICIPAL DE MEJICANOS"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="139" y="19" width="270" height="16" uuid="5e60f29f-86e3-4f02-a0d1-5f031deffd60"/>
+				<reportElement x="139" y="18" width="270" height="16" uuid="5e60f29f-86e3-4f02-a0d1-5f031deffd60"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["COMISCA"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["GERENCIA ADMINISTRATIVA"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="139" y="35" width="270" height="16" uuid="8cbed882-10ed-441d-b820-06ead7d4e1b1"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Mecanismo de Coordinación Regional"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["UNIDAD DE ACTIVO FIJO"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="139" y="51" width="270" height="20" uuid="f797048a-e52e-4f1e-a23f-f0c0783deb9b"/>

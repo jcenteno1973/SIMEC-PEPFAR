@@ -25,7 +25,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a class="list-group-item active">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
+    <a href="../administracion/catalogos" class="list-group-item">Consultar documentos</a>
 </div>
 @stop
 @section('contenido')

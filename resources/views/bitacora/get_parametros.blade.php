@@ -21,27 +21,47 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a class="list-group-item active">Consultar bit&aacute;cora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Catálogos</a>
+    <a href="../administracion/catalogos" class="list-group-item">Consultar documentos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    {!! Form::open(['route' => 'administracion/consultar_bitacora', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
-            
-                <div class="form-group" >
-                    <br /><br />Código de usuario
-                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
-                  &nbsp;&nbsp;<br /><br /><br />Fecha:&nbsp;&nbsp;&nbsp;&nbsp;Desde                  
-                  {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio', 'required' => 'required'])!!}
-                  &nbsp;&nbsp;Hasta
-                  {!!Form::text('fecha_fin',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin', 'required' => 'required'])!!}
-                </div>
-                 &nbsp;&nbsp; &nbsp;
-                <br /><br /><br />
-                {!! Form::submit('Generar reporte',['class'=>'btn btn-primary'])!!}  
-                <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>   
+    {!! Form::open(['route' => 'administracion/consultar_bitacora']) !!}
+    <div class="panel-body">
+      <table class="table table-condensed">    
+            <tbody>
+                <tr>
+                    <td>
+                      Código de usuario  
+                    </td>
+                    <td>
+                      {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Desde 
+                    </td>
+                     <td>
+                       {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio dd/mm/aaaa', 'required' => 'required'])!!} 
+                    </td>
+                    <td>
+                       Hasta  
+                    </td>
+                     <td>
+                      {!!Form::text('fecha_fin',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin dd/mm/aaaa', 'required' => 'required'])!!}  
+                    </td>
+                </tr>
+     </table> 
+      <div class="form-group">
+     {!! Form::submit('Generar reporte',['class'=>'btn btn-primary'])!!}  
+     <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+    </div> 
+    </div>      
+    <div class="panel-footer">
+         * Campo requerido
+    </div>
    {!! Form::close() !!}
-    
 </div>
 <script>
     $('.datepicker').datepicker({

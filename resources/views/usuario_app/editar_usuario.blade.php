@@ -29,7 +29,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
+    <a href="../administracion" class="list-group-item">Consultar archivos</a>
 </div>
 @stop
 @section('contenido')
@@ -51,10 +51,22 @@
             </td>
             </tr>
            <tr>            
-            <td> No DUI*</td>
             <td>
-                {!! Form::text('numero_dui',$obj_usuario->numero_dui, ['class' => 'form-control' , 'required' => 'required']) !!}
-             </td>
+            Estado usuario *
+            </td>
+                <td>
+                  @if($obj_usuario->estado_usuario==1)
+                  <select name="estado_usuario" class="form-control">
+                      <option value="1" >Activo </option>
+                      <option value="0">Bloqueado </option>
+                  </select>                    
+                  @else
+                 <select name="estado_usuario" class="form-control">
+                     <option value="0">Bloqueado </option>
+                     <option value="1">Activo </option>
+                  </select> 
+                  @endif
+                </td>
             </tr>
             <tr>
             <td>Nombres *</td>
@@ -89,7 +101,7 @@
                         @endforeach    
                     </select>
                 </td>
-              <td>Cargo *</td>
+              <td>País *</td>
                  <td>                 
                     <select name="cargo_emp" class="form-control">
                     @foreach($obj_cargo_emp as $obj_cargos_emp)
@@ -102,38 +114,7 @@
                     </select>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Unidad o Departamento *
-                </td>
-                <td>                    
-                <select name="id_ubicacion_org" class="form-control">
-                    @foreach($obj_ubicacion_org as $obj_ubicaciones_org)
-                    @if($obj_ubicaciones_org->id_ubicacion_org==$obj_usuario->id_ubicacion_org)
-                    <option selected="true">{{$obj_ubicaciones_org->nombre_unidad_dep}}</option>
-                    @else
-                    <option>{{$obj_ubicaciones_org->nombre_unidad_dep}}</option>
-                    @endif
-                    @endforeach
-                 </select>
-                </td>
-                <td>
-                    Estado usuario *
-                </td>
-                <td>
-                  @if($obj_usuario->estado_usuario==1)
-                  <select name="estado_usuario" class="form-control">
-                      <option value="1" >Activo </option>
-                      <option value="0">Bloqueado </option>
-                  </select>                    
-                  @else
-                 <select name="estado_usuario" class="form-control">
-                     <option value="0">Bloqueado </option>
-                     <option value="1">Activo </option>
-                  </select> 
-                  @endif
-                </td>
-            </tr>
+           
         </tbody>
      </table>  
        <!-- Botones"--> 

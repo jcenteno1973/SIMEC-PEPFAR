@@ -24,9 +24,8 @@
         <div class="container text-center">
             <table class="table">             
                 <center>
-                    <img src="{{asset('images/esquema1.png')}}"/><br>
-                    <h4>Sistema Inform&aacute;tico que ayuda a controlar y agilizar de manera eficiente <br>los procesos de la gesti&oacute;n de activo fijo de la instituci&oacute;n</h4>
-                    <br><h3><img src="{{asset('images/bienvenida.png')}}"/>: {{ Auth::user()->nombres_usuario }} {{ Auth::user()->apellidos_usuario }}</h3>
+                    <h1>Sistema de Información Gerencial <br>para la Vigilancia Epidemiológica</h1>
+                    <br><h3>Bienvenido(a): {{ Auth::user()->nombres_usuario }} {{ Auth::user()->apellidos_usuario }}</h3>
                 </center>
             </table>
         </div>

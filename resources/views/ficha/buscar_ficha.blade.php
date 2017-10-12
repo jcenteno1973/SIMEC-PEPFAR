@@ -72,70 +72,33 @@
       <tr>
         <td>{{$lista_codigos->id_ficha_activo_fijo}}</td> 
         <td>{{$lista_codigos->codigo_inventario}}</td>
-         <td>{{$lista_codigos->descripcion}}</td> 
+         <td>{!!$lista_codigos->descripcion=str_limit($lista_codigos->descripcion,35)!!} </td> 
         <td>{{$lista_codigos->nombre_unidad_dep}}</td>
         <td><input type="radio" name="seleccionar" onclick="myFunction(this.value)" value={{$lista_codigos->id_ficha_activo_fijo}}></td>
       </tr>   
    @endforeach
-    </tbody> 
+    </tbody>
   </table> 
-     <div class="form-group">
-         {!!$lista_codigo->appends(Request::only(['codigo_inventario','id_ubicacion_org','id_tipo_inventario']))->render()!!}     
-     </div>
-<div class="col-sm-1">
-           <div class="form-group">
-            {!! Form::open(['route' => 'ficha/editar', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="resultado" id="resultado_edit" >                
-         {!! Form::submit('Editar', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-        </div> 
-        </div>
-        <div class="col-sm-1">
-             <div class="form-group">
-            {!! Form::open(['route' => 'ficha/reporte_fichas', 'class' => 'form']) !!}              
-         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_rep" >
-         {!! Form::submit('Reporte', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}   
-        </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="form-group">
-            {!! Form::open(['route' => 'ficha/nueva_mejora', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_mejora" >                
-         {!! Form::submit('Agregar mejora', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}  
-        </div> 
-        </div>
-        <div class="col-sm-2">
-           <div class="form-group">
-           {!! Form::open(['route' => 'ficha/nuevo_revaluo', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_revaluo" >
-         {!! Form::submit('Agregar revaluo', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}    
-        </div>  
-        </div>
-        <div class="col-sm-2">
-            <div class="form-group">
-           {!! Form::open(['route' => 'administracion/cambiar_estado', 'class' => 'form','method' => 'get']) !!}              
-         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_depreciacion" >
-         {!! Form::submit('Depreciación', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}    
-        </div> 
-        </div>
-        <div class="col-sm-1">
          <div class="form-group">
-         {!! Form::open(['route' => 'ficha/ver', 'class' => 'form','method' => 'get']) !!}              
+         {!! Form::open(['route' => 'ficha/seleccionar', 'class' => 'form','method' => 'get'])!!}              
+         <input type="hidden" name="resultado" id="resultado_edit" > 
+         <input type="hidden" name="id_ficha_activo_fijo" id="resultado_rep" >
+          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_mejora" >                
+          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_revaluo" >
          <input type="hidden" name="resultado" id="resultado_ver" >
-         {!! Form::submit('ver ficha', array('class'=> 'btn btn-primary'))!!}
-         {!! Form::close()!!}      
-        </div>   
-        </div>
-        <div class="col-sm-1">
-            @include('ficha/ayuda_ficha/ayuda_buscar_ficha')
-        </div>
-        <div class="col-sm-1">
-         <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>   
-        </div>
+          <input type="hidden" name="id_ficha_activo_fijo" id="resultado_depreciacion" >
+         {!!$lista_codigo->appends(Request::only(['codigo_inventario','id_ubicacion_org','id_tipo_inventario']))->render()!!}      
+         {!! Form::submit('Editar', array('class'=> 'btn btn-primary','name'=>'opcion'))!!}
+         {!! Form::submit('Reporte', array('class'=> 'btn btn-primary','name'=>'opcion'))!!}
+         {!! Form::submit('Mejora', array('class'=> 'btn btn-primary','name'=>'opcion'))!!}
+         {!! Form::submit('Revaluo', array('class'=> 'btn btn-primary','name'=>'opcion'))!!}
+         {!! Form::submit('Ver ficha',array('class'=> 'btn btn-primary','name'=>'opcion'))!!}
+         {!! Form::submit('Depreciación', array('class'=> 'btn btn-primary','name'=>'opcion'))!!}
+         <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>
+         @include('ficha/ayuda_ficha/ayuda_buscar_ficha')
+         {!! Form::close()!!}   
+        </div> 
+    
     </div>
     </div>
 </div>

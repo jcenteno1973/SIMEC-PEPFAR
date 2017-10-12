@@ -24,7 +24,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
+    <a href="../administracion/catalogos" class="list-group-item">Consultar documentos</a>
 </div>
 @stop
 @section('contenido')
@@ -33,10 +33,11 @@
         {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
             <table class="table table-condensed">    
             <tbody>
-              <tr>
+              <!--  
+             <tr>
                 <td>No DUI *</td>
                 <td>                 
-                      {!! Form::text('numero_dui', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                      {!! Form::text('numero_dui', null, ['class' => 'form-control','maxlength'=>'9' , 'required' => 'required']) !!}
                 </td>
                 <td>Unidad o Departamento *</td>
                 <td>
@@ -46,7 +47,8 @@
                         @endforeach
                    </select>
                 </td>
-              </tr>
+              </tr> 
+              -->
               <tr>
                 <td>Nombres *</td>
                 <td>                     
@@ -76,7 +78,7 @@
                         @endforeach
                    </select>
                 </td>
-                <td>Cargo *</td>
+                <td>País *</td>
                 <td>                 
                     <select name="cargo_emp" class="form-control">
                         @foreach($obj_cargo_emp as $obj_cargos_emp)
@@ -96,10 +98,13 @@
               @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
           </td>
         </tr>        
-        </table> 
-        <p>* Campo requerido</p>
+        </table>
+        </div>
+        <div class="panel-footer">
+          <p>* Campo requerido</p>   
+        </div>
     </div>
     {!! Form::close() !!}        
-  </div>
+  
 </div>
 @stop   

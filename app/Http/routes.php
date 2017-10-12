@@ -37,6 +37,7 @@ Route::get('ficha/editar',['as' => 'ficha/editar', 'uses' => 'fichaController@up
 Route::post('ficha/editar_mueble',['as' => 'ficha/editar_mueble', 'uses' => 'fichaController@fnc_update_mueble']);
 Route::post('ficha/editar_inmueble',['as' => 'ficha/editar_inmueble', 'uses' => 'fichaController@fnc_update_inmueble']);
 Route::post('ficha/editar_vehiculo',['as' => 'ficha/editar_vehiculo', 'uses' => 'fichaController@fnc_update_vehiculo']);
+Route::get('ficha/seleccionar',['as' => 'ficha/seleccionar', 'uses' => 'fichaController@fnc_seleccionar']);
 Route::get('ficha/ver',['as' => 'ficha/ver', 'uses' => 'fichaController@fnc_ver_ficha']);
 Route::get('ficha/nueva_mejora',['as' => 'ficha/nueva_mejora', 'uses' => 'fichaController@fnc_create_mejora']);
 Route::post('ficha/nueva_mejora',['as' => 'ficha/nueva_mejora', 'uses' => 'fichaController@fnc_store_mejora']);
