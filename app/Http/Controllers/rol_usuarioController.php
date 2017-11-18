@@ -43,7 +43,7 @@ class rol_usuarioController extends Controller
          $obj_rol_usuario=  Role::all();
          foreach ($obj_rol_usuario as $obj_roles_usuarios){
            if($obj_roles_usuarios->nombre_rol==$param){
-             $id_rol_usuario=$obj_roles_usuarios->id_rol_usuario;  
+             $id_rol_usuario=$obj_roles_usuarios->role_id;  
            }  
          }
          return $id_rol_usuario;

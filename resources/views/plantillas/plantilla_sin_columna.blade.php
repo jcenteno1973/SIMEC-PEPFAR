@@ -4,17 +4,13 @@
      * Descripción:
      * Fecha de creación:11/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     * 
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 28/11/2016
-     * Descripción: Quitar ayuda del menú y ruta para ficha agregada
 -->
 <html lang="es" xml:lang="es"></html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="905; URL=http://localhost/sicafam/public/">
+    <meta http-equiv="refresh" content="905; URL=/sicafam/public/">
     <title>@yield('title')</title>
     @section('head')
         {!! Html::style('assets/css/bootstrap.css') !!}
@@ -28,7 +24,7 @@
      <div class="container-fluid">
 	<div class="row"><!--Encabezado -->
 		<div class="col-md-12">
-                    <img alt="Bootstrap Image Preview" src="/sicafam/public/images/encabezado.png" width="100%">
+                    <img alt="Bootstrap Image Preview" src="{{asset('images/encabezado.png')}}" width="100%">
 		</div>
 	</div>
 	<div class="row"><!--fecha-usuario -->
@@ -141,7 +137,7 @@
     </div>
 	<div class="row"><!--pie de pagina -->
 		<div class="col-md-12">
-		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017, Universidad de El Salvador</h5></div>
+		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017,UES/FIA/EISI</h5></div>
 		</div>
 	</div>
 	</div>

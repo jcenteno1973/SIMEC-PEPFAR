@@ -3,22 +3,14 @@
      * Descripcion:
      * Fecha de creacion:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     * modificado por: yamileth Campos
-     * Fecha de modificacion:1/12/16
-     *
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 1/12/2016
-     * Descripción: Rutas agregadas al submenu
-
-     * Modificado por: Yamileth Campos 
-     * Fecha modificacion: 08/12/2016
-     * Descripción: botones de ayuda
-
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
+@section('nombre_plantilla')
+<p ALIGN=center>buscar_usuario.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
@@ -80,7 +72,7 @@
         <td>{{$obj_usuarios->id_usuario_app}}</td>
         <td>{{$obj_usuarios->nombre_usuario}}</td>
          @foreach($obj_role as $obj_roles)
-          @if($obj_roles->id_rol_usuario==$obj_usuarios->id_rol_usuario)
+          @if($obj_roles->role_id==$obj_usuarios->role_id)
         <td>{{$obj_roles->nombre_rol}}</td>
         @endif
          @endforeach

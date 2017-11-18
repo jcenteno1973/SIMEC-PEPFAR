@@ -38,7 +38,7 @@
         </h4>
         <div class="col-md-6 col-md-offset-3">        
             <div class="col-md-6 col-md-offset-3">
-            <img class="profile-img" src="/sicafam/public/images/logo_login2.png" width="150" height="150"> 
+            <img class="profile-img" src="{{asset('images/logo_login2.png')}}" width="150" height="150"> 
             </div>
         <form class="form-signin" action="{{ url('usuario_app/ingresar') }}" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -73,6 +73,6 @@
         </form>
         </div>
     </div>
-    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, Universidad de El Salvador</h5></div>
+    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, UES/FIA/EISI</h5></div>
 </div>
 @stop

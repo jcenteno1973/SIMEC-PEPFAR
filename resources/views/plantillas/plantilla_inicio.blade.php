@@ -4,17 +4,13 @@
      * Descripción:
      * Fecha de creación:11/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     * 
-     * Fecha de Modificacion :2911/2016
-     * Modificado por: Yamileth Campos
-     * Descripcion: Cambio de referencias: de bootstrap y js
 -->
 <html lang="es" xml:lang="es"></html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="890; URL=http://localhost/sicafam/public/">
+    <meta http-equiv="refresh" content="890; URL=/sicafam/public/">
    
     <title>@yield('title')</title>
     @section('head')
@@ -29,7 +25,7 @@
      <div class="container-fluid">
 	<div class="row"><!--Encabezado -->
 		<div class="col-md-12">
-                    <img alt="Bootstrap Image Preview" src="/sicafam/public/images/encabezado.png" width="100%">
+                    <img alt="Bootstrap Image Preview" src="{{asset('images/encabezado.png')}}" width="100%">
 		</div>
 	</div>
 	<div class="row"><!--fecha -->

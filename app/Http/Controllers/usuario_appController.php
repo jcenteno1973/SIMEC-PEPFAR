@@ -87,13 +87,15 @@ class usuario_appController extends Controller
         /**    
          * Realiza busqueda de usuarios con filtros
          */
+        
         $obj_rol_usuario= new rol_usuarioController();            
-        $obj_role= Role::all();        
+        $obj_role= Role::all();     
         if($request->estado_usuario!=1){
            $request->estado_usuario=0;           
         }else{
            $request->estado_usuario=1;            
-        }   
+        }  
+        
         if($request->rol_usuario!=''){
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
         $obj_usuario=  User::nombre_usuario($request->get('nombre_usuario'))->id_rol_usuario($id_rol_usuario)->estado_usuario($request->estado_usuario)->paginate(10); 

@@ -2,7 +2,7 @@
      * Nombre del archivo:principal.blade.php
      * Descripción:
      * Fecha de creación:11/12/2016
-     * Creado por: Yamileth Campos
+     * Creado por: 
 
 -->
 @extends('plantillas.plantilla_base')

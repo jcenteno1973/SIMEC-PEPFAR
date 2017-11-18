@@ -20,11 +20,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $dates = ['deleted_at'];
     protected $table = 'usuario_app';
     protected $fillable = [
-        'email_usuario', 
+        'email', 
         'nombre_usuario',
         'nombres_usuario',
-        'apellidos_usuario',
-        'numero_dui',
+        'apellidos_usuarios',
         'estado_usuario'
         ];
     protected $hidden = ['password'];
@@ -39,9 +38,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         
         $query->where('nombre_usuario',"LIKE",'%'.$nombre_usuario.'%');
     }
-    public function scopeId_rol_usuario($query,$id_rol_usuario) {
+    public function scopeId_rol_usuario($query,$role_id) {
         
-        $query->where('id_rol_usuario',$id_rol_usuario);   
+        $query->where('role_id',$role_id);   
     }
     public function scopeEstado_usuario($query,$estado_usuario) {
         

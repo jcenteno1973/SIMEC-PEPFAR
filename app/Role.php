@@ -20,8 +20,9 @@ class Role extends EntrustRole
         'nombre_rol',
         'descripcion'
     ];
+    protected $dates = ['deleted_at'];
     protected $table = 'rol_usuario';
-    protected $primaryKey = 'id_rol_usuario';
+    protected $primaryKey = 'role_id';
     public $timestamps = false;
    //establecemos las relacion de muchos a muchos con el modelo User, ya que un rol 
    //lo pueden tener varios usuarios y un usuario puede tener varios roles

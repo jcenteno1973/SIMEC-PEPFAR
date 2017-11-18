@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-01-17T10:08:17 -->
+<!-- 2017-10-14T14:19:56 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bitacora3" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="366147e9-48cd-48ae-9523-8a226c3d3cdd">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sicafam"/>
@@ -35,24 +35,24 @@ FROM usuario_app u
 	<pageHeader>
 		<band height="92" splitType="Stretch">
 			<textField>
-				<reportElement x="397" y="72" width="96" height="20" uuid="dadc2038-c870-41cb-a252-d9c1641c7b5f"/>
+				<reportElement x="437" y="72" width="77" height="20" uuid="dadc2038-c870-41cb-a252-d9c1641c7b5f"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Pagína " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="499" y="72" width="68" height="20" uuid="31da13fc-b1e4-45e2-9163-75c7e5cfdddf"/>
+				<reportElement x="520" y="72" width="50" height="20" uuid="31da13fc-b1e4-45e2-9163-75c7e5cfdddf"/>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/ yyyy">
-				<reportElement x="92" y="73" width="106" height="18" uuid="ad9b98de-efca-471b-ba8b-d94c9f0aa95d"/>
+				<reportElement x="89" y="73" width="87" height="18" uuid="ad9b98de-efca-471b-ba8b-d94c9f0aa95d"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="74" width="90" height="18" uuid="9b941466-606a-4315-abee-7409e33239ce"/>
+				<reportElement x="-4" y="74" width="90" height="18" uuid="9b941466-606a-4315-abee-7409e33239ce"/>
 				<textFieldExpression><![CDATA["Fecha de emisión"]]></textFieldExpression>
 			</textField>
-			<image>
+			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="0" y="3" width="77" height="68" uuid="493d3d03-53b7-453a-b780-821ead112e39"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -60,41 +60,50 @@ FROM usuario_app u
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<imageExpression><![CDATA["http://localhost/sicafam/public/images/escudo.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://35.165.234.196/prueba/public/images/escudo.png"]]></imageExpression>
 			</image>
-			<image>
+			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="496" y="1" width="77" height="68" uuid="2d8c21bb-c4b4-4b5d-aa3d-780e9a3d2588">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://localhost/sicafam/public/images/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://35.165.234.196/prueba/public/images/logo.png"]]></imageExpression>
 			</image>
-			<textField>
-				<reportElement x="138" y="4" width="270" height="16" uuid="d1e87340-d46d-4fea-b453-0ef5110609a4"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA["ALCALDIA MUNICIPAL DE MEJICANOS"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="139" y="18" width="270" height="16" uuid="5e60f29f-86e3-4f02-a0d1-5f031deffd60"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA["GERENCIA ADMINISTRATIVA"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="139" y="35" width="270" height="16" uuid="8cbed882-10ed-441d-b820-06ead7d4e1b1"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA["UNIDAD DE ACTIVO FIJO"]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="139" y="51" width="270" height="20" uuid="f797048a-e52e-4f1e-a23f-f0c0783deb9b"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Reporte de Bitacora de usuarios"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="7" width="270" height="16" uuid="c39693d7-8e82-42ac-aca1-bea8bb9df50b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SECRETARIA EJECUTIVA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="24" width="270" height="21" uuid="0a182e1c-7aae-4a4f-b7b8-7c116980aea5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["COMISCA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="74" width="34" height="18" uuid="cf8217fe-f97c-48c5-8b31-ba8dd69bee74"/>
+				<textFieldExpression><![CDATA["Desde"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="75" width="75" height="15" uuid="96bc62f0-2813-4b32-aedd-affb877a2c67"/>
+				<textFieldExpression><![CDATA[(($P{fecha_inicio} != null && $P{fecha_inicio}.length() == 10) ? $P{fecha_inicio}.substring(8,10)+"/"+$P{fecha_inicio}.substring(5,7)+"/"+$P{fecha_inicio}.substring(0,4) : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="74" width="34" height="18" uuid="6abb5853-9a33-466e-86d9-81fcf8809e2b"/>
+				<textFieldExpression><![CDATA["Hasta"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="75" width="69" height="16" uuid="dc7e484a-558b-453b-914e-74d43fd9abab"/>
+				<textFieldExpression><![CDATA[(($P{fecha_fin} != null && $P{fecha_fin}.length() == 10) ? $P{fecha_fin}.substring(8,10)+"/"+$P{fecha_fin}.substring(5,7)+"/"+$P{fecha_fin}.substring(0,4) : "")]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
