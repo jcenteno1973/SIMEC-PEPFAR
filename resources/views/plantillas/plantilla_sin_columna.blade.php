@@ -28,10 +28,13 @@
 		</div>
 	</div>
 	<div class="row"><!--fecha-usuario -->
-		<div class="col-md-6">
+		<div class="col-md-4">
                     @yield('fecha_sistema') 		
 		</div>
-		<div class="col-md-6">
+             <div class="col-md-4">
+                    @yield('nombre_plantilla') 		
+		</div>
+		<div class="col-md-4">
                     @yield('usuario_sesion') 		
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <?php
     /**
+     * Descripción: Relaciona la tabla de la base de datos con el modelo de datos
      * Fecha de modificación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
      */

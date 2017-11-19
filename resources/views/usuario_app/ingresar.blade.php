@@ -3,10 +3,6 @@
      * Descripción:
      * Fecha de creación:06/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     * 
-     * Fecha de modificación: 28/11/2016
-     * Modificado por: Yamileth Campos
-     * Descripción: se agrega funcionalidad en boton de ayuda y boton de solicitud de contraseña  
 -->
 @extends('plantillas.plantilla_inicio')
 @section('fecha_sistema')

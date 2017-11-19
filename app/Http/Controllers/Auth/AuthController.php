@@ -45,7 +45,7 @@ class AuthController extends Controller
       $password = $request->password; 
       $rules =array('password'=> array('min:8','max:25')); 
       $this->validate($request, $rules);//Realizar validación      
-    if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_registro'=>1]))
+    if (Auth::attempt(['nombre_usuario' => $nombre_usuario, 'password' => $password,'estado_usuario'=>1]))
       {
        $obj_controller_bitacora=new bitacoraController();
        if(Auth::user()->estado_usuario==0)

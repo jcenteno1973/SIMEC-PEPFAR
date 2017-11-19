@@ -1,7 +1,7 @@
 <?php
 /**
      * Nombre del archivo: .php
-     * Descripción:
+     * Descripción:Controla que el usuario tenga una sesion iniciada.
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
      */
@@ -22,10 +22,10 @@ class ingresarController extends Controller
     
     public function index()
     {
-        if (Auth::check()){
+        if (Auth::check()){//Si tiene sesión iniciada lo envia a la pagina principal
          return redirect('/principal');  
          }
-         else {
+         else {//Si no tiene una sesión iniciada se abre la pagina de ingreso
             return view('usuario_app.ingresar');
              }
     }

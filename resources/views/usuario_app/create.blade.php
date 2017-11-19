@@ -3,14 +3,14 @@
      * Descripción:
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 2/12/2016
-     * Descripción: Rutas agregadas al submenu
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
+@section('nombre_plantilla')
+<p ALIGN=center>create.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
@@ -33,22 +33,7 @@
         {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
             <table class="table table-condensed">    
             <tbody>
-              <!--  
-             <tr>
-                <td>No DUI *</td>
-                <td>                 
-                      {!! Form::text('numero_dui', null, ['class' => 'form-control','maxlength'=>'9' , 'required' => 'required']) !!}
-                </td>
-                <td>Unidad o Departamento *</td>
-                <td>
-                    <select name="id_ubicacion_org" class="form-control">
-                        @foreach($obj_ubicacion_org as $obj_ubicaciones_org)
-                        <option>{{$obj_ubicaciones_org->nombre_unidad_dep}}</option>
-                        @endforeach
-                   </select>
-                </td>
-              </tr> 
-              -->
+             
               <tr>
                 <td>Nombres *</td>
                 <td>                     
@@ -80,9 +65,9 @@
                 </td>
                 <td>País *</td>
                 <td>                 
-                    <select name="cargo_emp" class="form-control">
-                        @foreach($obj_cargo_emp as $obj_cargos_emp)
-                        <option>{{$obj_cargos_emp->nombre_cargo}}</option>
+                    <select name="region_sica" class="form-control">
+                        @foreach($obj_region_sica as $paises)
+                        <option>{{$paises->nombre_pais}}</option>
                         @endforeach                      
                    </select>
                 </td>

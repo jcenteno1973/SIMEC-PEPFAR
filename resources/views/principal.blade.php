@@ -1,20 +1,20 @@
 <!-- 
      * Nombre del archivo:principal.blade.php
-     * Descripción:
+     * Descripción:Pantalla principal del sistema informático
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
-
-     * Fecha de modificacion: 4/12/16
-     * Modificado por: Yamileth Campos
-     * Descripcion:Se agregan imagenes y link del menu 
 -->
 @extends('plantillas.plantilla_sin_columna')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
+@section('nombre_plantilla')
+<p ALIGN=center>principal.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop 
+
 @section('nombre_pantalla')
 <h4 class="text-center"></h4>
 @stop 
@@ -30,7 +30,5 @@
             </table>
         </div>
     <br><br><br><br>
-    
-
 </div>
 @stop
