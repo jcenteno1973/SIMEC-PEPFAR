@@ -1,7 +1,7 @@
 <?php
 /**
      * Nombre del archivo:usuario_appController.php
-     * Descripción:
+     * Descripción:Contiene las funciones del controlador de usuarios
      * Fecha de creación:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
      */
@@ -12,11 +12,13 @@ use App\Role;
 use Auth;
 use App\Http\Controllers\bitacoraController;
 use App\Models\ubicacion_organizacional;
+use App\Models\region_sica;
 use App\Models\cargo_emp;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Http\Controllers\rol_usuarioController;
+use App\Http\Controllers\RegionSicaController;
 use App\Http\Controllers\cargo_empController;
 use App\Http\Controllers\ubicacion_orgController;
 use Illuminate\Support\Facades\Input;
@@ -113,12 +115,12 @@ class usuario_appController extends Controller
          * Crea el formulario de nuevo usuario
          */
         $obj_role= Role::all();
-        $obj_ubicacion_org=  ubicacion_organizacional::all();
-        $obj_cargo_emp= cargo_emp::all();
+        //$obj_ubicacion_org=  ubicacion_organizacional::all();
+        $obj_region_sica=  region_sica::all();
+        //$obj_cargo_emp= cargo_emp::all();
         return view('usuario_app/create',
                 compact('obj_role',
-                'obj_cargo_emp',
-                'obj_ubicacion_org'));
+                'obj_region_sica'));
     }
 
    
@@ -134,8 +136,7 @@ class usuario_appController extends Controller
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
                'obj_role',
-               'obj_cargo_emp',
-               'obj_ubicacion_org'));     
+               'obj_cargo_emp'));     
     }
 
     
@@ -168,8 +169,7 @@ class usuario_appController extends Controller
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
                'obj_role',
-               'obj_cargo_emp',
-               'obj_ubicacion_org'));     
+               'obj_cargo_emp'));     
        }
          
         
