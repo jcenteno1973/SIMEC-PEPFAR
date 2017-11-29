@@ -4,10 +4,6 @@
      * Descripción:
      * Fecha de creación:25/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     *
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 20/12/2016
-     * Descripción: Ruta y funciones para buscar ubicacion organizacional. Validaciones de campos 
      */
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;

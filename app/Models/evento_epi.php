@@ -12,4 +12,14 @@ use Illuminate\Database\Eloquent\Model;
 class evento_epi extends Model
 {
     //
+    protected $table = 'evento_epi';
+    protected $primaryKey = 'id_evento_epi';
+    public $timestamps = false;
+    protected $fillable = [
+        'nombre_evento',
+        'descripcion_evento'
+    ];
+     public function archivo_fuentes() {
+         return $this->hasMany('archivo_fuente');
+     }
 }

@@ -2,10 +2,7 @@
 /**
      * Fecha de modificación:20/12/2016
      * Creado por: Juan Carlos Centeno Borja
-     *
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 2/12/2016, 20/12/2016
-     * Descripción: Ruta para: cambio de contraseña, buscar catálogo
+     * Descripción: Rutas de recursos
      */
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +20,19 @@ Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => '
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
 Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);
 Route::get('fichas',['as' => 'fichas','uses' => 'principalController@fnc_show_fichas']);
+Route::get ('carga',['as'=>'carga','uses'=> 'principalController@fnc_show_carga']);
+Route::get ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtro_buscar_carga']);
+Route::get ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_create']);
+Route::post ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_store']);
 Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );
 Route::post('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_store_inmueble'] );
 Route::get('ficha/nueva_ficha_vehiculo',['as' => 'ficha/nueva_ficha_vehiculo', 'uses' => 'fichaController@fnc_create_vehiculo'] );
 Route::post('ficha/nueva_ficha_vehiculo',['as' => 'ficha/nueva_ficha_vehiculo', 'uses' => 'fichaController@fnc_store_vehiculo'] );
-//falta seguridad
 Route::get('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_create_mueble'] );
 Route::post('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_store_mueble'] );
 Route::get('municipios/{id}','municipioController@fnc_get_municipios');
+Route::get('codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
+Route::get('cargar_datos/{id}',['as'=>'cargar_datos','uses'=>'ArchivoDatosController@fnc_cargar_datos']);
 Route::get('ficha/buscar_ficha',['as' => 'ficha/buscar_ficha', 'uses' => 'fichaController@show']);
 Route::post('ficha/buscar_ficha',['as' => 'ficha/buscar_ficha', 'uses' => 'fichaController@fnc_buscar_filtro']);
 Route::get('ficha/editar',['as' => 'ficha/editar', 'uses' => 'fichaController@update']);
@@ -51,6 +53,7 @@ Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
 Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
+//ya cuenta con seguridad
 Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion','middleware' => ['permission:administracion']] );
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show','middleware' => ['permission:buscar_usuario']] );
 Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario','middleware' => ['permission:buscar_usuario']] );

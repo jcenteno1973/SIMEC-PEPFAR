@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\archivo_fuente;
 
 class ArchivoFuenteController extends Controller
 {
@@ -23,7 +24,10 @@ class ArchivoFuenteController extends Controller
     {
         //
     }
-
+public function fnc_get_codigo($id) {
+        $obj_codigo_archivo= archivo_fuente::fnc_archivo_fuentes($id);
+        return $obj_codigo_archivo->lists('codigo_archivo_fuente','id_archivo_fuente');         
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -29,6 +29,9 @@ class principalController extends Controller
        
         return view('ficha_inicio');
     }
+    public function fnc_show_carga(){
+        return view ('carga_inicio');
+    }
      public function fnc_show_inventario(){
        
         return view('inventario_inicio');

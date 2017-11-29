@@ -11,5 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class anio_notificacion extends Model
 {
+    protected $table = 'anio_notificacion';
+    protected $primaryKey = 'id_anio_notificacion';
+    public $timestamps = false;
+    protected $fillable = [
+        'digitos_anio'
+    ];
     //
 }

@@ -11,5 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class asignar_desglose extends Model
 {
+    protected $table = 'asignar_desglose';
+    public $timestamps = false;
+    
+    public static function fnc_columnas($parametro) {
+        
+     return asignar_desglose::where('id_archivo_fuente','=',$parametro)
+             ->get();
+    }
     //
 }

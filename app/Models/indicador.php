@@ -11,5 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class indicador extends Model
 {
+    protected $dates = ['deleted_at'];
+    protected $table = 'indicador';
+    protected $primaryKey = 'id_indicador';
+    public $timestamps = false;
+    protected $fillable = [
+        'codigo_indicador',
+        'descripcion_indicador',
+        'multiplicador'
+    ];
+    
     //
 }

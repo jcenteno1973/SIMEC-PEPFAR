@@ -115,9 +115,7 @@ class usuario_appController extends Controller
          * Crea el formulario de nuevo usuario
          */
         $obj_role= Role::all();
-        //$obj_ubicacion_org=  ubicacion_organizacional::all();
         $obj_region_sica=  region_sica::all();
-        //$obj_cargo_emp= cargo_emp::all();
         return view('usuario_app/create',
                 compact('obj_role',
                 'obj_region_sica'));

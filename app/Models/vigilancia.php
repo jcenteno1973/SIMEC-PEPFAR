@@ -11,5 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class vigilancia extends Model
 {
+    protected $table = 'vigilancia_epidemiologica';
+    protected $primaryKey = 'id_vigilancia_epidemiologica';
+    public $timestamps = false;
+    protected $fillable = [
+        'valor_vigilancia_epi',
+        'valor_indicador'
+        
+    ];
     //
 }

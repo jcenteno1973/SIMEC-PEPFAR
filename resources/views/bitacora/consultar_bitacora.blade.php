@@ -3,10 +3,6 @@
      * Descripción:
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
-     *
-     * Modificado por: Karla Barrera 
-     * Fecha modificación: 2/12/2016
-     * Descripción: Rutas agregadas al submenu 
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')

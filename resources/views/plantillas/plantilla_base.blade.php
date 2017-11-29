@@ -58,7 +58,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="#">Carga de datos</a>
+							<a href="{{route('carga')}}">Carga de datos</a>
 						</li>
 						<li>
 							<a href="#">Configuración</a>
