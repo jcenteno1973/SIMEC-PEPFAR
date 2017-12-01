@@ -16,6 +16,7 @@ use App\Models\archivo_datos;
 use App\Models\asignar_componente;
 use App\Models\asignar_desglose;
 use App\Models\vigilancia;
+use App\Models\indicador;
 use App\Http\Requests;
 use DB;
 use Carbon\Carbon;
@@ -143,6 +144,9 @@ class ArchivoDatosController extends Controller
        $obj_archivo_datos= archivo_datos::fnc_archivo_datos($id);
        $obj_componente=  asignar_componente::fnc_fila($obj_archivo_datos[0]->id_archivo_fuente);
        $obj_desglose=  asignar_desglose::fnc_columnas($obj_archivo_datos[0]->id_archivo_fuente);
+       foreach($obj_componente as $componente){
+           $obj_indicador= indicador::fnc_indicador($componente->id_componente); 
+        }
        //Almacena los datos
        foreach($obj_componente as $componente){
            foreach ($obj_desglose as $desglose){
@@ -158,13 +162,29 @@ class ArchivoDatosController extends Controller
            }
        }
        //Calcular el indicador
+       $denominador=0;
+       $numerador=0;
+       $obj_vigilancia= vigilancia::fnc_vigilancia($id);
+       foreach ($obj_vigilancia as $vigilancia){
+         if($vigilancia->id_componente == $obj_indicador[0]->id_componente){
+           $numerador=$vigilancia->valor_vigilancia_epi;
+           $obj_vigilancia2= vigilancia::fnc_vigilancia($id);
+           foreach ($obj_vigilancia2 as $vigilancia2){
+             if($vigilancia2->id_componente==$obj_indicador[0]->com_id_componente && $vigilancia2->id_catalogo == $vigilancia->id_catalogo && $vigilancia2->cat_id_catalogo == $vigilancia->cat_id_catalogo){
+              $denominador=$vigilancia2->valor_vigilancia_epi;
+              $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador[0]->multiplicador;
+              $vigilancia2->id_indicador=$obj_indicador[0]->id_indicador;
+              $vigilancia2->save();
+             }  
+           }
+         }  
+       }
        
-       dd($obj_componente);
+       //dd($obj_componente);
        $obj_archivo_datos[0]->fuente_datos=$fuente;
        $obj_archivo_datos[0]->fecha_datos=$fecha;
        $obj_archivo_datos[0]->datos_cargados=1;
        $obj_archivo_datos[0]->save();
-       
        $obj_controller_bitacora->create_mensaje('Datos cargados');
        flash()->success('Datos cargados exítosamente');
        //dd($obj_archivo_datos); 

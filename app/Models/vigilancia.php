@@ -19,5 +19,10 @@ class vigilancia extends Model
         'valor_indicador'
         
     ];
+     public static function fnc_vigilancia($parametro) {
+        
+     return vigilancia::where('id_archivo_datos','=',$parametro)
+             ->get();
+    }
     //
 }

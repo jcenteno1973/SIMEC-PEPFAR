@@ -20,6 +20,10 @@ class indicador extends Model
         'descripcion_indicador',
         'multiplicador'
     ];
-    
+    public static function fnc_indicador($parametro) {
+        
+     return indicador::where('id_componente','=',$parametro)
+             ->get();
+    }
     //
 }
