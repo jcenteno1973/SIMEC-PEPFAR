@@ -30,18 +30,7 @@
         <div class="col-md-4 col-md-offset-4">
             <form class="form-signin" action="" method="POST">
                 <br>
-                <!-- cambiar contraseña -->
-      <!--            {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
-        
-                <div class="form-group" >
-                    Contrase&ntilde;a*&nbsp;&nbsp;
-                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Nueva Contrase&ntilde;a'])!!}
-                  &nbsp;&nbsp;Repetir Contrase&ntilde;a*&nbsp;&nbsp;
-                  {!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Vuelva a digitar la contrase&ntilde;a'])!!}
-                </div>
-                 &nbsp;&nbsp; &nbsp;                
-                  {!! Form::close() !!}   -->
-    <!-- fin cambiar contraseña-->
+               
 
     <table class="table table-responsive" border-style= "none">
                     <tr>                       
