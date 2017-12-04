@@ -19,8 +19,8 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../carga/buscar_carga" class="list-group-item">Buscar carga de archivo</a>
     <a class="list-group-item active">Nueva carga de archivo</a>
+    <a href="../carga/buscar_carga" class="list-group-item">Buscar carga de archivo</a>
 </div>
 @stop
 @section('contenido')

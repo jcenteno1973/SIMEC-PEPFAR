@@ -15,12 +15,21 @@
     @section('head')
         {!! Html::style('assets/css/bootstrap.css') !!}
         {!! Html::style('assets/css/bootstrap.min.css') !!}
+        {!! Html::style('assets/css/carga.css') !!}
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/scripts.js')}}"></script>
+        <script type="text/javascript">
+        $(window).load(function() {
+        $(".loader").fadeOut("slow");
+        });
+        </script>
     @show    
 </head>
 <body>
+    <div class="loader">
+        <img class="profile-img" src="{{asset('images/pageLoader.gif')}}" width="100" height="100"> 
+    </div>
      <div class="container-fluid">
 	<div class="row"><!--Encabezado -->
 		<div class="col-md-12">
@@ -45,7 +54,7 @@
 					 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="{{route('principal')}}">Principal</a>
+					</button> <a class="navbar-brand" href="{{route('principal')}}">Inicio</a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -144,8 +153,7 @@
 		</div>
 	</div>
 	</div>
-    
-    
+ 
 </body>
 
 
