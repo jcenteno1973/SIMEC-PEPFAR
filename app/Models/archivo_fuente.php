@@ -21,8 +21,11 @@ class archivo_fuente extends Model
     ];
     //
     public static function fnc_archivo_fuentes($parametro) {
-        
      return archivo_fuente::where('id_evento_epi','=',$parametro)
+             ->get();
+    }
+    public static function fnc_archivo_fuente_c($parametro) {
+     return archivo_fuente::where('codigo_archivo_fuente','=',$parametro)
              ->get();
     }
      public function eventos_epi() {        

@@ -19,6 +19,10 @@ class evento_epi extends Model
         'nombre_evento',
         'descripcion_evento'
     ];
+    public static function fnc_evento($parametro) {
+     return evento_epi::where('nombre_evento','=',$parametro)
+             ->get();
+    }
      public function archivo_fuentes() {
          return $this->hasMany('archivo_fuente');
      }

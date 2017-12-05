@@ -56,13 +56,13 @@ class usuario_appController extends Controller
         $this->validate($request, $rules);
         $date = Carbon::now();
         $usuario = new User();        
-        $usuario->id_ubicacion_org =$obj_ubicacion_org->fnc_obtener_id($request->id_ubicacion_org);
-        $usuario->id_cargo_emp=$obj_cargo_emp->fnc_obtener_id($request->cargo_emp);
+        
+        
         $usuario->email=$request->email;        
         $usuario->password=  bcrypt($request->password);
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
-        $usuario->numero_dui=$request->numero_dui;
+        
         $usuario->cambiar_contrasenia=1;
         $usuario->fecha_validez_contrasenia=$date->addMonth(3);
         $usuario->estado_usuario=1;
@@ -295,12 +295,11 @@ class usuario_appController extends Controller
            $this->validate($request, $rules);      
         } 
         $date = Carbon::now();               
-        $usuario->id_ubicacion_org =$obj_ubicacion_org->fnc_obtener_id($request->id_ubicacion_org);
-        $usuario->id_cargo_emp=$obj_cargo_emp->fnc_obtener_id($request->cargo_emp);
+        
         $usuario->email=$request->email;  
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
-        $usuario->numero_dui=$request->numero_dui;
+        
         $usuario->cambiar_contrasenia=1;
         $usuario->fecha_validez_contrasenia=$date;
         $usuario->estado_usuario=$request->estado_usuario;
