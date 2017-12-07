@@ -24,7 +24,7 @@ class RegionSicaController extends Controller
         $id_region_sica=0;
         $obj_region_sica= region_sica::all();
         foreach ($obj_region_sica as $paises){
-            if($paises->codigo_pais==$param){
+            if($paises->codigo_pais==$param || $paises->nombre_pais==$param){
               $id_region_sica=$paises->id_region_sica; 
             }
         }

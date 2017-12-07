@@ -21,6 +21,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Connection;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\bitacoraController;
 use App\Http\Controllers\RegionSicaController;
 use App\Http\Controllers\ArchivoFuenteController;
@@ -80,6 +81,63 @@ class ArchivoDatosController extends Controller
         $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
         return view('carga_datos/nueva_carga_archivo',
                 compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo'));
+    }
+    public function fnc_show_edit($id){
+        /*
+         * Formulario para editar carga de archivo de datos
+         */
+        $obj_archivo_datos= archivo_datos::find($id);
+        $obj_region_sica=  region_sica::all();
+        $obj_anio = anio_notificacion::all();
+        $obj_evento_epi=  evento_epi::lists('nombre_evento','id_evento_epi');
+        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(1);
+        $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
+        return view('carga_datos/editar_carga_archivo',
+                compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos'));
+    }
+    public function fnc_show_update(Request $request){
+        $obj_controller_bitacora=new bitacoraController();
+        $error = null;
+        $date = Carbon::now();
+        $obj_archivo_datos= archivo_datos::find($request->id_archivo_datos);
+        $obj_region_sica = new RegionSicaController();
+        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica);
+        //Validar que no se repita el archivo
+        $obj_archivo= archivo_datos::where("id_region_sica","=",$id_regio_sica)
+                                     ->where("id_archivo_fuente","=",$request->codigos)
+                                     ->where("id_anio_notificacion","=",$request->anio_notificacion)
+                                     ->where("id_evento_epi","=",$request->eventos)
+                                     ->get();
+       foreach($obj_archivo as $archivos){
+        $mensaje="Ya existe el archivo, no se puede modificar";
+        flash()->success($mensaje);
+        return redirect()->back(); 
+       }
+       
+        DB::beginTransaction();
+        try {
+       $file = $request->file;
+       $obj_archivo_datos->id_region_sica=$id_regio_sica;
+       $obj_archivo_datos->id_archivo_fuente=$request->codigos;
+       $obj_archivo_datos->id_anio_notificacion=$request->anio_notificacion;
+       $obj_archivo_datos->id_usuario_app=Auth::user()->id_usuario_app;
+       $obj_archivo_datos->id_evento_epi=$request->eventos;
+       $obj_archivo_datos->save(); 
+       $obj_controller_bitacora->create_mensaje('Datos modificados: '.$file); 
+       DB::commit();
+       $success = true;
+       }catch (\Exception $e) {
+	$success = false;
+	$error = $e->getMessage();
+	DB::rollback();
+    }
+     if ($success) {
+    flash()->success('Datos modificados exítosamente');
+    return redirect()->back();
+    } 
+    //error
+    flash()->success('Error al modificar los datos'.$error);
+    return redirect()->back();   
     }
     public function fnc_filtro_buscar_carga(){
         $obj_archivo_datos= archivo_datos::all();
@@ -159,7 +217,7 @@ class ArchivoDatosController extends Controller
 	$error = $e->getMessage();
 	DB::rollback();
     }
-     if ($success) {
+    if ($success) {
     flash()->success('Archivo cargado exitosamente');
     return redirect()->back();
     } 
@@ -169,8 +227,13 @@ class ArchivoDatosController extends Controller
     }
     
     }
+    public function fnc_descargar_archivo($id){
+        $obj_archivo_datos=  archivo_datos::fnc_archivo_datos($id);
+        $pathtoFile = public_path().'/storage/archivo_datos/'.$obj_archivo_datos[0]->nombre_archivo;
+      return response()->download($pathtoFile);
+    }
     public function fnc_cargar_datos($id){
-        //Extrae los datos del archivo y se guarda en la base de datos
+       //Extrae los datos del archivo y se guarda en la base de datos
        $obj_archivo_datos=  archivo_datos::fnc_archivo_datos($id);
        $url=$obj_archivo_datos[0]->url_documento;
        $nombre=$obj_archivo_datos[0]->nombre_archivo;
@@ -277,7 +340,35 @@ class ArchivoDatosController extends Controller
      });//Fin de la función de lectura de archivo excell.
      return redirect()->back(); 
     }
-
+    public function fnc_eliminar_archivo($id){
+        $obj_archivo_datos=  archivo_datos::find($id);
+        $pathtoFile = '/archivo_datos/'.$obj_archivo_datos->nombre_archivo;
+        $obj_controller_bitacora=new bitacoraController();
+         DB::beginTransaction();
+        try {
+            //eliminar datos de la tabla vigilancia_epidemiologica
+            DB::table("vigilancia_epidemiologica")->where("id_archivo_datos",$id)->delete();
+            //eliminar datos de la tabla archivo_datos
+            DB::table("archivo_datos")->where("id_archivo_datos",$id)->delete();
+            
+            $success = true;
+        } catch (Exception $ex) {
+        $success = false;
+	$error = $e->getMessage();
+	DB::rollback();
+        }
+    if ($success) {
+    //eliminar archivo 
+    Storage::delete($pathtoFile);
+    $obj_controller_bitacora->create_mensaje('Archivo eliminado');
+    flash()->success('Archivo eliminado exitosamente');
+    return redirect()->back();
+    } 
+    //error
+    flash()->success('Error al eliminar el archivo '.$error);
+    return redirect()->back();
+        
+    }
     /**
      * Show the form for editing the specified resource.
      *
