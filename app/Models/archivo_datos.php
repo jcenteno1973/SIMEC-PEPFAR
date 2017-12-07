@@ -25,5 +25,17 @@ class archivo_datos extends Model
      return archivo_datos::where('id_archivo_datos','=',$parametro)
              ->get();
     }
+    public function scopeId_region_sica($query,$id_region_sica) {
+        
+        $query->where('id_region_sica',"=",$id_region_sica);
+    }
+    public function scopeId_anio_notificacion($query,$id_anio_notificacion) {
+        
+        $query->where('id_anio_notificacion',"=",$id_anio_notificacion);
+    }
+    public function scopeId_archivo_fuente($query,$id_archivo_fuente) {
+        
+        $query->where('id_archivo_fuente',"=",$id_archivo_fuente);
+    }
     //
 }

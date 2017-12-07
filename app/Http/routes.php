@@ -24,6 +24,7 @@ Route::get('codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get('carga/codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get ('carga',['as'=>'carga','uses'=> 'principalController@fnc_show_carga']);
 Route::get ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtro_buscar_carga']);
+Route::post ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtros_buscar_carga']);
 Route::get ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_create']);
 Route::post ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_store']);
 Route::get ('carga/editar_carga/{id}',['as'=>'carga/editar_carga','uses'=> 'ArchivoDatosController@fnc_show_edit']);

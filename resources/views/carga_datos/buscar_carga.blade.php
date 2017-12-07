@@ -24,11 +24,12 @@
 </div>
 @stop
 @section('filtros_consulta')
+{!! Form::model(Request::all(),['route' => 'carga/buscar_carga', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
 <div class="panel-collapse">
     <table class="table table-condensed">    
             <tbody>
                <tr>
-                <td>País *</td>
+                <td>País</td>
                 <td> 
                     @if(Auth::user()->role_id==1)<!--Verifica si es un administrador -->
                     <select name="region_sica" class="form-control">
@@ -46,13 +47,7 @@
                    </select>
                     @endif
                 </td>
-                 <td>Evento *</td>
-                <td>
-                   {!! Form::select('eventos',$obj_evento_epi,1,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
-                </td>
-              </tr>
-              <tr>
-                  <td>Año *</td>
+                <td>Año</td>
                 <td>
                    <select name="anio_notificacion" class="form-control" >
                        @foreach($obj_anio as $obj_anios)
@@ -60,14 +55,22 @@
                         @endforeach  
                    </select>
                 </td>
-                <td>Código archivo *</td>
+                 <td>Evento</td>
+                <td>
+                   {!! Form::select('eventos',$obj_evento_epi,1,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
+                </td>
+               <td>Código archivo</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,1,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 
+                <td>
+                   <button type="submit" class="btn btn-default"> Buscar</button> 
+                </td>
               </tr>
             </tbody>
           </table> 
 </div>
+{!! Form::close() !!}
 @stop
 @section('contenido')
 <div class="panel panel-default">
@@ -129,6 +132,13 @@
         </tbody>
     </table>
 </div> 
+    <div class="panel-footer">
+        {!!$obj_archivo_datos->appends(Request::all())->render()!!} 
+    </div>
+     <div>
+          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
+        </div>
 </div>
 @stop   
 

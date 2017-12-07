@@ -142,7 +142,7 @@ class usuario_appController extends Controller
     {
         //Listado de usuarios
         $obj_role= Role::all();
-        $obj_usuario=  User::paginate(10);        
+        $obj_usuario=  User::paginate(10);
         return view('usuario_app/buscar_usuario',  compact('obj_usuario','obj_role'));
     }
 

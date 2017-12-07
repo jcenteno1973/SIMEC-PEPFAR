@@ -140,7 +140,31 @@ class ArchivoDatosController extends Controller
     return redirect()->back();   
     }
     public function fnc_filtro_buscar_carga(){
-        $obj_archivo_datos= archivo_datos::all();
+        //Busqueda con filtro de region sica
+        if(Auth::user()->role_id==1){
+         $obj_archivo_datos= archivo_datos::paginate(5);
+        }else{
+         $obj_archivo_datos= archivo_datos::where('id_region_sica', '=',Auth::user()->id_region_sica)->paginate(5);   
+        }
+        $obj_region_sica=  region_sica::all();
+        $obj_anio = anio_notificacion::all();
+        $obj_evento_epi_total=  evento_epi::all();
+        $obj_archivo_fuente_total=  archivo_fuente::all();
+        $obj_evento_epi=  evento_epi::lists('nombre_evento','id_evento_epi');
+        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(1);
+        $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
+        return view('carga_datos/buscar_carga',
+                compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos','obj_evento_epi_total','obj_archivo_fuente_total'));
+    }
+     public function fnc_filtros_buscar_carga(Request $request){
+        //Busqueda con filtros
+        $obj_region_sica = new RegionSicaController();
+        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica); 
+        if(Auth::user()->role_id==1){
+         $obj_archivo_datos= archivo_datos::id_region_sica($id_regio_sica)->id_anio_notificacion($request->anio_notificacion)->id_archivo_fuente($request->codigos)->paginate(10);
+        }else{
+         $obj_archivo_datos= archivo_datos::where('id_region_sica', '=',Auth::user()->id_region_sica)->id_anio_notificacion($request->anio_notificacion)->id_archivo_fuente($request->codigos)->paginate(10);   
+        }
         $obj_region_sica=  region_sica::all();
         $obj_anio = anio_notificacion::all();
         $obj_evento_epi_total=  evento_epi::all();
