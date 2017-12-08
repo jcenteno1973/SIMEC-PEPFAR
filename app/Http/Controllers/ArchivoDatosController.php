@@ -269,11 +269,33 @@ class ArchivoDatosController extends Controller
        $success = true;
        $error = null;
        $pais=$results[0][1];
+       if($pais==null){
+          $success = false;
+       }
        $anio=$results[1][1];
+       if($anio==null){
+          $success = false;
+       }
        $evento=$results[2][1];
+       if($evento==null){
+          $success = false;
+       }
        $codigo=$results[3][1];
+       if($codigo==null){
+          $success = false;
+       }
        $fuente=$results[4][1];
+       if($fuente==null){
+          $success = false;
+       }
        $fecha=$results[5][1];
+       if($fecha==null){
+          $success = false;
+       }
+       $id_archivo_fuente=0;
+       $id_regio_sica=0;
+       $id_evento=0;
+       if($success){
        $obj_region_sica = new RegionSicaController();
        $id_regio_sica=$obj_region_sica->fnc_obtener_id($pais);
        $objeto= new ArchivoFuenteController();
@@ -281,6 +303,7 @@ class ArchivoDatosController extends Controller
        $id_archivo_fuente=$obj_codigo_archivo[0]->id_archivo_fuente;
        $obj_evento= evento_epi::fnc_evento($evento);
        $id_evento=$obj_evento[0]->id_evento_epi;
+       }
        $obj_archivo_datos= archivo_datos::fnc_archivo_datos($id);
        $obj_componente=  asignar_componente::fnc_fila($obj_archivo_datos[0]->id_archivo_fuente);
        $obj_desglose=  asignar_desglose::fnc_columnas($obj_archivo_datos[0]->id_archivo_fuente);
@@ -359,7 +382,7 @@ class ArchivoDatosController extends Controller
        DB::table("vigilancia_epidemiologica")->where("id_archivo_datos",$id)->delete(); 
        $obj_controller_bitacora->create_mensaje('Datos no cargados '.$error);
        $success = false;
-       flash()->success('Error al cargar los datos '.$error);
+       flash()->error('Error al cargar los datos '.$error);
        }
      });//Fin de la función de lectura de archivo excell.
      return redirect()->back(); 
@@ -389,7 +412,7 @@ class ArchivoDatosController extends Controller
     return redirect()->back();
     } 
     //error
-    flash()->success('Error al eliminar el archivo '.$error);
+    flash()->error('Error al eliminar el archivo '.$error);
     return redirect()->back();
         
     }
