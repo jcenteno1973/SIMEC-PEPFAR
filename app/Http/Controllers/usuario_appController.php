@@ -48,30 +48,26 @@ class usuario_appController extends Controller
          * Guarda en la base de datos un nuevo usuario
          */
         $obj_rol_usuario= new rol_usuarioController();
-        $obj_cargo_emp= new cargo_empController();
+        $obj_region_sica = new RegionSicaController();
         $obj_ubicacion_org= new ubicacion_orgController();
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
                       'email'=>'unique:usuario_app',
                       'numero_dui'=>'digits:9|unique:usuario_app');        
         $this->validate($request, $rules);
         $date = Carbon::now();
-        $usuario = new User();        
-        
-        
+        $usuario = new User();
         $usuario->email=$request->email;        
         $usuario->password=  bcrypt($request->password);
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
-        
         $usuario->cambiar_contrasenia=1;
         $usuario->fecha_validez_contrasenia=$date->addMonth(3);
         $usuario->estado_usuario=1;
-        $usuario->estado_registro=1;
-        $usuario->id_usuario_crea=Auth::user()->id_usuario_app;
-        $usuario->ip_dispositivo=$request->ip();
         $usuario->nombre_usuario=$this->fnc_nombre_usuario($request);
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
-        $usuario->id_rol_usuario=$id_rol_usuario;
+        $usuario->role_id=$id_rol_usuario;
+        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica);
+        $usuario->id_region_sica=$id_regio_sica;
         $usuario->save();
         $obj_rol_asignado= Role::find($id_rol_usuario);
         $usuario->attachRole($obj_rol_asignado);
@@ -153,8 +149,7 @@ class usuario_appController extends Controller
          * Crea el formulario para modificar un usuario
          */
         $obj_role= Role::all();
-        $obj_ubicacion_org=  ubicacion_organizacional::all();
-        $obj_cargo_emp= cargo_emp::all();
+        $obj_region_sica=  region_sica::all();
        $obj_inputs=Input::all();        
        if(sizeof($obj_inputs)==0)
        {
@@ -167,7 +162,7 @@ class usuario_appController extends Controller
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
                'obj_role',
-               'obj_cargo_emp'));     
+               'obj_region_sica'));     
        }
          
         
@@ -254,61 +249,44 @@ class usuario_appController extends Controller
     {   /**    
          * Guarda en la base de datos las modificaciones de un usuario
          */
+        $validar=0;
         $obj_rol_usuario= new rol_usuarioController();
-        $obj_cargo_emp= new cargo_empController();
-        $obj_ubicacion_org= new ubicacion_orgController();        
+        $obj_region_sica= new RegionSicaController();        
         $usuario = User::find($request->id_usuario_app);
         $validar_email=array('email'=>'unique:usuario_app');
-        $validar_dui=array('numero_dui'=>'digits:9|unique:usuario_app');
         if($request->password!=''){
             $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'));    
             $usuario->password=  bcrypt($request->password);
-            if($usuario->numero_dui!=$request->numero_dui){
-              $rules= array_merge($rules,$validar_dui);
-            }
             if($usuario->email!=$request->email){
                $rules= array_merge($rules,$validar_email);
             }
-        $validar=1; 
-        }
-        else
-        {
-          if($usuario->numero_dui!=$request->numero_dui){
-               $rules=$validar_dui;
-              if($usuario->email!=$request->email){
-               $rules= array_merge($rules,$validar_email);
-               }
-           $validar=1;
-          } 
-          else {
-               if($usuario->email!=$request->email){
+            $validar=1; 
+        }else{
+            if($usuario->email!=$request->email){
                $rules= $validar_email;
                $validar=1;
                   }else
                    {
                     $validar=0;   
                    }
-               }    
-        } 
+        }
+            
         if($validar==1)
         {
            $this->validate($request, $rules);      
         } 
         $date = Carbon::now();               
-        
         $usuario->email=$request->email;  
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
-        
         $usuario->cambiar_contrasenia=1;
         $usuario->fecha_validez_contrasenia=$date;
         $usuario->estado_usuario=$request->estado_usuario;
-        $usuario->estado_registro=1;
-        $usuario->id_usuario_modifica=Auth::user()->id_usuario_app;
-        $usuario->ip_dispositivo=$request->ip();
         $usuario->nombre_usuario=$request->nombre_usuario;
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
-        $usuario->id_rol_usuario=$id_rol_usuario;        
+        $usuario->role_id=$id_rol_usuario; 
+        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica);
+        $usuario->id_region_sica=$id_regio_sica;
         $usuario->save();        
         $obj_rol_asignado= Role::find($id_rol_usuario);
         DB::table("role_user")->where("role_user.user_id",$request->id_usuario_app)->delete();    

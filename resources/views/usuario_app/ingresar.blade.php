@@ -1,5 +1,5 @@
 <!-- 
-     * Nombre del archivo:principal.blade.php
+     * Nombre del archivo:ingresar.blade.php
      * Descripción:
      * Fecha de creación:06/11/2016
      * Creado por: Juan Carlos Centeno Borja
@@ -7,7 +7,10 @@
 @extends('plantillas.plantilla_inicio')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
-@stop  
+@stop 
+@section('nombre_plantilla')
+<p ALIGN=left>ingresar.blade.php</p>
+@stop 
 @section('contenido')
 <div class="panel panel-primary">
   <div class="panel-heading"  >

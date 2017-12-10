@@ -77,8 +77,10 @@ class ArchivoDatosController extends Controller
         $obj_region_sica=  region_sica::all();
         $obj_anio = anio_notificacion::all();
         $obj_evento_epi=  evento_epi::lists('nombre_evento','id_evento_epi');
-        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(1);
+        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(0);
         $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
+        $codigo_archivo[0]='Seleccionar';
+        $obj_evento_epi[0]='Seleccionar';
         return view('carga_datos/nueva_carga_archivo',
                 compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo'));
     }
@@ -110,7 +112,7 @@ class ArchivoDatosController extends Controller
                                      ->get();
        foreach($obj_archivo as $archivos){
         $mensaje="Ya existe el archivo, no se puede modificar";
-        flash()->success($mensaje);
+        flash()->error($mensaje);
         return redirect()->back(); 
        }
        
@@ -136,7 +138,7 @@ class ArchivoDatosController extends Controller
     return redirect()->back();
     } 
     //error
-    flash()->success('Error al modificar los datos'.$error);
+    flash()->error('Error al modificar los datos'.$error);
     return redirect()->back();   
     }
     public function fnc_filtro_buscar_carga(){
@@ -177,13 +179,15 @@ class ArchivoDatosController extends Controller
     }
     public function fnc_show_store(Request $request){
         //Guarda en la base de datos y en el servidor el archivo
+        
+        
         $file = $request->file('file');
         $obj_controller_bitacora=new bitacoraController();
         $ext=strtolower($file->getClientOriginalExtension());
         if($_FILES['file']['error']==1){
          $obj_controller_bitacora->create_mensaje('No se puede cargar el archivo: '.$_FILES['file']['name']);           
          $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
-         flash()->success($errors);
+         flash()->error($errors);
          return redirect()->back();
        } 
        else
@@ -191,11 +195,26 @@ class ArchivoDatosController extends Controller
         if($ext!="xls" && $ext!="xlsx"){ 
          $obj_controller_bitacora->create_mensaje('Tipo archivo erroneo: '.$_FILES['file']['name']);           
          $errors='Tipo archivo erroneo: '.$_FILES['file']['name'];
-         flash()->success($errors);
+         flash()->error($errors);
          return redirect()->back();  
         }
-        
         $error = null;
+        $paso=0;
+        if($request->anio_notificacion=="Seleccionar"||$request->eventos==0||$request->codigos==0){
+          if($request->anio_notificacion=="Seleccionar"){
+            $mensaje="Seleccionar el año";
+            $paso=1;
+            }  
+          if($request->eventos==0){
+           if($paso==1){
+             $mensaje=$mensaje.", seleccionar el evento y el código archivo";  
+           }else{
+               $mensaje="Seleccionar el evento y el código archivo"; 
+           }
+          }
+          flash()->warning($mensaje);
+          return redirect()->back();    
+        }
         $date = Carbon::now();
         $obj_archivo_datos= new archivo_datos();
         $obj_region_sica = new RegionSicaController();
@@ -208,7 +227,7 @@ class ArchivoDatosController extends Controller
                                      ->get();
        foreach($obj_archivo as $archivos){
         $mensaje="Ya existe el archivo, no se puede cargar";
-        flash()->success($mensaje);
+        flash()->error($mensaje);
         return redirect()->back(); 
        }
        
@@ -246,7 +265,7 @@ class ArchivoDatosController extends Controller
     return redirect()->back();
     } 
     //error
-    flash()->success('Error al cargar el archivo '.$error);
+    flash()->error('Error al cargar el archivo '.$error);
     return redirect()->back(); 
     }
     
@@ -407,14 +426,13 @@ class ArchivoDatosController extends Controller
     if ($success) {
     //eliminar archivo 
     Storage::delete($pathtoFile);
-    $obj_controller_bitacora->create_mensaje('Archivo eliminado');
+    $obj_controller_bitacora->create_mensaje('Archivo eliminado:'.$pathtoFile);
     flash()->success('Archivo eliminado exitosamente');
     return redirect()->back();
     } 
     //error
     flash()->error('Error al eliminar el archivo '.$error);
     return redirect()->back();
-        
     }
     /**
      * Show the form for editing the specified resource.

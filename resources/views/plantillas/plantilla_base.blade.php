@@ -56,6 +56,19 @@
 	</div>
 	<div class="row"><!--menu principal -->
 	<div class="col-md-12">
+            <style type="text/css">
+            /* cambiar tipo de letra */
+            nav.navbar ul.nav li {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 18px;
+           
+              }
+            /* cambiar el color de fondo a la barra */
+            nav.navbar {
+           background-color: #203448;
+            
+            }
+            </style>
 			<nav class="navbar navbar-default navbar-inverse" role="navigation">
 				<div class="navbar-header">
 					 

@@ -85,7 +85,7 @@
                 <td>
                     <select name="rol_usuario" class="form-control" >
                        @foreach($obj_role as $obj_roles)
-                       @if($obj_roles->id_rol_usuario==$obj_usuario->id_rol_usuario)
+                       @if($obj_roles->role_id==$obj_usuario->role_id)
                        <option selected="true">{{$obj_roles->nombre_rol}}</option>
                         @else
                         <option>{{$obj_roles->nombre_rol}}</option>
@@ -95,12 +95,12 @@
                 </td>
               <td>País *</td>
                  <td>                 
-                    <select name="cargo_emp" class="form-control">
-                    @foreach($obj_cargo_emp as $obj_cargos_emp)
-                    @if($obj_cargos_emp->id_cargo_emp==$obj_usuario->id_cargo_emp)
-                    <option selected="true">{{$obj_cargos_emp->nombre_cargo}}</option>
+                    <select name="region_sica" class="form-control">
+                    @foreach($obj_region_sica as $paises)
+                    @if($paises->id_region_sica==$obj_usuario->id_region_sica)
+                    <option selected="true">{{$paises->nombre_pais}}</option>
                     @else
-                         <option>{{$obj_cargos_emp->nombre_cargo}}</option>
+                         <option>{{$paises->nombre_pais}}</option>
                     @endif
                     @endforeach                           
                     </select>
@@ -115,7 +115,7 @@
         <tr>
           <td>
               <button type="submit" class="btn btn-primary">Guardar</button>             
-              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+              <a href="../administracion/buscar_usuario" class="btn btn-primary"> Regresar</a>
               @include('usuario_app/ayuda_usuario/ayuda_edit_usuario')
        </td>
         </tr>        

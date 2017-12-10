@@ -29,8 +29,11 @@
 		</div>
 	</div>
 	<div class="row"><!--fecha -->
-		<div class="col-md-12">
+		<div class="col-md-6">
                     @yield('fecha_sistema') 		
+		</div>
+               <div class="col-md-6">
+                    @yield('nombre_plantilla') 		
 		</div>
 		
 	</div>	

@@ -53,6 +53,7 @@
                   <td>Año *</td>
                 <td>
                    <select name="anio_notificacion" class="form-control" >
+                       <option>Seleccionar</option>
                        @foreach($obj_anio as $obj_anios)
                         <option>{{$obj_anios->digitos_anio}}</option>
                         @endforeach  
@@ -62,13 +63,13 @@
               <tr>
                   <td>Evento *</td>
                 <td>
-                   {!! Form::select('eventos',$obj_evento_epi,1,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
+                   {!! Form::select('eventos',$obj_evento_epi,0,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
                 </td>
               </tr>
               <tr>
                  <td>Código archivo *</td>
                 <td>
-                   {!! Form::select('codigos',$codigo_archivo,1,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
+                   {!! Form::select('codigos',$codigo_archivo,0,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 
               </tr>
               <tr>
