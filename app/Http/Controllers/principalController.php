@@ -25,25 +25,18 @@ class principalController extends Controller
     public function fnc_show_principal(){       
         return view('principal');
     }
-     public function fnc_show_fichas(){
+     public function fnc_show_configuracion(){
        
-        return view('ficha_inicio');
+        return view('configuracion_inicio');
+    }
+    public function fnc_show_catalogos(){
+       
+        return view('catalogos_inicio');
     }
     public function fnc_show_carga(){
         return view ('carga_inicio');
     }
-     public function fnc_show_inventario(){
-       
-        return view('inventario_inicio');
-    }
-     public function fnc_show_solicitudes(){
-       
-        return view('solicitudes_inicio');
-    }
-    public function fnc_show_procesos(){
-       
-        return view('procesos_inicio');
-    }
+    
     public function fnc_show_reportes(){
        
         return view('reportes_inicio');
@@ -57,10 +50,7 @@ class principalController extends Controller
         
     }
    
-    public function fnc_show_catalogos() {
-       
-         return view('catalogos/catalogos'); 
-    }
+   
     /**
      * Show the form for creating a new resource.
      *

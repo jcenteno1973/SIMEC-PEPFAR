@@ -144,9 +144,9 @@ class ArchivoDatosController extends Controller
     public function fnc_filtro_buscar_carga(){
         //Busqueda con filtro de region sica
         if(Auth::user()->role_id==1){
-         $obj_archivo_datos= archivo_datos::paginate(5);
+         $obj_archivo_datos= archivo_datos::paginate(10);
         }else{
-         $obj_archivo_datos= archivo_datos::where('id_region_sica', '=',Auth::user()->id_region_sica)->paginate(5);   
+         $obj_archivo_datos= archivo_datos::where('id_region_sica', '=',Auth::user()->id_region_sica)->paginate(10);   
         }
         $obj_region_sica=  region_sica::all();
         $obj_anio = anio_notificacion::all();
@@ -179,8 +179,6 @@ class ArchivoDatosController extends Controller
     }
     public function fnc_show_store(Request $request){
         //Guarda en la base de datos y en el servidor el archivo
-        
-        
         $file = $request->file('file');
         $obj_controller_bitacora=new bitacoraController();
         $ext=strtolower($file->getClientOriginalExtension());

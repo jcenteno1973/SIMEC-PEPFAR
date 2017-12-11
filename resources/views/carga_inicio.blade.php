@@ -2,7 +2,7 @@
      * Nombre del archivo:carga_inicio.blade.php
      * Descripción: Vista de menu carga de archivo
      * Fecha de creación:24/11/2017
-     * Creado por: Juan Carlos Centeno
+     * Creado por: Juan Carlos Centeno Borja
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
@@ -26,7 +26,7 @@
     <div class="panel-heading" align="center">Carga de archivo</div>
     <center>
         <br>
-        <img src="{{asset('images/ficha.jpg')}}" alt="Carga de archivo"/><br>
+        <img src="{{asset('images/carga.jpg')}}" height="100px" width="100px" alt="Carga de archivo"/><br>
         Usted se encuentra en el m&oacute;dulo Carga de archivo.<br>
         <div>Para m&aacute;s opciones acceda al men&uacute; de la izquierda.</div>
       <br><br>

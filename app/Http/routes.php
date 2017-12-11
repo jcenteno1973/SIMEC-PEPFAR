@@ -19,7 +19,8 @@ Route::get('/','ingresarController@index');
 Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => 'Auth\AuthController@fnc_ingresar']);
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
 Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);
-Route::get('fichas',['as' => 'fichas','uses' => 'principalController@fnc_show_fichas']);
+Route::get('configuracion',['as' => 'configuracion','uses' => 'principalController@fnc_show_configuracion']);
+Route::get('catalogos',['as' => 'catalogos','uses' => 'principalController@fnc_show_catalogos']);
 Route::get('codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get('carga/codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get ('carga',['as'=>'carga','uses'=> 'principalController@fnc_show_carga']);
@@ -31,7 +32,21 @@ Route::get ('carga/editar_carga/{id}',['as'=>'carga/editar_carga','uses'=> 'Arch
 Route::post ('carga/update_carga',['as'=>'carga/update_carga','uses'=> 'ArchivoDatosController@fnc_show_update']);
 Route::get('cargar_datos/{id}',['as'=>'cargar_datos','uses'=>'ArchivoDatosController@fnc_cargar_datos']);
 Route::get('descargar/{id}',['as'=>'descargar','uses'=>'ArchivoDatosController@fnc_descargar_archivo']);
-Route::get('eliminar/{id}',['as'=>'eliminar','uses'=>'ArchivoDatosController@fnc_eliminar_archivo']);
+Route::get('carga/eliminar/{id}',['as'=>'carga/eliminar','uses'=>'ArchivoDatosController@fnc_eliminar_archivo']);
+
+Route::get ('catalogos/nuevo_evento',['as'=>'catalogos/nuevo_evento','uses'=> 'EventoEpiController@fnc_show_create']);
+Route::post ('catalogos/nuevo_evento',['as'=>'catalogos/nuevo_evento','uses'=> 'EventoEpiController@fnc_show_store']);
+Route::get ('catalogos/buscar_evento',['as'=>'catalogos/buscar_evento','uses'=> 'EventoEpiController@fnc_buscar_evento']);
+Route::get ('catalogos/editar_evento/{id}',['as'=>'catalogos/editar_evento','uses'=> 'EventoEpiController@fnc_show_edit']);
+Route::post ('catalogos/update_evento',['as'=>'catalogos/update_evento','uses'=> 'EventoEpiController@fnc_show_update']);
+Route::get('catalogos/eliminar/{id}',['as'=>'catalogos/eliminar','uses'=>'EventoEpiController@fnc_eliminar_evento']);
+
+Route::get ('catalogos/nuevo_catalogo',['as'=>'catalogos/nuevo_catalogo','uses'=> 'CatalogoController@fnc_show_create']);
+Route::post ('catalogos/nuevo_catalogo',['as'=>'catalogos/nuevo_catalogo','uses'=> 'CatalogoController@fnc_show_store']);
+Route::get ('catalogos/buscar_catalogo',['as'=>'catalogos/buscar_evento','uses'=> 'CatalogoController@fnc_buscar_evento']);
+Route::get ('catalogos/editar_catalogo/{id}',['as'=>'catalogos/editar_evento','uses'=> 'CatalogoController@fnc_show_edit']);
+Route::post ('catalogos/update_catalogo',['as'=>'catalogos/update_evento','uses'=> 'CatalogoController@fnc_show_update']);
+Route::get('catalogos/eliminar_catalogo/{id}',['as'=>'catalogos/eliminar_catalogo','uses'=>'CatalogoController@fnc_eliminar_catalogo']);
 
 Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );
 Route::post('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_store_inmueble'] );
@@ -78,11 +93,8 @@ Route::get('administracion/consultar_bitacora',['as' => 'administracion/consulta
 Route::post('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 //***  catalogos
 Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos','middleware' => ['permission:catalogos']] );
-//ruta para ubicacion organizacional
-Route::resource('administracion/buscar_ubicacion','ubicacion_orgController');
-//ruta para cuentas contables
-Route::resource('administracion/contable','cuenta_contaController');
-Route::resource('administracion/color','coloresController');
+
+
 
 
 Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);

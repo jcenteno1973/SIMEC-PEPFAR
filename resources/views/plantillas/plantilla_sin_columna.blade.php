@@ -63,10 +63,10 @@
 							<a href="{{route('carga')}}">Carga de datos</a>
 						</li>
 						<li>
-							<a href="#">Configuración</a>
+							<a href="{{route('configuracion')}}">Configuración</a>
 						</li>
                                                 <li>
-							<a href="#">Catálogos</a>
+							<a href="{{route('catalogos')}}">Catálogos</a>
 						</li>
 						
 						<li>

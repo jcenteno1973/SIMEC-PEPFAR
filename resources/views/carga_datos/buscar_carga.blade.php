@@ -126,7 +126,7 @@
                 @endif
                 </center></td>
                 <td><center><a href="{{route('descargar',$archivo_datos->id_archivo_datos)}}" class="btn btn-success"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> </a></center></td>
-                <td><center><a href="{{route('eliminar',$archivo_datos->id_archivo_datos)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></center></td>
+                <td><center><a href="{{route('carga/eliminar',$archivo_datos->id_archivo_datos)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></center></td>
             </tr>
            @endforeach
         </tbody>

@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\catalogo;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\bitacoraController;
 
 class CatalogoController extends Controller
 {
@@ -24,6 +27,10 @@ class CatalogoController extends Controller
         //
     }
 
+     public function fnc_show_create() {
+        return view('catalogos/nuevo_catalogo');
+        
+    }
     /**
      * Show the form for creating a new resource.
      *

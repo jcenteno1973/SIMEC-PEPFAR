@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\bitacoraController;
+use App\Models\evento_epi;
+use Illuminate\Support\Facades\DB;
 
 class EventoEpiController extends Controller
 {
@@ -29,6 +32,83 @@ class EventoEpiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function fnc_show_create() {
+        return view('catalogos/nuevo_evento');
+        
+    }
+    public function fnc_show_store(Request $request) {
+       $obj_controller_bitacora=new bitacoraController(); 
+       $obj_evento_epi = new evento_epi();
+       $error = null;
+        DB::beginTransaction();
+        try {
+            $obj_evento_epi->codigo_evento=$request->codigo;
+            $obj_evento_epi->nombre_evento=$request->nombre;
+            $obj_evento_epi->descripcion_evento=$request->descripcion;
+            $obj_evento_epi->save();
+            $obj_controller_bitacora->create_mensaje('Evento creado:'.$request->nombre);
+            $success = true;
+        } catch (Exception $ex) {
+            $success = false;
+	    $error = $e->getMessage();
+	    DB::rollback();
+        }
+        if($success){
+           flash()->success('Evento creado exítosamente');
+           return redirect()->back();    
+        }else{
+          flash()->error('Error al crear evento, '.$error);
+          return redirect()->back();  
+        }
+    }
+    public function fnc_buscar_evento(){
+        //
+        $obj_evento_epi= evento_epi::paginate(10);
+        return view('catalogos/buscar_evento',
+                compact('obj_evento_epi'));
+    }
+    public function fnc_eliminar_evento($id){
+        //Eliminar registro
+        $obj_controller_bitacora=new bitacoraController(); 
+        $obj_evento_epi=  evento_epi::find($id);
+        $nombre=$obj_evento_epi->nombre_evento;
+        $obj_evento_epi->delete();
+        $obj_controller_bitacora->create_mensaje('Evento eliminado:'.$nombre);
+        flash()->success('Evento eliminado');
+        return redirect()->back();    
+    }
+    public function fnc_show_edit($id){
+       $obj_evento_epi=  evento_epi::find($id);
+        return view('catalogos/editar_evento',
+                compact('obj_evento_epi'));
+    }
+    public function fnc_show_update(Request $request){
+        //
+       $obj_controller_bitacora=new bitacoraController(); 
+       $obj_evento_epi =evento_epi::find($request->id);
+       $error = null;
+        DB::beginTransaction();
+        try {
+            $obj_evento_epi->codigo_evento=$request->codigo;
+            $obj_evento_epi->nombre_evento=$request->nombre;
+            $obj_evento_epi->descripcion_evento=$request->descripcion;
+            $obj_evento_epi->save();
+            $obj_controller_bitacora->create_mensaje('Evento modificado:'.$request->nombre);
+            $success = true;
+        } catch (Exception $ex) {
+            $success = false;
+	    $error = $e->getMessage();
+	    DB::rollback();
+        }
+        if($success){
+           flash()->success('Evento modificado exítosamente');
+           return redirect()->back();    
+        }else{
+          flash()->error('Error al modificar evento, '.$error);
+          return redirect()->back();  
+        }
+    }
+
     public function create()
     {
         //

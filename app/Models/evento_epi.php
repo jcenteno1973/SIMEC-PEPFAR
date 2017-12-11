@@ -8,14 +8,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class evento_epi extends Model
 {
     //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $table = 'evento_epi';
     protected $primaryKey = 'id_evento_epi';
     public $timestamps = false;
     protected $fillable = [
+        'codigo_evento',
         'nombre_evento',
         'descripcion_evento'
     ];
