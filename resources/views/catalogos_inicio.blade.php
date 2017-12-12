@@ -20,10 +20,10 @@
     <a href="catalogos/buscar_evento" class="list-group-item">Buscar evento</a>
     <a href="catalogos/nuevo_catalogo" class="list-group-item">Nuevo catalogo</a>
     <a href="catalogos/buscar_catalogo" class="list-group-item">Buscar catalogo</a>
+    <a href="carga/nueva_carga" class="list-group-item">Nuevo componente</a>
+    <a href="carga/buscar_carga" class="list-group-item">Buscar componente</a>
     <a href="carga/nueva_carga" class="list-group-item">Nuevo indicador</a>
     <a href="carga/buscar_carga" class="list-group-item">Buscar indicador</a>
-    <a href="carga/nueva_carga" class="list-group-item">Nuev componente</a>
-    <a href="carga/buscar_carga" class="list-group-item">Buscar componente</a>
 </div>
 @stop
 
