@@ -8,8 +8,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class catalogo extends Model
 {
     //
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
+    protected $table = 'catalogo';
+    protected $primaryKey = 'id_catalogo';
+    public $timestamps = false;
+    protected $fillable = [
+        'nombre_catalogo',
+        'desglose',
+        'valor_minimo',
+        'valor_maximo'
+    ];
 }

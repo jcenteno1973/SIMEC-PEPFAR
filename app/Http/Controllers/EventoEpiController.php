@@ -50,7 +50,7 @@ class EventoEpiController extends Controller
             $success = true;
         } catch (Exception $ex) {
             $success = false;
-	    $error = $e->getMessage();
+	    $error = $ex->getMessage();
 	    DB::rollback();
         }
         if($success){
@@ -97,7 +97,7 @@ class EventoEpiController extends Controller
             $success = true;
         } catch (Exception $ex) {
             $success = false;
-	    $error = $e->getMessage();
+	    $error = $ex->getMessage();
 	    DB::rollback();
         }
         if($success){

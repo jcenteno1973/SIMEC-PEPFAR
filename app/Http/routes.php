@@ -40,12 +40,17 @@ Route::get ('catalogos/buscar_evento',['as'=>'catalogos/buscar_evento','uses'=> 
 Route::get ('catalogos/editar_evento/{id}',['as'=>'catalogos/editar_evento','uses'=> 'EventoEpiController@fnc_show_edit']);
 Route::post ('catalogos/update_evento',['as'=>'catalogos/update_evento','uses'=> 'EventoEpiController@fnc_show_update']);
 Route::get('catalogos/eliminar/{id}',['as'=>'catalogos/eliminar','uses'=>'EventoEpiController@fnc_eliminar_evento']);
-
+Route::get('catalogos/eliminar_desglose/{id}',['as'=>'catalogos/eliminar_desglose','uses'=>'CatalogoController@fnc_eliminar_desglose']);
+Route::get ('catalogos/editar_desglose/{id}',['as'=>'catalogos/editar_desglose','uses'=> 'CatalogoController@fnc_show_edit_desg']);
+Route::post ('catalogos/update_desglose',['as'=>'catalogos/update_desglose','uses'=> 'CatalogoController@fnc_show_update_desg']);
+Route::get ('catalogos/buscar_desglose/{id}',['as'=>'catalogos/buscar_desglose','uses'=> 'CatalogoController@fnc_buscar_desglose']);
+Route::get ('catalogos/nuevo_desglose/{id}',['as'=>'catalogos/nuevo_desglose','uses'=> 'CatalogoController@fnc_show_create_desg']);
+Route::post ('catalogos/nuevo_desglose_guardar',['as'=>'catalogos/nuevo_desglose_guardar','uses'=> 'CatalogoController@fnc_show_store_desg']);
 Route::get ('catalogos/nuevo_catalogo',['as'=>'catalogos/nuevo_catalogo','uses'=> 'CatalogoController@fnc_show_create']);
 Route::post ('catalogos/nuevo_catalogo',['as'=>'catalogos/nuevo_catalogo','uses'=> 'CatalogoController@fnc_show_store']);
-Route::get ('catalogos/buscar_catalogo',['as'=>'catalogos/buscar_evento','uses'=> 'CatalogoController@fnc_buscar_evento']);
-Route::get ('catalogos/editar_catalogo/{id}',['as'=>'catalogos/editar_evento','uses'=> 'CatalogoController@fnc_show_edit']);
-Route::post ('catalogos/update_catalogo',['as'=>'catalogos/update_evento','uses'=> 'CatalogoController@fnc_show_update']);
+Route::get ('catalogos/buscar_catalogo',['as'=>'catalogos/buscar_catalogo','uses'=> 'CatalogoController@fnc_buscar_catalogo']);
+Route::get ('catalogos/editar_catalogo/{id}',['as'=>'catalogos/editar_catalogo','uses'=> 'CatalogoController@fnc_show_edit']);
+Route::post ('catalogos/update_catalogo',['as'=>'catalogos/update_catalogo','uses'=> 'CatalogoController@fnc_show_update']);
 Route::get('catalogos/eliminar_catalogo/{id}',['as'=>'catalogos/eliminar_catalogo','uses'=>'CatalogoController@fnc_eliminar_catalogo']);
 
 Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );

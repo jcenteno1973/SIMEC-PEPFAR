@@ -49,37 +49,43 @@
 	</div>
 	<div class="row"><!--menu principal -->
 	<div class="col-md-12">
+            <style type="text/css">
+            /* cambiar tipo de letra */
+            nav.navbar ul.nav li {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+              }
+             .navbar-default .navbar-brand {
+             color:#000;
+              }
+            /* cambiar el color de fondo a la barra */
+            nav.navbar {
+           background-color: #337ab7;
+            
+            }
+            </style>
 			<nav class="navbar navbar-default navbar-inverse" role="navigation">
 				<div class="navbar-header">
-					 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="{{route('principal')}}">Inicio</a>
-				</div>
-				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li>
-							<a href="{{route('carga')}}">Carga de datos</a>
-						</li>
-						<li>
-							<a href="{{route('configuracion')}}">Configuración</a>
-						</li>
-                                                <li>
-							<a href="{{route('catalogos')}}">Catálogos</a>
-						</li>
-						
-						<li>
-							<a href="{{route('reportes')}}">Reportes</a>
-						</li>
-						<li>
-							<a href="{{route('administracion')}}">Administración</a>
-						</li>
-						<li>
-							<a href="{{route('usuario_app/salir')}}">Salir</a>
-						</li>
-					</ul>					
-					
+                                        </button> <a class="navbar-brand" href="{{route('principal')}}">Inicio</a>
+                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('carga')}}">Carga de datos</a>
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('catalogos')}}">Catálogos</a>
+                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('configuracion')}}">Configuración</a>
+                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('reportes')}}">Reportes</a>
+                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('administracion')}}">Administración</a>
+                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('usuario_app/salir')}}">Salir</a>
 				</div>
 			</nav>
 	</div>
