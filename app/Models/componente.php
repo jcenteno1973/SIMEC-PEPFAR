@@ -8,8 +8,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class componente extends Model
 {
     //
+     use SoftDeletes;
+    protected $dates = ['deleted_at'];
+    protected $table = 'componente';
+    protected $primaryKey = 'id_componente';
+    public $timestamps = false;
+    protected $fillable = [
+        'codigo_componente',
+        'descripcion_componente'
+    ];
+    
+     public function indicador() {
+         return $this->hasMany('indicador');
+     }
+      public function vigilancia_epidemiologica() {
+         return $this->hasMany('vigilancia_epidemiologica');
+     }
 }

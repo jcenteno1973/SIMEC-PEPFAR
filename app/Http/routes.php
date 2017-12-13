@@ -21,6 +21,7 @@ Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\Au
 Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);
 Route::get('configuracion',['as' => 'configuracion','uses' => 'principalController@fnc_show_configuracion']);
 Route::get('catalogos',['as' => 'catalogos','uses' => 'principalController@fnc_show_catalogos']);
+//Carga de datos
 Route::get('codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get('carga/codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get ('carga',['as'=>'carga','uses'=> 'principalController@fnc_show_carga']);
@@ -33,6 +34,20 @@ Route::post ('carga/update_carga',['as'=>'carga/update_carga','uses'=> 'ArchivoD
 Route::get('cargar_datos/{id}',['as'=>'cargar_datos','uses'=>'ArchivoDatosController@fnc_cargar_datos']);
 Route::get('descargar/{id}',['as'=>'descargar','uses'=>'ArchivoDatosController@fnc_descargar_archivo']);
 Route::get('carga/eliminar/{id}',['as'=>'carga/eliminar','uses'=>'ArchivoDatosController@fnc_eliminar_archivo']);
+//Catalogos
+Route::get ('catalogos/nuevo_indicador',['as'=>'catalogos/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_create']);
+Route::post ('catalogos/nuevo_indicador',['as'=>'catalogos/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_store']);
+Route::get ('catalogos/buscar_indicador',['as'=>'catalogos/buscar_indicador','uses'=> 'IndicadorController@fnc_buscar_indicador']);
+Route::get ('catalogos/editar_indicador/{id}',['as'=>'catalogos/editar_indicador','uses'=> 'IndicadorController@fnc_show_edit']);
+Route::post ('catalogos/update_indicador',['as'=>'catalogos/update_indicador','uses'=> 'IndicadorController@fnc_show_update']);
+Route::get('catalogos/eliminar_indicador/{id}',['as'=>'catalogos/eliminar_indicador','uses'=>'IndicadorController@fnc_eliminar_indicador']);
+
+Route::get ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_create']);
+Route::post ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_store']);
+Route::get ('catalogos/buscar_componente',['as'=>'catalogos/buscar_componente','uses'=> 'ComponenteController@fnc_buscar_componente']);
+Route::get ('catalogos/editar_componente/{id}',['as'=>'catalogos/editar_componente','uses'=> 'ComponenteController@fnc_show_edit']);
+Route::post ('catalogos/update_componente',['as'=>'catalogos/update_componente','uses'=> 'ComponenteController@fnc_show_update']);
+Route::get('catalogos/eliminar_componente/{id}',['as'=>'catalogos/eliminar_componente','uses'=>'ComponenteController@fnc_eliminar_componente']);
 
 Route::get ('catalogos/nuevo_evento',['as'=>'catalogos/nuevo_evento','uses'=> 'EventoEpiController@fnc_show_create']);
 Route::post ('catalogos/nuevo_evento',['as'=>'catalogos/nuevo_evento','uses'=> 'EventoEpiController@fnc_show_store']);
@@ -81,6 +96,7 @@ Route::post('ficha/reporte_ficha_vehiculo',['as' => 'ficha/reporte_ficha_vehicul
 Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
 Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
 Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
+
 Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
 //ya cuenta con seguridad
 Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion','middleware' => ['permission:administracion']] );
@@ -98,10 +114,6 @@ Route::get('administracion/consultar_bitacora',['as' => 'administracion/consulta
 Route::post('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 //***  catalogos
 Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos','middleware' => ['permission:catalogos']] );
-
-
-
-
 Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);
 Route::post('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@fnc_busqueda_filtro']);
 

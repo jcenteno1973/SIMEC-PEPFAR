@@ -1,7 +1,7 @@
 <!-- 
-     * Nombre del archivo:editar_evento.blade.php
-     * Descripción: Modificar un evento
-     * Fecha de creación:10/12/2017
+     * Nombre del archivo:editar_componente.blade.php
+     * Descripción: Creacion de un nuevo componente
+     * Fecha de creación:12/12/2017
      * Creado por: Juan Carlos Centeno Borja
 -->
 @extends('plantillas.plantilla_base')
@@ -9,13 +9,13 @@
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
 @section('nombre_plantilla')
-<p ALIGN=center>editar_evento.blade.php</p>
+<p ALIGN=center>editar_componente.blade.php</p>
 @stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-<h4 class="text-center">Pantalla editar evento</h4>
+<h4 class="text-center">Pantalla editar componente</h4>
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -32,31 +32,24 @@
 @section('contenido')
 <div class="panel panel-default">
         <div class="panel-body">
-        {!! Form::open(['route' => 'catalogos/update_evento','class' => 'form']) !!}
+        {!! Form::open(['route' => 'catalogos/update_componente','class' => 'form']) !!}
             <table class="table table-condensed">    
             <tbody>
-              <tr>
+                <tr>
                   <td>Id</td>
                 <td>
-                    <input type="text" value="{{$obj_evento_epi->id_evento_epi}}" class="form-control" name="id" readonly="true">
+                    <input type="text" value="{{$obj_componente->id_componente}}" class="form-control" name="id" readonly="true">
                 </td>
-              </tr>
               <tr>
                   <td>Código *</td>
                 <td>
-                    <input type="text" value="{{$obj_evento_epi->codigo_evento}}" class="form-control" name="codigo" maxlength="20"  required>
+                    <input type="text" value="{{$obj_componente->codigo_componente}}" class="form-control" name="codigo" maxlength="20"  required>
                 </td>
-              </tr>
-              <tr>
-                 <td>Nombre evento *</td>
-                <td>
-                   <input type="text" value="{{$obj_evento_epi->nombre_evento}}" class="form-control" name="nombre" maxlength="35" required>  
-                </td> 
               </tr>
               <tr>
                   <td>Descripción *</td>
                   <td>
-                      <input type="text" value="{{$obj_evento_epi->descripcion_evento}}" class="form-control" name="descripcion" maxlength="100" required>                      
+                      <input type="text" value="{{$obj_componente->descripcion_componente}}" class="form-control" name="descripcion" maxlength="100" required>                      
                   </td>  
               </tr>
             </tbody>
@@ -66,7 +59,7 @@
         <tr>
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
-              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+              <a href="{{route('catalogos/buscar_componente')}}" class="btn btn-primary"> Regresar</a>
               @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
           </td>
         </tr>        
@@ -80,4 +73,3 @@
   
 </div>
 @stop   
-
