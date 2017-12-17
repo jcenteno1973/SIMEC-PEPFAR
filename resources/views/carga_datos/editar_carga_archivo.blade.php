@@ -86,7 +86,7 @@
                 </td>
               </tr>
               <tr>
-                 <td>Código archivo *</td>
+                 <td>Código indicador *</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,$obj_archivo_datos->id_archivo_fuente,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 

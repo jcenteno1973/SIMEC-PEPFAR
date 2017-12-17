@@ -12,4 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 class tipo_indicador extends Model
 {
     //
+    protected $table = 'tipo_indicador';
+    protected $primaryKey = 'id_tipo_indicador';
+    public $timestamps = false;
+    protected $fillable = [
+        'nombre_tipo_indicador',
+        'sufijo_tipo_indicador'
+    ];
 }

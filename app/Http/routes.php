@@ -35,13 +35,6 @@ Route::get('cargar_datos/{id}',['as'=>'cargar_datos','uses'=>'ArchivoDatosContro
 Route::get('descargar/{id}',['as'=>'descargar','uses'=>'ArchivoDatosController@fnc_descargar_archivo']);
 Route::get('carga/eliminar/{id}',['as'=>'carga/eliminar','uses'=>'ArchivoDatosController@fnc_eliminar_archivo']);
 //Catalogos
-Route::get ('catalogos/nuevo_indicador',['as'=>'catalogos/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_create']);
-Route::post ('catalogos/nuevo_indicador',['as'=>'catalogos/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_store']);
-Route::get ('catalogos/buscar_indicador',['as'=>'catalogos/buscar_indicador','uses'=> 'IndicadorController@fnc_buscar_indicador']);
-Route::get ('catalogos/editar_indicador/{id}',['as'=>'catalogos/editar_indicador','uses'=> 'IndicadorController@fnc_show_edit']);
-Route::post ('catalogos/update_indicador',['as'=>'catalogos/update_indicador','uses'=> 'IndicadorController@fnc_show_update']);
-Route::get('catalogos/eliminar_indicador/{id}',['as'=>'catalogos/eliminar_indicador','uses'=>'IndicadorController@fnc_eliminar_indicador']);
-
 Route::get ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_create']);
 Route::post ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_store']);
 Route::get ('catalogos/buscar_componente',['as'=>'catalogos/buscar_componente','uses'=> 'ComponenteController@fnc_buscar_componente']);
@@ -67,6 +60,13 @@ Route::get ('catalogos/buscar_catalogo',['as'=>'catalogos/buscar_catalogo','uses
 Route::get ('catalogos/editar_catalogo/{id}',['as'=>'catalogos/editar_catalogo','uses'=> 'CatalogoController@fnc_show_edit']);
 Route::post ('catalogos/update_catalogo',['as'=>'catalogos/update_catalogo','uses'=> 'CatalogoController@fnc_show_update']);
 Route::get('catalogos/eliminar_catalogo/{id}',['as'=>'catalogos/eliminar_catalogo','uses'=>'CatalogoController@fnc_eliminar_catalogo']);
+//Configuracion
+Route::get ('configuracion/nuevo_indicador',['as'=>'configuracion/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_create']);
+Route::post ('configuracion/nuevo_indicador',['as'=>'configuracion/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_store']);
+Route::get ('configuracion/buscar_indicador',['as'=>'configuracion/buscar_indicador','uses'=> 'IndicadorController@fnc_buscar_indicador']);
+Route::get ('configuracion/editar_indicador/{id}',['as'=>'configuracion/editar_indicador','uses'=> 'IndicadorController@fnc_show_edit']);
+Route::post ('configuracion/update_indicador',['as'=>'configuracion/update_indicador','uses'=> 'IndicadorController@fnc_show_update']);
+Route::get('configuracion/eliminar_indicador/{id}',['as'=>'configuracion/eliminar_indicador','uses'=>'IndicadorController@fnc_eliminar_indicador']);
 
 Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );
 Route::post('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_store_inmueble'] );
@@ -145,5 +145,4 @@ Route::post('password/email', ['as' => 'password/postEmail', 'uses' => 'Auth\Pas
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', ['as' => 'password/postReset', 'uses' =>  'Auth\PasswordController@postReset']);
 
-//inventario
-Route::resource('administracion/verificacion_fisica','verif_fisicaController');
+

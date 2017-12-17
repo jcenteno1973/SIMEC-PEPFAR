@@ -25,6 +25,11 @@ class archivo_datos extends Model
      return archivo_datos::where('id_archivo_datos','=',$parametro)
              ->get();
     }
+     public static function fnc_archivo_fuente($parametro) {
+        
+     return archivo_datos::where('id_archivo_fuente','=',$parametro)
+             ->get();
+    }
     public function scopeId_region_sica($query,$id_region_sica) {
         
         $query->where('id_region_sica',"=",$id_region_sica);

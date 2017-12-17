@@ -8,9 +8,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class archivo_fuente extends Model
-{
+{ 
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = 'archivo_fuente';
     protected $primaryKey = 'id_archivo_fuente';
@@ -20,6 +21,10 @@ class archivo_fuente extends Model
         'descripcion_archivo_fuente'
     ];
     //
+    public static function fnc_id_archivo($parametro) {
+     return archivo_fuente::where('id_indicador','=',$parametro)
+             ->get();
+    }
     public static function fnc_archivo_fuentes($parametro) {
      return archivo_fuente::where('id_evento_epi','=',$parametro)
              ->get();

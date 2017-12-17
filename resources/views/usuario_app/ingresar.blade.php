@@ -27,8 +27,8 @@
          @endif
         @if($errors->any())
         <div class="alert-danger" role="alert">
-       Por favor corregir los siguientes errores
-           @foreach ($errors->all() as $error)
+       Por favor corregir los siguientes errores:
+          @foreach ($errors->all() as $error)
               <div>{{ $error }}</div>
           @endforeach
         </div>

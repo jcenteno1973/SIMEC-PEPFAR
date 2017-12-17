@@ -21,6 +21,7 @@ class RegionSicaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function fnc_obtener_id($param){
+        //Devuelve el identificador del pais
         $id_region_sica=0;
         $obj_region_sica= region_sica::all();
         foreach ($obj_region_sica as $paises){

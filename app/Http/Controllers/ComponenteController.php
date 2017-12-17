@@ -79,14 +79,14 @@ class ComponenteController extends Controller
         }
     }
      public function fnc_eliminar_componente($id){
-        //Eliminar registro
+        //Eliminar componente
         $obj_controller_bitacora=new bitacoraController(); 
         $obj_componente=  componente::find($id);
         $nombre=$obj_componente->codigo_componente;
         $obj_componente->delete();
         $obj_controller_bitacora->create_mensaje('Componente eliminado:'.$nombre);
         flash()->success('Componente eliminado');
-        return redirect('catalogos/buscar_componente');//->back();    
+        return redirect('catalogos/buscar_componente');    
     }
     /**
      * Display a listing of the resource.

@@ -1,6 +1,6 @@
 ﻿<!-- 
      * Nombre del archivo:nueva_carga_archivo.blade.php
-     * Descripción:Vista para recibir los archivos fuentes de datos
+     * Descripción:Formulario para recibir los datos del archivos fuentes
      * Fecha de creación:24/11/2017
      * Creado por: Juan Carlos Centeno Borja
 -->
@@ -67,7 +67,7 @@
                 </td>
               </tr>
               <tr>
-                 <td>Código archivo *</td>
+                 <td>Código indicador *</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,0,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 

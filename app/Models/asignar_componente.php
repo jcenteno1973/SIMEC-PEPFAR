@@ -12,10 +12,11 @@ use Illuminate\Database\Eloquent\Model;
 class asignar_componente extends Model
 {
    protected $table = 'asignar_componente';
-    public $timestamps = false;
-    
+   public $timestamps = false;
+   protected $fillable = [
+        'fila_archivo_fuente'
+    ];
     public static function fnc_fila($parametro) {
-        
      return asignar_componente::where('id_archivo_fuente','=',$parametro)
              ->get();
     }

@@ -187,9 +187,7 @@ class ArchivoDatosController extends Controller
          $errors='No se puede cargar el archivo: '.$_FILES['file']['name'];
          flash()->error($errors);
          return redirect()->back();
-       } 
-       else
-       {
+       } else{
         if($ext!="xls" && $ext!="xlsx"){ 
          $obj_controller_bitacora->create_mensaje('Tipo archivo erroneo: '.$_FILES['file']['name']);           
          $errors='Tipo archivo erroneo: '.$_FILES['file']['name'];
@@ -247,6 +245,7 @@ class ArchivoDatosController extends Controller
        $obj_archivo_datos->id_usuario_app=Auth::user()->id_usuario_app;
        $obj_archivo_datos->id_evento_epi=$request->eventos;
        $obj_archivo_datos->nombre_archivo=$nombre_archivo;
+       $obj_archivo_datos->nombre_carga=$_FILES['file']['name'];
        $obj_archivo_datos->url_documento='storage/archivo_datos';
        $obj_archivo_datos->datos_cargados=0;
        $obj_archivo_datos->save(); 
@@ -285,6 +284,7 @@ class ArchivoDatosController extends Controller
        $results = $sheet->toArray();
        $success = true;
        $error = null;
+       $id_indicador=0;
        $pais=$results[0][1];
        if($pais==null){
           $success = false;
@@ -312,18 +312,29 @@ class ArchivoDatosController extends Controller
        $id_archivo_fuente=0;
        $id_regio_sica=0;
        $id_evento=0;
+       
        if($success){
-       $obj_region_sica = new RegionSicaController();
-       $id_regio_sica=$obj_region_sica->fnc_obtener_id($pais);
-       $objeto= new ArchivoFuenteController();
-       $obj_codigo_archivo=archivo_fuente::fnc_archivo_fuente_c($codigo);
-       $id_archivo_fuente=$obj_codigo_archivo[0]->id_archivo_fuente;
-       $obj_evento= evento_epi::fnc_evento($evento);
-       $id_evento=$obj_evento[0]->id_evento_epi;
+          $obj_region_sica = new RegionSicaController();
+          $id_regio_sica=$obj_region_sica->fnc_obtener_id($pais);
+          $objeto= new ArchivoFuenteController();
+          $obj_codigo_archivo=archivo_fuente::fnc_archivo_fuente_c($codigo);
+          if($obj_codigo_archivo->count()>0){
+             $id_archivo_fuente=$obj_codigo_archivo[0]->id_archivo_fuente;
+             $id_indicador=$obj_codigo_archivo[0]->id_indicador;
+          }else{
+              $success = false;
+              $error="El archivo no tiene el formato requerido";
+          }
+          $obj_evento= evento_epi::fnc_evento($evento);
+          if($obj_evento->count()>0){
+          $id_evento=$obj_evento[0]->id_evento_epi;    
+          }else{
+              $success = false;
+              $error="El archivo no tiene el formato requerido";
+          }
+          
        }
        $obj_archivo_datos= archivo_datos::fnc_archivo_datos($id);
-       $obj_componente=  asignar_componente::fnc_fila($obj_archivo_datos[0]->id_archivo_fuente);
-       $obj_desglose=  asignar_desglose::fnc_columnas($obj_archivo_datos[0]->id_archivo_fuente);
        //validar los datos de identificación del archivo
        if($obj_archivo_datos[0]->id_archivo_fuente==$id_archivo_fuente &&
           $obj_archivo_datos[0]->id_region_sica==$id_regio_sica &&
@@ -332,13 +343,35 @@ class ArchivoDatosController extends Controller
           $success = true;
        }else{
          $success = false;
-         $error="Los datos del encabezado no coinciden";
+         if($error==null){
+           $error="Los datos del encabezado no coinciden";    
+         }
+         
+       }
+       $obj_componente=  asignar_componente::fnc_fila($obj_archivo_datos[0]->id_archivo_fuente);
+       if($obj_componente->count()==0){
+        $success = false;
+         if($error==null){
+           $error="Asignar los componentes al archivo fuente";    
+         }else{
+           $error=$error."Asignar los componentes al archivo fuente";    
+         }   
+       }
+       $obj_desglose=  asignar_desglose::fnc_columnas($obj_archivo_datos[0]->id_archivo_fuente);
+       if($obj_desglose->count()==0){
+        $success = false;
+         if($error==null){
+           $error="Asignar los desgloses al archivo fuente";    
+         }else{
+             $error=$error."Asignar los desgloses al archivo fuente";  
+         }
+         
        }
        //Almacena los datos
         if ($success){
            //Obtener los datos del indicador
            foreach($obj_componente as $componente){
-           $obj_indicador= indicador::fnc_indicador($componente->id_componente); 
+           $obj_indicador= indicador::find($id_indicador);
            }
            foreach($obj_componente as $componente){
            foreach ($obj_desglose as $desglose){
@@ -351,7 +384,7 @@ class ArchivoDatosController extends Controller
            $obj_vigilancia->cat_id_catalogo=$desglose->cat_id_catalogo;
            $valor_vigilancia=$results[$componente->fila_archivo_fuente][$desglose->columna_archivo_fuente];
            $obj_vigilancia->valor_vigilancia_epi=$valor_vigilancia;
-           if($componente->id_componente==$obj_indicador[0]->com_id_componente){
+           if($componente->id_componente==$obj_indicador->com_id_componente){
                $valor_minimo=1;//cuando es el denominador no puede ser igual a cero
            }else{
                $valor_minimo=0;
@@ -372,14 +405,18 @@ class ArchivoDatosController extends Controller
        $obj_vigilancia= vigilancia::fnc_vigilancia($id);
        if ($success){
          foreach ($obj_vigilancia as $vigilancia){
-         if($vigilancia->id_componente == $obj_indicador[0]->id_componente){
+         if($vigilancia->id_componente == $obj_indicador->id_componente){
            $numerador=$vigilancia->valor_vigilancia_epi;
            $obj_vigilancia2= vigilancia::fnc_vigilancia($id);
            foreach ($obj_vigilancia2 as $vigilancia2){
-             if($vigilancia2->id_componente==$obj_indicador[0]->com_id_componente && $vigilancia2->id_catalogo == $vigilancia->id_catalogo && $vigilancia2->cat_id_catalogo == $vigilancia->cat_id_catalogo){
+             if($vigilancia2->id_componente==$obj_indicador->com_id_componente && $vigilancia2->id_catalogo == $vigilancia->id_catalogo && $vigilancia2->cat_id_catalogo == $vigilancia->cat_id_catalogo){
               $denominador=$vigilancia2->valor_vigilancia_epi;
-              $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador[0]->multiplicador;
-              $vigilancia2->id_indicador=$obj_indicador[0]->id_indicador;
+              if($obj_indicador->id_tipo_indicador==4){
+                $vigilancia2->valor_indicador=$numerador; 
+              }else{
+                $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador->multiplicador;  
+              }
+              $vigilancia2->id_indicador=$obj_indicador->id_indicador;
               $vigilancia2->save();
              }  
            }
@@ -390,16 +427,16 @@ class ArchivoDatosController extends Controller
        $obj_archivo_datos[0]->fecha_datos=$fecha;
        $obj_archivo_datos[0]->datos_cargados=1;
        $obj_archivo_datos[0]->save();
-       $obj_controller_bitacora->create_mensaje('Datos cargados '.$fuente);
+       $obj_controller_bitacora->create_mensaje('Datos cargados de '.$fuente);
        $success = true;
-       flash()->success('Datos cargados '.$fuente);
+       flash()->success('Datos cargados de '.$fuente);
        }
        else
        {  
        DB::table("vigilancia_epidemiologica")->where("id_archivo_datos",$id)->delete(); 
        $obj_controller_bitacora->create_mensaje('Datos no cargados '.$error);
        $success = false;
-       flash()->error('Error al cargar los datos '.$error);
+       flash()->error('Error al cargar los datos: '.$error);
        }
      });//Fin de la función de lectura de archivo excell.
      return redirect()->back(); 

@@ -100,6 +100,7 @@
 	<div class="row">
 		
 		<div class="col-md-12"><!--area de trabajo -->
+                    <strong>
                     @if (session()->has('flash_notification.message'))
                     @include ('flash::message')
                     @endif 
@@ -110,7 +111,8 @@
                           <div>{{ $error }}</div>
                       @endforeach
                     </div>
-                @endif 
+                    @endif    
+                    </strong>
 			<div class="row"><!--filtros -->
 				<div class="col-md-12">
                                     @yield('filtros_consulta') 

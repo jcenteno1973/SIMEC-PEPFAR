@@ -7,7 +7,10 @@
 @extends('plantillas.plantilla_sin_columna')
 @section('fecha_sistema')
 <p align=left>Fecha:<?=date('d/m/Y g:ia');?></p>
-@stop  
+@stop 
+@section('nombre_plantilla')
+<p ALIGN=left>inicio_cambio_contrasenia.blade.php</p>
+@stop 
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop

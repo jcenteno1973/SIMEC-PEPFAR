@@ -16,14 +16,10 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="carga/nueva_carga" class="list-group-item">Nuevo archivo fuente</a>
-    <a href="carga/buscar_carga" class="list-group-item">Buscar archivo fuente</a>
-    <a href="carga/nueva_carga" class="list-group-item">Nuevo indicador</a>
-    <a href="carga/buscar_carga" class="list-group-item">Buscar indicador</a>
-    <a href="carga/nueva_carga" class="list-group-item">Asignar componente</a>
-    <a href="carga/buscar_carga" class="list-group-item">Buscar asignacion de componente</a>
-    <a href="carga/nueva_carga" class="list-group-item">Asignar desglose</a>
-    <a href="carga/buscar_carga" class="list-group-item">Buscar asignar desglose</a>
+    <a href="{{route('configuracion/nuevo_indicador')}}" class="list-group-item">Nuevo indicador</a>
+    <a href="{{route('configuracion/buscar_indicador')}}" class="list-group-item">Buscar indicador</a>
+    <a href="{{route('configuracion')}}" class="list-group-item">Nuevo archivo fuente</a>
+    <a href="{{route('configuracion')}}" class="list-group-item">Buscar archivo fuente</a>
 </div>
 @stop
 

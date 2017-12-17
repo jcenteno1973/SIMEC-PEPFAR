@@ -23,10 +23,8 @@
     <a href="{{route('catalogos/buscar_evento')}}" class="list-group-item">Buscar evento</a>
     <a class="list-group-item active">Nuevo catalogo</a>
     <a href="{{route('catalogos/buscar_catalogo')}}" class="list-group-item">Buscar catalogo</a>
-    <a href="{{route('carga/nueva_carga')}}" class="list-group-item">Nuevo componente</a>
-    <a href="{{route('carga/buscar_carga')}}" class="list-group-item">Buscar componente</a>
-    <a href="{{route('carga/nueva_carga')}}" class="list-group-item">Nuevo indicador</a>
-    <a href="{{route('carga/buscar_carga')}}" class="list-group-item">Buscar indicador</a>
+    <a href="{{route('catalogos/nuevo_componente')}}" class="list-group-item">Nuevo componente</a>
+    <a href="{{route('catalogos/buscar_componente')}}" class="list-group-item">Buscar componente</a>
 </div>
 @stop
 @section('contenido')

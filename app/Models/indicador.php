@@ -8,9 +8,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class indicador extends Model
 {
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = 'indicador';
     protected $primaryKey = 'id_indicador';
@@ -21,7 +22,7 @@ class indicador extends Model
         'multiplicador'
     ];
     public static function fnc_indicador($parametro) {
-        
+     //Devuelve los indicadores relacionados con el componente   
      return indicador::where('id_componente','=',$parametro)
              ->get();
     }
