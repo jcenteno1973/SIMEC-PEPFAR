@@ -55,14 +55,14 @@
    {!! Form::close() !!}
     <!-- fin filtro busqueda usuario -->
     {!! Form::open(['route' => 'administracion/guardar_usuario', 'class' => 'form','method' => 'get']) !!}
-    <table class="table table-condensed">   
+    <table class="table table-striped table-bordered">   
     <thead>
       <tr>
         <th>id</th>
         <th>Código de usuario</th>
         <th>Rol</th>
         <th>Estado</th>
-        <th>Seleccionar</th> 
+        <th><center>Seleccionar</center></th> 
         
       </tr>
     </thead>
@@ -83,8 +83,10 @@
             Bloqueado
             @endif
         </td>        
-        <td> 
-            <input type="radio" name="seleccionar" onclick="myFunction(this.value)" value={{$obj_usuarios->id_usuario_app}}>
+        <td>
+        <center>
+           <input type="radio" name="seleccionar" onclick="myFunction(this.value)" value={{$obj_usuarios->id_usuario_app}}> 
+        </center>
         </td> 
        
       </tr>   

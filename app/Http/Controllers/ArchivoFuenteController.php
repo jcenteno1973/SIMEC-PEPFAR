@@ -32,6 +32,11 @@ class ArchivoFuenteController extends Controller
         $obj_codigo_archivo=archivo_fuente::fnc_archivo_fuente_c($codigo);
         return $obj_codigo_archivo->id_archivo_fuente;        
     }
+    public function fnc_buscar_af(){
+        $obj_archivo_fuente=  archivo_fuente::paginate(10);
+        return view('configuracion/buscar_archivo_fuente',
+                    compact('obj_archivo_fuente'));
+    }
 
     /**
      * Show the form for creating a new resource.

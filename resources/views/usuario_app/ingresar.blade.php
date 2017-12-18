@@ -41,7 +41,7 @@
             </div>
         <form class="form-signin" action="{{ url('usuario_app/ingresar') }}" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <table class="table table-condensed">
+        <table class="table table-bordered">
         <tr>
           <td>Código de usuario* </td>
           <td><input type="text" class="form-control" name="nombre_usuario" placeholder="Código de usuario*" required autofocus></td>

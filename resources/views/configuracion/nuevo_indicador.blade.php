@@ -21,8 +21,7 @@
 <div class="list-group">
     <a class="list-group-item active">Nuevo indicador</a>
     <a href="{{route('configuracion/buscar_indicador')}}" class="list-group-item">Buscar indicador</a>
-    <a href="{{route('configuracion')}}" class="list-group-item">Nuevo archivo fuente</a>
-    <a href="{{route('configuracion')}}" class="list-group-item">Buscar archivo fuente</a>
+    <a href="{{route('configuracion/buscar_af')}}" class="list-group-item">Buscar archivo fuente</a>
 </div>
 @stop
 @section('contenido')

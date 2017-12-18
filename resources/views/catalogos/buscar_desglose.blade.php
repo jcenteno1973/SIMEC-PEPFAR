@@ -30,7 +30,7 @@
 @section('contenido')
 <div class="panel panel-default">
    <div class="panel-body">
-    <table class="table table-condensed">
+    <table class="table table-striped table-bordered">
         <thead>
         <tr>
         <th><center>Id</center></th>

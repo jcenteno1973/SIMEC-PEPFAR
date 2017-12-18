@@ -20,5 +20,9 @@ class asignar_componente extends Model
      return asignar_componente::where('id_archivo_fuente','=',$parametro)
              ->get();
     }
+    public static function fnc_componente($parametro) {
+     return asignar_componente::where('id_componente','=',$parametro)
+             ->get();
+    }
     //
 }

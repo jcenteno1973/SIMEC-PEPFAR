@@ -14,6 +14,13 @@ use App\Http\Controllers\Controller;
 
 class AsignarDesgloseController extends Controller
 {
+    public function fnc_buscar_desglose($id){
+        dd("Ver desglose: ".$id);
+    }
+    public function fnc_show_create_desg($id){
+        dd("Nuevo desglose: ".$id);
+    }
+
     /**
      * Display a listing of the resource.
      *

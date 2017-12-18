@@ -26,7 +26,7 @@
 @section('filtros_consulta')
 {!! Form::model(Request::all(),['route' => 'carga/buscar_carga', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
 <div class="panel-collapse">
-    <table class="table table-condensed">    
+    <table class="table table-bordered">    
             <tbody>
                <tr>
                 <td>País</td>
@@ -75,7 +75,7 @@
 @section('contenido')
 <div class="panel panel-default">
    <div class="panel-body">
-    <table class="table table-condensed">
+    <table class="table table-striped table-bordered">
         <thead>
         <tr>
         <th><center>#</center></th>
