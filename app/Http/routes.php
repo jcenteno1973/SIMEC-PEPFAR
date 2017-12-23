@@ -76,34 +76,6 @@ Route::post ('configuracion/update_componente',['as'=>'configuracion/update_comp
 Route::post ('configuracion/update_desglose',['as'=>'configuracion/update_desglose','uses'=> 'AsignarDesgloseController@fnc_show_update']);
 Route::get('configuracion/eliminar_desglose_asig/{id}',['as'=>'configuracion/eliminar_desglose_asig','uses'=>'AsignarDesgloseController@fnc_eliminar_desglose']);
 
-Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );
-Route::post('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_store_inmueble'] );
-Route::get('ficha/nueva_ficha_vehiculo',['as' => 'ficha/nueva_ficha_vehiculo', 'uses' => 'fichaController@fnc_create_vehiculo'] );
-Route::post('ficha/nueva_ficha_vehiculo',['as' => 'ficha/nueva_ficha_vehiculo', 'uses' => 'fichaController@fnc_store_vehiculo'] );
-Route::get('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_create_mueble'] );
-Route::post('ficha/nueva_ficha_mueble',['as' => 'ficha/nueva_ficha_mueble', 'uses' => 'fichaController@fnc_store_mueble'] );
-Route::get('municipios/{id}','municipioController@fnc_get_municipios');
-
-
-Route::get('ficha/buscar_ficha',['as' => 'ficha/buscar_ficha', 'uses' => 'fichaController@show']);
-Route::post('ficha/buscar_ficha',['as' => 'ficha/buscar_ficha', 'uses' => 'fichaController@fnc_buscar_filtro']);
-Route::get('ficha/editar',['as' => 'ficha/editar', 'uses' => 'fichaController@update']);
-Route::post('ficha/editar_mueble',['as' => 'ficha/editar_mueble', 'uses' => 'fichaController@fnc_update_mueble']);
-Route::post('ficha/editar_inmueble',['as' => 'ficha/editar_inmueble', 'uses' => 'fichaController@fnc_update_inmueble']);
-Route::post('ficha/editar_vehiculo',['as' => 'ficha/editar_vehiculo', 'uses' => 'fichaController@fnc_update_vehiculo']);
-Route::get('ficha/seleccionar',['as' => 'ficha/seleccionar', 'uses' => 'fichaController@fnc_seleccionar']);
-Route::get('ficha/ver',['as' => 'ficha/ver', 'uses' => 'fichaController@fnc_ver_ficha']);
-Route::get('ficha/nueva_mejora',['as' => 'ficha/nueva_mejora', 'uses' => 'fichaController@fnc_create_mejora']);
-Route::post('ficha/nueva_mejora',['as' => 'ficha/nueva_mejora', 'uses' => 'fichaController@fnc_store_mejora']);
-Route::get('ficha/nuevo_revaluo',['as' => 'ficha/nuevo_revaluo', 'uses' => 'fichaController@fnc_create_revaluo']);
-Route::post('ficha/nuevo_revaluo',['as' => 'ficha/nuevo_revaluo', 'uses' => 'fichaController@fnc_store_revaluo']);
-Route::post('ficha/reporte_fichas',['as' => 'ficha/reporte_fichas', 'uses' => 'fichaController@fnc_reporte_fichas']);
-Route::post('ficha/reporte_ficha_inmueble',['as' => 'ficha/reporte_ficha_inmueble', 'uses' => 'fichaController@fnc_rep_ficha_inmueble']);
-Route::post('ficha/reporte_ficha_mueble',['as' => 'ficha/reporte_ficha_mueble', 'uses' => 'fichaController@fnc_rep_ficha_mueble']);
-Route::post('ficha/reporte_ficha_vehiculo',['as' => 'ficha/reporte_ficha_vehiculo', 'uses' => 'fichaController@fnc_rep_ficha_vehiculo']);
-Route::get('inventario',['as' => 'inventario','uses' => 'principalController@fnc_show_inventario']);
-Route::get('solicitudes',['as' => 'solicitudes','uses' => 'principalController@fnc_show_solicitudes']);
-Route::get('procesos',['as' => 'procesos','uses' => 'principalController@fnc_show_procesos']);
 
 Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
 //ya cuenta con seguridad
