@@ -1,7 +1,7 @@
 <!-- 
-     * Nombre del archivo:buscar_componente_asig.blade.php
+     * Nombre del archivo:buscar_desglose_asig.blade.php
      * Descripción:Vista para buscar los archivos fuentes de datos
-     * Fecha de creación:17/12/2017
+     * Fecha de creación:19/12/2017
      * Creado por: Juan Carlos Centeno Borja
 -->
 @extends('plantillas.plantilla_base')
@@ -9,13 +9,13 @@
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
 @section('nombre_plantilla')
-<p ALIGN=center>buscar_componente_asig.blade.php</p>
+<p ALIGN=center>buscar_desglose_asig.blade.php</p>
 @stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-<h4 class="text-center">Pantalla editar componentes asignados</h4>
+<h4 class="text-center">Pantalla editar desglose asignados</h4>
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -27,28 +27,36 @@
 @section('contenido')
 <div class="panel panel-default">
    <div class="panel-body">
-       {!! Form::open(['route' => 'configuracion/update_componente','class' => 'form']) !!}
+       {!! Form::open(['route' => 'configuracion/update_desglose','class' => 'form']) !!}
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-        <th><center></center></th>
         <th><center>Id</center></th>
-        <th><center>Componente</center></th> 
-        <th><center>Fila archivo fuente</center></th>
+        <th><center>Desglose primer nivel</center></th> 
+        <th><center>Desglose segundo nivel</center></th> 
+        <th><center>Columna archivo fuente</center></th>
         </tr>
         </thead>
         <tbody>
-             @foreach($obj_componente_asig as $obj_componente_asigs)
-            <tr> 
-                <td><center>{!! Form::hidden('id_archivo_fuente[]', $obj_componente_asigs->id_archivo_fuente,['class' => 'form-control', 'readonly' => 'true'])!!}</center></td>
-                <td><center>{!! Form::text('id_componente[]', $obj_componente_asigs->id_componente,['class' => 'form-control', 'readonly' => 'true'])!!}</center></td>
-                @foreach($obj_componente as $obj_componentes)
-                @if($obj_componente_asigs->id_componente==$obj_componentes->id_componente)
-                <td>{{$obj_componentes->descripcion_componente}}</td>
+             @foreach($obj_desglose_asig as $obj_desglose_asigs)
+            <tr>
+                <td><center>{!! Form::text('id_asignar_desglose[]', $obj_desglose_asigs->id_asignar_desglose,['class' => 'form-control', 'readonly' => 'true'])!!}</center></td>
+                @foreach($obj_catalogo as $obj_catalogos)
+                @if($obj_desglose_asigs->id_catalogo==$obj_catalogos->id_catalogo)
+                <td>{{$obj_catalogos->desglose}}</td>
                 @endif
                 @endforeach
+                @if($obj_desglose_asigs->cat_id_catalogo==null)
+                <td></td>
+                @else
+                @foreach($obj_catalogo as $obj_catalogos)
+                @if($obj_desglose_asigs->cat_id_catalogo==$obj_catalogos->id_catalogo)
+                <td>{{$obj_catalogos->desglose}}</td>
+                @endif
+                @endforeach
+                @endif
                 <td>
-                 {!! Form::number('fila[]', $obj_componente_asigs->fila_archivo_fuente)!!}
+                 {!! Form::number('columna[]', $obj_desglose_asigs->columna_archivo_fuente)!!}
                 </td>
             </tr>
            @endforeach

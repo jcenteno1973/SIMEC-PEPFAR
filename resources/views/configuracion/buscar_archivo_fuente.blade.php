@@ -59,6 +59,7 @@
         <th><center>Ver componentes</center></th>
         <th><center>Asignar desglose</center></th>
         <th><center>Ver desglose</center></th>
+        <th><center>Borrar desglose</center></th>
         </tr>
         </thead>
         <tbody>
@@ -73,6 +74,7 @@
                 </center></td>
                 <td><center><a href="{{route('configuracion/nuevo_desglose',$obj_archivo_fuentes->id_archivo_fuente)}}"  class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></center></td>
                 <td><center><a href="{{route('configuracion/buscar_desglose',$obj_archivo_fuentes->id_archivo_fuente)}}"  class="btn btn-warning"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></center></td>
+                <td><center><a href="{{route('configuracion/eliminar_desglose_asig',$obj_archivo_fuentes->id_archivo_fuente)}}"  class="btn btn-danger"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></center></td>
             </tr>
            @endforeach
         </tbody>

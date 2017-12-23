@@ -71,7 +71,7 @@
                 <td><center>   
                 <a href="{{route('configuracion/editar_indicador',$obj_indicadores->id_indicador)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>
                 </center></td>
-                <td><center><a href="{{route('configuracion/eliminar_indicador',$obj_indicadores->id_indicador)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></center></td>
+                <td><center><a href="{{route('configuracion/eliminar_indicador',$obj_indicadores->id_indicador)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></center></td>
             </tr>
            @endforeach
         </tbody>

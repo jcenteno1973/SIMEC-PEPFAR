@@ -96,7 +96,7 @@ class CatalogoController extends Controller
     }
     public function fnc_buscar_desglose($id){
         //Pantalla que muestra el desglose de un catálogo
-        $obj_catalogo= catalogo::where('cat_id_catalogo',$id)->paginate(10);
+        $obj_catalogo= catalogo::where('cat_id_catalogo',$id)->orderBy('id_catalogo')->paginate(10);
         return view('catalogos/buscar_desglose',
                 compact('obj_catalogo'));
     }

@@ -19,8 +19,6 @@ class catalogo extends Model
     public $timestamps = false;
     protected $fillable = [
         'nombre_catalogo',
-        'desglose',
-        'valor_minimo',
-        'valor_maximo'
+        'desglose'
     ];
 }

@@ -132,14 +132,23 @@ class IndicadorController extends Controller
                compact('obj_tipo_indicador','obj_componente','obj_evento_epi','obj_indicador'));
     }
     public function fnc_eliminar_indicador($id){
-        $obj_archivo_fuente=  archivo_fuente::fnc_id_archivo($id);
-        $obj_indicador= indicador::find($id);
-        foreach($obj_archivo_fuente as $obj_archivo_fuentes){
-           $obj_archivo_fuentes->delete();
+        $obj_archivo_datos=  archivo_datos::fnc_archivo_fuente($id);
+        if($obj_archivo_datos->count()>0){
+           flash()->warning('Indicador no puede ser eliminado, tiene archivo de datos asociados');
+           return redirect('configuracion/buscar_indicador'); 
+        }else{
+          $obj_archivo_fuente=  archivo_fuente::fnc_id_archivo($id);
+          $obj_indicador= indicador::find($id);
+          $nombre=$obj_indicador->codigo_indicador;
+          foreach($obj_archivo_fuente as $obj_archivo_fuentes){
+             $obj_archivo_fuentes->delete();
+           }
+          $obj_indicador->delete();
+          $obj_controller_bitacora=new bitacoraController();
+          $obj_controller_bitacora->create_mensaje('Indicador eliminado exítosamente: '.$nombre);
+          flash()->success('Indicador eliminado exítosamente');
+          return redirect('configuracion/buscar_indicador');   
         }
-        $obj_indicador->delete();
-        flash()->success('Indicador eliminado exítosamente');
-           return redirect()->back();  
     }
     public function fnc_show_update(Request $request){
         //Almacena un nuevo indicador
@@ -201,13 +210,13 @@ class IndicadorController extends Controller
                     DB::table("asignar_componente")->where("id_archivo_fuente",$obj_archivo_fuentes->id_archivo_fuente)->delete();
                   }
                   foreach($obj_archivo_dato as $obj_archivo_datos){
-                    //Eliminar archivos 
-                    $pathtoFile = '/archivo_datos/'.$obj_archivo_datos->nombre_archivo;
-                    Storage::delete($pathtoFile);
                     //eliminar datos de la tabla vigilancia_epidemiologica
                     DB::table("vigilancia_epidemiologica")->where("id_archivo_datos",$obj_archivo_datos->id_archivo_datos)->delete();
                     //eliminar datos de la tabla archivo_datos
-                    DB::table("archivo_datos")->where("id_archivo_datos",$obj_archivo_datos->id_archivo_datos)->delete();
+                    //DB::table("archivo_datos")->where("id_archivo_datos",$obj_archivo_datos->id_archivo_datos)->delete();
+                    $obj_archivo=  archivo_datos::find($obj_archivo_datos->id_archivo_datos);
+                    $obj_archivo->datos_cargados=0;
+                    $obj_datos->save();
                   }
                   //Asignar componentes
                   if($request->tipo==4){

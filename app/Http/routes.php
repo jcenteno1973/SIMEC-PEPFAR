@@ -73,6 +73,8 @@ Route::get ('configuracion/nuevo_desglose/{id}',['as'=>'configuracion/nuevo_desg
 Route::post ('configuracion/nuevo_desglose_guardar',['as'=>'configuracion/nuevo_desglose_guardar','uses'=> 'AsignarDesgloseController@fnc_show_store_desg']);
 Route::get ('configuracion/editar_componente/{id}',['as'=>'configuracion/editar_componente','uses'=> 'AsignarComponenteController@fnc_show_edit']);
 Route::post ('configuracion/update_componente',['as'=>'configuracion/update_componente','uses'=> 'AsignarComponenteController@fnc_show_update']);
+Route::post ('configuracion/update_desglose',['as'=>'configuracion/update_desglose','uses'=> 'AsignarDesgloseController@fnc_show_update']);
+Route::get('configuracion/eliminar_desglose_asig/{id}',['as'=>'configuracion/eliminar_desglose_asig','uses'=>'AsignarDesgloseController@fnc_eliminar_desglose']);
 
 Route::get('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_create_inmueble'] );
 Route::post('ficha/nueva_ficha_inmueble',['as' => 'ficha/nueva_ficha_inmueble', 'uses' => 'fichaController@fnc_store_inmueble'] );
