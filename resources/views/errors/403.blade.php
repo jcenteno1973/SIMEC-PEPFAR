@@ -7,5 +7,5 @@
 @extends('plantillas.plantilla_sin_columna')
  
 @section('contenido')
-	<h1>Usted no tiene permiso.</h1>
+	<h1>Usted no tiene permiso para ver este recurso.</h1>
 @endsection

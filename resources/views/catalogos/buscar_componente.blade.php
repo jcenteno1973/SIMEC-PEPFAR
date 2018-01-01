@@ -28,7 +28,11 @@
 </div>
 @stop
 @section('filtros_consulta')
-{!! Form::model(Request::all(),['route' => 'catalogos/buscar_componente', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+
+@stop
+@section('contenido')
+<div class="panel panel-default">
+    {!! Form::model(Request::all(),['route' => 'catalogos/buscar_componente', 'class' => 'form-row align-items-center', 'role'=>'search']) !!}
 <div class="panel-collapse">
     <table class="table table-bordered">    
             <tbody>
@@ -45,9 +49,6 @@
           </table> 
 </div>
 {!! Form::close() !!}
-@stop
-@section('contenido')
-<div class="panel panel-default">
    <div class="panel-body">
     <table class="table table-striped table-bordered">
         <thead>
@@ -75,13 +76,16 @@
            @endforeach
         </tbody>
     </table>
+       <div class="col-md-8 col-md-offset-4">
+       {!!$obj_componente->appends(Request::all())->render()!!}  
+       </div>
 </div> 
     <div class="panel-footer">
-        {!!$obj_componente->appends(Request::all())->render()!!} 
+        <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+        @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
     </div>
      <div>
-          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
+          
         </div>
 </div>
 @stop   

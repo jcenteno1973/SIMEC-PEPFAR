@@ -2,7 +2,7 @@
      * Nombre del archivo:principal.blade.php
      * Descripción:
      * Fecha de creación:28/11/2016
-     * Creado por: Yamileth Campos
+     * Creado por: Juan Carlos Centeno Borja
 -->
 @extends('plantillas.plantilla_inicio')
 @section('fecha_sistema')

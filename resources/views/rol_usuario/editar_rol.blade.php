@@ -1,15 +1,16 @@
 <!-- 
-     * Nombre del archivo:principal.blade.php
-     * Descripci�n:
-     * Fecha de creaci�n:08/12/2016
-     * Creado por: Yamileth Campos
-     *Modificado por:Juan Carlos Centeno
-     *Fecha modificación: 26/12/2016
+     * Nombre del archivo:editar_rol.blade.php
+     *  Descripción: Pantalla del modulo de reportes
+     * Fecha de creación:12/12/2016
+     * Creado por: Juan Carlos Centeno Borja 
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
+@section('nombre_plantilla')
+<p ALIGN=center>editar_rol.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
@@ -23,7 +24,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a class="list-group-item active">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
+    <a href="../administracion/consultar_archivo_datos" class="list-group-item">Consultar archivos</a>
 </div>
 @stop
 @section('contenido')

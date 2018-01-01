@@ -191,8 +191,6 @@ class usuario_appController extends Controller
            $obj_usuario->estado_usuario=1;
            $obj_controller_bitacora->create_mensaje('Activar usuario: '.$obj_usuario->nombre_usuario);
         }
-        $obj_usuario->id_usuario_modifica=Auth::user()->id_usuario_app;
-        $obj_usuario->ip_dispositivo=$request->ip();
         $obj_usuario->save(); 
         flash()->success('Estado ha cambiado exitosamente');
        }
@@ -236,10 +234,8 @@ class usuario_appController extends Controller
         $usuario->password=  bcrypt($request->password);        
         $usuario->cambiar_contrasenia=1;
         $usuario->fecha_validez_contrasenia=$date->addMonth(3);
-        $usuario->id_usuario_modifica=Auth::user()->id_usuario_app;
-        $usuario->ip_dispositivo=$request->ip();
         $usuario->save();
-         $obj_controller_bitacora=new bitacoraController();
+        $obj_controller_bitacora=new bitacoraController();
         $obj_controller_bitacora->create_mensaje('cambio de contraseña de usuario: '.$usuario->nombre_usuario);
         flash()->success('Cambio de contraseña realizado exitosamente');
         return  redirect()->back(); 

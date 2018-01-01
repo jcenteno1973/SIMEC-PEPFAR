@@ -26,6 +26,7 @@ use App\Http\Controllers\bitacoraController;
 use App\Http\Controllers\RegionSicaController;
 use App\Http\Controllers\ArchivoFuenteController;
 use Excel;
+use JasperPHP\JasperPHP;
 
 class ArchivoDatosController extends Controller
 {
@@ -70,6 +71,31 @@ class ArchivoDatosController extends Controller
     {
         //
     }
+    public function fnc_show_parametros(){
+        //Abre el formulario de parametros
+        return view('carga_datos/reporte_archivo_datos');
+    }
+    public function fnc_show_consultar_archivos(Request $request){
+    //Generar reporte de archivos cargados
+    $obj_controller_bitacora=new bitacoraController();
+    $fecha_inicio=Carbon::createFromFormat('d/m/Y', $request->fecha_inicio);
+    $fecha_fin=Carbon::createFromFormat('d/m/Y', $request->fecha_fin);
+    //$fecha_fin->addDay();    
+    $reporte_generado='/reportes_jasper/'.time().'_archivo_datos';//time le aggrega un número generado por la hora
+    $obj_controller_bitacora->create_mensaje('Generar reporte: Archivo datos');
+    $output = public_path() .$reporte_generado; 
+    $report = new JasperPHP;
+    $report->process(
+    public_path() . '/reportes_jasper/archivo_datos.jrxml', 
+    $output, 
+    array('pdf'),//, 'rtf', 'html'),
+    array('fecha_inicio' =>$fecha_inicio->toDateString(),'fecha_fin'=>$fecha_fin->toDateString()),
+    config('conexion_report.conexion')
+    )->execute();
+    $reporte_generado='..'.$reporte_generado.'.pdf';    
+    return view('carga_datos/consultar_archivo_datos',compact('reporte_generado'));
+    }
+
     public function fnc_show_create(){
         /*
          * Formulario para nueva carga de archivo de datos
@@ -98,6 +124,7 @@ class ArchivoDatosController extends Controller
                 compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos'));
     }
     public function fnc_show_update(Request $request){
+        //Realiza la modificación en la base de datos
         $obj_controller_bitacora=new bitacoraController();
         $error = null;
         $date = Carbon::now();
@@ -141,44 +168,49 @@ class ArchivoDatosController extends Controller
     flash()->error('Error al modificar los datos'.$error);
     return redirect()->back();   
     }
-    public function fnc_filtro_buscar_carga(){
-        //Busqueda con filtro de region sica
-        if(Auth::user()->role_id==1){
-         $obj_archivo_datos= archivo_datos::paginate(10);
-        }else{
-         $obj_archivo_datos= archivo_datos::where('id_region_sica', '=',Auth::user()->id_region_sica)->paginate(10);   
-        }
-        $obj_region_sica=  region_sica::all();
-        $obj_anio = anio_notificacion::all();
-        $obj_evento_epi_total=  evento_epi::all();
-        $obj_archivo_fuente_total=  archivo_fuente::all();
-        $obj_evento_epi=  evento_epi::lists('nombre_evento','id_evento_epi');
-        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(1);
-        $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
-        return view('carga_datos/buscar_carga',
-                compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos','obj_evento_epi_total','obj_archivo_fuente_total'));
-    }
+    
      public function fnc_filtros_buscar_carga(Request $request){
         //Busqueda con filtros
         $obj_region_sica = new RegionSicaController();
-        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica); 
+        if($request->region_sica==null){
+          $request->anio_notificacion=2015;
+          $request->eventos=0;
+          $request->codigos=0;
         if(Auth::user()->role_id==1){
-         $obj_archivo_datos= archivo_datos::id_region_sica($id_regio_sica)->id_anio_notificacion($request->anio_notificacion)->id_archivo_fuente($request->codigos)->paginate(10);
+         $id_region_sica=1;
         }else{
-         $obj_archivo_datos= archivo_datos::where('id_region_sica', '=',Auth::user()->id_region_sica)->id_anio_notificacion($request->anio_notificacion)->id_archivo_fuente($request->codigos)->paginate(10);   
+         $id_region_sica=Auth::user()->id_region_sica;
+          }  
+        }else{
+          $id_region_sica=$obj_region_sica->fnc_obtener_id($request->region_sica);  
+        }
+        if($request->codigos==0){
+            if(Auth::user()->role_id==1){
+              $obj_archivo_datos= archivo_datos::id_region_sica($id_region_sica)->id_anio_notificacion($request->anio_notificacion)->orderBy('id_archivo_datos','desc')->paginate(10);
+            }else{
+              $obj_archivo_datos= archivo_datos::id_region_sica(Auth::user()->id_region_sica)->id_anio_notificacion($request->anio_notificacion)->orderBy('id_archivo_datos','desc')->paginate(10);   
+            }
+        }else{
+          if(Auth::user()->role_id==1){
+           $obj_archivo_datos= archivo_datos::id_region_sica($id_region_sica)->id_anio_notificacion($request->anio_notificacion)->id_archivo_fuente($request->codigos)->orderBy('id_archivo_datos','desc')->paginate(10);
+          }else{
+            $obj_archivo_datos= archivo_datos::id_region_sica(Auth::user()->id_region_sica)->id_anio_notificacion($request->anio_notificacion)->id_archivo_fuente($request->codigos)->orderBy('id_archivo_datos','desc')->paginate(10);   
+          }  
         }
         $obj_region_sica=  region_sica::all();
         $obj_anio = anio_notificacion::all();
         $obj_evento_epi_total=  evento_epi::all();
         $obj_archivo_fuente_total=  archivo_fuente::all();
-        $obj_evento_epi=  evento_epi::lists('nombre_evento','id_evento_epi');
-        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(1);
+        $obj_evento_epi= evento_epi::lists('nombre_evento','id_evento_epi');
+        $obj_evento_epi[0]="Seleccionar"; 
+        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes($request->eventos);
         $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
-        return view('carga_datos/buscar_carga',
-                compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos','obj_evento_epi_total','obj_archivo_fuente_total'));
+        $codigo_archivo[0]="Seleccionar";
+        return view('carga_datos/buscar_carga_filtro',
+                compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos','obj_evento_epi_total','obj_archivo_fuente_total','request','id_region_sica'));
     }
     public function fnc_show_store(Request $request){
-        //Guarda en la base de datos y en el servidor el archivo
+        //Guarda en la base de datos y el archivo de datos
         $file = $request->file('file');
         $obj_controller_bitacora=new bitacoraController();
         $ext=strtolower($file->getClientOriginalExtension());
@@ -234,7 +266,6 @@ class ArchivoDatosController extends Controller
        $file = $request->file('file');
        //obtenemos el nombre del archivo
        $nombre = $file->getClientOriginalName();
-       //$ext = end((explode(".", $nombre)));
        $ext=strtolower($file->getClientOriginalExtension());
        $nombre_archivo=time().'.'.$ext; 
        //indicamos que queremos guardar un nuevo archivo en el disco local
@@ -345,7 +376,9 @@ class ArchivoDatosController extends Controller
          $success = false;
          if($error==null){
            $error="Los datos del encabezado no coinciden";    
-         }
+         }else{
+           $error=$error.", Los datos del encabezado no coinciden";    
+         }  
          
        }
        $obj_componente=  asignar_componente::fnc_fila($obj_archivo_datos[0]->id_archivo_fuente);
@@ -354,7 +387,7 @@ class ArchivoDatosController extends Controller
          if($error==null){
            $error="Asignar los componentes al archivo fuente";    
          }else{
-           $error=$error."Asignar los componentes al archivo fuente";    
+           $error=$error.", Asignar los componentes al archivo fuente";    
          }   
        }
        $obj_desglose=  asignar_desglose::fnc_columnas($obj_archivo_datos[0]->id_archivo_fuente);
@@ -363,7 +396,7 @@ class ArchivoDatosController extends Controller
          if($error==null){
            $error="Asignar los desgloses al archivo fuente";    
          }else{
-             $error=$error."Asignar los desgloses al archivo fuente";  
+             $error=$error.", Asignar los desgloses al archivo fuente";  
          }
          
        }
@@ -405,22 +438,26 @@ class ArchivoDatosController extends Controller
        $obj_vigilancia= vigilancia::fnc_vigilancia($id);
        if ($success){
          foreach ($obj_vigilancia as $vigilancia){
-         if($vigilancia->id_componente == $obj_indicador->id_componente){
-           $numerador=$vigilancia->valor_vigilancia_epi;
-           $obj_vigilancia2= vigilancia::fnc_vigilancia($id);
-           foreach ($obj_vigilancia2 as $vigilancia2){
-             if($vigilancia2->id_componente==$obj_indicador->com_id_componente && $vigilancia2->id_catalogo == $vigilancia->id_catalogo && $vigilancia2->cat_id_catalogo == $vigilancia->cat_id_catalogo){
-              $denominador=$vigilancia2->valor_vigilancia_epi;
-              if($obj_indicador->id_tipo_indicador==4){
-                $vigilancia2->valor_indicador=$numerador; 
+         if($obj_indicador->id_tipo_indicador==4){
+                $vigilancia->valor_indicador=$vigilancia->valor_vigilancia_epi;
+                $vigilancia->id_indicador=$obj_indicador->id_indicador;
+                $vigilancia->save();
               }else{
-                $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador->multiplicador;  
-              }
-              $vigilancia2->id_indicador=$obj_indicador->id_indicador;
-              $vigilancia2->save();
-             }  
+                 if($vigilancia->id_componente == $obj_indicador->id_componente){
+                  $numerador=$vigilancia->valor_vigilancia_epi;
+                  $obj_vigilancia2= vigilancia::fnc_vigilancia($id);
+                  foreach ($obj_vigilancia2 as $vigilancia2){
+                   if($vigilancia2->id_componente==$obj_indicador->com_id_componente && 
+                    $vigilancia2->id_catalogo == $vigilancia->id_catalogo && 
+                    $vigilancia2->cat_id_catalogo == $vigilancia->cat_id_catalogo){                 
+                    $denominador=$vigilancia2->valor_vigilancia_epi;
+                    $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador->multiplicador; 
+                    $vigilancia2->id_indicador=$obj_indicador->id_indicador;
+                    $vigilancia2->save();
+             }
            }
-         }  
+         } 
+        } 
        } 
        
        $obj_archivo_datos[0]->fuente_datos=$fuente;

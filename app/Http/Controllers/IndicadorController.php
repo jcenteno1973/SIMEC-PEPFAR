@@ -33,8 +33,10 @@ class IndicadorController extends Controller
        $obj_componente[0]='Seleccionar';
        $obj_tipo_indicador= tipo_indicador::lists('nombre_tipo_indicador','id_tipo_indicador');
        $obj_tipo_indicador[0]='Seleccionar';
+       $aleatorio=time();
+       $obj_datos=  evento_epi::all();
        return view('configuracion/nuevo_indicador',
-               compact('obj_tipo_indicador','obj_componente','obj_evento_epi'));
+               compact('obj_tipo_indicador','obj_componente','obj_evento_epi','aleatorio','obj_datos'));
     }
     public function fnc_show_store(Request $request){
         //Almacena un nuevo indicador

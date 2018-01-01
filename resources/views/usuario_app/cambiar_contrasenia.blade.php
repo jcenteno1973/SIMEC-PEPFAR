@@ -1,18 +1,16 @@
 <!-- 
      * Nombre del archivo:cambiar_contrasenia.blade.php
-     * Descripción: Pantalla para cambiar contrasenia
+     * Descripción: Formulario para cambiar contrasenia
      * Fecha de creación:1/12/2016
-     * Creado por: Karla Barrera
-
-
-     * Fecha modificacion:8/12/2016
-     * Modificado por: Yamileth Campos
-     * Descripcion: cambio en botones
+     * Creado por:Juan Carlos Centeno Borja
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p align=left>Fecha:<?=date('d/m/Y g:ia');?></p>
-@stop  
+@stop
+@section('nombre_plantilla')
+<p ALIGN=center>cambiar_contrasenia.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
@@ -26,7 +24,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Catalogos</a>
+    <a href="../administracion/consultar_archivo_datos" class="list-group-item">Consultar archivos</a>
 </div>
 @stop
 @section('contenido')

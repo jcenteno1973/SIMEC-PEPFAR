@@ -30,7 +30,7 @@ class bitacoraController extends Controller
       return view('bitacora/get_parametros');  
     }
     public function fnc_show_consultar_bitacora(Request $request) {
-        
+    //Genera el reporte de bitacora
     if($request->nombre_usuario=='')
     {
     $fecha_inicio=Carbon::createFromFormat('d/m/Y', $request->fecha_inicio);
@@ -95,6 +95,7 @@ public function create_mensaje($mensajes)
        $obj_bitacora->id_usuario_app=Auth::user()->id_usuario_app;
        $obj_bitacora->fecha_hora_transaccion=$fecha_hora;
        $obj_bitacora->transaccion_realizada=$mensajes;
+       $obj_bitacora->ip_dispositivo=\Request::ip();
        $obj_bitacora->save();
     }
     /**

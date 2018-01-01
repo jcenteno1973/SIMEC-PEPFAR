@@ -13,14 +13,10 @@
 @stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
-@stop 
-
-@section('nombre_pantalla')
-<h4 class="text-center"></h4>
-@stop 
+@stop
 @section('contenido')
 <div class="panel panel-default">
-    <br><br>
+    <div class="panel panel-body">
         <div class="container text-center">
             <table class="table">             
                 <center>
@@ -29,6 +25,7 @@
                 </center>
             </table>
         </div>
-    <br><br><br><br>
+     </div>
+    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017, UES/FIA/EISI</h5></div> 	
 </div>
 @stop

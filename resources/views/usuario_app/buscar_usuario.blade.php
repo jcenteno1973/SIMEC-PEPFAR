@@ -1,6 +1,6 @@
 <!-- 
      * Nombre del archivo:buscar_usuario.blade.php
-     * Descripcion:
+     * Descripcion:Busqueda de usuarios
      * Fecha de creacion:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
 -->
@@ -15,7 +15,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-  <h4 class="text-center">Pantalla Buscar usuario</h4>    
+  <h4 class="text-center">Pantalla buscar usuario</h4>    
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -24,41 +24,49 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Consultar documentos</a>
+    <a href="../administracion/consultar_archivo_datos" class="list-group-item">Consultar archivos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    <div class="panel-body">
-    <!-- filtro busqueda de usuario, los "&nbsp; son espacios"-->
-        {!! Form::open(['route' => 'administracion/buscar_usuario', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
-        
-                <div class="form-group" >
-                    Código de usuario
-                  {!!Form::text('nombre_usuario',null,['class'=>'form-control', 'placeholder'=>'Código de usuario'])!!}
-                  &nbsp;&nbsp;Roles
-                </div>
-                 <select name="rol_usuario" class="form-control" >
+     {!! Form::open(['route' => 'administracion/buscar_usuario', 'class' => 'form-row align-items-center', 'role'=>'search']) !!}
+    <div class="panel-collapse">
+        <!-- filtro busqueda de usuario, los "&nbsp; son espacios"-->
+        <table class="table table-bordered">    
+            <tbody>
+               <tr>
+                 <td>Código de usuario</td>
+                <td>
+                    <input type="text" class="form-control" name="nombre_usuario" >
+                </td>
+               <td>Roles</td>
+                <td>
+                    <select name="rol_usuario" class="form-control" >
                      <option> </option>
                         @foreach($obj_role as $obj_roles)
                         <option>{{$obj_roles->nombre_rol}}</option>
                         @endforeach
                  </select>
-                &nbsp;&nbsp; &nbsp;
-                <div class="checkbox">
-                    <label>
-                    <input type="checkbox" name="estado_usuario" id="estado_usuario" value="1" checked>                     
-                     Activo
-                    </label>
-                  </div>
-                &nbsp;&nbsp;<button type="submit" class="btn btn-default"> Buscar</button>
-   {!! Form::close() !!}
+                </td>
+                <td>
+                  <input type="checkbox" name="estado_usuario" id="estado_usuario" value="1" checked>                     
+                     Activo  
+                </td>
+                <td>
+                   <button type="submit" class="btn btn-default"> Buscar</button> 
+                </td>
+              </tr>
+            </tbody>
+          </table> 
+    </div>
+     {!! Form::close() !!}
     <!-- fin filtro busqueda usuario -->
+    <div class="panel-body">
     {!! Form::open(['route' => 'administracion/guardar_usuario', 'class' => 'form','method' => 'get']) !!}
     <table class="table table-striped table-bordered">   
     <thead>
       <tr>
-        <th>id</th>
+        <th>Id</th>
         <th>Código de usuario</th>
         <th>Rol</th>
         <th>Estado</th>
@@ -93,13 +101,14 @@
    @endforeach   
     </tbody>   
   </table> 
-   
-    <div>
+   <div class="col-md-8 col-md-offset-4">
+       {!!$obj_usuario->render()!!}
+       </div>
+    </div>
+    <div class="panel-footer">
+        
        <table class="table table-condensed">
         <tr>
-            <td>
-                {!!$obj_usuario->render()!!}
-            </td>
           <td>
                {!! Form::submit('Editar',['class'=>'btn btn-primary'])!!}               
                {!! Form::close() !!} 
@@ -125,8 +134,7 @@
               <!--FIN Boton de ayuda-->             
           </td>
         </tr>        
-        </table> 
-    </div> 
+        </table>   
     </div>
 </div>
 <script>

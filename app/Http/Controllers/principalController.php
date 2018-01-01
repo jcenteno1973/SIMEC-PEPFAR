@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\evento_epi;
+use App\Models\archivo_fuente;
 
 class principalController extends Controller
 {
@@ -38,8 +40,15 @@ class principalController extends Controller
     }
     
     public function fnc_show_reportes(){
-       
-        return view('reportes_inicio');
+       //Formulario de parametro de reportes
+        $obj_evento_epi=  evento_epi::lists('nombre_evento','id_evento_epi');
+        $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes(0);
+        $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
+        $codigo_archivo[0]='Seleccionar';
+        $obj_evento_epi[0]='Seleccionar';
+        $descripcion_archivo=  archivo_fuente::all();
+        return view('reportes_inicio', 
+                compact('obj_evento_epi','codigo_archivo','descripcion_archivo'));
     }
      public function fnc_show_administracion() {
        

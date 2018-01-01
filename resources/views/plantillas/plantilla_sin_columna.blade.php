@@ -17,6 +17,7 @@
         {!! Html::style('assets/css/bootstrap.min.css') !!}
         {!! Html::style('assets/css/carga.css') !!}
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/scripts.js')}}"></script>
         <script type="text/javascript">
@@ -156,9 +157,6 @@
 		@endif		
     </div>
 	<div class="row"><!--pie de pagina -->
-		<div class="col-md-12">
-		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017,UES/FIA/EISI</h5></div>
-		</div>
 	</div>
 	</div>
  

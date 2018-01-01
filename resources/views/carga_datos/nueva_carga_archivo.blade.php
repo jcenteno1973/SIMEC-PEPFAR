@@ -95,8 +95,7 @@
           <p>* Campo requerido</p>   
         </div>
     </div>
-    {!! Form::close() !!}        
-  
+    {!! Form::close() !!}
 </div>
 @stop   
 

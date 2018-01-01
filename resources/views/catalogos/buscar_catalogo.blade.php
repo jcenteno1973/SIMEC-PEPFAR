@@ -28,7 +28,11 @@
 </div>
 @stop
 @section('filtros_consulta')
-{!! Form::model(Request::all(),['route' => 'catalogos/buscar_catalogo', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+
+@stop
+@section('contenido')
+<div class="panel panel-default">
+    {!! Form::model(Request::all(),['route' => 'catalogos/buscar_catalogo', 'class' => 'form-row align-items-center', 'role'=>'search']) !!}
 <div class="panel-collapse">
     <table class="table table-bordered">    
             <tbody>
@@ -45,9 +49,6 @@
           </table> 
 </div>
 {!! Form::close() !!}
-@stop
-@section('contenido')
-<div class="panel panel-default">
    <div class="panel-body">
     <table class="table table-striped table-bordered">
         <thead>
@@ -75,20 +76,21 @@
                 <a href="{{route('catalogos/editar_catalogo',$obj_catalogos->id_catalogo)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>
                 </center></td>
                 <td><center>
-                <a href="{{route('catalogos/eliminar_catalogo',$obj_catalogos->id_catalogo)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                <a href="{{route('catalogos/eliminar_catalogo',$obj_catalogos->id_catalogo)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a>
                 </center></td>
             </tr>
            @endforeach
         </tbody>
     </table>
+       <div class="col-md-8 col-md-offset-4">
+        {!!$obj_catalogo->appends(Request::all())->render()!!}  
+       </div>
 </div> 
     <div class="panel-footer">
-        {!!$obj_catalogo->appends(Request::all())->render()!!} 
+         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')
     </div>
-     <div>
-          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
-        </div>
+     
 </div>
 @stop   
 

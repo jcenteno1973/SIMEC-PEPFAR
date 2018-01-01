@@ -33,13 +33,13 @@
                <tr>
                 <td>Evento *</td>
                 <td> 
-                    {!! Form::select('eventos',$obj_evento_epi,0,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
+                    {!! Form::select('eventos',$obj_evento_epi,0,['id'=>'eventos','class' => 'form-control','required' => 'required','onchange'=>'fnc_cambio_evento(this.value)']) !!}
                 </td>
               </tr>
                <tr>
                   <td>Código indicador *</td>
                   <td>
-                      <input type="text" class="form-control" name="codigo" required="true">                      
+                      {!! Form::text('codigo',null,['class' => 'form-control' , 'id'=>'resultado','readonly'=>'readonly']) !!}
                   </td>  
               </tr>
                <tr>
@@ -92,5 +92,16 @@
     {!! Form::close() !!}        
   
 </div>
+<script>
+function fnc_cambio_evento(eventos) {
+    document.getElementById("resultado").value="";
+    <?php foreach($obj_datos as $descripcion_archivos){ ?>
+    if(eventos=={{ $descripcion_archivos->id_evento_epi }})
+    {
+    document.getElementById("resultado").value="{{ $descripcion_archivos->codigo_evento }}"+"-"+"{{$aleatorio}}" 
+    }
+    <?php } ?>
+}   
+</script>
 @stop   
 

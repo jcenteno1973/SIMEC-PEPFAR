@@ -1,6 +1,6 @@
 <!-- 
-     * Nombre del archivo:principal.blade.php
-     * Descripción:
+     * Nombre del archivo:editar_usuario.blade.php
+     * Descripción:Formulario para editar el usuario
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
 -->
@@ -10,6 +10,9 @@
 @stop 
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
+@stop
+@section('nombre_plantilla')
+<p ALIGN=center>editar_usuario.blade.php</p>
 @stop
 @section('nombre_pantalla')
 <h4 class="text-center">Pantalla Editar usuario</h4>
@@ -21,7 +24,7 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion" class="list-group-item">Consultar archivos</a>
+    <a href="../administracion/consultar_archivo_datos" class="list-group-item">Consultar archivos</a>
 </div>
 @stop
 @section('contenido')

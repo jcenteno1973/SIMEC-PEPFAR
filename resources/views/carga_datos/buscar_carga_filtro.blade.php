@@ -1,5 +1,5 @@
 <!-- 
-     * Nombre del archivo:buscar_carga.blade.php
+     * Nombre del archivo:buscar_carga_filtro.blade.php
      * Descripción:Vista para buscar los archivos fuentes de datos
      * Fecha de creación:25/11/2017
      * Creado por: Juan Carlos Centeno Borja
@@ -9,13 +9,13 @@
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
 @section('nombre_plantilla')
-<p ALIGN=center>buscar_carga.blade.php</p>
+<p ALIGN=center>buscar_carga_filtro.blade.php</p>
 @stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_pantalla')
-<h4 class="text-center">Pantalla buscar carga de archivo</h4>
+<h4 class="text-center">Pantalla buscar carga de archivo filtro</h4>
 @stop 
 @section('menu_lateral')
 <div class="list-group">
@@ -24,7 +24,10 @@
 </div>
 @stop
 @section('filtros_consulta')
-{!! Form::model(Request::all(),['route' => 'carga/buscar_carga', 'class' => 'navbar-form navbar-left', 'role'=>'search']) !!}
+@stop
+@section('contenido')
+<div class="panel panel-default">
+{!! Form::model(Request::all(),['route' => 'carga/buscar_carga','method'=>'POST', 'class' => 'form-row align-items-center', 'role'=>'search']) !!}
 <div class="panel-collapse">
     <table class="table table-bordered">    
             <tbody>
@@ -34,7 +37,11 @@
                     @if(Auth::user()->role_id==1)<!--Verifica si es un administrador -->
                     <select name="region_sica" class="form-control">
                         @foreach($obj_region_sica as $paises)
-                        <option>{{$paises->nombre_pais}}</option>
+                        @if($paises->id_region_sica==$id_region_sica)
+                    <option selected="true">{{$paises->nombre_pais}}</option>
+                    @else
+                         <option>{{$paises->nombre_pais}}</option>
+                    @endif
                         @endforeach                      
                    </select>
                     @else <!--No podra seleccionar país -->
@@ -51,38 +58,43 @@
                 <td>
                    <select name="anio_notificacion" class="form-control" >
                        @foreach($obj_anio as $obj_anios)
+                       @if($obj_anios->id_anio_notificacion==$request->anio_notificacion)
+                       <option selected="true">{{$obj_anios->digitos_anio}}</option>
+                       @else
                         <option>{{$obj_anios->digitos_anio}}</option>
+                       @endif 
                         @endforeach  
                    </select>
                 </td>
+                 <td>
+                   <button type="submit" class="btn btn-default"> Buscar</button> 
+                </td>
+               </tr>
+               <tr>
                  <td>Evento</td>
                 <td>
-                   {!! Form::select('eventos',$obj_evento_epi,1,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
+                   {!! Form::select('eventos',$obj_evento_epi,$request->eventos,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
                 </td>
-               <td>Código archivo</td>
+               <td>Código indicador</td>
                 <td>
-                   {!! Form::select('codigos',$codigo_archivo,1,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
+                   {!! Form::select('codigos',$codigo_archivo,$request->codigos,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 
-                <td>
-                   <button type="submit" class="btn btn-default"> Buscar</button> 
+                 <td>
                 </td>
               </tr>
             </tbody>
           </table> 
 </div>
 {!! Form::close() !!}
-@stop
-@section('contenido')
-<div class="panel panel-default">
    <div class="panel-body">
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-        <th><center>#</center></th>
+        <th><center>Id</center></th>
         <th><center>País</center></th>
         <th><center>Año</center></th>
         <th><center>Evento</center></th>
-        <th><center>Código archivo fuente</center></th>
+        <th><center>Código indicador</center></th>
         <th><center>Cargar datos</center></th>  
         <th><center>Editar</center></th>
         <th><center>Descargar archivo</center></th>
@@ -131,14 +143,14 @@
            @endforeach
         </tbody>
     </table>
+       <div class="col-md-8 col-md-offset-4">
+        {!!$obj_archivo_datos->appends(Request::only(['region_sica','anio_notificacion','eventos','codigos']))->render()!!}    
+       </div>
 </div> 
     <div class="panel-footer">
-        {!!$obj_archivo_datos->appends(Request::all())->render()!!} 
+        <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+        @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')
     </div>
-     <div>
-          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
-        </div>
 </div>
 @stop   
 

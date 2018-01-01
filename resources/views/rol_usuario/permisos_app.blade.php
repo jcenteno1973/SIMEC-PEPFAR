@@ -1,13 +1,16 @@
 <!-- 
      * Nombre del archivo:permisos_app.blade.php
-     * Descripcion:
-     * Fecha de creacion:18/12/2016
-     * Creado por: Juan Carlos Centeno Borja    
+     *  Descripción: Pantalla del modulo de reportes
+     * Fecha de creación:12/12/2016
+     * Creado por: Juan Carlos Centeno Borja 
 -->
 @extends('plantillas.plantilla_base')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
+@section('nombre_plantilla')
+<p ALIGN=center>permiso_app.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
@@ -21,37 +24,42 @@
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="../administracion/catalogos" class="list-group-item">Consultar documentos</a>
+    <a href="../administracion/consultar_archivo_datos" class="list-group-item">Consultar archivos</a>
 </div>
 @stop
 @section('contenido')
 <div class="panel panel-default">
-    <h5 class="text-center">Asignar permisos al rol {{$nombre_rol}}</h5>  
+    <div class="panel panel-heading">
+     <h5 class="text-center">Asignar permisos al rol {{$nombre_rol}}</h5>    
+    </div>
     <div class="panel-body">
         {!! Form::open(['route' => 'administracion/asignar_permiso', 'class' => 'form']) !!}
         <input type="hidden" name="nombre_rol" value={{$nombre_rol}} > 
-        <table class="table table-condensed">   
+        <table class="table table-striped table-bordered">   
     <thead>
       <tr>
-        <th>Seleccionar</th>
         <th>Nombre del permiso</th>
+        <th><center>Seleccionar</center></th>
       </tr>
     </thead>
     <tbody>        
       @foreach($obj_permiso_app as $obj_permisos_app)
       <tr>
       <td>
-       {!! Form::checkbox('permisos[]', $obj_permisos_app->id_permiso_app, in_array($obj_permisos_app->id_permiso_app, $rolePermissions) ? true : false)!!}
-              
+         {{ $obj_permisos_app->nombre_mostrar }} 
       </td>
       <td>
-         {{ $obj_permisos_app->nombre_mostrar }} 
+        <center>
+        {!! Form::checkbox('permisos[]', $obj_permisos_app->id_permiso_app, in_array($obj_permisos_app->id_permiso_app, $rolePermissions) ? true : false)!!}
+        </center>
       </td>
       </tr>   
    @endforeach   
     </tbody>   
   </table> 
   <button type="submit" class="btn btn-primary">Guardar</button> 
+  <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+  @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
   {!! Form::close() !!}
   </div>
 </div> 

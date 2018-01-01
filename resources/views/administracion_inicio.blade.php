@@ -1,6 +1,6 @@
 <!-- 
-     * Nombre del archivo:principal.blade.php
-     * Descripción:
+     * Nombre del archivo:administracion_inicio.blade.php
+     * Descripción:Pantalla del modulo de administración
      * Fecha de creación:11/12/2016
      * Creado por: 
 
@@ -9,6 +9,9 @@
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 
+@section('nombre_plantilla')
+<p ALIGN=center>administracion_inicio.blade.php</p>
+@stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
@@ -19,7 +22,7 @@
     <a href="administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
-    <a href="administracion/catalogos" class="list-group-item">Consultar documentos</a>
+    <a href="administracion/consultar_archivo_datos" class="list-group-item">Consultar archivo</a>
 </div>
 @stop
 @section('contenido')

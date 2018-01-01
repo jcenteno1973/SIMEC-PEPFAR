@@ -48,19 +48,18 @@
                 <a href="{{route('catalogos/editar_desglose',$obj_catalogos->id_catalogo)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>
                 </center></td>
                 <td><center>
-                <a href="{{route('catalogos/eliminar_desglose',$obj_catalogos->id_catalogo)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                <a href="{{route('catalogos/eliminar_desglose',$obj_catalogos->id_catalogo)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a>
                 </center></td>
             </tr>
            @endforeach
         </tbody>
     </table>
+       {!!$obj_catalogo->appends(Request::all())->render()!!} 
 </div> 
     <div class="panel-footer">
-        {!!$obj_catalogo->appends(Request::all())->render()!!} 
+        <a href="{{route('catalogos/buscar_catalogo')}}" class="btn btn-primary"> Regresar</a>
+        @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')  
     </div>
-     <div>
-          <a href="{{route('catalogos/buscar_catalogo')}}" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
-        </div>
+     
 </div>
 @stop   

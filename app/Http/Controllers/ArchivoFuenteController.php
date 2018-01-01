@@ -26,8 +26,11 @@ class ArchivoFuenteController extends Controller
     }
     public function fnc_get_codigo($id) {
         $obj_codigo_archivo= archivo_fuente::fnc_archivo_fuentes($id);
-        return $obj_codigo_archivo->lists('codigo_archivo_fuente','id_archivo_fuente');         
+        $codigo_archivo=$obj_codigo_archivo->lists('codigo_archivo_fuente','id_archivo_fuente'); 
+        $codigo_archivo[0]='Seleccionar';
+        return $codigo_archivo;         
     }
+    
     public function fnc_get_id($codigo){
         $obj_codigo_archivo=archivo_fuente::fnc_archivo_fuente_c($codigo);
         return $obj_codigo_archivo->id_archivo_fuente;        

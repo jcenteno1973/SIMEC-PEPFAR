@@ -137,6 +137,7 @@
 			</div>
 			<div class="row"><!--botones -->
 				<div class="col-md-12">
+                                    
                                     @yield('botones') 
 				
 				</div>
