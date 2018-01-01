@@ -39,11 +39,12 @@
                <tr>
                  <td>Código evento</td>
                 <td>
-                   <input type="text" class="form-control" name="codigo" maxlength="20"  required>
+                    <input type="hidden" value="1" class="form-control" name="bandera">
+                    <input type="text" value="{{$request->codigo}}" class="form-control" name="codigo" maxlength="20" >
                 </td>
                <td>Nombre evento</td>
                 <td>
-                   <input type="text" class="form-control" name="nombre" maxlength="35" required> 
+                   <input type="text" value="{{$request->nombre}}" class="form-control" name="nombre" maxlength="35" > 
                 </td> 
                 <td>
                    <button type="submit" class="btn btn-default"> Buscar</button> 
@@ -87,7 +88,7 @@
        </div>
 </div> 
     <div class="panel-footer">
-        <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+        <a href="{{route('catalogos/buscar_evento')}}" class="btn btn-primary"> Regresar</a>
           @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
     </div>
      

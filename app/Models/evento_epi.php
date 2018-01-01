@@ -29,4 +29,12 @@ class evento_epi extends Model
      public function archivo_fuentes() {
          return $this->hasMany('archivo_fuente');
      }
+     public function scopeCodigo_evento($query,$codigo) {
+        
+        $query->where('codigo_evento',"LIKE",'%'.$codigo.'%');
+    }
+    public function scopeNombre_evento($query,$nombre) {
+        
+        $query->where('nombre_evento',"LIKE",'%'.$nombre.'%');
+    }
 }

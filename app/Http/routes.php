@@ -44,6 +44,7 @@ Route::get('catalogos/eliminar_componente/{id}',['as'=>'catalogos/eliminar_compo
 Route::get ('catalogos/nuevo_evento',['as'=>'catalogos/nuevo_evento','uses'=> 'EventoEpiController@fnc_show_create']);
 Route::post ('catalogos/nuevo_evento',['as'=>'catalogos/nuevo_evento','uses'=> 'EventoEpiController@fnc_show_store']);
 Route::get ('catalogos/buscar_evento',['as'=>'catalogos/buscar_evento','uses'=> 'EventoEpiController@fnc_buscar_evento']);
+Route::post ('catalogos/buscar_evento',['as'=>'catalogos/buscar_evento','uses'=> 'EventoEpiController@fnc_buscar_evento']);
 Route::get ('catalogos/editar_evento/{id}',['as'=>'catalogos/editar_evento','uses'=> 'EventoEpiController@fnc_show_edit']);
 Route::post ('catalogos/update_evento',['as'=>'catalogos/update_evento','uses'=> 'EventoEpiController@fnc_show_update']);
 Route::get('catalogos/eliminar/{id}',['as'=>'catalogos/eliminar','uses'=>'EventoEpiController@fnc_eliminar_evento']);

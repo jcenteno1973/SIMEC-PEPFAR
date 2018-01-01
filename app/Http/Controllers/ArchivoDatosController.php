@@ -170,7 +170,7 @@ class ArchivoDatosController extends Controller
     }
     
      public function fnc_filtros_buscar_carga(Request $request){
-        //Busqueda con filtros
+        //Busqueda con filtros de archivos de datos
         $obj_region_sica = new RegionSicaController();
         if($request->region_sica==null){
           $request->anio_notificacion=2015;

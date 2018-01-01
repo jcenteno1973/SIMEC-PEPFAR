@@ -61,11 +61,28 @@ class EventoEpiController extends Controller
           return redirect()->back();  
         }
     }
-    public function fnc_buscar_evento(){
-        //
-        $obj_evento_epi= evento_epi::paginate(10);
+    public function fnc_buscar_evento(Request $request){
+        //Busqueda con filtro de eventos
+       if($request->bandera==null){
+         $obj_evento_epi= evento_epi::orderby('nombre_evento')->paginate(10);  
+       }else{
+         if($request->codigo=="" && $request->nombre==""){
+           flash()->warning('Introducir al menos un criterio de busqueda');
+           return redirect()->back();  
+         }else{
+             if($request->codigo!="" && $request->nombre!=""){
+              $obj_evento_epi= evento_epi::codigo_evento($request->codigo)->nombre_evento($request->nombre)->orderby('nombre_evento')->paginate(10); 
+             }else{
+               if($request->nombre==""){
+               $obj_evento_epi= evento_epi::codigo_evento($request->codigo)->orderby('nombre_evento')->paginate(10);  
+             } else{
+                $obj_evento_epi= evento_epi::nombre_evento($request->nombre)->orderby('nombre_evento')->paginate(10);  
+             } 
+             }
+         }
+       }
         return view('catalogos/buscar_evento',
-                compact('obj_evento_epi'));
+                compact('obj_evento_epi','request'));
     }
     public function fnc_eliminar_evento($id){
         //Eliminar registro
