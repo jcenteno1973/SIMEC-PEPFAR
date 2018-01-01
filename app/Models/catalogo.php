@@ -21,4 +21,8 @@ class catalogo extends Model
         'nombre_catalogo',
         'desglose'
     ];
+    public function scopeNombre_catalogo($query,$nombre) {
+        //Filtro busqueda por nombre del catalogo
+        $query->where('nombre_catalogo',"LIKE",'%'.$nombre.'%');
+    }
 }

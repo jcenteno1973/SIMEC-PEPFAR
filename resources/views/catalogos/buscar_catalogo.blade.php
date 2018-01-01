@@ -39,7 +39,7 @@
                <tr>
                <td>Nombre catálogo</td>
                 <td>
-                   <input type="text" class="form-control" name="nombre" maxlength="35" required> 
+                    <input type="text" value="{{$request->nombre}}" class="form-control" name="nombre" maxlength="35" required> 
                 </td> 
                 <td>
                    <button type="submit" class="btn btn-default"> Buscar</button> 
@@ -87,7 +87,7 @@
        </div>
 </div> 
     <div class="panel-footer">
-         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+         <a href="{{route('catalogos/buscar_catalogo')}}" class="btn btn-primary"> Regresar</a>
           @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')
     </div>
      

@@ -30,11 +30,11 @@ class evento_epi extends Model
          return $this->hasMany('archivo_fuente');
      }
      public function scopeCodigo_evento($query,$codigo) {
-        
+        //Filtro busqueda por código de evento
         $query->where('codigo_evento',"LIKE",'%'.$codigo.'%');
     }
     public function scopeNombre_evento($query,$nombre) {
-        
+        //Filtro busqueda por nombre del evento
         $query->where('nombre_evento',"LIKE",'%'.$nombre.'%');
     }
 }

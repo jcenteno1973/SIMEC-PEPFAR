@@ -57,6 +57,7 @@ Route::post ('catalogos/nuevo_desglose_guardar',['as'=>'catalogos/nuevo_desglose
 Route::get ('catalogos/nuevo_catalogo',['as'=>'catalogos/nuevo_catalogo','uses'=> 'CatalogoController@fnc_show_create']);
 Route::post ('catalogos/nuevo_catalogo',['as'=>'catalogos/nuevo_catalogo','uses'=> 'CatalogoController@fnc_show_store']);
 Route::get ('catalogos/buscar_catalogo',['as'=>'catalogos/buscar_catalogo','uses'=> 'CatalogoController@fnc_buscar_catalogo']);
+Route::post ('catalogos/buscar_catalogo',['as'=>'catalogos/buscar_catalogo','uses'=> 'CatalogoController@fnc_buscar_catalogo']);
 Route::get ('catalogos/editar_catalogo/{id}',['as'=>'catalogos/editar_catalogo','uses'=> 'CatalogoController@fnc_show_edit']);
 Route::post ('catalogos/update_catalogo',['as'=>'catalogos/update_catalogo','uses'=> 'CatalogoController@fnc_show_update']);
 Route::get('catalogos/eliminar_catalogo/{id}',['as'=>'catalogos/eliminar_catalogo','uses'=>'CatalogoController@fnc_eliminar_catalogo']);

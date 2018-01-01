@@ -88,11 +88,15 @@ class CatalogoController extends Controller
           return redirect()->back();  
         }
     }
-     public function fnc_buscar_catalogo(){
-        //
-        $obj_catalogo= catalogo::where('es_desglose',0)->paginate(10);
+     public function fnc_buscar_catalogo(Request $request){
+        //Buscaque con filtro de los catalogos
+        if($request->nombre==null){
+          $obj_catalogo= catalogo::where('es_desglose',0)->paginate(10);  
+        }else{
+          $obj_catalogo= catalogo::nombre_catalogo($request->nombre)->paginate(10); 
+        }
         return view('catalogos/buscar_catalogo',
-                compact('obj_catalogo'));
+                compact('obj_catalogo','request'));
     }
     public function fnc_buscar_desglose($id){
         //Pantalla que muestra el desglose de un catálogo
