@@ -19,10 +19,14 @@ class ComponenteController extends Controller
     public function fnc_show_create(){
         return view('catalogos/nuevo_componente');
     }
-    public function fnc_buscar_componente(){
-        $obj_componente= componente::paginate(10);
+    public function fnc_buscar_componente(Request $request){
+        if($request->codigo==null){
+          $obj_componente= componente::orderby('id_componente')->paginate(10);   
+        }else{
+          $obj_componente= componente::codigo_componente($request->codigo)->orderby('id_componente')->paginate(10);     
+        }
         return view('catalogos/buscar_componente',
-                compact('obj_componente'));
+                compact('obj_componente','request','request'));
     }
     public function fnc_show_store(Request $request){
         $obj_controller_bitacora=new bitacoraController(); 

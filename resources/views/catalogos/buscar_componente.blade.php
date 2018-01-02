@@ -39,7 +39,7 @@
                <tr>
                  <td>Código componente</td>
                 <td>
-                   <input type="text" class="form-control" name="codigo" maxlength="20"  required>
+                   <input type="text" value="{{$request->codigo}}" class="form-control" name="codigo" maxlength="20"  required>
                 </td>
                 <td>
                    <button type="submit" class="btn btn-default"> Buscar</button> 
@@ -71,7 +71,7 @@
                 <td><center>   
                 <a href="{{route('catalogos/editar_componente',$obj_componentes->id_componente)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a>
                 </center></td>
-                <td><center><a href="{{route('catalogos/eliminar_componente',$obj_componentes->id_componente)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></center></td>
+                <td><center><a href="{{route('catalogos/eliminar_componente',$obj_componentes->id_componente)}}" onclick="return confirm('¿Seguro deseas eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></center></td>
             </tr>
            @endforeach
         </tbody>

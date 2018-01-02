@@ -38,6 +38,7 @@ Route::get('carga/eliminar/{id}',['as'=>'carga/eliminar','uses'=>'ArchivoDatosCo
 Route::get ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_create']);
 Route::post ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_store']);
 Route::get ('catalogos/buscar_componente',['as'=>'catalogos/buscar_componente','uses'=> 'ComponenteController@fnc_buscar_componente']);
+Route::post ('catalogos/buscar_componente',['as'=>'catalogos/buscar_componente','uses'=> 'ComponenteController@fnc_buscar_componente']);
 Route::get ('catalogos/editar_componente/{id}',['as'=>'catalogos/editar_componente','uses'=> 'ComponenteController@fnc_show_edit']);
 Route::post ('catalogos/update_componente',['as'=>'catalogos/update_componente','uses'=> 'ComponenteController@fnc_show_update']);
 Route::get('catalogos/eliminar_componente/{id}',['as'=>'catalogos/eliminar_componente','uses'=>'ComponenteController@fnc_eliminar_componente']);

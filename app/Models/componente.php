@@ -29,4 +29,8 @@ class componente extends Model
       public function vigilancia_epidemiologica() {
          return $this->hasMany('vigilancia_epidemiologica');
      }
+     public function scopeCodigo_componente($query,$codigo) {
+        //Filtro busqueda por codigo de componente
+        $query->where('codigo_componente',"LIKE",'%'.$codigo.'%');
+    }
 }
