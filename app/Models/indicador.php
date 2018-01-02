@@ -26,5 +26,12 @@ class indicador extends Model
      return indicador::where('id_componente','=',$parametro)
              ->get();
     }
-    //
+    public function scopeCodigo($query,$indicador) {
+        //Filtro busqueda por codigo indicador
+        $query->where('codigo_indicador',"LIKE",'%'.$indicador.'%');
+    }
+    public function scopeId_evento($query,$evento) {
+        //Filtro busqueda por id del evento epidemiológico
+        $query->where('id_evento_epi',$evento);
+    }
 }

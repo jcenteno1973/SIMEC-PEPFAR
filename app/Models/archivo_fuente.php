@@ -36,4 +36,12 @@ class archivo_fuente extends Model
      public function eventos_epi() {        
         return $this->belongsTo('evento_epi','id_evento_epi');
     }
+    public function scopeCodigo($query,$indicador) {
+        //Filtro busqueda por codigo indicador
+        $query->where('codigo_archivo_fuente',"LIKE",'%'.$indicador.'%');
+    }
+    public function scopeId_evento($query,$evento) {
+        //Filtro busqueda por id del evento epidemiológico
+        $query->where('id_evento_epi',$evento);
+    }
 }

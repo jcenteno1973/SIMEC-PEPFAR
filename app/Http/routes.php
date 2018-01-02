@@ -66,10 +66,12 @@ Route::get('catalogos/eliminar_catalogo/{id}',['as'=>'catalogos/eliminar_catalog
 Route::get ('configuracion/nuevo_indicador',['as'=>'configuracion/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_create']);
 Route::post ('configuracion/nuevo_indicador',['as'=>'configuracion/nuevo_indicador','uses'=> 'IndicadorController@fnc_show_store']);
 Route::get ('configuracion/buscar_indicador',['as'=>'configuracion/buscar_indicador','uses'=> 'IndicadorController@fnc_buscar_indicador']);
+Route::post ('configuracion/buscar_indicador',['as'=>'configuracion/buscar_indicador','uses'=> 'IndicadorController@fnc_buscar_indicador']);
 Route::get ('configuracion/editar_indicador/{id}',['as'=>'configuracion/editar_indicador','uses'=> 'IndicadorController@fnc_show_edit']);
 Route::post ('configuracion/update_indicador',['as'=>'configuracion/update_indicador','uses'=> 'IndicadorController@fnc_show_update']);
 Route::get('configuracion/eliminar_indicador/{id}',['as'=>'configuracion/eliminar_indicador','uses'=>'IndicadorController@fnc_eliminar_indicador']);
 Route::get ('configuracion/buscar_af',['as'=>'configuracion/buscar_af','uses'=> 'ArchivoFuenteController@fnc_buscar_af']);
+Route::post ('configuracion/buscar_af',['as'=>'configuracion/buscar_af','uses'=> 'ArchivoFuenteController@fnc_buscar_af']);
 Route::get ('configuracion/buscar_componente/{id}',['as'=>'configuracion/buscar_componente','uses'=> 'AsignarComponenteController@fnc_buscar_componente']);
 Route::get ('configuracion/buscar_desglose/{id}',['as'=>'configuracion/buscar_desglose','uses'=> 'AsignarDesgloseController@fnc_buscar_desglose']);
 Route::get ('configuracion/nuevo_desglose/{id}',['as'=>'configuracion/nuevo_desglose','uses'=> 'AsignarDesgloseController@fnc_show_create_desg']);

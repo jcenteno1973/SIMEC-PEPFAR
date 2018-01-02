@@ -119,10 +119,31 @@ class IndicadorController extends Controller
         }
     }
 
-    public function fnc_buscar_indicador(){
-        $obj_indicador= indicador::paginate(10);
+    public function fnc_buscar_indicador(Request $request){
+        //Busqueda con filtro de indicadores
+        $obj_evento=  evento_epi::lists('nombre_evento','id_evento_epi');
+        $obj_evento[0]="Seleccionar";
+        if($request->evento==null){
+         $request->evento=0;
+         $obj_indicador= indicador::paginate(10);  
+        }else{
+          if($request->evento==0 && $request->indicador==""){
+           flash()->warning('Introducir al menos un criterio de busqueda');
+           return redirect()->back();  
+          }else{
+              if($request->evento!=0 && $request->indicador!=""){
+                $obj_indicador= indicador::codigo($request->indicador)->id_evento($request->evento)->paginate(10);   
+              }else{
+               if($request->indicador==""){
+                  $obj_indicador= indicador::id_evento($request->evento)->paginate(10); 
+               } else{
+                  $obj_indicador= indicador::codigo($request->indicador)->paginate(10); 
+               }  
+              }
+          }
+        }
         return view('configuracion/buscar_indicador',
-                compact('obj_indicador'));
+                compact('obj_indicador','request','obj_evento'));
     }
     public function fnc_show_edit($id){
        $obj_indicador= indicador::find($id);

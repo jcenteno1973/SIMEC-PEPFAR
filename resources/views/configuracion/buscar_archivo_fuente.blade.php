@@ -35,11 +35,11 @@
                <tr>
                  <td>Código evento</td>
                 <td>
-                   <input type="text" class="form-control" name="codigo" maxlength="20"  required>
+                 {!! Form::select('evento',$obj_evento,$request->evento,['id'=>'evento','class' => 'form-control']) !!}
                 </td>
-               <td>Nombre evento</td>
+               <td>Código</td>
                 <td>
-                   <input type="text" class="form-control" name="nombre" maxlength="35" required> 
+                    <input type="text" value="{{$request->indicador}}" class="form-control" name="indicador" maxlength="35"> 
                 </td> 
                 <td>
                    <button type="submit" class="btn btn-default"> Buscar</button> 
