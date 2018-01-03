@@ -83,6 +83,7 @@ Route::get('configuracion/eliminar_desglose_asig/{id}',['as'=>'configuracion/eli
 
 
 Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
+Route::post('reportes/reportes',['as' => 'reportes/reportes','uses' => 'principalController@fnc_ver_reportes']);
 //ya cuenta con seguridad
 Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion','middleware' => ['permission:administracion']] );
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show','middleware' => ['permission:buscar_usuario']] );

@@ -8,11 +8,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\evento_epi;
 use App\Models\archivo_fuente;
+use App\Models\indicador;
 
 class principalController extends Controller
 {
@@ -50,7 +50,22 @@ class principalController extends Controller
         return view('reportes_inicio', 
                 compact('obj_evento_epi','codigo_archivo','descripcion_archivo'));
     }
-     public function fnc_show_administracion() {
+    public function fnc_ver_reportes(Request $request){
+    //Visualizar reportes
+    if($request->codigos==0){
+        flash()->warning('Seleccionar el indicador');
+        return redirect('reportes'); 
+    }else{
+       $obj_archivo_fuente=  archivo_fuente::find($request->codigos);
+       $obj_indicador= indicador::codigo($obj_archivo_fuente->codigo_archivo_fuente)->get();
+       $reporte_generado=$obj_indicador[0]->url_reporte; 
+       return view('reportes/reportes', 
+                compact('reporte_generado'));
+    }
+    
+    }
+
+    public function fnc_show_administracion() {
        
         return view('administracion_inicio'); 
     }

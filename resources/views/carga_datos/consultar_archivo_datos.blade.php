@@ -4,7 +4,7 @@
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
 -->
-@extends('plantillas.plantilla_reportes')
+@extends('plantillas.plantilla_reportes_admin')
 @section('fecha_sistema')
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p>
 @stop 

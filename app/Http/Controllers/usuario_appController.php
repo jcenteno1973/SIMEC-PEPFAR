@@ -11,16 +11,12 @@ use App\User;
 use App\Role;
 use Auth;
 use App\Http\Controllers\bitacoraController;
-use App\Models\ubicacion_organizacional;
 use App\Models\region_sica;
-use App\Models\cargo_emp;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Http\Controllers\rol_usuarioController;
 use App\Http\Controllers\RegionSicaController;
-use App\Http\Controllers\cargo_empController;
-use App\Http\Controllers\ubicacion_orgController;
 use Illuminate\Support\Facades\Input;
 use DB;
 //use Illuminate\Support\Facades\Request;
@@ -49,7 +45,6 @@ class usuario_appController extends Controller
          */
         $obj_rol_usuario= new rol_usuarioController();
         $obj_region_sica = new RegionSicaController();
-        $obj_ubicacion_org= new ubicacion_orgController();
         $rules =array('password'=> array('min:8','max:25','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'),
                       'email'=>'unique:usuario_app',
                       'numero_dui'=>'digits:9|unique:usuario_app');        
@@ -119,18 +114,14 @@ class usuario_appController extends Controller
 
    
     public function store()
-    { 
-             
-        $obj_role= Role::all();
-        $obj_ubicacion_org=  ubicacion_organizacional::all();
-        $obj_cargo_emp= cargo_emp::all();
+    {  //      
+       $obj_role= Role::all();
        $obj_inputs=Input::all();      
        $id_usuario_app=$obj_inputs['seleccionar'];
        $obj_usuario=User::find($id_usuario_app);      
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
-               'obj_role',
-               'obj_cargo_emp'));     
+               'obj_role'));     
     }
 
     

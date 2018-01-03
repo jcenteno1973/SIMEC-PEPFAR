@@ -1,8 +1,8 @@
 <!doctype html>
 <!--
-     * Nombre del archivo: plantilla_reportes.blade.php
-     * Descripción:Plantillas a ser utilizada por los reportes
-     * Fecha de creación:11/11/2016
+     * Nombre del archivo: plantilla_reportes_admin.blade.php
+     * Descripción:Plantillas a ser utilizada por los reportes administrativos
+     * Fecha de creación:31/12/2017
      * Creado por: Juan Carlos Centeno Borja
 -->
 <html lang="es" xml:lang="es"></html>
@@ -105,7 +105,11 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12"><!--area de trabajo --> 
+		<div class="col-md-3"><!--menu lateral -->
+                    @yield('menu_lateral') 
+		
+		</div>
+		<div class="col-md-9"><!--area de trabajo --> 
                 <strong>
                 @if (session()->has('flash_notification.message'))                
                 @include ('flash::message')
@@ -133,7 +137,7 @@
 			</div>
 			<div class="row"><!--botones -->
 				<div class="col-md-12">
-                                    <a href="{{route('reportes')}}" class="btn btn-primary"> Regresar</a>   
+                                    <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>   
                                     @yield('botones') 
 				
 				</div>

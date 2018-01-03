@@ -22,7 +22,7 @@
 <div class="col-md-8 col-md-offset-2">
 <div class="panel panel-default">
     <div class="panel-body">
-     {!! Form::open(['route' => 'carga/nueva_carga','class' => 'form']) !!}
+     {!! Form::open(['route' => 'reportes/reportes','class' => 'form']) !!}
             <table class="table table-condensed">    
             <tbody>
               <tr>
@@ -35,12 +35,12 @@
                  <td>Código indicador *</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,0,['id'=>'codigos','class' => 'form-control','required' => 'required','onchange'=>'fnc_cambio_codigo(this.value)']) !!}
-                </td> 
               </tr>
               <tr>
                   <td>Descripción</td>
                   <td>
-                      {!! Form::text('descripcion',null,['class' => 'form-control' , 'id'=>'resultado','readonly'=>'readonly']) !!}                   
+                      {!! Form::textarea('descripcion',null,['class' => 'form-control' , 'id'=>'resultado','readonly'=>'readonly']) !!}                   
+                      
                   </td>  
               </tr>
             </tbody>
@@ -49,8 +49,8 @@
        <table class="table">
         <tr>
           <td>
-             <button type="submit" class="btn btn-primary">Guardar</button>  
-              <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+             <button type="submit" class="btn btn-primary">Ver reporte</button>  
+              <a href="{{route('principal')}}" class="btn btn-primary"> Regresar</a>
               @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
           </td>
         </tr>        
@@ -70,7 +70,7 @@ function fnc_cambio_codigo(codigos) {
     <?php foreach($descripcion_archivo as $descripcion_archivos){ ?>
     if(codigos=={{ $descripcion_archivos->id_archivo_fuente }})
     {
-    document.getElementById("resultado").value="{{ $descripcion_archivos->descripcion_archivo_fuente }}" 
+    document.getElementById("resultado").value=tildes_unicode("{{ $descripcion_archivos->descripcion_archivo_fuente }}") 
     }
     <?php } ?>
 }   
@@ -81,9 +81,28 @@ function fnc_cambio_evento(eventos) {
     <?php foreach($descripcion_archivo as $descripcion_archivos){ ?>
     if(codigos=={{ $descripcion_archivos->id_archivo_fuente }})
     {
-    document.getElementById("resultado").value="{{ $descripcion_archivos->descripcion_archivo_fuente }}" 
+    document.getElementById("resultado").value=tildes_unicode("{{ $descripcion_archivos->descripcion_archivo_fuente }}")
     }
     <?php } ?>
 }   
+</script>
+<script>
+    function tildes_unicode(str){
+	str = str.replace('&aacute;','á');
+	str = str.replace('&eacute;','é');
+	str = str.replace('&iacute;','í');
+	str = str.replace('&oacute;','ó');
+	str = str.replace('&uacute;','ú');
+
+	str = str.replace('Á','\u00c1');
+	str = str.replace('É','\u00c9');
+	str = str.replace('Í','\u00cd');
+	str = str.replace('Ó','\u00d3');
+	str = str.replace('Ú','\u00da');
+
+	str = str.replace('ñ','\u00f1');
+	str = str.replace('Ñ','\u00d1');
+	return str;
+}
 </script>
 @stop   
