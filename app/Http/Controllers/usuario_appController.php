@@ -114,7 +114,7 @@ class usuario_appController extends Controller
 
    
     public function store()
-    {  //      
+    {  // Formulario para editar usuario     
        $obj_role= Role::all();
        $obj_inputs=Input::all();      
        $id_usuario_app=$obj_inputs['seleccionar'];
