@@ -18,6 +18,6 @@
 <h4 class="text-center">Pantalla de reportes</h4>
 @stop 
 @section('contenido')
-<iframe src="{{$reporte_generado}}" width="100%" height="500px">  
+<iframe src="{{$reporte_generado}}" width="100%" height="800px">  
 </iframe> 
 @stop   

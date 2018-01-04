@@ -28,6 +28,6 @@
 </div>
 @stop
 @section('contenido')
-<iframe src="{{$reporte_generado}}" width="100%" height="500px">  
+<iframe src="{{$reporte_generado}}" width="100%" height="800px">  
 </iframe> 
 @stop   
