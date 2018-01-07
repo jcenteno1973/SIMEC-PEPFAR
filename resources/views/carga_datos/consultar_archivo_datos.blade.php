@@ -1,5 +1,5 @@
 ﻿<!-- 
-     * Nombre del archivo:consultar_bitacora.blade.php
+     * Nombre del archivo:consultar_archivo_datos.blade.php
      * Descripción:
      * Fecha de creación:18/11/2016
      * Creado por: Juan Carlos Centeno Borja
@@ -12,7 +12,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
 @stop
 @section('nombre_plantilla')
-<p ALIGN=center>consultar_bitacora.blade.php</p>
+<p ALIGN=center>consultar_archivo_datos.blade.php</p>
 @stop
 @section('nombre_pantalla')
 <h4 class="text-center">Pantalla consultar archivos</h4>
@@ -28,6 +28,6 @@
 </div>
 @stop
 @section('contenido')
-<iframe src="{{$reporte_generado}}" width="100%" height="500px">  
+<iframe src="{{$reporte_generado}}" width="100%" height="800px">  
 </iframe> 
 @stop   

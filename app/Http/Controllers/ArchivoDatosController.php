@@ -204,7 +204,7 @@ class ArchivoDatosController extends Controller
         $obj_evento_epi= evento_epi::lists('nombre_evento','id_evento_epi');
         $obj_evento_epi[0]="Seleccionar"; 
         $obj_archivo_fuente= archivo_fuente::fnc_archivo_fuentes($request->eventos);
-        $codigo_archivo=$obj_archivo_fuente->lists('codigo_archivo_fuente','id_archivo_fuente');
+        $codigo_archivo=$obj_archivo_fuente->lists('descripcion_archivo_fuente','id_archivo_fuente');
         $codigo_archivo[0]="Seleccionar";
         return view('carga_datos/buscar_carga_filtro',
                 compact('obj_region_sica','obj_anio','obj_evento_epi','codigo_archivo','obj_archivo_datos','obj_evento_epi_total','obj_archivo_fuente_total','request','id_region_sica'));

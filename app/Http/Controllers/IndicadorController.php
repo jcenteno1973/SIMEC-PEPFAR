@@ -29,7 +29,7 @@ class IndicadorController extends Controller
        //Crea formularia para un nuevo indicador 
        $obj_evento_epi= evento_epi::lists('nombre_evento','id_evento_epi');
        $obj_evento_epi[0]='Seleccionar';
-       $obj_componente= componente::lists('codigo_componente','id_componente');
+       $obj_componente= componente::lists('descripcion_componente','id_componente');
        $obj_componente[0]='Seleccionar';
        $obj_tipo_indicador= tipo_indicador::lists('nombre_tipo_indicador','id_tipo_indicador');
        $obj_tipo_indicador[0]='Seleccionar';
@@ -148,7 +148,7 @@ class IndicadorController extends Controller
     public function fnc_show_edit($id){
        $obj_indicador= indicador::find($id);
        $obj_evento_epi= evento_epi::lists('nombre_evento','id_evento_epi');
-       $obj_componente= componente::lists('codigo_componente','id_componente');
+       $obj_componente= componente::lists('descripcion_componente','id_componente');
        $obj_componente[0]='Seleccionar';
        $obj_tipo_indicador= tipo_indicador::lists('nombre_tipo_indicador','id_tipo_indicador');
        return view('configuracion/editar_indicador',

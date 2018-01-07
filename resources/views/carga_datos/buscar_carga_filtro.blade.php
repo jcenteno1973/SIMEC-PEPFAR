@@ -75,7 +75,7 @@
                 <td>
                    {!! Form::select('eventos',$obj_evento_epi,$request->eventos,['id'=>'eventos','class' => 'form-control','required' => 'required']) !!}
                 </td>
-               <td>Código indicador</td>
+               <td>Indicador</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,$request->codigos,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 

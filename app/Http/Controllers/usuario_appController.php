@@ -188,11 +188,21 @@ class usuario_appController extends Controller
        return redirect()->back();          
         
     }
+    public function fnc_user_cambiar_contra (){
+        
+       $obj_usuario= User::nombre_usuario(Auth::user()->nombre_usuario)->get();
+       $id_usuario_app=$obj_usuario[0]->id_usuario_app;
+       $obj_usuario=User::find($id_usuario_app);
+       return view('usuario_app/cambiar_contrasenia',
+               compact('obj_usuario' )); 
+        
+    }
+
     public function fnc_cambiar_contrasenia() {
         /**    
          * Crea formulario para cambiar la contraseña de un usuario
          */        
-       $obj_inputs=Input::all(); 
+     $obj_inputs=Input::all();
      if($obj_inputs['resultado']=='')
      {
         flash()->warning('Seleccione un usuario') ; 

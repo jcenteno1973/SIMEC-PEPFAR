@@ -12,7 +12,8 @@
 <p ALIGN=center>principal.blade.php</p>
 @stop
 @section('usuario_sesion')
-<p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
+
+<p ALIGN=right>Usuario:<a href="{{route('administracion/user_cambiar_contrasenia')}}">{{ Auth::user()->nombre_usuario }}</a></p>
 @stop
 @section('contenido')
 <div class="panel panel-default">
