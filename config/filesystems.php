@@ -47,6 +47,10 @@ return [
             'driver' => 'local',
             'root'   =>public_path().'/storage', //storage_path('app'),
         ],
+        'copia' => [
+            'driver' => 'local',
+            'root'   =>storage_path().'/laravel-backups',
+        ],
 
         'ftp' => [
             'driver'   => 'ftp',

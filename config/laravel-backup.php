@@ -48,13 +48,14 @@ return [
         ],
 
         'destination' => [
+            
+           
 
             /*
              * The disk names on which the backups will be stored.
              */
-            'disks' => [
-                'local',
-            ],
+            'disks' => ['copia'],
+            
         ],
     ],
 
@@ -108,7 +109,7 @@ return [
     'monitorBackups' => [
         [
             'name' => env('APP_URL'),
-            'disks' => ['local'],
+            'disks' => ['copia'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
         ],
@@ -151,8 +152,8 @@ return [
          * Here you can specify how emails should be sent.
          */
         'mail' => [
-            'from' => 'your@email.com',
-            'to' => 'your@email.com',
+            'from' => 'jcborellana@gmail.com',
+            'to' => 'jcenteno@sica.int',
         ],
 
         /*

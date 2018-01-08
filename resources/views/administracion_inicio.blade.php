@@ -23,6 +23,7 @@
     <a href="administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
     <a href="administracion/consultar_archivo_datos" class="list-group-item">Consultar archivo</a>
+    <a href="administracion/copia_seguridad" class="list-group-item">Crear copia de seguridad</a>
 </div>
 @stop
 @section('contenido')

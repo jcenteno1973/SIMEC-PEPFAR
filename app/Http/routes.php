@@ -125,7 +125,7 @@ Route::post('administracion/editar_rol',['as' => 'administracion/editar_rol', 'u
 
 Route::get('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@index','middleware' => ['permission:asignar_permiso']]);
 Route::post('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@store']);
-
+Route::get('administracion/copia_seguridad',['as' => 'administracion/copia_seguridad', 'uses' => 'CopiaSeguridadController@fnc_crear_copia']);
 // Password reset link request routes...
 Route::get('password/email', ['as' => 'password/email', 'uses' => 'Auth\PasswordController@getEmail']);
 Route::post('password/email', ['as' => 'password/postEmail', 'uses' => 'Auth\PasswordController@postEmail']);
