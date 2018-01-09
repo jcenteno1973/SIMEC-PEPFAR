@@ -10,9 +10,11 @@ use Artisan;
 use Laracasts\Flash\Flash;
 use Log;
 use Storage;
+use Carbon\Carbon;
 
 class CopiaSeguridadController extends Controller
 {
+    const PRECISION = 2;
     /**
      * Display a listing of the resource.
      *
@@ -23,13 +25,48 @@ class CopiaSeguridadController extends Controller
         //
     }
 
-    public function fnc_crear_copia(){
+    public function fnc_tamanio_copia($bytes, $precision = null) {
         
+	    if (null===$precision) $precision = self::PRECISION;
+	    $units = array('b', 'kb', 'Mb', 'Gb', 'Tb');
+	    $bytes = max($bytes, 0);
+	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+	    $pow = min($pow, count($units) - 1);
+	  
+	    $bytes /= pow(1024, $pow);
+	  
+	    return number_format($bytes, $precision, ',', '.') . ' ' . $units[$pow]; 
+	}
+    public function  fnc_listado_copia(){
+        //
+        
+        $disk = Storage::disk('copia');
+        $files = $disk->files(config('laravel-backup.backup.name'));
+        $backups = [];
+        // make an array of backup files, with their filesize and creation date
+        foreach ($files as $k => $f) {
+            // only take the zip files into account
+            if (substr($f, -4) == '.zip' && $disk->exists($f)) {
+                $backups[] = [
+                    'file_path' => $f,
+                    'file_name' => str_replace(config('laravel-backup.backup.name') . '/', '', $f),
+                    'file_size' => $this->fnc_tamanio_copia($disk->size($f)),
+                    'last_modified' =>date('d/m/Y H:i:s',strtotime(Carbon::createFromTimestamp($disk->lastModified($f)))),
+                ];
+            }
+        }
+        // reverse the backups, so the newest one would be on top
+        $backups = array_reverse($backups);
+        
+        return view("copia_seguridad/copia_seguridad")->with(compact('backups'));
+        
+    }
+
+    public function fnc_crear_copia(){
+        //Crear copia de seguridad del código fuente y la base de datos 
         try {
-           system('cd C:\wamp64\www\sigve'); 
            Artisan::call('backup:run');
            $output = Artisan::output();
-            dd($output);
             // Bitacora de sucesoso
             Flash::success('Copía de seguridad creada');
             return redirect()->back();
@@ -39,6 +76,34 @@ class CopiaSeguridadController extends Controller
         }
     }
 
+     public function fnc_descargar_copia($file_name)
+    {
+        $file = config('laravel-backup.backup.name') . '/' . $file_name;
+        $disk = Storage::disk(config('laravel-backup.backup.destination.disks')[0]);
+        if ($disk->exists($file)) {
+            $fs = Storage::disk(config('laravel-backup.backup.destination.disks')[0])->getDriver();
+            $stream = $fs->readStream($file);
+            return \Response::stream(function () use ($stream) {
+                fpassthru($stream);
+            }, 200, [
+                "Content-Type" => $fs->getMimetype($file),
+                "Content-Length" => $fs->getSize($file),
+                "Content-disposition" => "attachment; filename=\"" . basename($file) . "\"",
+            ]);
+        } else {
+            abort(404, "The backup file doesn't exist.");
+        }
+    }
+    public function fnc_borrar_copia($file_name)
+    {
+        $disk = Storage::disk(config('laravel-backup.backup.destination.disks')[0]);
+        if ($disk->exists(config('laravel-backup.backup.name') . '/' . $file_name)) {
+            $disk->delete(config('laravel-backup.backup.name') . '/' . $file_name);
+            return redirect()->back();
+        } else {
+            abort(404, "The backup file doesn't exist.");
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
