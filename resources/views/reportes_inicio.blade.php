@@ -51,7 +51,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Ver reporte</button>  
               <a href="{{route('principal')}}" class="btn btn-primary"> Regresar</a>
-              @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
+              @include('usuario_app/ayuda_usuario/ayuda_reportes_inicio') 
           </td>
         </tr>        
         </table>

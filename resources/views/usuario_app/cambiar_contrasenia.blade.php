@@ -19,8 +19,9 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>   
     <a href="../administracion/buscar_usuario"class="list-group-item">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>    
+    <a href="../administracion/reporte_usuario" class="list-group-item">Reporte de usuarios</a> 
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
@@ -53,24 +54,12 @@
                       <td><input type="password" maxlength="25" style="width:100%" class="form-control" name="password" placeholder="Nueva contrase&ntilde;a" required autofocus></td>
                     </tr>                    
                 </table> 
-                <table class="table table-condensed">
-                    <tr>
-                 <!--     <td align="left">
-                          <button type="submit" class="btn btn-primary">Guardar</button>  
-                      </td>  -->
-                      <td align="left">
-                        <button type="submit" class="btn btn-primary">Guardar</button>                          
-                      </td>
-
-                      <td align="left">
-                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-                      </td>
-                      <td align="left">
-                       @include('usuario_app/ayuda_usuario/ayuda_cambio_clave')
-
-                      </td>
-                    </tr>
-                </table>
+                <div class="col-xs-12 clearfix">
+                   <button type="submit" class="btn btn-primary">Guardar</button>   
+                   <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>
+                   @include('usuario_app/ayuda_usuario/ayuda_cambio_clave')
+                </div>
+                
                 <p>*Campo requerido</p>
                 <br>
            <!-- </form> -->
