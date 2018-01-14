@@ -5,7 +5,7 @@
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title">CREAR USUARIO</p>
+                        <p class="modal-title">CREAR NUEVO USUARIO</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -15,7 +15,7 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para crear un usuario realice lo siguiente:</p>
+                                <p>Para crear un nuevo usuario realice lo siguiente:</p>
                             </td>
                         <tr>    
                             <td>
@@ -25,11 +25,10 @@
                                 <ul>
                                     <li><strong>Nombres </strong>: Escriba los nombres del usuario.</li>
                                     <li><strong>Apellidos</strong>: Escriba los apellidos del usuario.</li>
-                                    <li><strong>Unidad o departamento</strong>: La Unidad o departamento al que pertenece.</li>
                                     <li><strong>Rol</strong>: Especifica a que tendra acceso en el sistema.</li>
                                     <li><strong>Correo electr&oacute;nico</strong>: muy importante para recuperacion de contrase&ntilde;as.</li>
-                                    <li><strong>Contrase&ntilde;a</strong>: Debe contener una letra mayuscula, numeros y caracter especial.</li>
-                                    <li><strong>Cargo</strong>: el cargo que desempe&ntilde;a actualmente el usuario.</li>
+                                    <li><strong>Contrase&ntilde;a</strong>: Debe contener una letra mayuscula, numeros y un caracter especial.</li>
+                                    <li><strong>País</strong>: seleccione al que pertenece el usuario</li>
                                 </ul>
                             </td>
                         </tr>

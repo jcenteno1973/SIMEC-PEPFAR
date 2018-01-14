@@ -11,6 +11,7 @@ use Laracasts\Flash\Flash;
 use Log;
 use Storage;
 use Carbon\Carbon;
+use App\Http\Controllers\bitacoraController;
 
 class CopiaSeguridadController extends Controller
 {
@@ -64,11 +65,14 @@ class CopiaSeguridadController extends Controller
 
     public function fnc_crear_copia(){
         //Crear copia de seguridad del código fuente y la base de datos 
+        $obj_controller_bitacora=new bitacoraController();
         try {
+           $output=null; 
            Artisan::call('backup:run');
            $output = Artisan::output();
             // Bitacora de sucesoso
             Flash::success('Copía de seguridad creada');
+            $obj_controller_bitacora->create_mensaje('Copia de seguridad creada'); 
             return redirect()->back();
         } catch (Exception $e) {
             Flash::error($e->getMessage());
@@ -78,6 +82,7 @@ class CopiaSeguridadController extends Controller
 
      public function fnc_descargar_copia($file_name)
     {
+        $obj_controller_bitacora=new bitacoraController();
         $file = config('laravel-backup.backup.name') . '/' . $file_name;
         $disk = Storage::disk(config('laravel-backup.backup.destination.disks')[0]);
         if ($disk->exists($file)) {
@@ -90,18 +95,24 @@ class CopiaSeguridadController extends Controller
                 "Content-Length" => $fs->getSize($file),
                 "Content-disposition" => "attachment; filename=\"" . basename($file) . "\"",
             ]);
+            Flash::success('Copía de seguridad descargada');
+            $obj_controller_bitacora->create_mensaje('Copia de seguridad descargada: '.$file_name); 
         } else {
-            abort(404, "The backup file doesn't exist.");
+            abort(404, "La copia de seguridad no existe.");
         }
     }
     public function fnc_borrar_copia($file_name)
     {
+        //Borra la copia de seguridad del disco del servidor
+        $obj_controller_bitacora=new bitacoraController();
         $disk = Storage::disk(config('laravel-backup.backup.destination.disks')[0]);
         if ($disk->exists(config('laravel-backup.backup.name') . '/' . $file_name)) {
             $disk->delete(config('laravel-backup.backup.name') . '/' . $file_name);
+            Flash::success('Copía de seguridad borrada');
+            $obj_controller_bitacora->create_mensaje('Copia de seguridad borrada: '.$file_name); 
             return redirect()->back();
         } else {
-            abort(404, "The backup file doesn't exist.");
+            abort(404, "La copia de seguridad no existe.");
         }
     }
     /**

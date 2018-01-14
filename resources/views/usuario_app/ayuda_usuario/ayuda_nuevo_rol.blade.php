@@ -26,13 +26,6 @@
                                     <li><strong>Nombre del rol</strong>: el nombre que le dar&aacute; al nuevo rol.</li>
                                     <li><strong>Descripci&oacute;n</strong>: descripci&oacute;n corta del rol a crear, no m&oacute; de 25 caracteres.</li>
                                     
-                                    <li><strong>Botones</strong>:
-                                        <ul>
-                                            <li>Guardar: ejecutar&aacute; el registro del nuevo rol</li>
-                                            <li>Regresar: lo llevar&aacute; a la ventana anterior</li>
-                                            <li>Ayuda: Muestra una descripci&oacute;n de los elementos de la pantalla</li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </td>
                         </tr>

@@ -1,7 +1,7 @@
 <?php
 /**
-     * Nombre del archivo: .php
-     * Descripción:
+     * Nombre del archivo:bitacoraController.php
+     * Descripción:Controlador de la bitacora
      * Fecha de creación:20/11/2016
      * Creado por: Juan Carlos Centeno Borja
      */
@@ -35,37 +35,16 @@ class bitacoraController extends Controller
     {
     $fecha_inicio=Carbon::createFromFormat('d/m/Y', $request->fecha_inicio);
     $fecha_fin=Carbon::createFromFormat('d/m/Y', $request->fecha_fin);
-    $fecha_fin->addDay();    
-    $reporte_generado='/reportes_jasper/'.time().'_bitacora';//time le aggrega un número generado por la hora
-    $output = public_path() .$reporte_generado; 
-    $report = new JasperPHP;
-    $report->process(
-    public_path() . '/reportes_jasper/bitacora.jrxml', 
-    $output, 
-    array('pdf'),//, 'rtf', 'html'),
-    array('fecha_inicio'=>$fecha_inicio->toDateString(),'fecha_fin'=>$fecha_fin->toDateString()),
-    config('conexion_report.conexion')
-    )->execute();
+    //$fecha_fin->addDay();  
+    $reporte_generado=env('APP_REP').'pentaho/api/repos/%3Abitacora.prpt/viewer?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS').'&fecha_inicio='.$fecha_inicio->toDateString().'&fecha_fin='.$fecha_fin->toDateString().' 23:59:59';      
     $this->create_mensaje('Generar reporte: Bitacora');
-    $reporte_generado='..'.$reporte_generado.'.pdf';    
     return view('bitacora/consultar_bitacora',compact('reporte_generado'));
     }else
     {
     $fecha_inicio=Carbon::createFromFormat('d/m/Y', $request->fecha_inicio);
     $fecha_fin=Carbon::createFromFormat('d/m/Y', $request->fecha_fin);
-    $fecha_fin->addDay();    
-    $reporte_generado='/reportes_jasper/'.time().'_bitacora';//time le aggrega un número generado por la hora
+    $reporte_generado=env('APP_REP').'pentaho/api/repos/%3Abitacora_usuario.prpt/viewer?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS').'&fecha_inicio='.$fecha_inicio->toDateString().'&fecha_fin='.$fecha_fin->toDateString().' 23:59:59'.'&usuario_app='.$request->nombre_usuario;      
     $this->create_mensaje('Generar reporte: Bitacora');
-    $output = public_path() .$reporte_generado; 
-    $report = new JasperPHP;
-    $report->process(
-    public_path() . '/reportes_jasper/bitacora_parametros.jrxml', 
-    $output, 
-    array('pdf'),//, 'rtf', 'html'),
-    array('usuario_app'=> $request->nombre_usuario,'fecha_inicio' =>$fecha_inicio->toDateString(),'fecha_fin'=>$fecha_fin->toDateString()),
-    config('conexion_report.conexion')
-    )->execute();
-    $reporte_generado='..'.$reporte_generado.'.pdf';    
     return view('bitacora/consultar_bitacora',compact('reporte_generado'));
     }
     }

@@ -23,12 +23,11 @@
                             </td>
                             <td>
                                 <ul>
-                                    <li> <strong>Nombre de usuario </strong>: este nombre debe ser proporcionado por el administrador del sistema.</li>
+                                    <li> <strong>Código de usuario </strong>: este nombre debe ser proporcionado por el administrador del sistema.</li>
                                     <li> <strong>Contrase&ntilde;a </strong>: escriba su contre&ntilde;a de ingreso proporcionada por el administrador del sistema,
                                         si no la recuerda puede solicitarla mediante el bot&oacute;n "Solicitar credenciales"</li>
                                     <li> El bot&oacute;n <strong> Cancelar </strong>: limpia los datos del formulario.</li>
                                     <li> <strong>Solicitar credenciales </strong>: en caso de olviadar los accesos al sistema podr&aacute; solicitarlos.</li>
-                                    <li>El bot&oacute;n <strong> Ayuda</strong> le proporcionar&aacute; informaci&oacute;n para f&aacute;cilitar el uso del sistema.</li>
                                 </ul>
                             </td>
                         </tr>                                

@@ -19,8 +19,9 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
-    <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
     <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>    
+    <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
+    <a href="../administracion/reporte_usuario" class="list-group-item">Reporte de usuarios</a>
     <a class="list-group-item active">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a href="../administracion/consultar_bitacora" class="list-group-item">Consultar bitacora</a>
@@ -49,7 +50,7 @@
                     <tr>               
                       <td align="left">
                           <button type="submit" class="btn btn-primary">Guardar</button>
-                          <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>                 
+                          <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>                 
                           @include('usuario_app/ayuda_usuario/ayuda_nuevo_rol')               
                       </td>
                     </tr>

@@ -25,10 +25,10 @@
                                 <ul>
                                     <li><strong>Nombres </strong>: los nombres del usuario.</li>
                                     <li><strong>Apellidos</strong>: los apellidos del usuario.</li>
-                                    <li><strong>Unidad o departamento</strong> al que pertenece el usuario.</li>
                                     <li><strong>Rol</strong>: Especifica a que tendra acceso en el sistema.</li>
                                     <li><strong>Correo electr&oacute;nico</strong>: muy importante para recuperacion de contrase&ntilde;as.</li>
-                                    <li><strong>Cargo</strong>: el cargo que desempe&ntilde;a actualmente el usuario.</li>
+                                    <li><strong>Contrase&ntilde;a</strong>: Debe contener una letra mayuscula, numeros y un caracter especial.</li>
+                                    <li><strong>País</strong>: Seleccione el país al que pertenece .</li>
                                 </ul>
                             </td>
                         </tr>

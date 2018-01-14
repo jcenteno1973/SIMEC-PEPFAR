@@ -1,9 +1,3 @@
-<!--
- * Nombre del archivo: ayuda_cambio_clave.php
- * Descripción: ayuda para la pantalla cambio de clave
- * Fecha de creación:09/12/16
- * Creado por: Yamileth Campos
- -->
 <!--Boton de ayuda-->
     <a href="#buscarusuario" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
         <div class="modal fade" id="buscarusuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

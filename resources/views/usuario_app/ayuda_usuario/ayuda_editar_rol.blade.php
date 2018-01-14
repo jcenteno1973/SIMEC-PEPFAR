@@ -15,7 +15,7 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar cambios en un rol realice los siguiente:</p>
+                                <p> Para realizar cambios en un rol realice lo siguiente:</p>
                             </td>
                         <tr>    
                             <td>
@@ -26,13 +26,7 @@
                                     <li><strong>Rol</strong>: Elija de la lista desplegable el rol a modificar.</li>
                                     <li><strong>Nombre del Rol</strong>: podr&aacute; modificar el nombre del rol.</li>
                                     <li><strong>Descripci&oacute;n</strong> podr&aacute; modificar la descipcion del rol.</li>
-                                    <li><strong>Botones</strong>:
-                                        <ul>
-                                            <li>Guardar: Guarda y actualiza los cambios solicitados</li>
-                                            <li>Regresar: lo llevar&aacute; a la ventana anterior</li>
-                                            <li>Ayuda: Muestra una descripci&oacute;n de los elementos de la pantalla</li>
-                                        </ul>
-                                    </li>
+                                    
                                 </ul>
                             </td>
                         </tr>

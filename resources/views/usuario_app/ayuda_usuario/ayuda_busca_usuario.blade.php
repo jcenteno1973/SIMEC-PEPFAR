@@ -31,7 +31,7 @@
                             <td>
                                 Se desplegan todos los usuarios del sistema, donde puede moverse a trav&eacute;s del paginador <img src="{{asset('images/paginador.jpg')}}"/>
                                 <ul>
-                                    <li> Para realizar la b&uacute;squeda de usuarios llene los campos de  <strong>Nombre de usuario </strong> y/o <strong> Rol</strong>,   presione luego en el bot&oacute;n <strong>Buscar</strong></li>                                    
+                                    <li> Para realizar la b&uacute;squeda de usuarios llene los campos de  <strong>Código de usuario </strong> y/o <strong> Rol</strong>,   presione luego en el bot&oacute;n <strong>Buscar</strong></li>                                    
                                     <li>el bot&oacute;n <strong>Regresar</strong> vuelve a la p&aacute;gina que anteriormente estaba.</li>
                                 </ul>
                                 

@@ -1,8 +1,8 @@
 <!doctype html>
 <!--
      * Nombre del archivo: plantilla_base.blade.php
-     * Descripción:
-     * Fecha de creación:11/11/2016
+     * Descripción:Plantilla base, que contiene el encabezado, menú principal y el pie de pagina
+     * Fecha de creación:31/10/2017
      * Creado por: Juan Carlos Centeno Borja
 -->
 <html lang="es" xml:lang="es"></html>
@@ -152,7 +152,5 @@
 		</div>
 	</div>
 	</div>
-    
-
 </body>
 

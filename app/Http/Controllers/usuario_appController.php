@@ -27,18 +27,15 @@ class usuario_appController extends Controller
         $this->middleware('auth');
     }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-   
-    public function index()
-    {
+    public function fnc_reporte_usuarios(){
+        //Generar reporte de archivos cargados
+    $obj_controller_bitacora=new bitacoraController();
+    $obj_controller_bitacora->create_mensaje('Reporte de usuarios generado');
+    $reporte_generado=env('APP_REP').'pentaho/api/repos/%3Areporte_usuarios.prpt/viewer?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS');    
+    return view('usuario_app/reporte_usuarios',compact('reporte_generado'));
         
     }
 
-    
     public function create(Request $request)
     {   /**    
          * Guarda en la base de datos un nuevo usuario

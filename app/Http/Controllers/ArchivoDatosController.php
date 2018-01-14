@@ -30,47 +30,7 @@ use JasperPHP\JasperPHP;
 
 class ArchivoDatosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
     public function fnc_show_parametros(){
         //Abre el formulario de parametros
         return view('carga_datos/reporte_archivo_datos');
@@ -80,19 +40,7 @@ class ArchivoDatosController extends Controller
     $obj_controller_bitacora=new bitacoraController();
     $fecha_inicio=Carbon::createFromFormat('d/m/Y', $request->fecha_inicio);
     $fecha_fin=Carbon::createFromFormat('d/m/Y', $request->fecha_fin);
-    //$fecha_fin->addDay();    
-    $reporte_generado='/reportes_jasper/'.time().'_archivo_datos';//time le aggrega un número generado por la hora
-    $obj_controller_bitacora->create_mensaje('Generar reporte: Archivo datos');
-    $output = public_path() .$reporte_generado; 
-    $report = new JasperPHP;
-    $report->process(
-    public_path() . '/reportes_jasper/archivo_datos.jrxml', 
-    $output, 
-    array('pdf'),//, 'rtf', 'html'),
-    array('fecha_inicio' =>$fecha_inicio->toDateString(),'fecha_fin'=>$fecha_fin->toDateString()),
-    config('conexion_report.conexion')
-    )->execute();
-    $reporte_generado='..'.$reporte_generado.'.pdf';    
+    $reporte_generado=env('APP_REP').'pentaho/api/repos/%3Aarchivo_datos.prpt/viewer?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS').'&fecha_inicio='.$fecha_inicio->toDateString().'&fecha_fin='.$fecha_fin->toDateString();    
     return view('carga_datos/consultar_archivo_datos',compact('reporte_generado'));
     }
 
@@ -506,37 +454,5 @@ class ArchivoDatosController extends Controller
     flash()->error('Error al eliminar el archivo '.$error);
     return redirect()->back();
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

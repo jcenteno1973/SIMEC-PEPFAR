@@ -19,8 +19,9 @@
 @stop 
 @section('menu_lateral')
 <div class="list-group">
+    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>
     <a href="../administracion/buscar_usuario" class="list-group-item">Buscar usuarios</a>
-    <a href="../administracion/nuevo_usuario" class="list-group-item">Nuevo usuario</a>   
+    <a href="../administracion/reporte_usuario" class="list-group-item">Reporte de usuarios</a>   
     <a href="../administracion/nuevo_rol" class="list-group-item">Nuevo rol</a>
     <a href="../administracion/editar_rol" class="list-group-item">Editar rol</a>
     <a class="list-group-item active">Consultar bit&aacute;cora</a>
@@ -44,13 +45,13 @@
                 </tr>
                 <tr>
                     <td>
-                       Desde 
+                       Desde * 
                     </td>
                      <td>
                        {!!Form::text('fecha_inicio',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha inicio dd/mm/aaaa', 'required' => 'required'])!!} 
                     </td>
                     <td>
-                       Hasta  
+                       Hasta *  
                     </td>
                      <td>
                       {!!Form::text('fecha_fin',null,['class'=>'form-control datepicker', 'placeholder'=>'Fecha fin dd/mm/aaaa', 'required' => 'required'])!!}  
@@ -60,8 +61,8 @@
     </div>
     <div>
         {!! Form::submit('Generar reporte',['class'=>'btn btn-primary'])!!}
-        <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario')   
+        <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>
+          @include('usuario_app/ayuda_usuario/ayuda_get_parametros')   
     </div>
    {!! Form::close() !!}
    <div class="panel-footer">

@@ -32,7 +32,7 @@
                 </td>
               </tr>
               <tr>
-                 <td>Código indicador *</td>
+                 <td>Indicador *</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,0,['id'=>'codigos','class' => 'form-control','required' => 'required','onchange'=>'fnc_cambio_codigo(this.value)']) !!}
               </tr>
@@ -94,14 +94,14 @@ function fnc_cambio_evento(eventos) {
 	str = str.replace('&oacute;','ó');
 	str = str.replace('&uacute;','ú');
 
-	str = str.replace('Á','\u00c1');
-	str = str.replace('É','\u00c9');
-	str = str.replace('Í','\u00cd');
-	str = str.replace('Ó','\u00d3');
-	str = str.replace('Ú','\u00da');
+	str = str.replace('&Aacute;','Á');
+	str = str.replace('&Eacute;','É');
+	str = str.replace('&Iacute;','Í');
+	str = str.replace('&Oacute;','Ó');
+	str = str.replace('&Uacute;','Ú');
 
-	str = str.replace('ñ','\u00f1');
-	str = str.replace('Ñ','\u00d1');
+	str = str.replace('&ntilde;','ñ');
+	str = str.replace('&Ntilde;','Ñ');
 	return str;
 }
 </script>
