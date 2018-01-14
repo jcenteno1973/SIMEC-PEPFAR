@@ -24,7 +24,7 @@
                             <td>
                                 <ol>
                                     <li>Seleccione los permisos para ser asignados al rol</li>
-                                    <li>Presione el bot&oacute;n <strong>Enviar</strong> para solicitar sus credenciales .</li>                                    
+                                    <li>Presione el bot&oacute;n <strong>Guardar</strong> para guardar los permisos asignados.</li>                                    
                                 </ol>
                             </td>                         
                         </tr>
