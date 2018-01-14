@@ -21,7 +21,7 @@
                         </div>
                         {!! Form::submit('Enviar',['class' => 'btn btn-primary']) !!}
                         <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>
-                        @include('usuario_app/ayuda_usuario/ayuda_ingreso')
+                        @include('ayuda/ayuda_ingreso')
                     {!! Form::close() !!}
                 </div>
             </div>

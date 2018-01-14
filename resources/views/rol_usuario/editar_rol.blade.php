@@ -76,7 +76,7 @@
                             <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>    
                           </td>
                           <td>
-                             @include('usuario_app/ayuda_usuario/ayuda_editar_rol') 
+                             @include('ayuda/ayuda_editar_rol') 
                           </td>
                     </tr>
                 </table>

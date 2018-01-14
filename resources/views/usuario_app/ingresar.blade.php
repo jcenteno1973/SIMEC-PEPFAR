@@ -64,7 +64,7 @@
           </td>
           
           <td>
-               @include('usuario_app/ayuda_usuario/ayuda_ingreso')			
+               @include('ayuda/ayuda_ingreso')			
           </td>
         </tr>
         </table>

@@ -54,7 +54,7 @@
     <div>
         {!! Form::submit('Generar reporte',['class'=>'btn btn-primary'])!!}
         <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_reporte_archivo_datos')   
+          @include('ayuda/ayuda_reporte_archivo_datos')   
     </div>
    {!! Form::close() !!}
    <div class="panel-footer">

@@ -121,7 +121,7 @@
           <td>
               <button type="submit" class="btn btn-primary">Guardar</button>             
               <a href="../administracion/buscar_usuario" class="btn btn-primary"> Regresar</a>
-              @include('usuario_app/ayuda_usuario/ayuda_edit_usuario')
+              @include('ayuda/ayuda_edit_usuario')
        </td>
         </tr>        
         

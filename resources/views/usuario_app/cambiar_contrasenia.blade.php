@@ -57,7 +57,7 @@
                 <div class="col-xs-12 clearfix">
                    <button type="submit" class="btn btn-primary">Guardar</button>   
                    <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>
-                   @include('usuario_app/ayuda_usuario/ayuda_cambio_clave')
+                   @include('ayuda/ayuda_cambio_clave')
                 </div>
                 
                 <p>*Campo requerido</p>

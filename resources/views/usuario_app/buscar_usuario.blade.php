@@ -132,7 +132,7 @@
           </td>
           <td>          
               <!--Boton de ayuda-->
-              @include('usuario_app/ayuda_usuario/ayuda_busca_usuario') 
+              @include('ayuda/ayuda_busca_usuario') 
               <!--FIN Boton de ayuda-->             
           </td>
         </tr>        

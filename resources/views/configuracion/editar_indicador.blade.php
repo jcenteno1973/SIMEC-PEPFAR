@@ -90,7 +90,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-              @include('usuario_app/ayuda_usuario/ayuda_editar_indicador') 
+              @include('ayuda/ayuda_editar_indicador') 
           </td>
         </tr>        
         </table>

@@ -84,7 +84,7 @@
 </div> 
     <div class="panel-footer">
         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_buscar_indicador') 
+          @include('ayuda/ayuda_buscar_indicador') 
     </div>
     
 </div>

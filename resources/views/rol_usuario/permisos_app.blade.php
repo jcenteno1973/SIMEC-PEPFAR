@@ -61,7 +61,7 @@
   </table> 
   <button type="submit" class="btn btn-primary">Guardar</button> 
   <a href="{{route('administracion/editar_rol')}}" class="btn btn-primary"> Regresar</a>
-  @include('usuario_app/ayuda_usuario/ayuda_permiso_app')   
+  @include('ayuda/ayuda_permiso_app')   
   {!! Form::close() !!}
   </div>
 </div> 

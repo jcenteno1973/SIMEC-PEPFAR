@@ -51,7 +51,7 @@
                       <td align="left">
                           <button type="submit" class="btn btn-primary">Guardar</button>
                           <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>                 
-                          @include('usuario_app/ayuda_usuario/ayuda_nuevo_rol')               
+                          @include('ayuda/ayuda_nuevo_rol')               
                       </td>
                     </tr>
                 </table>
