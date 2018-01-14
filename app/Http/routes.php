@@ -19,12 +19,14 @@ Route::get('/','ingresarController@index');
 Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => 'Auth\AuthController@fnc_ingresar']);
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
 Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);
-Route::get('configuracion',['as' => 'configuracion','uses' => 'principalController@fnc_show_configuracion']);
-Route::get('catalogos',['as' => 'catalogos','uses' => 'principalController@fnc_show_catalogos']);
+Route::get('configuracion',['as' => 'configuracion','uses' => 'principalController@fnc_show_configuracion','middleware' => ['permission:configuracion']]);
+Route::get('catalogos',['as' => 'catalogos','uses' => 'principalController@fnc_show_catalogos','middleware' => ['permission:catalogos']]);
+Route::get ('carga',['as'=>'carga','uses'=> 'principalController@fnc_show_carga','middleware' => ['permission:carga']]);
+Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes','middleware' => ['permission:reportes']]);
+Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion','middleware' => ['permission:administracion']] );
 //Carga de datos
 Route::get('codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get('carga/codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
-Route::get ('carga',['as'=>'carga','uses'=> 'principalController@fnc_show_carga']);
 Route::get ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtros_buscar_carga']);
 Route::post ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtros_buscar_carga']);
 Route::get ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_create']);
@@ -72,20 +74,20 @@ Route::post ('configuracion/update_indicador',['as'=>'configuracion/update_indic
 Route::get('configuracion/eliminar_indicador/{id}',['as'=>'configuracion/eliminar_indicador','uses'=>'IndicadorController@fnc_eliminar_indicador']);
 Route::get ('configuracion/buscar_af',['as'=>'configuracion/buscar_af','uses'=> 'ArchivoFuenteController@fnc_buscar_af']);
 Route::post ('configuracion/buscar_af',['as'=>'configuracion/buscar_af','uses'=> 'ArchivoFuenteController@fnc_buscar_af']);
-Route::get ('configuracion/buscar_componente/{id}',['as'=>'configuracion/buscar_componente','uses'=> 'AsignarComponenteController@fnc_buscar_componente']);
-Route::get ('configuracion/buscar_desglose/{id}',['as'=>'configuracion/buscar_desglose','uses'=> 'AsignarDesgloseController@fnc_buscar_desglose']);
-Route::get ('configuracion/nuevo_desglose/{id}',['as'=>'configuracion/nuevo_desglose','uses'=> 'AsignarDesgloseController@fnc_show_create_desg']);
-Route::post ('configuracion/nuevo_desglose_guardar',['as'=>'configuracion/nuevo_desglose_guardar','uses'=> 'AsignarDesgloseController@fnc_show_store_desg']);
-Route::get ('configuracion/editar_componente/{id}',['as'=>'configuracion/editar_componente','uses'=> 'AsignarComponenteController@fnc_show_edit']);
-Route::post ('configuracion/update_componente',['as'=>'configuracion/update_componente','uses'=> 'AsignarComponenteController@fnc_show_update']);
-Route::post ('configuracion/update_desglose',['as'=>'configuracion/update_desglose','uses'=> 'AsignarDesgloseController@fnc_show_update']);
+Route::get('configuracion/buscar_componente/{id}',['as'=>'configuracion/buscar_componente','uses'=> 'AsignarComponenteController@fnc_buscar_componente']);
+Route::get('configuracion/buscar_desglose/{id}',['as'=>'configuracion/buscar_desglose','uses'=> 'AsignarDesgloseController@fnc_buscar_desglose']);
+Route::get('configuracion/nuevo_desglose/{id}',['as'=>'configuracion/nuevo_desglose','uses'=> 'AsignarDesgloseController@fnc_show_create_desg']);
+Route::post('configuracion/nuevo_desglose_guardar',['as'=>'configuracion/nuevo_desglose_guardar','uses'=> 'AsignarDesgloseController@fnc_show_store_desg']);
+Route::get('configuracion/editar_componente/{id}',['as'=>'configuracion/editar_componente','uses'=> 'AsignarComponenteController@fnc_show_edit']);
+Route::post('configuracion/update_componente',['as'=>'configuracion/update_componente','uses'=> 'AsignarComponenteController@fnc_show_update']);
+Route::post('configuracion/update_desglose',['as'=>'configuracion/update_desglose','uses'=> 'AsignarDesgloseController@fnc_show_update']);
 Route::get('configuracion/eliminar_desglose_asig/{id}',['as'=>'configuracion/eliminar_desglose_asig','uses'=>'AsignarDesgloseController@fnc_eliminar_desglose']);
 
 
-Route::get('reportes',['as' => 'reportes','uses' => 'principalController@fnc_show_reportes']);
+
 Route::post('reportes/reportes',['as' => 'reportes/reportes','uses' => 'principalController@fnc_ver_reportes']);
 //ya cuenta con seguridad
-Route::get('administracion',['as' => 'administracion', 'uses' => 'principalController@fnc_show_administracion','middleware' => ['permission:administracion']] );
+
 Route::get('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@show','middleware' => ['permission:buscar_usuario']] );
 Route::post('administracion/buscar_usuario',['as' => 'administracion/buscar_usuario', 'uses' => 'usuario_appController@fnc_filtro_buscar_usuario','middleware' => ['permission:buscar_usuario']] );
 //Agregar un nuevo usuario
@@ -103,6 +105,7 @@ Route::get('administracion/consultar_bitacora',['as' => 'administracion/consulta
 Route::post('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 //***  catalogos
 Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos','middleware' => ['permission:catalogos']] );
+
 Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);
 Route::post('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@fnc_busqueda_filtro']);
 
@@ -127,7 +130,7 @@ Route::post('administracion/editar_rol',['as' => 'administracion/editar_rol', 'u
 Route::get('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@index','middleware' => ['permission:asignar_permiso']]);
 Route::post('administracion/asignar_permiso',['as' => 'administracion/asignar_permiso', 'uses' => 'permisos_appController@store']);
 Route::get('administracion/copia_seguridad',['as' => 'administracion/copia_seguridad', 'uses' => 'CopiaSeguridadController@fnc_crear_copia']);
-Route::get('administracion/lista_copia',['as' => 'administracion/lista_copia', 'uses' => 'CopiaSeguridadController@fnc_listado_copia']);
+Route::get('administracion/lista_copia',['as' => 'administracion/lista_copia', 'uses' => 'CopiaSeguridadController@fnc_listado_copia','middleware' => ['permission:lista_copia']]);
 Route::get('administracion/descargar_copia/{file_name}',['as' => 'administracion/descargar_copia', 'uses' => 'CopiaSeguridadController@fnc_descargar_copia']);
 Route::get('administracion/borrar_copia/{file_name}',['as' => 'administracion/borrar_copia', 'uses' => 'CopiaSeguridadController@fnc_borrar_copia']);
 // Password reset link request routes...

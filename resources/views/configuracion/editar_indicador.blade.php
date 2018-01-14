@@ -31,7 +31,7 @@
             <table class="table table-condensed">    
             <tbody>
                 <tr>
-                  <td>Código indicador *</td>
+                  <td>Id</td>
                   <td>
                       <input type="text" value="{{$obj_indicador->id_indicador}}" class="form-control" name="id" readonly="true">                      
                   </td>  
@@ -45,7 +45,7 @@
                <tr>
                   <td>Código indicador *</td>
                   <td>
-                      <input type="text" value="{{$obj_indicador->codigo_indicador}}" class="form-control" name="codigo" required="true">                      
+                      <input type="text" value="{{$obj_indicador->codigo_indicador}}" class="form-control" name="codigo" readonly="true">                      
                   </td>  
               </tr>
                <tr>
@@ -90,7 +90,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-              @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
+              @include('usuario_app/ayuda_usuario/ayuda_editar_indicador') 
           </td>
         </tr>        
         </table>

@@ -35,11 +35,11 @@
     <table class="table table-bordered">    
             <tbody>
                <tr>
-                 <td>Código evento</td>
+                 <td>Evento</td>
                 <td>
                  {!! Form::select('evento',$obj_evento,$request->evento,['id'=>'evento','class' => 'form-control']) !!}
                 </td>
-               <td>Codigo indicador</td>
+               <td>Código indicador</td>
                 <td>
                     <input type="text" value="{{$request->indicador}}" class="form-control" name="indicador" maxlength="35"> 
                 </td> 
@@ -56,7 +56,7 @@
         <thead>
         <tr>
         <th><center>Id</center></th>
-        <th><center>Codigo indicador</center></th>
+        <th><center>Código indicador</center></th>
         <th><center>Descripción</center></th>
         <th><center>Muliplicador</center></th>
         <th><center>Editar</center></th>
@@ -84,7 +84,7 @@
 </div> 
     <div class="panel-footer">
         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_nuevo_usuario') 
+          @include('usuario_app/ayuda_usuario/ayuda_buscar_indicador') 
     </div>
     
 </div>
