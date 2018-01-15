@@ -83,7 +83,7 @@
        </div>
 </div> 
     <div class="panel-footer">
-        <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
+        <a href="{{route('configuracion')}}" class="btn btn-primary"> Regresar</a>
           @include('ayuda/ayuda_buscar_indicador') 
     </div>
     

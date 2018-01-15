@@ -15,7 +15,7 @@
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario}}</p>
 @stop
 @section('nombre_pantalla')
-<h4 class="text-center">Pantalla ditar indicador</h4>
+<h4 class="text-center">Pantalla editar indicador</h4>
 @stop 
 @section('menu_lateral')
 <div class="list-group">

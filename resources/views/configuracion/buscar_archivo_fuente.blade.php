@@ -33,11 +33,11 @@
     <table class="table table-bordered">    
             <tbody>
                <tr>
-                 <td>Código evento</td>
+                 <td>Evento</td>
                 <td>
                  {!! Form::select('evento',$obj_evento,$request->evento,['id'=>'evento','class' => 'form-control']) !!}
                 </td>
-               <td>Código</td>
+               <td>Código archivo fuente</td>
                 <td>
                     <input type="text" value="{{$request->indicador}}" class="form-control" name="indicador" maxlength="35"> 
                 </td> 
@@ -68,7 +68,6 @@
                 <td><center>{{$obj_archivo_fuentes->id_archivo_fuente}}</center></td>
                 <td><center>{{$obj_archivo_fuentes->codigo_archivo_fuente}}</center></td>
                 <td>{{$obj_archivo_fuentes->descripcion_archivo_fuente}}</td>
-                
                 <td><center>   
                 <a href="{{route('configuracion/buscar_componente',$obj_archivo_fuentes->id_archivo_fuente)}}" class="btn btn-warning"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>
                 </center></td>
@@ -84,8 +83,8 @@
        </div>
 </div> 
     <div class="panel-footer">
-     <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-          @include('ayuda/ayuda_nuevo_usuario')   
+     <a href="{{route('configuracion')}}" class="btn btn-primary"> Regresar</a>
+     @include('ayuda/ayuda_buscar_archivo_fuente')   
     </div>
      
 </div>

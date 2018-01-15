@@ -174,7 +174,7 @@ class IndicadorController extends Controller
         }
     }
     public function fnc_show_update(Request $request){
-        //Almacena un nuevo indicador
+        //modifica un indicador
        $obj_controller_bitacora=new bitacoraController(); 
        $obj_indicador = indicador::find($request->id);
        $error ="Seleccionar";
@@ -192,7 +192,6 @@ class IndicadorController extends Controller
           $success = false;
           $error=$error.", tipo indicador";
        }
-       
         if($success){
             DB::beginTransaction();
         try {
@@ -225,10 +224,11 @@ class IndicadorController extends Controller
                $obj_archivo_fuente->codigo_archivo_fuente=$obj_indicador->codigo_indicador;
                $obj_archivo_fuente->descripcion_archivo_fuente=$obj_indicador->descripcion_indicador;
                $obj_archivo_fuente->save();
-               foreach($obj_archivo_fuente as $obj_archivo_fuentes){
+               foreach($col_archivo_fuente as $obj_archivo_fuentes){
                   $obj_archivo_dato=  archivo_datos::fnc_archivo_fuente($obj_archivo_fuentes->id_archivo_fuente);
                   $obj_asignar_componente=  asignar_componente::fnc_fila($obj_archivo_fuentes->id_archivo_fuente);
                   //Eliminar componentes asignados
+                  
                   if($obj_asignar_componente->count()>0){
                     DB::table("asignar_componente")->where("id_archivo_fuente",$obj_archivo_fuentes->id_archivo_fuente)->delete();
                   }
@@ -236,12 +236,13 @@ class IndicadorController extends Controller
                     //eliminar datos de la tabla vigilancia_epidemiologica
                     DB::table("vigilancia_epidemiologica")->where("id_archivo_datos",$obj_archivo_datos->id_archivo_datos)->delete();
                     //eliminar datos de la tabla archivo_datos
-                    //DB::table("archivo_datos")->where("id_archivo_datos",$obj_archivo_datos->id_archivo_datos)->delete();
+                    DB::table("archivo_datos")->where("id_archivo_datos",$obj_archivo_datos->id_archivo_datos)->delete();
                     $obj_archivo=  archivo_datos::find($obj_archivo_datos->id_archivo_datos);
                     $obj_archivo->datos_cargados=0;
                     $obj_datos->save();
                   }
                   //Asignar componentes
+                  
                   if($request->tipo==4){
                    $obj_numerador=  new asignar_componente();
                    $obj_numerador->id_archivo_fuente=$obj_archivo_fuentes->id_archivo_fuente;
@@ -259,9 +260,11 @@ class IndicadorController extends Controller
                      $obj_denominador->id_componente=$obj_indicador->com_id_componente;
                      $obj_denominador->fila_archivo_fuente=0;
                      $obj_denominador->save();
+                     
             }
             } 
             }else{
+                
                $col_archivo_fuente=archivo_fuente::fnc_id_archivo($request->id);
                $obj_archivo_fuente=  archivo_fuente::find($col_archivo_fuente[0]->id_archivo_fuente);
                $obj_archivo_fuente->codigo_archivo_fuente=$obj_indicador->codigo_indicador;
