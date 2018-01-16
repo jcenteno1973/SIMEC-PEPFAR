@@ -16,6 +16,7 @@ use Zizaco\Entrust\EntrustRole;
      */
 class Role extends EntrustRole
 {
+   use SoftDeletes;
    protected $fillable = [
         'nombre_rol',
         'descripcion'

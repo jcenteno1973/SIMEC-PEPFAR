@@ -2,7 +2,7 @@
 /**
      * Nombre del archivo:usuario_appController.php
      * Descripción:Contiene las funciones del controlador de usuarios
-     * Fecha de creación:20/11/2016
+     * Fecha de creación:20/11/2017
      * Creado por: Juan Carlos Centeno Borja
      */
 namespace App\Http\Controllers;
@@ -69,10 +69,7 @@ class usuario_appController extends Controller
         flash()->success('Usuario creado exitosamente: '.$obj_usuario->nombre_usuario);
         return redirect()->back(); 
         }
-    public function fnc_show_buscar_usuario() {
-        
-    }
-    
+   
     public function fnc_filtro_buscar_usuario(Request $request) {
         /**    
          * Realiza busqueda de usuarios con filtros
@@ -216,11 +213,7 @@ class usuario_appController extends Controller
       return  redirect()->back(); 
     }
 
-   /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
    public function fnc_guardar_contrasenia(Request $request) {
         /**    
          * Guarda en la base de datos la nueva contraseña del usuario
@@ -291,16 +284,7 @@ class usuario_appController extends Controller
         return  redirect()->back(); 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
        
     public function limpiar($String){
         /**

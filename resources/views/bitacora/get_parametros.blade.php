@@ -70,6 +70,9 @@
     </div>
 </div>
 <script>
+    /*
+     * Validar la fecha inicial y final
+     */
     $('.datepicker').datepicker({
         format: "dd/mm/yyyy",
         language: "es",

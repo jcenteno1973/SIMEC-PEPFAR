@@ -76,12 +76,11 @@ class rol_usuarioController extends Controller
        $this->validate($request, $rules);
        $obj_rol_usuario->nombre_rol=$request->nombre_rol;
        $obj_rol_usuario->descripcion=$request->descripcion;
-       $obj_rol_usuario->estado_registro=1;
        $obj_rol_usuario->fecha_hora_creacion=$date;      
        $obj_rol_usuario->save();
        $obj_controller_bitacora=new bitacoraController();
        $obj_controller_bitacora->create_mensaje('Crear rol: '.$obj_rol_usuario->nombre_rol);
-       flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' creado exitosamente ');
+       flash()->success('Rol '.$obj_rol_usuario->nombre_rol.' creado exítosamente ');
        return redirect()->back();         
     }
 
