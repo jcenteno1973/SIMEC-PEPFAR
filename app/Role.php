@@ -16,15 +16,14 @@ use Zizaco\Entrust\EntrustRole;
      */
 class Role extends EntrustRole
 {
-   use SoftDeletes;
-   protected $fillable = [
-        'nombre_rol',
-        'descripcion'
-    ];
     protected $dates = ['deleted_at'];
     protected $table = 'rol_usuario';
     protected $primaryKey = 'role_id';
     public $timestamps = false;
+    protected $fillable = [
+        'nombre_rol',
+        'descripcion'
+    ];
    //establecemos las relacion de muchos a muchos con el modelo User, ya que un rol 
    //lo pueden tener varios usuarios y un usuario puede tener varios roles
    public function users(){

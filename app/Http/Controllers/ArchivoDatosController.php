@@ -365,6 +365,7 @@ class ArchivoDatosController extends Controller
            $obj_vigilancia->cat_id_catalogo=$desglose->cat_id_catalogo;
            $valor_vigilancia=$results[$componente->fila_archivo_fuente][$desglose->columna_archivo_fuente];
            $obj_vigilancia->valor_vigilancia_epi=$valor_vigilancia;
+           
            if($componente->id_componente==$obj_indicador->com_id_componente){
                $valor_minimo=1;//cuando es el denominador no puede ser igual a cero
            }else{

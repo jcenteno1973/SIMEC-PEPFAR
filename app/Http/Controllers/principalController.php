@@ -58,7 +58,8 @@ class principalController extends Controller
     }else{
        $obj_archivo_fuente=  archivo_fuente::find($request->codigos);
        $obj_indicador= indicador::codigo($obj_archivo_fuente->codigo_archivo_fuente)->get();
-       $reporte_generado=$obj_indicador[0]->url_reporte; 
+       $reporte_generado=env('APP_REP').$obj_indicador[0]->url_reporte.'?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS');
+                
        return view('reportes/reportes', 
                 compact('reporte_generado'));
     }
