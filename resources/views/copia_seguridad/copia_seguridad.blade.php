@@ -72,7 +72,7 @@
                class="fa fa-plus"></i> Crear copia
             </a>
            <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>
-          @include('usuario_app/ayuda_usuario/ayuda_copia_seguridad')   
+          @include('ayuda/ayuda_copia_seguridad')   
         </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <!-- 
      * Nombre del archivo:reportes_inicio.blade.php
      * Descripción: Pantalla del modulo de reportes
-     * Fecha de creación:12/12/2016
+     * Fecha de creación:12/12/2017
      * Creado por: Juan Carlos Centeno Borja 
 -->
 @extends('plantillas.plantilla_sin_columna')
@@ -66,7 +66,7 @@
 </div>
 <script>
 function fnc_cambio_codigo(codigos) {
-    document.getElementById("resultado").value="Seleccionar";
+    document.getElementById("resultado").value="{{$descripcion_archivo->count()}} reportes";
     <?php foreach($descripcion_archivo as $descripcion_archivos){ ?>
     if(codigos=={{ $descripcion_archivos->id_archivo_fuente }})
     {
@@ -77,7 +77,7 @@ function fnc_cambio_codigo(codigos) {
 </script>
 <script>
 function fnc_cambio_evento(eventos) {
-    document.getElementById("resultado").value="Seleccionar";
+    document.getElementById("resultado").value="{{$descripcion_archivo->count()}} reportes";
     <?php foreach($descripcion_archivo as $descripcion_archivos){ ?>
     if(codigos=={{ $descripcion_archivos->id_archivo_fuente }})
     {

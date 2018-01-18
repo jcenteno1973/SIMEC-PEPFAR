@@ -365,12 +365,7 @@ class ArchivoDatosController extends Controller
            $obj_vigilancia->cat_id_catalogo=$desglose->cat_id_catalogo;
            $valor_vigilancia=$results[$componente->fila_archivo_fuente][$desglose->columna_archivo_fuente];
            $obj_vigilancia->valor_vigilancia_epi=$valor_vigilancia;
-           
-           if($componente->id_componente==$obj_indicador->com_id_componente){
-               $valor_minimo=1;//cuando es el denominador no puede ser igual a cero
-           }else{
-               $valor_minimo=0;
-           }
+           $valor_minimo=0;
            if ($valor_vigilancia==null || $valor_vigilancia<$valor_minimo){
              $success = false;
              $error ="Datos incorrectos";
@@ -400,7 +395,11 @@ class ArchivoDatosController extends Controller
                     $vigilancia2->id_catalogo == $vigilancia->id_catalogo && 
                     $vigilancia2->cat_id_catalogo == $vigilancia->cat_id_catalogo){                 
                     $denominador=$vigilancia2->valor_vigilancia_epi;
-                    $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador->multiplicador; 
+                    if($denominador>0){
+                        $vigilancia2->valor_indicador=($numerador/$denominador)*$obj_indicador->multiplicador; 
+                    }else{
+                       $vigilancia2->valor_indicador=0; 
+                    }
                     $vigilancia2->id_indicador=$obj_indicador->id_indicador;
                     $vigilancia2->save();
              }
