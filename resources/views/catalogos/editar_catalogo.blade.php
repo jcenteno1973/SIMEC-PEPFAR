@@ -53,7 +53,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="{{route('catalogos/buscar_catalogo')}}" class="btn btn-primary"> Regresar</a>
-              @include('ayuda/ayuda_nuevo_usuario') 
+              @include('ayuda/ayuda_editar_catalogo') 
           </td>
         </tr>        
         </table>
