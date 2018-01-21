@@ -53,7 +53,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-              @include('ayuda/ayuda_nuevo_usuario') 
+              @include('ayuda/ayuda_nuevo_componente') 
           </td>
         </tr>        
         </table>
