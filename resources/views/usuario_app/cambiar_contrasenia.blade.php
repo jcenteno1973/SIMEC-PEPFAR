@@ -56,7 +56,7 @@
                 </table> 
                 <div class="col-xs-12 clearfix">
                    <button type="submit" class="btn btn-primary">Guardar</button>   
-                   <a href="{{route('administracion')}}" class="btn btn-primary"> Regresar</a>
+                   <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
                    @include('ayuda/ayuda_cambio_clave')
                 </div>
                 
