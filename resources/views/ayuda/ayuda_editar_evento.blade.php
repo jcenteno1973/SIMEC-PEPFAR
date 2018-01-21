@@ -1,11 +1,11 @@
- <!--Boton de ayuda-->
+<!--Boton de ayuda-->
     <a href="#ayuda" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
         <div class="modal fade" id="ayuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog"> <!---div class="modal-dialog">-->
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title">BUSCAR INDICADOR</p>
+                        <p class="modal-title">EDITAR EVENTO</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -15,34 +15,27 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para realizar una b&uacute;squeda de indicador:</p>
+                                <p> Para crear un nuevo evento:</p>
                             </td>
                         <tr>    
                             <td>
                                 <p><font color="white">...</font></p>
                             </td>
                             <td>
-                                Se desplegan todos los indicadores, donde puede moverse a trav&eacute;s del paginador <img src="{{asset('images/paginador.jpg')}}"/>
                                 <ul>
-                                    <li> Para realizar la b&uacute;squeda de indicador <strong>seleccione el evento</strong> y/o llene el filtro  <strong>Código de indicador </strong>,   presione luego en el bot&oacute;n <strong>Buscar</strong></li>                                    
-                                    
+                                    <li><strong>Código</strong>: Para el codigo utilizar el CIE-10 con un maximo de 20 caracteres.</li>
+                                    <li><strong>Nombre de evento</strong>: Digitar el nombre del evento epidemiológico con un maximo de 20 caracteres.</li>
+                                    <li><strong>Descripción</strong>: Digite la descripción del evento epidemiológico con un maximo 100 caracteres.</li>
                                 </ul>
-                                
                             </td>
-                        </tr>                                
+                        </tr>
+                        <tr>
+                            <td>
+                                <p ><font color="white">...</font></p>
+                            </td>
+                        </tr>                    
                     </table>  
-                     <table class="table table-striped table-bordered">
-                            
-                            <tr>
-                              <td><a class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>  
-                              <td>Edita el indicador</td>
-                            </tr>
-                           
-                            <tr>
-                               <td><a  class="btn btn-danger"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></td> 
-                               <td>Borra el indicador</td>
-                            </tr>
-                        </table>
+
                     </div>
                     <!--footer de la ventana-->
                     <div class="modal-footer">
@@ -52,4 +45,5 @@
 
             </div>
         </div>
-<!--FIN Boton de  ayuda-->
+<!--FIN Boton  de ayuda-->
+        

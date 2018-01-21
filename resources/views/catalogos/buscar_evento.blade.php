@@ -89,7 +89,7 @@
 </div> 
     <div class="panel-footer">
         <a href="{{route('catalogos/buscar_evento')}}" class="btn btn-primary"> Regresar</a>
-          @include('ayuda/ayuda_nuevo_usuario') 
+          @include('ayuda/ayuda_buscar_evento') 
     </div>
      
 </div>
