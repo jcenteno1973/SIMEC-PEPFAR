@@ -1,6 +1,6 @@
 <?php
 /**
-     * Fecha de modificación:20/12/2016
+     * Fecha de modificación:20/01/2018
      * Creado por: Juan Carlos Centeno Borja
      * Descripción: Rutas de recursos
      */

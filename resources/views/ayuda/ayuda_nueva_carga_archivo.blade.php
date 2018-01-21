@@ -5,7 +5,7 @@
                 <div class="modal-content"> 
                     <!--header de la ventana-->
                     <div class="modal-header">                    
-                        <p class="modal-title">ADMINISTRACION COPIAS DE SEGURIDAD</p>
+                        <p class="modal-title">NUEVA CARGA DE ARCHIVO</p>
                     </div>
                     <!-- Contenido de la ventana -->
                     <div class="modal-body">
@@ -15,7 +15,7 @@
                                 <img src="{{asset('images/informativo.png')}}" alt="informativo"/>
                             </td>
                             <td>
-                                <p> Para administrar las copias de seguridad tiene las siguientes opciones:</p>
+                                <p>Para crear una nueva carga de archivo realice lo siguiente:</p>
                             </td>
                         <tr>    
                             <td>
@@ -23,12 +23,25 @@
                             </td>
                             <td>
                                 <ul>
-                                    <li><strong>Descargar</strong>: Descarga el archivo zip seleccionado para ser almacenado en medio externo</li>
-                                    <li><strong>Borrar</strong>: Borra el archivo zip seleccionado</li>
-                                    <li><strong>Crear copia</strong>: Crea archivo zip conteniendo el código fuente y el script de la base de datos</li>
+                                    <li><strong>País </strong>: Seleccione el país al que pertenecen los datos.</li>
+                                    <li><strong>Año </strong>: Seleccione el año que se esta reportando.</li>
+                                    <li><strong>Evento </strong>: Seleccione el evento que se esta reportando.</li>
+                                    <li><strong>Indicador </strong>: Seleccione el indicador que se esta reportando.</li>
+                                    <li><strong>Archivo </strong>: Seleccione el archivo con datos epidemiológicos.</li>
                                 </ul>
                             </td>
-                        </tr>                                
+                        </tr>
+                        <tr>
+                            <td>
+                                <p ><font color="white">...</font></p>
+                            </td>
+                            <td>
+                                <p>
+                                    Al realizar todos los cambios, debe hacer un clic en el bot&oacute;n "Guardar"<br>
+                                    para cancelar los cambios presione "Regresar".
+                                </p>
+                            </td>
+                        </tr>                    
                     </table>  
 
                     </div>
@@ -40,4 +53,4 @@
 
             </div>
         </div>
-<!--FIN Boton  de ayuda-->
+<!--FIN  Boton de ayuda-->

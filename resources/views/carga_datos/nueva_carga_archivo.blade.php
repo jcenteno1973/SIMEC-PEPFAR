@@ -67,7 +67,7 @@
                 </td>
               </tr>
               <tr>
-                 <td>Código indicador *</td>
+                 <td>Indicador *</td>
                 <td>
                    {!! Form::select('codigos',$codigo_archivo,0,['id'=>'codigos','class' => 'form-control','required' => 'required']) !!}
                 </td> 
@@ -86,7 +86,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-              @include('ayuda/ayuda_nuevo_usuario') 
+              @include('ayuda/ayuda_nueva_carga_archivo') 
           </td>
         </tr>        
         </table>

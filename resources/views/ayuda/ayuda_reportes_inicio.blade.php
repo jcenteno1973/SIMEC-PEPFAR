@@ -1,6 +1,6 @@
 <!--Boton de ayuda-->
-    <a href="#ingresosistema" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
-        <div class="modal fade" id="ingresosistema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <a href="#ayuda" class="btn btn- btn-primary" data-toggle="modal">Ayuda</a>
+        <div class="modal fade" id="ayuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog"> <!---div class="modal-dialog">-->
                 <div class="modal-content"> 
                     <!--header de la ventana-->
