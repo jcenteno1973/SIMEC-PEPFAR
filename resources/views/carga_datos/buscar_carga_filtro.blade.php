@@ -149,7 +149,7 @@
 </div> 
     <div class="panel-footer">
         <a href="javascript:history.back(-1);" class="btn btn-primary"> Regresar</a>
-        @include('ayuda/ayuda_nuevo_usuario')
+        @include('ayuda/ayuda_buscar_carga_filtro')
     </div>
 </div>
 @stop   
