@@ -105,7 +105,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="../../carga/buscar_carga" class="btn btn-primary"> Regresar</a>
-              @include('ayuda/ayuda_nuevo_usuario') 
+              @include('ayuda/ayuda_editar_carga_archivo') 
           </td>
         </tr>        
         </table>
