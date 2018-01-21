@@ -101,19 +101,8 @@ Route::get('administracion/consultar_archivo_datos',['as' => 'administracion/con
 Route::post('administracion/consultar_archivo_datos',['as' => 'administracion/consultar_archivo_datos', 'uses' => 'ArchivoDatosController@fnc_show_consultar_archivos'] );
 
 Route::get('administracion/reporte_usuario',['as' => 'administracion/reporte_usuario', 'uses' => 'usuario_appController@fnc_reporte_usuarios'] );
-Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_parametros'] );
+Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_parametros','middleware' => ['permission:consultar_bitacora']] );
 Route::post('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
-//***  catalogos
-Route::get('administracion/catalogos',['as' => 'administracion/catalogos', 'uses' => 'principalController@fnc_show_catalogos','middleware' => ['permission:catalogos']] );
-
-Route::get('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@index']);
-Route::post('administracion/buscar_unidad_depart',['as' => 'administracion/buscar_unidad_depart', 'uses' => 'ubicacion_orgController@fnc_busqueda_filtro']);
-
-Route::get('administracion/nueva_unidad_depart',['as' => 'administracion/nueva_unidad_depart', 'uses' => 'ubicacion_orgController@create']);
-Route::post('administracion/nueva_unidad_depart',['as' => 'administracion/nueva_unidad_depart', 'uses' => 'ubicacion_orgController@store']);
-
-Route::get('administracion/guardar_unidad_depart',['as' => 'administracion/guardar_unidad_depart', 'uses' => 'ubicacion_orgController@update']);
-Route::post('administracion/guardar_unidad_depart',['as' => 'administracion/guardar_unidad_depart', 'uses' => 'ubicacion_orgController@fnc_guardar_modificacion']);
 
 Route::get('administracion/cambiar_contrasenia',['as' => 'administracion/cambiar_contrasenia', 'uses' => 'usuario_appController@fnc_cambiar_contrasenia'] );
 Route::get('administracion/user_cambiar_contrasenia',['as' => 'administracion/user_cambiar_contrasenia', 'uses' => 'usuario_appController@fnc_user_cambiar_contra'] );
