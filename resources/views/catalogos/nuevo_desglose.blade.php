@@ -1,5 +1,5 @@
 <!-- 
-     * Nombre del archivo:nuevo_catalogo.blade.php
+     * Nombre del archivo:nuevo_desglose.blade.php
      * Descripción: Creacion de un nuevo catalogo
      * Fecha de creación:10/12/2017
      * Creado por: Juan Carlos Centeno Borja
@@ -9,7 +9,7 @@
 <p ALIGN=left>Fecha:<?=date('d/m/Y g:ia');?></p> 
 @stop 
 @section('nombre_plantilla')
-<p ALIGN=center>nuevo_catalogo.blade.php</p>
+<p ALIGN=center>nuevo_desglose.blade.php</p>
 @stop
 @section('usuario_sesion')
 <p ALIGN=right>Usuario:{{ Auth::user()->nombre_usuario }}</p>
@@ -59,7 +59,7 @@
           <td>
              <button type="submit" class="btn btn-primary">Guardar</button>  
               <a href="{{route('catalogos/buscar_catalogo')}}" class="btn btn-primary"> Regresar</a>
-              @include('ayuda/ayuda_nuevo_usuario') 
+              @include('ayuda/ayuda_nuevo_desglose') 
           </td>
         </tr>        
         </table>
