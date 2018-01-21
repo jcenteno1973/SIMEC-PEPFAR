@@ -27,15 +27,15 @@ Route::get('administracion',['as' => 'administracion', 'uses' => 'principalContr
 //Carga de datos
 Route::get('codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
 Route::get('carga/codigo/{id}','ArchivoFuenteController@fnc_get_codigo');
-Route::get ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtros_buscar_carga']);
+Route::get ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtros_buscar_carga','middleware' => ['permission:buscar_carga']]);
 Route::post ('carga/buscar_carga',['as'=>'carga/buscar_carga','uses'=> 'ArchivoDatosController@fnc_filtros_buscar_carga']);
-Route::get ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_create']);
+Route::get ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_create','middleware' => ['permission:nueva_carga']]);
 Route::post ('carga/nueva_carga',['as'=>'carga/nueva_carga','uses'=> 'ArchivoDatosController@fnc_show_store']);
-Route::get ('carga/editar_carga/{id}',['as'=>'carga/editar_carga','uses'=> 'ArchivoDatosController@fnc_show_edit']);
+Route::get ('carga/editar_carga/{id}',['as'=>'carga/editar_carga','uses'=> 'ArchivoDatosController@fnc_show_edit','middleware' => ['permission:editar_carga']]);
 Route::post ('carga/update_carga',['as'=>'carga/update_carga','uses'=> 'ArchivoDatosController@fnc_show_update']);
-Route::get('cargar_datos/{id}',['as'=>'cargar_datos','uses'=>'ArchivoDatosController@fnc_cargar_datos']);
-Route::get('descargar/{id}',['as'=>'descargar','uses'=>'ArchivoDatosController@fnc_descargar_archivo']);
-Route::get('carga/eliminar/{id}',['as'=>'carga/eliminar','uses'=>'ArchivoDatosController@fnc_eliminar_archivo']);
+Route::get('cargar_datos/{id}',['as'=>'cargar_datos','uses'=>'ArchivoDatosController@fnc_cargar_datos','middleware' => ['permission:cargar_datos']]);
+Route::get('descargar/{id}',['as'=>'descargar','uses'=>'ArchivoDatosController@fnc_descargar_archivo','middleware' => ['permission:descargar']]);
+Route::get('carga/eliminar/{id}',['as'=>'carga/eliminar','uses'=>'ArchivoDatosController@fnc_eliminar_archivo','middleware' => ['permission:eliminar']]);
 //Catalogos
 Route::get ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_create','middleware' => ['permission:nuevo_componente']]);
 Route::post ('catalogos/nuevo_componente',['as'=>'catalogos/nuevo_componente','uses'=> 'ComponenteController@fnc_show_store']);
