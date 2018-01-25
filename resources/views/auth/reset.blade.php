@@ -14,13 +14,15 @@
                         </div>
                         <div class="form-group">
                             <label>Contraseña</label>
-                            {!! Form::password('password', ['class'=> 'form-control']) !!}
+                            {!! Form::password('password', ['class'=> 'form-control','pattern'=>'(?=^.{8,25}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$']) !!}
+                            
                         </div>
                         <div class="form-group">
                             <label>Confirmar contraseña</label>
                             {!! Form::password('password_confirmation', ['class'=> 'form-control']) !!}
                         </div>
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+                        @include('ayuda/ayuda_reset')
                     {!! Form::close() !!}
                 </div>
             </div>

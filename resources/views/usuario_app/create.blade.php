@@ -35,15 +35,15 @@
         {!! Form::open(['route' => 'administracion/nuevo_usuario', 'class' => 'form']) !!}
             <table class="table table-condensed">    
             <tbody>
-             
               <tr>
                 <td>Nombres *</td>
-                <td>                     
-                      {!! Form::text('nombres_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                <td> 
+                  {!! Form::text('nombres_usuario', null, ['class' => 'form-control','pattern'=>'[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{3,25}' , 'required' => 'required']) !!}
                 </td>
                 <td>Apellidos *</td>
-                <td>                 
-                      {!! Form::text('apellidos_usuario', null, ['class' => 'form-control' , 'required' => 'required']) !!}                   
+                <td> 
+                    {!! Form::text('apellidos_usuario', null, ['class' => 'form-control','pattern'=>'[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{4,25}' , 'required' => 'required']) !!}
+                    
                 </td>
               </tr>
               <tr>

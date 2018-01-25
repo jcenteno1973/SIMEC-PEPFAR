@@ -20,7 +20,7 @@
                             {!! Form::email('email', old('email'), ['class'=> 'form-control']) !!}
                         </div>
                         {!! Form::submit('Enviar',['class' => 'btn btn-primary']) !!}
-                        <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>
+                        <a href="{{route('principal')}}" class="btn btn-primary">Regresar</a>
                         @include('ayuda/ayuda_ingreso')
                     {!! Form::close() !!}
                 </div>

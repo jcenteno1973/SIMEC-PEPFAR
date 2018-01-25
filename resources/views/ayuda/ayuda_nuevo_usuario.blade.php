@@ -27,7 +27,8 @@
                                     <li><strong>Apellidos</strong>: Escriba los apellidos del usuario.</li>
                                     <li><strong>Rol</strong>: Especifica a que tendra acceso en el sistema.</li>
                                     <li><strong>Correo electr&oacute;nico</strong>: muy importante para recuperacion de contrase&ntilde;as.</li>
-                                    <li><strong>Contrase&ntilde;a</strong>: Debe contener una letra mayuscula, numeros y un caracter especial.</li>
+                                    <li><strong>Contrase&ntilde;a</strong>: Debe contener una letra mayuscula, numeros y un caracter especial <strong>(</strong>|!"#$%&/()='\¿¡*+@ <strong>)</strong>,
+                                       min:8 y max:25.</li>
                                     <li><strong>País</strong>: seleccione al que pertenece el usuario</li>
                                 </ul>
                             </td>
