@@ -11,6 +11,7 @@ use Validator;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 
 class AuthController extends Controller
@@ -66,7 +67,15 @@ class AuthController extends Controller
           flash()->warning('Usuario bloqueado'); 
           return redirect('/');
        }
-       return redirect('/principal');
+       //Validar la fecha de caducida de la contraseña
+       $date = Carbon::now();
+       if(Auth::user()->fecha_validez_contrasenia==$date->toDateString()){
+         flash()->error('Validez de contraseña ha caducado, favor cambiarla');
+         return redirect('/administracion/user_cambiar_contrasenia');
+       }else{
+         return redirect('/principal');
+       }
+       
       }
       flash()->warning('Usuario o contraseña no coincide');
       return redirect('/');
