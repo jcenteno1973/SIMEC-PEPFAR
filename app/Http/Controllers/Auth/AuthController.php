@@ -1,6 +1,6 @@
 <?php
 /**
-     * Fecha de modificación:25/11/2016
+     * Fecha de modificación:26/01/2018
      * Modificado por: Juan Carlos Centeno Borja
      */
 namespace App\Http\Controllers\Auth;
@@ -38,10 +38,21 @@ class AuthController extends Controller
     }
    public function fnc_ingresar(Request $request)//Agregando request
     {
-       /**     
+     /**     
      * Autenticación de usuario
      */
-      $nombre_usuario = $request->nombre_usuario; 
+     //Trasforma el código de usuario en minusculas
+     $nombre_usuario="";
+     $cadena=$request->nombre_usuario; 
+     for($i=0;$i<strlen($cadena);$i++){
+     $resultado = intval(preg_replace('/[^0-9]+/', '', $cadena{$i}), 10);
+     if($resultado==0){
+     $nombre_usuario=$nombre_usuario.strtolower($cadena{$i});    
+     }else{
+     $nombre_usuario=$nombre_usuario.$resultado;    
+     }
+      }
+      //Valida el password
       $password = $request->password; 
       $rules =array('password'=> array('min:8','max:25')); 
       $this->validate($request, $rules);//Realizar validación      
