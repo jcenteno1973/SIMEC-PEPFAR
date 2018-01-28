@@ -69,7 +69,7 @@ class AuthController extends Controller
        }
        //Validar la fecha de caducida de la contraseña
        $date = Carbon::now();
-       if(Auth::user()->fecha_validez_contrasenia==$date->toDateString()){
+       if(Auth::user()->fecha_validez_contrasenia<=$date->toDateString()){
          flash()->error('Validez de contraseña ha caducado, favor cambiarla');
          return redirect('/administracion/user_cambiar_contrasenia');
        }else{

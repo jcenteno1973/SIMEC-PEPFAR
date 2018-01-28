@@ -169,8 +169,8 @@ class ArchivoDatosController extends Controller
          return redirect()->back();
        } else{
         if($ext!="xls" && $ext!="xlsx"){ 
-         $obj_controller_bitacora->create_mensaje('Tipo archivo erroneo: '.$_FILES['file']['name']);           
-         $errors='Tipo archivo erroneo: '.$_FILES['file']['name'];
+         $obj_controller_bitacora->create_mensaje('Tipo archivo erróneo: '.$_FILES['file']['name']);           
+         $errors='Tipo archivo erróneo: '.$_FILES['file']['name'];
          flash()->error($errors);
          return redirect()->back();  
         }
@@ -183,9 +183,9 @@ class ArchivoDatosController extends Controller
             }  
           if($request->eventos==0){
            if($paso==1){
-             $mensaje=$mensaje.", seleccionar el evento y el código archivo";  
+             $mensaje=$mensaje.", seleccionar el evento y el indicador";  
            }else{
-               $mensaje="Seleccionar el evento y el código archivo"; 
+               $mensaje="Seleccionar el evento y el indicador"; 
            }
           }
           flash()->warning($mensaje);
