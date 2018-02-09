@@ -17,7 +17,7 @@
                     {!! Form::open(['route' => 'password/email', 'class' => 'form']) !!}
                         <div class="form-group">
                             <label>Ingrese su correo eletrónico</label>
-                            {!! Form::email('email', old('email'), ['class'=> 'form-control']) !!}
+                            {!! Form::email('email', old('email'), ['class'=> 'form-control','required' => 'required']) !!}
                         </div>
                         {!! Form::submit('Enviar',['class' => 'btn btn-primary']) !!}
                         <a href="{{route('principal')}}" class="btn btn-primary">Regresar</a>
