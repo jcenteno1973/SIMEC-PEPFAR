@@ -59,10 +59,11 @@
    @endforeach   
     </tbody>   
   </table> 
+       
   <button type="submit" class="btn btn-primary">Guardar</button> 
   <a href="{{route('administracion/editar_rol')}}" class="btn btn-primary"> Regresar</a>
   @include('ayuda/ayuda_permiso_app')   
   {!! Form::close() !!}
   </div>
-</div> 
+</div>
 @stop

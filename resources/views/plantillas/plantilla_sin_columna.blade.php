@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="905; URL=/sigve/public/">
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
     <title>@yield('title')</title>
     @section('head')
         {!! Html::style('assets/css/bootstrap.css') !!}
@@ -20,6 +22,12 @@
         <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/scripts.js')}}"></script>
+        <script type="text/javascript">
+    {
+    if(history.forward(1))
+      location.replace(history.foward());
+    }
+    </script>
         <script type="text/javascript">
         $(window).load(function() {
         $(".loader").fadeOut("slow");

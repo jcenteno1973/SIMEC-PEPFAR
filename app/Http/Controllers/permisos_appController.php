@@ -26,7 +26,7 @@ class permisos_appController extends Controller
       /**     
      * Crea formulario con los permisos de la aplicación
      */       
-        $nombre_rol=$request->nombre_rol;
+       $nombre_rol=$request->nombre_rol;
         if($request->nombre_rol=='')
        {
          flash()->warning('Seleccione un rol') ; 
@@ -35,14 +35,11 @@ class permisos_appController extends Controller
       else {
           $obj_rol_usuario= new rol_usuarioController();
           $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->nombre_rol);  
-          $obj_permiso_app=  Permission::all(); 
+          $obj_permiso_app=  Permission::orderBy('nombre_mostrar', 'asc')->get(); 
           $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id_rol_usuario)
             ->lists('permission_role.permission_id','permission_role.permission_id');
         return view('rol_usuario/permisos_app',compact('obj_permiso_app','rolePermissions','nombre_rol'));
-               
-        //return view('rol_usuario/permisos_app', compact('obj_permiso_app','nombre_rol'));
        }
-        
     }
 
     /**

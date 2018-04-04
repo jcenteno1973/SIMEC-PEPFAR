@@ -11,6 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="905; URL=/sigve/public/">
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
     <title>@yield('title')</title>
     @section('head')
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
@@ -20,12 +24,19 @@
     <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>     
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/scripts.js')}}"></script>
+    
        <!-- Datepicker Files -->
     <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.css')}}">
     <link rel="stylesheet" href="{{asset('datePicker/css/bootstrap-datepicker3.standalone.css')}}">
     <script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
     <!-- Languaje -->
     <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    <script type="text/javascript">
+    {
+    if(history.forward(1))
+      location.replace(history.foward());
+    }
+    </script>
     <script type="text/javascript">
     $(window).load(function() {
     $(".loader").fadeOut("slow");
@@ -34,6 +45,7 @@
     @show    
 </head>
 <body>
+     
     <div class="loader">
         <img class="profile-img" src="{{asset('images/pageLoader.gif')}}" width="100" height="100"> 
     </div>
@@ -48,6 +60,7 @@
                     @yield('fecha_sistema') 		
 		</div>
                 <div class="col-md-4">
+                   
                     @yield('nombre_plantilla') 		
 		</div>
 		<div class="col-md-4">

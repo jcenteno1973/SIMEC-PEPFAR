@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="905; URL=/sigve/public/">
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
     <title>@yield('title')</title>
     @section('head')
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
@@ -26,6 +28,12 @@
     <script src="{{asset('datePicker/js/bootstrap-datepicker.js')}}"></script>
     <!-- Languaje -->
     <script src="{{asset('datePicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    <script type="text/javascript">
+    {
+    if(history.forward(1))
+      location.replace(history.foward());
+    }
+    </script>
     <script type="text/javascript">
     $(window).load(function() {
     $(".loader").fadeOut("slow");
@@ -152,7 +160,5 @@
 		</div>
 	</div>
 	</div>
-    
-
 </body>
 

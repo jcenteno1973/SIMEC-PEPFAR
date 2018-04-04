@@ -11,7 +11,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="905; URL=/sigve/public/">
-   
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    
     <title>@yield('title')</title>
     @section('head')
        <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
@@ -19,6 +23,7 @@
        <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/scripts.js')}}"></script>
+        
     @show    
 </head>
 <body>

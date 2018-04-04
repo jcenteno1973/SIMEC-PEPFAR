@@ -23,10 +23,11 @@ class ingresarController extends Controller
     public function index()
     {
         if (Auth::check()){//Si tiene sesión iniciada lo envia a la pagina principal
-         return redirect('/principal');  
+         
+            return redirect('/principal');  
          }
          else {//Si no tiene una sesión iniciada se abre la pagina de ingreso
-            return view('usuario_app.ingresar');
+             return view('usuario_app.ingresar');
              }
     }
 

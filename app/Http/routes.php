@@ -15,7 +15,7 @@
 |
 */
 
-Route::get('/','ingresarController@index');
+Route::get('/',['as' => '/', 'uses' => 'ingresarController@index']);
 Route::post('usuario_app/ingresar', ['as' => 'usuario_app/ingresar', 'uses' => 'Auth\AuthController@fnc_ingresar']);
 Route::get('usuario_app/salir', ['as' => 'usuario_app/salir', 'uses' => 'Auth\AuthController@fnc_salir']);
 Route::get('principal',['as' => 'principal','uses' => 'principalController@fnc_show_principal']);

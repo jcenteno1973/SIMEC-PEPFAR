@@ -94,10 +94,15 @@ class AuthController extends Controller
         ]);
     }
     public function fnc_salir()
-    {               
+    {  
+      
         Auth::logout();
+        
         return redirect('/');
     }
+    
+    
+
     /**
      * Create a new user instance after a valid registration.
      *
