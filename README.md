@@ -1,2 +1,2 @@
-# SIGVE
-Desarrollo de Sistema de Información Gerencial para la Vigilancia Epidemiológica del COMISCA
+# SIMEC-PEPFAR
+Desarrollo del Sistema Informático para el Monitoreo de la Estrategia conjuntas PEPFAR para contribuir al control sostenido de la epidemia del VIH
