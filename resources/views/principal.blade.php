@@ -21,7 +21,7 @@
         <div class="container text-center">
             <table class="table">             
                 <center>
-                    <h1>Herramienta Gerencial para el apoyo en el analisis de<br>los datos epidemiologicos de los Ministerios de Salud</h1>
+                    <h1>Herramienta Gerencial para la carga de los datos<br>del proyecto ROP</h1>
                     <br><h3>Bienvenido(a): {{ Auth::user()->nombres_usuario }} {{ Auth::user()->apellidos_usuario }}</h3>
                 </center>
             </table>

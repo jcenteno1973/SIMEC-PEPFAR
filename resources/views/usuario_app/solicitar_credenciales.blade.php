@@ -73,6 +73,6 @@
             </form>
         </div>
     </div><br><br>
-    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2016, Universidad de El Salvador</h5></div>
+    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2019, SE-COMISCA</h5></div>
 </div>
 @stop

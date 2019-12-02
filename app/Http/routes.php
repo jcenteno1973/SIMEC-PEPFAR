@@ -91,11 +91,11 @@ Route::get('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario
 Route::post('administracion/nuevo_usuario',['as' => 'administracion/nuevo_usuario', 'uses' => 'usuario_appController@create'] );
 Route::get('administracion/guardar_usuario',['as' => 'administracion/guardar_usuario', 'uses' => 'usuario_appController@edit','middleware' => ['permission:guardar_usuario']] );
 Route::post('administracion/guardar_usuario',['as' => 'administracion/guardar_usuario', 'uses' => 'usuario_appController@fnc_guardar_modificacion'] );
-Route::get('administracion/consultar_archivo_datos',['as' => 'administracion/consultar_archivo_datos', 'uses' => 'ArchivoDatosController@fnc_show_parametros','middleware' => ['permission:consultar_archivo_datos']] );
-Route::post('administracion/consultar_archivo_datos',['as' => 'administracion/consultar_archivo_datos', 'uses' => 'ArchivoDatosController@fnc_show_consultar_archivos'] );
-Route::get('administracion/reporte_usuario',['as' => 'administracion/reporte_usuario', 'uses' => 'usuario_appController@fnc_reporte_usuarios','middleware' => ['permission:reporte_usuario']] );
-Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_parametros','middleware' => ['permission:consultar_bitacora']] );
-Route::post('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
+//Route::get('administracion/consultar_archivo_datos',['as' => 'administracion/consultar_archivo_datos', 'uses' => 'ArchivoDatosController@fnc_show_parametros','middleware' => ['permission:consultar_archivo_datos']] );
+//Route::post('administracion/consultar_archivo_datos',['as' => 'administracion/consultar_archivo_datos', 'uses' => 'ArchivoDatosController@fnc_show_consultar_archivos'] );
+//Route::get('administracion/reporte_usuario',['as' => 'administracion/reporte_usuario', 'uses' => 'usuario_appController@fnc_reporte_usuarios','middleware' => ['permission:reporte_usuario']] );
+//Route::get('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_parametros','middleware' => ['permission:consultar_bitacora']] );
+//Route::post('administracion/consultar_bitacora',['as' => 'administracion/consultar_bitacora', 'uses' => 'bitacoraController@fnc_show_consultar_bitacora'] );
 Route::get('administracion/cambiar_contrasenia',['as' => 'administracion/cambiar_contrasenia', 'uses' => 'usuario_appController@fnc_cambiar_contrasenia'] );
 Route::get('administracion/user_cambiar_contrasenia',['as' => 'administracion/user_cambiar_contrasenia', 'uses' => 'usuario_appController@fnc_user_cambiar_contra'] );
 Route::post('administracion/cambiar_contrasenia',['as' => 'administracion/cambiar_contrasenia', 'uses' => 'usuario_appController@fnc_guardar_contrasenia'] );

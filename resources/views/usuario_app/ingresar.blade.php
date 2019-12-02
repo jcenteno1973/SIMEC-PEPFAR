@@ -72,6 +72,6 @@
         </form>
         </div>
     </div>
-    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017, UES/FIA/EISI</h5></div>
+    <div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2019, SE-COMISCA</h5></div>
 </div>
 @stop

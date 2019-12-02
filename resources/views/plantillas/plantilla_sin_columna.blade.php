@@ -76,19 +76,16 @@
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('principal')}}">Inicio</a>
-                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('carga')}}">Carga de datos</a>
+                                        </button> <a class="navbar-brand" href="{{route('principal')}}">Inicio</a>                                         
                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('catalogos')}}">Catálogos</a>
+                                        </button> <a class="navbar-brand" href="{{route('catalogos')}}">ROP Trimestre</a>
                                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('configuracion')}}">Configuración</a>
+                                        </button> <a class="navbar-brand" href="{{route('configuracion')}}">ROP Semestre</a>
                                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('reportes')}}">Reportes</a>
+                                        </button> <a class="navbar-brand" href="{{route('reportes')}}">KPIF</a>
                                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                                         </button> <a class="navbar-brand" href="{{route('administracion')}}">Administración</a>
@@ -146,7 +143,7 @@
     </div>
 	<div class="row"><!--pie de pagina -->
             <div class="col-md-12">
-		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2017, UES/FIA/EISI</h5></div>
+		<div class="panel-footer"><h5 class="text-center">Derechos Reservados &copy; 2019 SE-COMISCA</h5></div>
 	    </div>
 	</div>
 	</div>
