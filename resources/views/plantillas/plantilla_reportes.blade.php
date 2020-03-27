@@ -10,13 +10,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="905; URL=/sigve/public/">
+    <meta http-equiv="refresh" content="905; URL=/rob_test/public/">
     <meta http-equiv="Expires" content="0" />
     <meta http-equiv="Pragma" content="no-cache" />
     <title>@yield('title')</title>
     @section('head')
     <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.css')}}" />
-    <link rel="stylesheet" type=text/css href="{{asset('assets/css/bootstrap.min.css')}}" />
     {!! Html::style('assets/css/carga.css') !!}
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>     
@@ -70,11 +69,11 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
               }
              .navbar-default .navbar-brand {
-             color:#000;
+             color:#fff;
               }
             /* cambiar el color de fondo a la barra */
             nav.navbar {
-           background-color: #337ab7;
+           background-color: #233671; /* #337ab7 */
             
             }
             </style>

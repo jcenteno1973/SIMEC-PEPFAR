@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 
+use App\Models\hospital;
 
 class AuthController extends Controller
 {
@@ -73,7 +74,7 @@ class AuthController extends Controller
          flash()->error('Validez de contraseña ha caducado, favor cambiarla');
          return redirect('/administracion/user_cambiar_contrasenia');
        }else{
-         return redirect('/principal');
+         return redirect('/principal'); // '/sethospital'
        }
        
       }

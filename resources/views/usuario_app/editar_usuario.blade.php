@@ -97,15 +97,60 @@
                 </td>
               <td>País *</td>
                  <td>                 
-                    <select name="region_sica" class="form-control">
+                    <select name="id_region_sica" class="form-control">
                     @foreach($obj_region_sica as $paises)
-                    @if($paises->id_region_sica==$obj_usuario->id_region_sica)
-                    <option selected="true">{{$paises->nombre_pais}}</option>
-                    @else
-                         <option>{{$paises->nombre_pais}}</option>
-                    @endif
+                        @if($paises->id_region_sica==$obj_usuario->id_region_sica)
+                            <option value="{{$paises->id_region_sica}}" selected>{{$paises->nombre_pais}}</option>
+                        @else
+                            <option value="{{$paises->id_region_sica}}" >{{$paises->nombre_pais}}</option>
+                        @endif
                     @endforeach                           
                     </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Hospital *</td>
+                <td>                 
+                    <select name="id_hospital" class="form-control">
+                        <option value="" >-- Seleccionar -- </option>
+                        @foreach($obj_select_hospital as $obj_item)
+                            @if($obj_usuario->id_hospital == $obj_item->id_hospital)
+                            <option value="{{$obj_item->id_hospital}}" selected>{{$obj_item->nombre_hospital}}</option>
+                            @else
+                                <option value="{{$obj_item->id_hospital}}">{{$obj_item->nombre_hospital}}</option>
+                            @endif
+                        @endforeach                      
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Laboratorios *</td>
+                <td>                 
+                    <select name="id_laboratorios" class="form-control">
+                        <option value="" >-- Seleccionar -- </option>
+                        @foreach($obj_select_laboratorios as $obj_item)
+                            @if($obj_usuario->id_laboratorios == $obj_item->id_laboratorios)
+                            <option value="{{$obj_item->id_laboratorios}}" selected>{{$obj_item->nombre_laboratorio}}</option>
+                            @else
+                                <option value="{{$obj_item->id_laboratorios}}">{{$obj_item->nombre_laboratorio}}</option>
+                            @endif
+                        @endforeach                      
+                   </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Municipio *</td>
+                <td>                 
+                    <select name="id_municipio" class="form-control">
+                        <option value="" >-- Seleccionar -- </option>
+                        @foreach($obj_select_municipio as $obj_item)
+                            @if($obj_usuario->id_municipio == $obj_item->id_municipio)
+                            <option value="{{$obj_item->id_municipio}}" selected>{{$obj_item->nombre_municipio}}</option>
+                            @else
+                                <option value="{{$obj_item->id_municipio}}">{{$obj_item->nombre_municipio}}</option>
+                            @endif
+                        @endforeach                      
+                   </select>
                 </td>
             </tr>
            

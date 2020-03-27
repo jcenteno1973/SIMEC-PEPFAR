@@ -18,14 +18,20 @@ class bitacora extends Model
     protected $fillable = [
         'id_usuario_app',
         'fecha_hora_transaccion',
-        'transaccion_realizada'
+        'transaccion_realizada',
+        'ip_dispositivo'      
     ];
     
-   /*relacion con usuario
-    public function fnc_usuarios_app()
+    protected $dates = ['fechat', 'fecha_hora_transaccion'];
+
+    public function usuario()
     {
-        return $this->hasMany('App\User');
+        return $this->hasOne('App\User','id_usuario_app', 'id_usuario_app');
     }
-    * 
-    */
+    
+    public function getFechatAttribute()
+    {
+        return $this->fecha_hora_transaccion->format('Y-m-d');
+    }
 }
+

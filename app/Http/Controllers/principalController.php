@@ -14,6 +14,9 @@ use App\Models\evento_epi;
 use App\Models\archivo_fuente;
 use App\Models\indicador;
 
+// add
+use App\User;
+
 class principalController extends Controller
 {
     /**
@@ -27,17 +30,20 @@ class principalController extends Controller
     public function fnc_show_principal(){       
         return view('principal');
     }
-     public function fnc_show_configuracion(){
-       
-        return view('configuracion_inicio');
-    }
-    public function fnc_show_catalogos(){
-       
-        return view('catalogos_inicio');
-    }
-    public function fnc_show_carga(){
-        return view ('carga_inicio');
-    }
+    public function fnc_show_sethospital()
+    { return view('sethospital'); }
+    
+    public function fnc_show_setmunicipio()
+    { return view('setmunicipio'); }
+    
+    public function fnc_show_configuracion()
+    { return view('configuracion_inicio'); }
+    
+    public function fnc_show_catalogos()
+    { return view('catalogos_inicio'); }
+    
+    public function fnc_show_carga()
+    { return view ('carga_inicio'); }
     
     public function fnc_show_reportes(){
        //Formulario de parametro de reportes
@@ -50,32 +56,71 @@ class principalController extends Controller
         return view('reportes_inicio', 
                 compact('obj_evento_epi','codigo_archivo','descripcion_archivo'));
     }
-    public function fnc_ver_reportes(Request $request){
-    //Visualizar reportes
-    if($request->codigos==0){
-        flash()->warning('Seleccionar el indicador');
-        return redirect('reportes'); 
-    }else{
-       $obj_archivo_fuente=  archivo_fuente::find($request->codigos);
-       $obj_indicador= indicador::codigo($obj_archivo_fuente->codigo_archivo_fuente)->get();
-       $reporte_generado=env('APP_REP').$obj_indicador[0]->url_reporte.'?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS');
+    public function fnc_ver_reportes(Request $request)
+    {
+        //Visualizar reportes
+        if($request->codigos==0)
+            {
+            flash()->warning('Seleccionar el indicador');
+            return redirect('reportes'); 
+        }
+        else
+        {
+           $obj_archivo_fuente=  archivo_fuente::find($request->codigos);
+            $obj_indicador= indicador::codigo($obj_archivo_fuente->codigo_archivo_fuente)->get();
+            $reporte_generado=env('APP_REP').$obj_indicador[0]->url_reporte.'?userid='.env('PENTAHO_USER').'&password='.env('PENTAHO_PASS');
                 
-       return view('reportes/reportes', 
+            return view('reportes/reportes', 
                 compact('reporte_generado'));
-    }
-    
+        }
     }
 
-    public function fnc_show_administracion() {
-       
-        return view('administracion_inicio'); 
-    }
+    public function fnc_show_administracion() 
+    { return view('administracion_inicio'); }
+    
+    public function fnc_show_ropseguimiento()
+    { return view('ropseguimiento_inicio'); }
+    
+    public function fnc_show_roptrimestre() 
+    { return view('roptrimestre_inicio'); }
+    
+    public function fnc_show_ropsemestre() 
+    { return view('ropsemestre_inicio'); }
+    
+    public function fnc_show_ropanual()
+    { return view('ropanual_inicio'); }
+    
+    public function fnc_show_ropkpif()
+    { return view('ropkpif_inicio'); }
+    
+    public function fnc_show_ropcascada() 
+    { return view('ropcascada_inicio'); }
+    
     public function index()
     {
         
     }
    
    
+    public function fnc_sethospital(Request $request)
+    {
+        $obj_user = User::find($request->id_usuario_app);
+        $obj_user->id_hospital = $request->id_hospital;
+        $obj_user->save();
+        // return view('ropkpif_inicio');
+        
+        return redirect()->action('principalController@fnc_show_ropkpif',['id'=>1]);
+    }
+    
+    public function fnc_setmunicipio(Request $request)
+    {
+        $obj_user = User::find($request->id_usuario_app);
+        $obj_user->id_municipio = $request->id_municipio;
+        $obj_user->save();
+        
+        return redirect()->action('principalController@fnc_show_ropkpif',['id'=>1]);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *

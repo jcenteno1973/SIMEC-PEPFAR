@@ -12,6 +12,9 @@ use App\Role;
 use Auth;
 use App\Http\Controllers\bitacoraController;
 use App\Models\region_sica;
+use App\Models\hospital;
+use App\Models\municipio;
+use App\Models\laboratorios;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -58,8 +61,13 @@ class usuario_appController extends Controller
         $usuario->nombre_usuario=$this->fnc_nombre_usuario($request);
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
         $usuario->role_id=$id_rol_usuario;
-        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica);
-        $usuario->id_region_sica=$id_regio_sica;
+        
+        $usuario->id_region_sica = $request->id_region_sica;
+        $usuario->id_hospital = $request->id_hospital;
+        $usuario->id_laboratorios = $request->id_laboratorios;
+        $usuario->id_municipio = $request->id_municipio;
+        
+        
         $usuario->save();
         $obj_rol_asignado= Role::find($id_rol_usuario);
         $usuario->attachRole($obj_rol_asignado);
@@ -101,18 +109,26 @@ class usuario_appController extends Controller
          */
         $obj_role= Role::all();
         $obj_region_sica=  region_sica::all();
+        $obj_select_hospital= hospital::all();
+        $obj_select_laboratorios= laboratorios::all();
+        $obj_select_municipio = municipio::where('kpif','=',1)->get();
+        
         return view('usuario_app/create',
                 compact('obj_role',
-                'obj_region_sica'));
+                        'obj_region_sica',
+                        'obj_select_hospital',
+                        'obj_select_laboratorios',
+                        'obj_select_municipio'
+                        ));
     }
 
-   
     public function store()
     {  // Formulario para editar usuario     
        $obj_role= Role::all();
        $obj_inputs=Input::all();      
        $id_usuario_app=$obj_inputs['seleccionar'];
-       $obj_usuario=User::find($id_usuario_app);      
+       $obj_usuario=User::find($id_usuario_app);
+       
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
                'obj_role'));     
@@ -135,7 +151,11 @@ class usuario_appController extends Controller
          */
         $obj_role= Role::all();
         $obj_region_sica=  region_sica::all();
-       $obj_inputs=Input::all();        
+        $obj_select_hospital= hospital::all();
+        $obj_inputs=Input::all();
+        $obj_select_laboratorios= laboratorios::all();
+        $obj_select_municipio = municipio::where('kpif','=',1)->get();
+        
        if(sizeof($obj_inputs)==0)
        {
           flash()->warning('Seleccione un usuario') ;
@@ -147,7 +167,10 @@ class usuario_appController extends Controller
        return view('usuario_app/editar_usuario',compact(
                'obj_usuario',
                'obj_role',
-               'obj_region_sica'));     
+               'obj_region_sica',
+               'obj_select_hospital',
+               'obj_select_laboratorios',
+               'obj_select_municipio'));
        }
          
         
@@ -259,10 +282,9 @@ class usuario_appController extends Controller
         }
             
         if($validar==1)
-        {
-           $this->validate($request, $rules);      
-        } 
-        $date = Carbon::now();               
+        { $this->validate($request, $rules); }
+        
+        $date = Carbon::now();
         $usuario->email=$request->email;  
         $usuario->nombres_usuario=$request->nombres_usuario;
         $usuario->apellidos_usuario=$request->apellidos_usuario;
@@ -270,10 +292,15 @@ class usuario_appController extends Controller
         $usuario->fecha_validez_contrasenia=$date;
         $usuario->estado_usuario=$request->estado_usuario;
         $usuario->nombre_usuario=$request->nombre_usuario;
+        
         $id_rol_usuario=$obj_rol_usuario->fnc_obtener_id($request->rol_usuario);
         $usuario->role_id=$id_rol_usuario; 
-        $id_regio_sica=$obj_region_sica->fnc_obtener_id($request->region_sica);
-        $usuario->id_region_sica=$id_regio_sica;
+        
+        $usuario->id_region_sica = $request->id_region_sica;
+        $usuario->id_hospital = $request->id_hospital;
+        $usuario->id_laboratorios = $request->id_laboratorios;
+        $usuario->id_municipio = $request->id_municipio;
+        
         $usuario->save();        
         $obj_rol_asignado= Role::find($id_rol_usuario);
         DB::table("role_user")->where("role_user.user_id",$request->id_usuario_app)->delete();    

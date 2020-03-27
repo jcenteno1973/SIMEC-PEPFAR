@@ -17,3 +17,7 @@ and open the template in the editor.
     background:50% 50% no-repeat rgb(249,249,249);
     opacity: .8;
 }
+
+    .toolbar {
+    float: left;
+}

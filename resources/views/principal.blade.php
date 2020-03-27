@@ -13,7 +13,7 @@
 @stop
 @section('usuario_sesion')
 
-<p ALIGN=right>Usuario:<a href="{{route('administracion/user_cambiar_contrasenia')}}">{{ Auth::user()->nombre_usuario }}</a></p>
+<p ALIGN=right> {{ Auth::user()->get_hospital->nombre_hospital }} | Usuario:<a href="{{route('administracion/user_cambiar_contrasenia')}}">{{ Auth::user()->nombre_usuario }}</a></p>
 @stop
 @section('contenido')
 <div class="panel panel-default">
@@ -22,10 +22,13 @@
             <table class="table">             
                 <center>
                     <h1>Herramienta Gerencial para la carga de los datos<br>del proyecto ROP</h1>
-                    <br><h3>Bienvenido(a): {{ Auth::user()->nombres_usuario }} {{ Auth::user()->apellidos_usuario }}</h3>
+                    <br><h3>Bienvenido(a): {{ Auth::user()->nombres_usuario }} {{ Auth::user()->apellidos_usuario }} </h3>
                 </center>
             </table>
         </div>
      </div>
 </div>
+
+
+
 @stop

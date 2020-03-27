@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+
+use App\Models\hospital;
+
 class ingresarController extends Controller
 {
     /**
@@ -23,8 +26,7 @@ class ingresarController extends Controller
     public function index()
     {
         if (Auth::check()){//Si tiene sesión iniciada lo envia a la pagina principal
-         
-            return redirect('/principal');  
+            return redirect('/principal');
          }
          else {//Si no tiene una sesión iniciada se abre la pagina de ingreso
              return view('usuario_app.ingresar');

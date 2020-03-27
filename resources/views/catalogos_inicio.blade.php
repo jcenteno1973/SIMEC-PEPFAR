@@ -22,6 +22,8 @@
     <a href="{{route('catalogos/buscar_catalogo')}}" class="list-group-item">Buscar catalogo</a>
     <a href="{{route('catalogos/nuevo_componente')}}" class="list-group-item">Nuevo componente</a>
     <a href="{{route('catalogos/buscar_componente')}}" class="list-group-item">Buscar componente</a>
+    <hr>
+    <a href="{{route('catalogos/index_indextesting')}}" class="list-group-item">Index Testing</a>
 </div>
 @stop
 

@@ -1,37 +1,27 @@
 <?php
 /*
- * Nombre del archivo: indicador.php
- * Descripción: modelo para la tabla indicador
- * Fecha de creación:19/11/2017
- * Creado por: Juan Carlos Centeno
+ * Nombre del archivo: catalogo.php
+ * Descripción: modelo para la tabla catalogos
+ * Fecha de creación: Dic/2019
+ * Creado por: 
  */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 class indicador extends Model
 {
-    use SoftDeletes;
-    protected $dates = ['deleted_at'];
     protected $table = 'indicador';
     protected $primaryKey = 'id_indicador';
     public $timestamps = false;
     protected $fillable = [
-        'codigo_indicador',
+        'ind_id_indicador',
+        'indicador',
         'descripcion_indicador',
-        'multiplicador'
+        'tipo_indicador'
     ];
-    public static function fnc_indicador($parametro) {
-     //Devuelve los indicadores relacionados con el componente   
-     return indicador::where('id_componente','=',$parametro)
-             ->get();
-    }
-    public function scopeCodigo($query,$indicador) {
-        //Filtro busqueda por codigo indicador
-        $query->where('codigo_indicador',"LIKE",'%'.$indicador.'%');
-    }
-    public function scopeId_evento($query,$evento) {
-        //Filtro busqueda por id del evento epidemiológico
-        $query->where('id_evento_epi',$evento);
-    }
+
+    public function get_indicadorPadre()
+    { return $this->hasOne('App\Models\indicador','id_indicador', 'ind_id_indicador'); }
+    
 }

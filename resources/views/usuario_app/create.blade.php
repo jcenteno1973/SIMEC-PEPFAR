@@ -56,17 +56,52 @@
                <tr>
                 <td>Rol *</td>
                 <td>
-                   <select name="rol_usuario" class="form-control" >
+                   <select name="rol_usuario" class="form-control" required>
                         @foreach($obj_role as $obj_roles)
                         <option>{{$obj_roles->nombre_rol}}</option>
                         @endforeach
                    </select>
                 </td>
+                </tr>
+                <tr>
                 <td>País *</td>
                 <td>                 
-                    <select name="region_sica" class="form-control">
+                    <select name="id_region_sica" class="form-control" required>
                         @foreach($obj_region_sica as $paises)
-                        <option>{{$paises->nombre_pais}}</option>
+                            <option value="{{$paises->id_region_sica}}">{{$paises->nombre_pais}}</option>
+                        @endforeach                      
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Hospital *</td>
+                <td>                 
+                    <select name="id_hospital" class="form-control">
+                        <option value="" >-- Seleccionar -- </option>
+                        @foreach($obj_select_hospital as $obj_item)
+                            <option value="{{$obj_item->id_hospital}}">{{$obj_item->nombre_hospital}}</option>
+                        @endforeach                      
+                   </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Laboratorio *</td>
+                <td>                 
+                    <select name="id_laboratorios" class="form-control">
+                        <option value="" >-- Seleccionar -- </option>
+                        @foreach($obj_select_laboratorios as $obj_item)
+                        <option value="{{$obj_item->id_laboratorios}}">{{$obj_item->nombre_laboratorio}}</option>
+                        @endforeach                      
+                   </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Municipio *</td>
+                <td>                 
+                    <select name="id_municipio" class="form-control">
+                        <option value="" >-- Seleccionar -- </option>
+                        @foreach($obj_select_municipio as $obj_item)
+                        <option value="{{$obj_item->id_municipio}}">{{$obj_item->nombre_municipio}}</option>
                         @endforeach                      
                    </select>
                 </td>

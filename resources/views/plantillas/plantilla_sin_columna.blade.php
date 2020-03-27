@@ -10,14 +10,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="905; URL=/sigve/public/">
+    <meta http-equiv="refresh" content="905; URL=/rop_test/public/">
     <meta http-equiv="Expires" content="0" />
     <meta http-equiv="Pragma" content="no-cache" />
     <title>@yield('title')</title>
     @section('head')
         {!! Html::style('assets/css/bootstrap.css') !!}
-        {!! Html::style('assets/css/bootstrap.min.css') !!}
         {!! Html::style('assets/css/carga.css') !!}
+        {!! Html::style('assets/css/animate.css') !!}
         <script src="{{asset('assets/js/jquery.min.js')}}"></script>
         <script src="{{asset('assets/js/lista_dinamica.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
@@ -64,11 +64,11 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
               }
              .navbar-default .navbar-brand {
-             color:#000;
+             color:#fff;
               }
             /* cambiar el color de fondo a la barra */
             nav.navbar {
-           background-color: #337ab7;
+           background-color: #233671; /* #337ab7 */
             
             }
             </style>
@@ -79,13 +79,19 @@
                                         </button> <a class="navbar-brand" href="{{route('principal')}}">Inicio</a>                                         
                                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('catalogos')}}">ROP Trimestre</a>
+                                        </button> <a class="navbar-brand" href="{{route('ropseguimiento')}}">Intervenciones</a>
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('roptrimestre')}}">ROP Trimestre</a>
                                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('configuracion')}}">ROP Semestre</a>
+                                        </button> <a class="navbar-brand" href="{{route('ropsemestre')}}">ROP Semestre</a>
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                                        </button> <a class="navbar-brand" href="{{route('ropanual')}}">ROP Anual</a>
                                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                        </button> <a class="navbar-brand" href="{{route('reportes')}}">KPIF</a>
+                                        </button> <a class="navbar-brand" href="{{route('ropkpif')}}">KPIF</a>
                                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                                         </button> <a class="navbar-brand" href="{{route('administracion')}}">Administración</a>
